@@ -117,9 +117,9 @@ const eggs = [
     const controls = document.createElement("div");
     controls.className = "controls";
     controls.innerHTML = `
-      <label>Multiplier:</label>
+      <label>Rift:</label>
       <select class="multiplier">
-        <option value="1">1x</option>
+        <option value="0">No</option>
         <option value="5">5x</option>
         <option value="10">10x</option>
         <option value="25">25x</option>
@@ -160,7 +160,8 @@ const eggs = [
     }
   
     function updateChances() {
-      const multiplier = parseFloat(multiplierSelect.value);
+      const multiplierValue = parseFloat(multiplierSelect.value);
+      const multiplier = multiplierValue === 0 ? 1 : multiplierValue / 100;
       const luckPercent = parseFloat(luckInput.value);
       const luckMultiplier = 1 + luckPercent / 100;
   
