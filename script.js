@@ -1,7 +1,7 @@
 const eggs = [
     {
       name: "Common Egg",
-      image: "images/Common_Egg.webp",
+      image: "images/eggs/Common_Egg.webp",
       pets: [
         { name: "King Doggy (Secret)", baseOdds: 100000000, icon: "images/pets/King_Doggy.webp" }
       ]
@@ -9,21 +9,21 @@ const eggs = [
     
       {
         name: "Spikey Egg",
-        image: "images/Spikey_Egg.webp",
+        image: "images/eggs/Spikey_Egg.webp",
         pets: [
           { name: "Emerald Golem", baseOdds: 200, icon: "images/pets/Emerald_Golem.webp" }
         ]
       },
       {
         name: "Magma Egg",
-        image: "images/Magma_Egg.webp",
+        image: "images/eggs/Magma_Egg.webp",
         pets: [
           { name: "Inferno Dragon", baseOdds: 400, icon: "images/pets/Inferno_Dragon.webp" }
         ]
       },
       {
         name: "Crystal Egg",
-        image: "images/Crystal_Egg.webp",
+        image: "images/eggs/Crystal_Egg.webp",
         pets: [
           { name: "Unicorn", baseOdds: 400, icon: "images/pets/Unicorn.webp" },
           { name: "Flying Pig", baseOdds: 1000, icon: "images/pets/Flying_Pig.webp" }
@@ -31,7 +31,7 @@ const eggs = [
       },
       {
         name: "Lunar Egg",
-        image: "images/Lunar_Egg.webp",
+        image: "images/eggs/Lunar_Egg.webp",
         pets: [
           { name: "Lunar_Serpent", baseOdds: 400, icon: "images/pets/Lunar_Serpent.webp" },
           { name: "Electra", baseOdds: 1000, icon: "images/pets/Electra.webp" }
@@ -39,7 +39,7 @@ const eggs = [
       },
       {
         name: "Void Egg",
-        image: "images/Void_Egg.webp",
+        image: "images/eggs/Void_Egg.webp",
         pets: [
           { name: "Dark Phoenix", baseOdds: 2000, icon: "images/pets/Dark_Phoenix.webp" },
           { name: "Neon Elemntal", baseOdds: 5000, icon: "images/pets/Neon_Elemental.webp" },
@@ -48,7 +48,7 @@ const eggs = [
       },
       {
         name: "Hell Egg",
-        image: "images/Hell_Egg.webp",
+        image: "images/eggs/Hell_Egg.webp",
         pets: [
           { name: "Inferno Cube", baseOdds: 4000, icon: "images/pets/Inferno_Cube.webp" },
           { name: "Virus", baseOdds: 50000, icon: "images/pets/Virus.webp" }
@@ -56,7 +56,7 @@ const eggs = [
       },
       {
         name: "Nightmare Egg",
-        image: "images/Nightmare_Egg.webp",
+        image: "images/eggs/Nightmare_Egg.webp",
         pets: [
           { name: "Green Hydra", baseOdds: 25000, icon: "images/pets/Green_Hydra.webp" },
           { name: "Demonic Hydra", baseOdds: 100000, icon: "images/pets/Demonic_Hydra.webp" },
@@ -65,7 +65,7 @@ const eggs = [
       },
       {
         name: "Rainbow Egg",
-        image: "images/Rainbow_Egg.webp",
+        image: "images/eggs/Rainbow_Egg.webp",
         pets: [
           { name: "Hexarium", baseOdds: 100000, icon: "images/pets/Hexarium.webp" },
           { name: "Rainbow Shock", baseOdds: 200000, icon: "images/pets/Rainbow_Shock.webp" }
@@ -73,7 +73,7 @@ const eggs = [
       },
       {
         name: "100M Egg",
-        image: "images/100M_Egg.webp",
+        image: "images/eggs/100M_Egg.webp",
         pets: [
           { name: "Diamond Serpent", baseOdds: 2500, icon: "images/pets/Diamond_Serpent.webp" },
           { name: "Diamond Hexarium", baseOdds: 50000, icon: "images/pets/Diamond_Hexarium.webp" },
@@ -83,7 +83,7 @@ const eggs = [
       },
       {
         name: "Silly Egg",
-        image: "images/Silly_Egg.webp",
+        image: "images/eggs/Silly_Egg.webp",
         pets: [
           { name: "DOOF", baseOdds: 10000, icon: "images/pets/DOOF.webp" },
           { name: "ROUND", baseOdds: 250000, icon: "images/pets/ROUND.webp" },
@@ -175,4 +175,3 @@ const eggs = [
   
   // Render all eggs
   eggs.forEach(createEggCard);
-  
