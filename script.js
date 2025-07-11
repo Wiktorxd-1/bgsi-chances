@@ -80,25 +80,44 @@ const eggs = [
       world: "1"
     },
     {
-      name: "100M Egg",
-      image: "Images/Eggs/100M_Egg.webp",
+      name: "Mining Egg",
+      image: "Images/Eggs/Mining_Egg.webp",
       Pets: [
-        { name: "Diamond Serpent", baseOdds: 2500, icon: "Images/Pets/Diamond_Serpent.webp" },
-        { name: "Diamond Hexarium", baseOdds: 50000, icon: "Images/Pets/Diamond_Hexarium.webp" },
-        { name: "King Pufferfish", baseOdds: 800000, icon: "Images/Pets/King_Pufferfish.webp" },
-        { name: "Royal Trophy (Secret)", baseOdds: 50000000, icon: "Images/Pets/Royal_Trophy.webp" }
+        { name: "Crystal Unicorn", baseOdds: 200, icon: "Images/Pets/Crystal_Unicorn.webp" },
+        { name: "Stone Gargoyle", baseOdds: 20000, icon: "Images/Pets/Stone_Gargoyle.webp" }
       ],
-      world: "bubble_festival"
+      world: "2"
     },
     {
-      name: "Silly Egg",
-      image: "Images/Eggs/Silly_Egg.webp",
+      name: "Cyber Egg",
+      image: "Images/Eggs/Cyber_Egg.webp",
       Pets: [
-        { name: "DOOF", baseOdds: 10000, icon: "Images/Pets/DOOF.webp" },
-        { name: "ROUND", baseOdds: 250000, icon: "Images/Pets/ROUND.webp" },
-        { name: "Silly Doggy (Secret)", baseOdds: 1000000, icon: "Images/Pets/Silly_Doggy.webp" }
+        { name: "Cyborg Phoenix", baseOdds: 2500, icon: "Images/Pets/Cyborg_Phoenix.webp" },
+        { name: "Space Invader", baseOdds: 50000, icon: "Images/Pets/Space_Invader.webp" },
+        { name: "Bionic Shard", baseOdds: 666667, icon: "Images/Pets/Bionic_Shard.webp" },
+        { name: "Mech Robot (Secret)", baseOdds: 66666667, icon: "Images/Pets/Mech_Robot.webp" }
       ],
-      world: "bubble_festival"
+      world: "2"
+    },
+    {
+      name: "Neon Egg",
+      image: "Images/Eggs/Neon_Egg.webp",
+      Pets: [
+        { name: "Neon Wyvern", baseOdds: 3334, icon: "Images/Pets/Neon_Wyvern.webp" },
+        { name: "Neon Wire Eye", baseOdds: 66667, icon: "Images/Pets/Neon_Wire_Eye.webp" },
+        { name: "Equalizer", baseOdds: 833334, icon: "Images/Pets/Equalizer.webp" },
+        { name: "Hyperwave Kitty (Secret)", baseOdds: 125000000, icon: "Images/Pets/Hyperwave_Kitty.webp" }
+      ],
+      world: "2"
+    },
+    {
+      name: "Chance Egg",
+      image: "Images/Eggs/Chance_Egg.webp",
+      Pets: [
+        { name: "Ring Master", baseOdds: 100000, icon: "Images/Pets/Ring_Master.webp" },
+        { name: "Royal Guardian", baseOdds: 200000000, icon: "Images/Pets/Royal_Guardian.webp" }
+      ],
+      world: "2"
     }
   ];
   
@@ -111,7 +130,7 @@ const eggs = [
   
     const eggHeader = document.createElement("div");
     eggHeader.className = "egg-header";
-    eggHeader.innerHTML = `<img src="${egg.image}" alt="${egg.name}" />
+    eggHeader.innerHTML = `<img src="${egg.image}" alt="${egg.name}" style="width: 40px; height: 40px;" />
                            <h2>${egg.name}</h2>`;
   
     const controls = document.createElement("div");
@@ -239,4 +258,10 @@ const eggs = [
         egg.style.display = 'none';
       }
     });
+  }
+  
+  function toggleSettingsPopup(event) {
+    event.preventDefault();
+    const settingsPopup = document.getElementById('settings-popup');
+    settingsPopup.classList.toggle('show');
   }

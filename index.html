@@ -51,6 +51,9 @@
         <img src="Images/Icons/discord.ico" alt="Discord Icon">
       </a>
     </div>
+    <button class="settings-button-sidebar" onclick="toggleSettingsPopup(event)" style="background: none; border: none; padding: 0; margin-bottom: 10px; cursor: pointer;">
+      <img src="Images/Icons/settings.ico" alt="Settings Icon" style="width: 32px; height: 32px; display: block;">
+    </button>
     <button class="credits-button-sidebar" onclick="showCreditsPopup(event)">Credits</button>
   </div>
 
@@ -63,7 +66,7 @@
         <img src="Images/Icons/website.ico" alt="Website" style="vertical-align: middle; margin-right: 5px;"> https://bgs-infinity.fandom.com/</a></p>
   </div>
 <!-- For later -->
-  <div class="settings-popup" id="settings-popup">
+  <div class="settings-popup" id="settings-popup" style="display:none;">
     <h2>Settings</h2>
     <label for="font-select">Choose your font:</label>
     <select id="font-select">
@@ -101,6 +104,37 @@
       const popup = document.getElementById('credits-popup');
       popup.classList.remove('show');
     }
+
+    function toggleSettingsPopup(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const popup = document.getElementById('settings-popup');
+      if (popup.style.display === 'block') {
+        popup.style.display = 'none';
+      } else {
+        popup.style.display = 'block';
+      }
+    }
+
+    // Font changing logic
+    function setFont(font) {
+      document.body.style.fontFamily = font;
+      localStorage.setItem('selectedFont', font);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Font select logic
+      const fontSelect = document.getElementById('font-select');
+      if (fontSelect) {
+        // Load saved font
+        const savedFont = localStorage.getItem('selectedFont') || 'Arial';
+        fontSelect.value = savedFont;
+        setFont(savedFont);
+        fontSelect.addEventListener('change', function() {
+          setFont(this.value);
+        });
+      }
+    });
 
     function filterEggsByWorld(world) {
       const eggList = document.getElementById('egg-list');
@@ -165,6 +199,8 @@
       const menuIcon = document.querySelector('.menu-icon');
       const popup = document.getElementById('credits-popup');
       const creditsButton = document.querySelector('.credits-button-sidebar');
+      const settingsPopup = document.getElementById('settings-popup');
+      const settingsButton = document.querySelector('.settings-button-sidebar');
 
       if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
         sidebar.classList.remove('open');
@@ -177,6 +213,15 @@
         !event.target.closest('.credits-button-sidebar')
       ) {
         hideCreditsPopup();
+      }
+
+      if (
+        settingsPopup &&
+        !settingsPopup.contains(event.target) &&
+        !settingsButton.contains(event.target) &&
+        !event.target.closest('.settings-button-sidebar')
+      ) {
+        settingsPopup.style.display = 'none';
       }
     });
 

@@ -328,6 +328,18 @@ td.pet-name span {
   background-color: #ffb1ad;
 }
 
+.settings-button {
+  position: fixed;
+  bottom: 20px;
+  right: 70px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.settings-button img {
+  width: 32px;
+  height: 32px;
+}
 .settings-popup {
   display: none;
   position: fixed;
