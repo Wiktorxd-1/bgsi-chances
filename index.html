@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <link rel="icon" href="Images/Icons/favicon.ico" type="image/ico">
+  <link rel="icon" href="Images/Icons/favicon.ico" type="image/ico">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BGSI Chance Calculator</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Ferdoka+One&family=Lato:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     .world-button {
       min-height: 50px;
@@ -18,6 +19,9 @@
 
     .world-button.active {
       box-shadow: 0 0 10px #fdffb6;
+    }
+    body, html {
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     }
   </style>
 </head>
@@ -51,9 +55,11 @@
         <img src="Images/Icons/discord.ico" alt="Discord Icon">
       </a>
     </div>
-    <button class="settings-button-sidebar" onclick="toggleSettingsPopup(event)" style="background: none; border: none; padding: 0; margin-bottom: 10px; cursor: pointer;">
-      <img src="Images/Icons/settings.ico" alt="Settings Icon" style="width: 32px; height: 32px; display: block;">
-    </button>
+    <div style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center; gap: 10px; margin-bottom: 10px;">
+      <button class="settings-button-sidebar" onclick="toggleSettingsPopup(event)" style="background: none; border: none; padding: 0; cursor: pointer;">
+        <img src="Images/Icons/settings.ico" alt="Settings Icon" style="width: 32px; height: 32px; display: block;">
+      </button>
+    </div>
     <button class="credits-button-sidebar" onclick="showCreditsPopup(event)">Credits</button>
   </div>
 
@@ -65,16 +71,16 @@
       <a href="https://bgs-infinity.fandom.com/" target="_blank">
         <img src="Images/Icons/website.ico" alt="Website" style="vertical-align: middle; margin-right: 5px;"> https://bgs-infinity.fandom.com/</a></p>
   </div>
-<!-- For later -->
+
   <div class="settings-popup" id="settings-popup" style="display:none;">
     <h2>Settings</h2>
-    <label for="font-select">Choose your font:</label>
+    <label for="font-select">Choose your preferred font:</label>
     <select id="font-select">
       <option value="Arial">Arial (Default)</option>
       <option value="Ferdoka One">Ferdoka One</option>
       <option value="Lato">Lato</option>
-      <option value="Helvetica">Helvetica</option>
       <option value="Roboto">Roboto</option>
+      <option value="Comic Sans MS">Comic Sans MS</option>
     </select>
   </div>
 
@@ -116,17 +122,34 @@
       }
     }
 
-    // Font changing logic
     function setFont(font) {
-      document.body.style.fontFamily = font;
+      let fontFamily;
+      switch (font) {
+        case 'Ferdoka One':
+          fontFamily = 'Ferdoka One, Arial, Helvetica, sans-serif';
+          break;
+        case 'Lato':
+          fontFamily = 'Lato, Arial, Helvetica, sans-serif';
+          break;
+        case 'Roboto':
+          fontFamily = 'Roboto, Arial, Helvetica, sans-serif';
+          break;
+        case 'Helvetica':
+          fontFamily = 'Helvetica, Arial, sans-serif';
+          break;
+        case 'Arial':
+        default:
+          fontFamily = 'Arial, Helvetica, sans-serif';
+      }
+      document.body.style.fontFamily = fontFamily;
       localStorage.setItem('selectedFont', font);
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      // Font select logic
+
       const fontSelect = document.getElementById('font-select');
       if (fontSelect) {
-        // Load saved font
+
         const savedFont = localStorage.getItem('selectedFont') || 'Arial';
         fontSelect.value = savedFont;
         setFont(savedFont);
@@ -140,20 +163,18 @@
       const eggList = document.getElementById('egg-list');
       const eggs = eggList.querySelectorAll('.egg-card');
 
-      // Get the currently active button
       const activeButton = document.querySelector('.world-button.active');
 
-      // If the clicked button is already active, deselect it
       if (activeButton && activeButton.getAttribute('onclick').includes(world)) {
         activeButton.classList.remove('active');
-        eggs.forEach(egg => egg.style.display = 'block'); // Show all eggs
+        eggs.forEach(egg => egg.style.display = 'block');
         return;
       }
 
-      // Remove active class from all world buttons
+
       document.querySelectorAll('.world-button').forEach(button => button.classList.remove('active'));
 
-      // Add active class to the clicked button
+
       document.querySelector(`.world-button[onclick*="${world}"]`).classList.add('active');
 
       eggs.forEach(egg => {
@@ -165,7 +186,6 @@
         }
       });
 
-      // Trigger search to reapply the filter
       searchEggsAndPets();
     }
 
@@ -174,7 +194,7 @@
       const eggList = document.getElementById('egg-list');
       const eggs = eggList.querySelectorAll('.egg-card');
 
-      // Get the currently selected world filter
+
       const selectedWorld = document.querySelector('.world-button.active')?.getAttribute('onclick')?.match(/\('(.*?)'\)/)?.[1];
 
       eggs.forEach(egg => {
@@ -182,7 +202,6 @@
         const petNames = Array.from(egg.querySelectorAll('.pet-name')).map(pet => pet.textContent.toLowerCase());
         const eggWorld = egg.getAttribute('data-world');
 
-        // Check if the egg matches the search term and the selected world filter
         const matchesSearch = eggName.includes(searchTerm) || petNames.some(petName => petName.includes(searchTerm));
         const matchesWorld = !selectedWorld || eggWorld === selectedWorld;
 

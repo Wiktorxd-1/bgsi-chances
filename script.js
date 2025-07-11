@@ -180,16 +180,16 @@ const eggs = [
   
     function updateChances() {
       const multiplierValue = parseFloat(multiplierSelect.value);
-      const riftBonusPercent = multiplierValue * 100; // Convert Rift multiplier to percentage (e.g., 5x = 500%)
+      const riftBonusPercent = multiplierValue * 100;
       const luckPercent = parseFloat(luckInput.value);
-      const effectiveLuckPercent = luckPercent + riftBonusPercent; // Add Rift bonus to Luck multiplier in the background
-      const combinedMultiplier = 1 + effectiveLuckPercent / 100; // Convert total percentage to multiplier
+      const effectiveLuckPercent = luckPercent + riftBonusPercent;
+      const combinedMultiplier = 1 + effectiveLuckPercent / 100;
   
       petList.innerHTML = "";
   
       egg.Pets.forEach(pet => {
         const baseChance = 1 / pet.baseOdds;
-        const adjustedChance = baseChance * combinedMultiplier; // Apply combined multiplier
+        const adjustedChance = baseChance * combinedMultiplier;
         const adjustedOneIn = adjustedChance > 0 ? Math.round(1 / adjustedChance).toLocaleString() : "∞";
         let adjustedPercent = formatAdjustedPercent(adjustedChance);
   
@@ -223,28 +223,47 @@ const eggs = [
   
   eggs.forEach(createEggCard);
   
-  document.addEventListener("DOMContentLoaded", () => {
-    const settingsButton = document.querySelector(".settings-button");
-    const settingsPopup = document.querySelector(".settings-popup");
-    const fontSelect = document.getElementById("font-select");
-  
-    settingsButton.addEventListener("click", () => {
-      settingsPopup.classList.toggle("show");
-    });
-  
-    const savedFont = document.cookie.split(";").find(cookie => cookie.trim().startsWith("font="));
-    if (savedFont) {
-      const font = savedFont.split("=")[1];
-      document.body.style.fontFamily = font;
-      fontSelect.value = font;
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const fontSelect = document.getElementById("font-select");
+  if (fontSelect) {
+    const fontMap = {
+      "Arial": "Arial, Helvetica, sans-serif",
+      "Ferdoka One": "'Ferdoka One', cursive, Arial, Helvetica, sans-serif",
+      "Lato": "'Lato', Arial, Helvetica, sans-serif",
+      "Roboto": "'Roboto', Arial, Helvetica, sans-serif",
+      "Comic Sans MS": "'Comic Sans MS', 'Comic Sans', cursive, Arial, Helvetica, sans-serif"
+    };
+    const helveticaOption = fontSelect.querySelector('option[value="Helvetica"]');
+    if (helveticaOption) helveticaOption.remove();
+
+    const savedFont = localStorage.getItem('selectedFont') || 'Arial';
+    fontSelect.value = savedFont;
+    document.body.classList.remove('ferdoka-font');
+    document.documentElement.classList.remove('ferdoka-font');
+    if (savedFont === 'Ferdoka One') {
+      document.body.classList.add('ferdoka-font');
+      document.documentElement.classList.add('ferdoka-font');
+    } else {
+      document.body.style.fontFamily = fontMap[savedFont] || fontMap['Arial'];
+      document.documentElement.style.fontFamily = fontMap[savedFont] || fontMap['Arial'];
     }
-  
-    fontSelect.addEventListener("change", () => {
+    fontSelect.addEventListener('change', function() {
       const selectedFont = fontSelect.value;
-      document.body.style.fontFamily = selectedFont;
-      document.cookie = `font=${selectedFont}; path=/; max-age=31536000`;
+      document.body.classList.remove('ferdoka-font');
+      document.documentElement.classList.remove('ferdoka-font');
+      if (selectedFont === 'Ferdoka One') {
+        document.body.classList.add('ferdoka-font');
+        document.documentElement.classList.add('ferdoka-font');
+      } else {
+        document.body.style.fontFamily = fontMap[selectedFont] || fontMap['Arial'];
+        document.documentElement.style.fontFamily = fontMap[selectedFont] || fontMap['Arial'];
+      }
+      localStorage.setItem('selectedFont', selectedFont);
     });
-  });
+  }
+});
   
   function filterEggsByWorld(world) {
     const eggList = document.getElementById('egg-list');
