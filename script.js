@@ -161,15 +161,16 @@ const eggs = [
   
     function updateChances() {
       const multiplierValue = parseFloat(multiplierSelect.value);
-      const multiplier = multiplierValue === 0 ? 1 : multiplierValue / 100;
+      const riftBonusPercent = multiplierValue * 100; // Convert Rift multiplier to percentage (e.g., 5x = 500%)
       const luckPercent = parseFloat(luckInput.value);
-      const luckMultiplier = 1 + luckPercent / 100;
+      const effectiveLuckPercent = luckPercent + riftBonusPercent; // Add Rift bonus to Luck multiplier in the background
+      const combinedMultiplier = 1 + effectiveLuckPercent / 100; // Convert total percentage to multiplier
   
       petList.innerHTML = "";
   
       egg.Pets.forEach(pet => {
         const baseChance = 1 / pet.baseOdds;
-        const adjustedChance = baseChance * luckMultiplier * multiplier;
+        const adjustedChance = baseChance * combinedMultiplier; // Apply combined multiplier
         const adjustedOneIn = adjustedChance > 0 ? Math.round(1 / adjustedChance).toLocaleString() : "∞";
         let adjustedPercent = formatAdjustedPercent(adjustedChance);
   

@@ -6,13 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BGSI Chance Calculator</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .world-button {
+      min-height: 50px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .world-button.active {
+      box-shadow: 0 0 10px #fdffb6;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>BGSI Chance Calculator</h1>
-    <p>Calculator for BGSI legendaries and secret pets, easy to use, just enter the luck multiplier and see the chances</p>
+    <p>Calculator for BGSI legendaries and secret pets chances, easy to use, just enter the luck multiplier and see the chances</p>
 
-    <div class="world-buttons" style="margin-top: 10px;">
+    <div class="world-buttons" style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+      <input type="text" id="search-bar" placeholder="Search eggs or pets..." style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; flex-grow: 1;" oninput="searchEggsAndPets()">
       <button class="world-button overworld" onclick="filterEggsByWorld('1')">
         <img src="Images/Icons/The_Overworld_Icon.webp" alt="Overworld Icon" style="vertical-align: middle; margin-right: 5px;"> Overworld
       </button>
@@ -91,11 +106,53 @@
       const eggList = document.getElementById('egg-list');
       const eggs = eggList.querySelectorAll('.egg-card');
 
+      // Get the currently active button
+      const activeButton = document.querySelector('.world-button.active');
+
+      // If the clicked button is already active, deselect it
+      if (activeButton && activeButton.getAttribute('onclick').includes(world)) {
+        activeButton.classList.remove('active');
+        eggs.forEach(egg => egg.style.display = 'block'); // Show all eggs
+        return;
+      }
+
+      // Remove active class from all world buttons
+      document.querySelectorAll('.world-button').forEach(button => button.classList.remove('active'));
+
+      // Add active class to the clicked button
+      document.querySelector(`.world-button[onclick*="${world}"]`).classList.add('active');
+
       eggs.forEach(egg => {
         const eggWorld = egg.getAttribute('data-world');
-        if (world === 'event' && eggWorld === 'event') {
+        if (eggWorld === world) {
           egg.style.display = 'block';
-        } else if (eggWorld === world) {
+        } else {
+          egg.style.display = 'none';
+        }
+      });
+
+      // Trigger search to reapply the filter
+      searchEggsAndPets();
+    }
+
+    function searchEggsAndPets() {
+      const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+      const eggList = document.getElementById('egg-list');
+      const eggs = eggList.querySelectorAll('.egg-card');
+
+      // Get the currently selected world filter
+      const selectedWorld = document.querySelector('.world-button.active')?.getAttribute('onclick')?.match(/\('(.*?)'\)/)?.[1];
+
+      eggs.forEach(egg => {
+        const eggName = egg.querySelector('.egg-header h2').textContent.toLowerCase();
+        const petNames = Array.from(egg.querySelectorAll('.pet-name')).map(pet => pet.textContent.toLowerCase());
+        const eggWorld = egg.getAttribute('data-world');
+
+        // Check if the egg matches the search term and the selected world filter
+        const matchesSearch = eggName.includes(searchTerm) || petNames.some(petName => petName.includes(searchTerm));
+        const matchesWorld = !selectedWorld || eggWorld === selectedWorld;
+
+        if (matchesSearch && matchesWorld) {
           egg.style.display = 'block';
         } else {
           egg.style.display = 'none';
