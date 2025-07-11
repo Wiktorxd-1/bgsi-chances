@@ -1,20 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <link rel="icon" href="favicon.ico" type="image/ico">
+ <link rel="icon" href="Images/Icons/favicon.ico" type="image/ico">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BGSI Hatch Chance Calculator</title>
+  <title>BGSI Chance Calculator</title>
   <link rel="stylesheet" href="styles.css" />
-  
 </head>
 <body>
   <div class="container">
     <h1>BGSI Chance Calculator</h1>
-    <p>Calculator for BGSI legendaries and secret pets, easy to use, just enter the chances and see the chances</p>
+    <p>Calculator for BGSI legendaries and secret pets, easy to use, just enter the luck multiplier and see the chances</p>
+
+    <div class="world-buttons" style="margin-top: 10px;">
+      <button class="world-button overworld" onclick="filterEggsByWorld('1')">
+        <img src="Images/Icons/The_Overworld_Icon.webp" alt="Overworld Icon" style="vertical-align: middle; margin-right: 5px;"> Overworld
+      </button>
+      <button class="world-button minigame" onclick="filterEggsByWorld('2')">
+        <img src="Images/Icons/Minigame_Paradise_Icon.webp" alt="Minigame Paradise Icon" style="vertical-align: middle; margin-right: 5px;"> Minigame Paradise
+      </button>
+      <button class="world-button event" onclick="filterEggsByWorld('bubble_festival')">
+        <img src="Images/Icons/Bubble_Festival_Icon.webp" alt="Bubble Festival Icon" style="vertical-align: middle; margin-right: 5px;"> Bubble Festival
+      </button>
+    </div>
+
     <div id="egg-list"></div>
   </div>
-  <script src="script.js"></script>
+
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>Menu</h2>
+    </div>
+    <div class="sidebar-content">
+      <a href="https://discord.gg/bubbler" class="discord-invite" target="_blank">
+        <img src="Images/Icons/discord.ico" alt="Discord Icon">
+      </a>
+    </div>
+    <button class="credits-button-sidebar" onclick="showCreditsPopup(event)">Credits</button>
   </div>
+
+  <div class="credits-popup" id="credits-popup">
+    <p><strong>piczu123:</strong> Old site, not being maintained<br>
+      <a href="https://piczu123.github.io/BGSI-Chance-Calculator/" target="_blank">
+        <img src="Images/Icons/website.ico" alt="Website" style="vertical-align: middle; margin-right: 5px;"> https://piczu123.github.io/BGSI-Chance-Calculator/</a></p>
+    <p><strong>BGSI wiki:</strong> Egg and Pet icons<br>
+      <a href="https://bgs-infinity.fandom.com/" target="_blank">
+        <img src="Images/Icons/website.ico" alt="Website" style="vertical-align: middle; margin-right: 5px;"> https://bgs-infinity.fandom.com/</a></p>
+  </div>
+<!-- For later -->
+  <div class="settings-popup" id="settings-popup">
+    <h2>Settings</h2>
+    <label for="font-select">Choose your font:</label>
+    <select id="font-select">
+      <option value="Arial">Arial (Default)</option>
+      <option value="Ferdoka One">Ferdoka One</option>
+      <option value="Lato">Lato</option>
+      <option value="Helvetica">Helvetica</option>
+      <option value="Roboto">Roboto</option>
+    </select>
+  </div>
+
+  <button class="menu-icon" onclick="toggleSidebar()">
+    <img src="Images/Icons/menu.ico" alt="Menu" />
+  </button>
+
+  <script src="script.js"></script>
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar.classList.contains('open')) {
+        sidebar.classList.remove('open');
+      } else {
+        sidebar.classList.add('open');
+      }
+    }
+
+    function showCreditsPopup(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const popup = document.getElementById('credits-popup');
+      popup.classList.add('show');
+    }
+
+    function hideCreditsPopup() {
+      const popup = document.getElementById('credits-popup');
+      popup.classList.remove('show');
+    }
+
+    function filterEggsByWorld(world) {
+      const eggList = document.getElementById('egg-list');
+      const eggs = eggList.querySelectorAll('.egg-card');
+
+      eggs.forEach(egg => {
+        const eggWorld = egg.getAttribute('data-world');
+        if (world === 'event' && eggWorld === 'event') {
+          egg.style.display = 'block';
+        } else if (eggWorld === world) {
+          egg.style.display = 'block';
+        } else {
+          egg.style.display = 'none';
+        }
+      });
+    }
+
+    document.addEventListener('click', (event) => {
+      const sidebar = document.getElementById('sidebar');
+      const menuIcon = document.querySelector('.menu-icon');
+      const popup = document.getElementById('credits-popup');
+      const creditsButton = document.querySelector('.credits-button-sidebar');
+
+      if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
+        sidebar.classList.remove('open');
+      }
+
+      if (
+        popup &&
+        !popup.contains(event.target) &&
+        !creditsButton.contains(event.target) &&
+        !event.target.closest('.credits-button-sidebar')
+      ) {
+        hideCreditsPopup();
+      }
+    });
+
+    document.getElementById('sidebar').addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+
+    document.querySelector('.credits-button-sidebar').addEventListener('mouseenter', (event) => {
+      showCreditsPopup(event);
+    });
+
+    document.querySelector('.credits-popup').addEventListener('mouseleave', () => {
+      hideCreditsPopup();
+    });
+  </script>
 </body>
 </html>

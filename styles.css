@@ -1,39 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Ferdoka+One&display=swap');
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #2e003e;
     margin: 0;
     padding: 2rem;
     color: #fff;
-    
 }
 h1 {
     text-align: center;
-
 }
 p {
     text-align: center;
-
 }
-
 #egg-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     text-align: center;
 }
-
 .egg-card {
     background-color: #3c005d;
     border-radius: 10px;
     padding: 16px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
+    min-height: 400px;
+    position: relative;
+    z-index: 1;
 }
-
 .egg-card:hover {
     transform: scale(1.05);
+    z-index: 10;
 }
-
 .egg-header {
     display: flex;
     flex-direction: column;
@@ -42,24 +41,20 @@ p {
     padding: 1rem;
     border-radius: 8px;
 }
-
 .egg-header h2 {
     color: #fff;
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
 }
-
 .controls {
     background-color: #4a006b;
     border-radius: 8px;
     padding: 0.5rem;
     margin-top: 0.5rem;
 }
-
 .controls label {
     font-weight: bold;
 }
-
 .controls select,
 .controls input {
     padding: 0.4rem;
@@ -67,12 +62,10 @@ p {
     border: 1px solid #ccc;
     min-width: 80px;
 }
-
 .controls select:focus,
 .controls input:focus {
     outline: 2px solid #fff;
 }
-
 table {
     background-color: #5b0077;
     border-radius: 8px;
@@ -80,7 +73,6 @@ table {
     width: 100%;
     border-collapse: collapse;
 }
-
 th, td {
     background-color: #450056;
     padding: 10px;
@@ -88,17 +80,13 @@ th, td {
     vertical-align: middle;
     border: 1px solid #5e0081;
 }
-
 thead {
     background-color: #450056;
     font-weight: bold;
 }
-
 tbody tr:nth-child(even) {
     background-color: #4f005e;
 }
-
-/* Styl pro Pet buňky: obrázek nahoře, text pod ním */
 td.pet-name {
     display: flex;
     flex-direction: column;
@@ -108,17 +96,283 @@ td.pet-name {
     gap: 6px;
     text-align: center;
 }
-
 td.pet-name img {
     height: 32px;
     width: 32px;
     border-radius: 4px;
     flex-shrink: 0;
 }
-
 td.pet-name span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100px;
+}
+.credits-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+.credits-button {
+    background-color: #32004d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+.credits-button:hover {
+    transform: scale(1.05);
+}
+.credits-menu {
+    display: none;
+    background-color: #4a006b;
+    border: 1px solid #5e0081;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.credits-menu.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+.credits-menu a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.credits-menu a:hover {
+    text-decoration: underline;
+}
+.credits-menu a img {
+    width: 24px;
+    height: 24px;
+}
+.credits-button:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.show-amount {
+    background-color: #32004d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.show-amount:hover {
+    transform: scale(1.05);
+}
+.menu-icon {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.menu-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: #4a006b;
+  color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar.open {
+  right: 0; 
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #32004d;
+  position: relative;
+}
+
+.sidebar-content {
+  padding: 10px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.credits-button-sidebar {
+  background: none;
+  border: none;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: inherit;
+  padding: 0;
+}
+
+.credits-button-sidebar:hover {
+  text-decoration: underline;
+}
+
+.credits-popup {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4a006b;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.credits-popup.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.sidebar:hover .credits-popup,
+.credits-button-sidebar:hover + .credits-popup {
+  opacity: 1;
+  transform: translateY(0);
+  display: block;
+}
+
+.sidebar:not(:hover) .credits-popup,
+.credits-button-sidebar:not(:hover) + .credits-popup {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+.credits-popup a {
+  color: white;
+  text-decoration: none;
+  cursor: default;
+}
+
+.credits-popup a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.world-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.world-button {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.world-button img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.world-button.overworld {
+  background-color: #6bd61e;
+}
+
+.world-button.minigame {
+  background-color: #fa271b;
+}
+
+.world-button.event {
+  background-color: #ffb1ad;
+}
+
+.settings-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4a006b;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+}
+
+.settings-popup.show {
+  display: block;
+}
+
+.settings-popup h2 {
+  margin-top: 0;
+}
+
+.settings-popup select {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.discord-invite {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  background: none;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+.discord-invite img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+.discord-invite:hover {
+  transform: scale(1.1);
 }
