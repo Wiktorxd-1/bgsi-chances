@@ -1,97 +1,95 @@
 const eggs = [
     {
       name: "Common Egg",
-      image: "images/eggs/Common_Egg.webp",
+      image: "Images/eggs/Common_Egg.webp",
       pets: [
-        { name: "King Doggy (Secret)", baseOdds: 100000000, icon: "images/pets/King_Doggy.webp" }
+        { name: "King Doggy (Secret)", baseOdds: 100000000, icon: "Images/pets/King_Doggy.webp" }
       ]
     },
     
       {
         name: "Spikey Egg",
-        image: "images/eggs/Spikey_Egg.webp",
+        image: "Images/eggs/Spikey_Egg.webp",
         pets: [
-          { name: "Emerald Golem", baseOdds: 200, icon: "images/pets/Emerald_Golem.webp" }
+          { name: "Emerald Golem", baseOdds: 200, icon: "Images/pets/Emerald_Golem.webp" }
         ]
       },
       {
         name: "Magma Egg",
-        image: "images/eggs/Magma_Egg.webp",
+        image: "Images/eggs/Magma_Egg.webp",
         pets: [
-          { name: "Inferno Dragon", baseOdds: 400, icon: "images/pets/Inferno_Dragon.webp" }
+          { name: "Inferno Dragon", baseOdds: 400, icon: "Images/pets/Inferno_Dragon.webp" }
         ]
       },
       {
         name: "Crystal Egg",
-        image: "images/eggs/Crystal_Egg.webp",
+        image: "Images/eggs/Crystal_Egg.webp",
         pets: [
-          { name: "Unicorn", baseOdds: 400, icon: "images/pets/Unicorn.webp" },
-          { name: "Flying Pig", baseOdds: 1000, icon: "images/pets/Flying_Pig.webp" }
+          { name: "Unicorn", baseOdds: 400, icon: "Images/pets/Unicorn.webp" },
+          { name: "Flying Pig", baseOdds: 1000, icon: "Images/pets/Flying_Pig.webp" }
         ]
       },
       {
         name: "Lunar Egg",
-        image: "images/eggs/Lunar_Egg.webp",
+        image: "Images/eggs/Lunar_Egg.webp",
         pets: [
-          { name: "Lunar_Serpent", baseOdds: 400, icon: "images/pets/Lunar_Serpent.webp" },
-          { name: "Electra", baseOdds: 1000, icon: "images/pets/Electra.webp" }
+          { name: "Lunar_Serpent", baseOdds: 400, icon: "Images/pets/Lunar_Serpent.webp" },
+          { name: "Electra", baseOdds: 1000, icon: "Images/pets/Electra.webp" }
         ]
       },
       {
         name: "Void Egg",
-        image: "images/eggs/Void_Egg.webp",
+        image: "Images/eggs/Void_Egg.webp",
         pets: [
-          { name: "Dark Phoenix", baseOdds: 2000, icon: "images/pets/Dark_Phoenix.webp" },
-          { name: "Neon Elemntal", baseOdds: 5000, icon: "images/pets/Neon_Elemental.webp" },
-          { name: "NULLVoid", baseOdds: 1000000, icon: "images/pets/NULLVoid.webp" }
+          { name: "Dark Phoenix", baseOdds: 2000, icon: "Images/pets/Dark_Phoenix.webp" },
+          { name: "Neon Elemntal", baseOdds: 5000, icon: "Images/pets/Neon_Elemental.webp" },
+          { name: "NULLVoid", baseOdds: 1000000, icon: "Images/pets/NULLVoid.webp" }
         ]
       },
       {
         name: "Hell Egg",
-        image: "images/eggs/Hell_Egg.webp",
+        image: "Images/eggs/Hell_Egg.webp",
         pets: [
-          { name: "Inferno Cube", baseOdds: 4000, icon: "images/pets/Inferno_Cube.webp" },
-          { name: "Virus", baseOdds: 50000, icon: "images/pets/Virus.webp" }
+          { name: "Inferno Cube", baseOdds: 4000, icon: "Images/pets/Inferno_Cube.webp" },
+          { name: "Virus", baseOdds: 50000, icon: "Images/pets/Virus.webp" }
         ]
       },
       {
         name: "Nightmare Egg",
-        image: "images/eggs/Nightmare_Egg.webp",
+        image: "Images/eggs/Nightmare_Egg.webp",
         pets: [
-          { name: "Green Hydra", baseOdds: 25000, icon: "images/pets/Green_Hydra.webp" },
-          { name: "Demonic Hydra", baseOdds: 100000, icon: "images/pets/Demonic_Hydra.webp" },
-          { name: "The Overlord (Secret)", baseOdds: 1000000, icon: "images/pets/The_Overlord.webp" }
+          { name: "Green Hydra", baseOdds: 25000, icon: "Images/pets/Green_Hydra.webp" },
+          { name: "Demonic Hydra", baseOdds: 100000, icon: "Images/pets/Demonic_Hydra.webp" },
+          { name: "The Overlord (Secret)", baseOdds: 1000000, icon: "Images/pets/The_Overlord.webp" }
         ]
       },
       {
         name: "Rainbow Egg",
-        image: "images/eggs/Rainbow_Egg.webp",
+        image: "Images/eggs/Rainbow_Egg.webp",
         pets: [
-          { name: "Hexarium", baseOdds: 100000, icon: "images/pets/Hexarium.webp" },
-          { name: "Rainbow Shock", baseOdds: 200000, icon: "images/pets/Rainbow_Shock.webp" }
+          { name: "Hexarium", baseOdds: 100000, icon: "Images/pets/Hexarium.webp" },
+          { name: "Rainbow Shock", baseOdds: 200000, icon: "Images/pets/Rainbow_Shock.webp" }
         ]
       },
       {
         name: "100M Egg",
-        image: "images/eggs/100M_Egg.webp",
+        image: "Images/eggs/100M_Egg.webp",
         pets: [
-          { name: "Diamond Serpent", baseOdds: 2500, icon: "images/pets/Diamond_Serpent.webp" },
-          { name: "Diamond Hexarium", baseOdds: 50000, icon: "images/pets/Diamond_Hexarium.webp" },
-          { name: "King Pufferfish", baseOdds: 800000, icon: "images/pets/King_Pufferfish.webp" },
-          { name: "Royal Trophy (Secret)", baseOdds: 50000000, icon: "images/pets/Royal_Trophy.webp" }
+          { name: "Diamond Serpent", baseOdds: 2500, icon: "Images/pets/Diamond_Serpent.webp" },
+          { name: "Diamond Hexarium", baseOdds: 50000, icon: "Images/pets/Diamond_Hexarium.webp" },
+          { name: "King Pufferfish", baseOdds: 800000, icon: "Images/pets/King_Pufferfish.webp" },
+          { name: "Royal Trophy (Secret)", baseOdds: 50000000, icon: "Images/pets/Royal_Trophy.webp" }
         ]
       },
       {
         name: "Silly Egg",
-        image: "images/eggs/Silly_Egg.webp",
+        image: "Images/eggs/Silly_Egg.webp",
         pets: [
-          { name: "DOOF", baseOdds: 10000, icon: "images/pets/DOOF.webp" },
-          { name: "ROUND", baseOdds: 250000, icon: "images/pets/ROUND.webp" },
-          { name: "Silly Doggy (Secret)", baseOdds: 1000000, icon: "images/pets/Silly_Doggy.webp" }
+          { name: "DOOF", baseOdds: 10000, icon: "Images/pets/DOOF.webp" },
+          { name: "ROUND", baseOdds: 250000, icon: "Images/pets/ROUND.webp" },
+          { name: "Silly Doggy (Secret)", baseOdds: 1000000, icon: "Images/pets/Silly_Doggy.webp" }
         ]
       }
-
-    // Add up to 11 eggs total
   ];
   
   const eggList = document.getElementById("egg-list");
@@ -166,12 +164,10 @@ const eggs = [
         petList.appendChild(row);
       });
     }
-  
-    // Initial render and live updates
+
     updateChances();
     multiplierSelect.addEventListener("change", updateChances);
     luckInput.addEventListener("input", updateChances);
   }
-  
-  // Render all eggs
+
   eggs.forEach(createEggCard);
