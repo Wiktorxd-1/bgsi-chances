@@ -154,7 +154,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const helveticaOption = fontSelect.querySelector('option[value="Helvetica"]');
     if (helveticaOption) helveticaOption.remove();
 
-    const savedFont = localStorage.getItem('selectedFont') || 'Arial';
+    let settings = {};
+    try {
+      settings = JSON.parse(localStorage.getItem('siteSettings') || '{}');
+    } catch (e) { settings = {}; }
+    let savedFont = settings.selectedFont || localStorage.getItem('selectedFont') || 'Arial';
     fontSelect.value = savedFont;
     document.body.classList.remove('ferdoka-font', 'lexend-font');
     document.documentElement.classList.remove('ferdoka-font', 'lexend-font');
@@ -182,9 +186,11 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.style.fontFamily = fontMap[selectedFont] || fontMap['Arial'];
         document.documentElement.style.fontFamily = fontMap[selectedFont] || fontMap['Arial'];
       }
+      // Save all settings as JSON in localStorage
+      settings.selectedFont = selectedFont;
       localStorage.setItem('selectedFont', selectedFont);
+      localStorage.setItem('siteSettings', JSON.stringify(settings));
     });
-  }
     // Add Lexend to the dropdown if not present
     if (!fontSelect.querySelector('option[value="Lexend"]')) {
       const option = document.createElement('option');
@@ -192,6 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
       option.textContent = 'Lexend';
       fontSelect.appendChild(option);
     }
+  }
 });
   
   function filterEggsByWorld(world) {
