@@ -1,4 +1,3 @@
-
 async function fetchEggsData() {
   const response = await fetch('Data/eggs.json');
   const eggsJson = await response.json();
@@ -129,94 +128,172 @@ function createEggCard(egg, canSpawnAsRift) {
 }
 
 
+
+let petsData = null;
+async function fetchPetsData() {
+  if (petsData) return petsData;
+  const response = await fetch('Data/pets.json');
+  petsData = await response.json();
+  return petsData;
+}
+
 (async function() {
   const eggsJson = await fetchEggsData();
+  await fetchPetsData();
   eggs.forEach(egg => {
     const jsonEgg = eggsJson.find(e => e.name === egg.name);
     const canSpawnAsRift = jsonEgg && jsonEgg.canSpawnAsRift;
     createEggCard(egg, canSpawnAsRift);
   });
+  setupPetStatsHover();
 })();
-  
+
+function setupPetStatsHover() {
+  let statsCard = document.createElement('div');
+  statsCard.id = 'pet-stats-card';
+  statsCard.className = 'pet-stats-popup';
+  statsCard.style.display = 'none';
+  statsCard.innerHTML = '';
+  document.body.appendChild(statsCard);
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  const fontSelect = document.getElementById("font-select");
-  if (fontSelect) {
-    const fontMap = {
-      "Arial": "Arial, Helvetica, sans-serif",
-      "Ferdoka One": "'Ferdoka One', cursive, Arial, Helvetica, sans-serif",
-      "Lato": "'Lato', Arial, Helvetica, sans-serif",
-      "Roboto": "'Roboto', Arial, Helvetica, sans-serif",
-      "Comic Sans MS": "'Comic Sans MS', 'Comic Sans', cursive, Arial, Helvetica, sans-serif",
-      "Lexend": "'Lexend', Arial, Helvetica, sans-serif"
+  const statIcons = {
+    bubbles: 'Images/Icons/Bubble_Gum.webp',
+    gems: 'Images/Icons/Gems.webp',
+    coins: 'Images/Icons/Coins.webp',
+    tickets: 'Images/Icons/Tickets.webp',
+    festival_coins: 'Images/Icons/Festival_Coins.webp',
+  };
+
+  function getStatIcon(stat) {
+    if (stat === 'bubbles') return statIcons.bubbles;
+    if (stat === 'gems') return statIcons.gems;
+    if (stat === 'coins') return statIcons.coins;
+    if (stat === 'tickets') return statIcons.tickets;
+    if (stat === 'festival_coins') return statIcons.festival_coins;
+    return '';
+  }
+
+  function buildStatsRows(stats) {
+    let html = '';
+    const statOrder = ['bubbles', 'gems', 'coins', 'tickets', 'festival_coins'];
+    for (const stat of statOrder) {
+      if (stats[stat] !== undefined && stats[stat] !== null) {
+        if (stat === 'gems' && Number(stats[stat]) === 0) continue;
+        html += `<div class="pet-stats-row">
+          <img src="${getStatIcon(stat)}" alt="${stat}" class="pet-stats-icon">
+          <span class="pet-stats-value">x${stats[stat]}</span>
+        </div>`;
+      }
+    }
+    return html;
+  }
+
+  function findPetData(petName) {
+    if (!petsData) return null;
+    let baseName = petName.replace(/\(.*?\)/g, '').trim();
+    let found = petsData.find(p => p.pet_name && p.pet_name.toLowerCase() === baseName.toLowerCase());
+    if (found) return found;
+    found = petsData.find(p => p.pet_name && baseName.toLowerCase().includes(p.pet_name.toLowerCase()));
+    if (found) return found;
+    found = petsData.find(p => p.pet_name && baseName.toLowerCase().startsWith(p.pet_name.toLowerCase()));
+    return found || null;
+  }
+
+  let fadeTimeout = null;
+  let showingMax = false;
+  let lastStats = null;
+  let isCardVisible = false;
+  let currentCell = null;
+  let isMouseOverCell = false;
+  let isMouseOverPopup = false;
+
+  function showStatsCard(cell) {
+    const petName = cell.textContent.trim();
+    const petData = findPetData(petName);
+    if (!petData || !petData.variants || !petData.variants.length) return;
+    const normalVariant = petData.variants.find(v => v.name === 'Normal');
+    if (!normalVariant || !normalVariant.stats) return;
+    lastStats = normalVariant.stats;
+    showingMax = false;
+    renderStatsCard(lastStats.base, 'Base stats');
+    const icon = cell.querySelector('img');
+    let rect = cell.getBoundingClientRect();
+    let iconRect = icon ? icon.getBoundingClientRect() : rect;
+    let x = iconRect.right + 40;
+    let y = iconRect.top + (iconRect.height / 2) - 50;
+    if (x + 260 > window.innerWidth) x = window.innerWidth - 270;
+    if (y + 180 > window.innerHeight) y = window.innerHeight - 190;
+    if (y < 0) y = 10;
+    statsCard.style.left = x + 'px';
+    statsCard.style.top = y + 'px';
+    statsCard.style.display = 'block';
+    statsCard.style.pointerEvents = 'auto';
+    isCardVisible = true;
+    currentCell = cell;
+    setTimeout(() => { statsCard.style.opacity = '1'; }, 10);
+  }
+
+  function tryHideStatsCard() {
+    if (!isMouseOverCell && !isMouseOverPopup) {
+      statsCard.style.opacity = '0';
+      fadeTimeout = setTimeout(() => {
+        statsCard.style.display = 'none';
+        statsCard.style.pointerEvents = 'none';
+        isCardVisible = false;
+        currentCell = null;
+      }, 180);
+    }
+  }
+
+  function renderStatsCard(stats, label) {
+    let html = `<img src='Images/Icons/close.ico' id='close-stats-card' alt='Close' title='Close' class='close-stats-card'>`;
+    html += `<div class='pet-stats-label'>${label}</div>`;
+    html += buildStatsRows(stats);
+    html += `<button id='toggle-max-stats' class='toggle-max-stats'>${showingMax ? 'Show Base stats' : 'Show Max stats'}</button>`;
+    statsCard.innerHTML = html;
+    const closeBtn = statsCard.querySelector('#close-stats-card');
+    closeBtn.onclick = (ev) => {
+      ev.stopPropagation();
+      statsCard.style.opacity = '0';
+      setTimeout(() => {
+        statsCard.style.display = 'none';
+        statsCard.style.pointerEvents = 'none';
+        isCardVisible = false;
+        currentCell = null;
+      }, 180);
     };
-    const helveticaOption = fontSelect.querySelector('option[value="Helvetica"]');
-    if (helveticaOption) helveticaOption.remove();
+    const btn = statsCard.querySelector('#toggle-max-stats');
+    btn.onclick = (ev) => {
+      ev.stopPropagation();
+      showingMax = !showingMax;
+      renderStatsCard(showingMax ? lastStats.max : lastStats.base, showingMax ? 'Max stats' : 'Base stats');
+    };
+  }
 
-    let settings = {};
-    try {
-      settings = JSON.parse(localStorage.getItem('siteSettings') || '{}');
-    } catch (e) { settings = {}; }
-    let savedFont = settings.selectedFont || localStorage.getItem('selectedFont') || 'Arial';
-    fontSelect.value = savedFont;
-    document.body.classList.remove('ferdoka-font', 'lexend-font');
-    document.documentElement.classList.remove('ferdoka-font', 'lexend-font');
-    if (savedFont === 'Ferdoka One') {
-      document.body.classList.add('ferdoka-font');
-      document.documentElement.classList.add('ferdoka-font');
-    } else if (savedFont === 'Lexend') {
-      document.body.classList.add('lexend-font');
-      document.documentElement.classList.add('lexend-font');
-    } else {
-      document.body.style.fontFamily = fontMap[savedFont] || fontMap['Arial'];
-      document.documentElement.style.fontFamily = fontMap[savedFont] || fontMap['Arial'];
-    }
-    fontSelect.addEventListener('change', function() {
-      const selectedFont = fontSelect.value;
-      document.body.classList.remove('ferdoka-font', 'lexend-font');
-      document.documentElement.classList.remove('ferdoka-font', 'lexend-font');
-      if (selectedFont === 'Ferdoka One') {
-        document.body.classList.add('ferdoka-font');
-        document.documentElement.classList.add('ferdoka-font');
-      } else if (selectedFont === 'Lexend') {
-        document.body.classList.add('lexend-font');
-        document.documentElement.classList.add('lexend-font');
-      } else {
-        document.body.style.fontFamily = fontMap[selectedFont] || fontMap['Arial'];
-        document.documentElement.style.fontFamily = fontMap[selectedFont] || fontMap['Arial'];
-      }
-      // Save all settings as JSON in localStorage
-      settings.selectedFont = selectedFont;
-      localStorage.setItem('selectedFont', selectedFont);
-      localStorage.setItem('siteSettings', JSON.stringify(settings));
+  document.querySelectorAll('.pet-name').forEach(cell => {
+    cell.style.position = 'relative';
+    cell.addEventListener('mouseenter', function() {
+      isMouseOverCell = true;
+      if (fadeTimeout) clearTimeout(fadeTimeout);
+      showStatsCard(cell);
     });
-    // Add Lexend to the dropdown if not present
-    if (!fontSelect.querySelector('option[value="Lexend"]')) {
-      const option = document.createElement('option');
-      option.value = 'Lexend';
-      option.textContent = 'Lexend';
-      fontSelect.appendChild(option);
-    }
-  }
-});
-  
-  function filterEggsByWorld(world) {
-    const eggList = document.getElementById('egg-list');
-    const eggs = eggList.querySelectorAll('.egg-card');
-  
-    eggs.forEach(egg => {
-      const eggWorld = egg.getAttribute('data-world');
-      if (eggWorld === world) {
-        egg.style.display = 'block';
-      } else {
-        egg.style.display = 'none';
-      }
+    cell.addEventListener('mouseleave', function(e) {
+      isMouseOverCell = false;
+      // If moving to popup, don't hide
+      if (e && statsCard.contains(e.relatedTarget)) return;
+      fadeTimeout = setTimeout(tryHideStatsCard, 10);
     });
-  }
-  
-  function toggleSettingsPopup(event) {
-    event.preventDefault();
-    const settingsPopup = document.getElementById('settings-popup');
-    settingsPopup.classList.toggle('show');
-  }
+  });
+  statsCard.addEventListener('mouseenter', function() {
+    isMouseOverPopup = true;
+    if (fadeTimeout) clearTimeout(fadeTimeout);
+    statsCard.style.opacity = '1';
+  });
+  statsCard.addEventListener('mouseleave', function(e) {
+    isMouseOverPopup = false;
+    // If moving to a cell, don't hide
+    if (e && currentCell && currentCell.contains(e.relatedTarget)) return;
+    fadeTimeout = setTimeout(tryHideStatsCard, 10);
+  });
+}

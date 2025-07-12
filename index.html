@@ -56,24 +56,35 @@
       </a>
     </div>
     <div style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center; gap: 10px; margin-bottom: 10px;">
-      <button class="settings-button-sidebar" onclick="toggleSettingsPopup(event)" style="background: none; border: none; padding: 0; cursor: pointer;">
+      <button class="settings-button-sidebar" onclick="toggleSettingsPopup(event)" style="background: none; border: none; padding: 0; cursor: pointer; margin-right: 5px;">
         <img src="Images/Icons/settings.ico" alt="Settings Icon" style="width: 32px; height: 32px; display: block;">
       </button>
     </div>
     <button class="credits-button-sidebar" onclick="showCreditsPopup(event)">Credits</button>
   </div>
 
+
   <div class="credits-popup" id="credits-popup">
     <p><strong>piczu123:</strong> Old site, not being maintained<br>
-      <a href="https://piczu123.github.io/BGSI-Chance-Calculator/" target="_blank">
-        <img src="Images/Icons/website.ico" alt="Website" style="vertical-align: middle; margin-right: 5px;"> https://piczu123.github.io/BGSI-Chance-Calculator/</a></p>
+      <a href="https://piczu123.github.io/BGSI-Chance-Calculator/" target="_blank" class="globe-link" title="https://piczu123.github.io/BGSI-Chance-Calculator/">
+        <img src="Images/Icons/website.ico" alt="Website" class="globe-icon">
+      </a>
+      <a href="https://www.reddit.com/user/Working-Rest-3538/" target="_blank" class="globe-link" title="https://www.reddit.com/user/Working-Rest-3538/">
+        <img src="Images/Icons/reddit.ico" alt="Reddit" class="globe-icon">
+      </a>
+    </p>
     <p><strong>BGSI wiki:</strong> Egg and Pet icons<br>
-      <a href="https://bgs-infinity.fandom.com/" target="_blank">
-        <img src="Images/Icons/website.ico" alt="Website" style="vertical-align: middle; margin-right: 5px;"> https://bgs-infinity.fandom.com/</a></p>
+      <a href="https://bgs-infinity.fandom.com/" target="_blank" class="globe-link" title="https://bgs-infinity.fandom.com/">
+        <img src="Images/Icons/website.ico" alt="Website" class="globe-icon">
+      </a>
+    </p>
     <p><strong>borngame:</strong> Egg and Pet Info<br>
-      <a href="https://github.com/borngame" target="_blank">
-        <img src="Images/Icons/website.ico" alt="Website" style="vertical-align: middle; margin-right: 5px;"> https://github.com/borngame</a></p>
+      <a href="https://github.com/borngame" target="_blank" class="globe-link" title="https://github.com/borngame">
+        <img src="Images/Icons/website.ico" alt="Website" class="globe-icon">
+      </a>
+    </p>
   </div>
+
 
   <div class="settings-popup" id="settings-popup" style="display:none;">
     <h2>Settings</h2>
