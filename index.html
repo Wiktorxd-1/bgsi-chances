@@ -11,13 +11,12 @@
   <meta name="twitter:title" content="BGSI Chance Calculator" />
   <meta name="twitter:description" content="Easy to use site for calculating chances of hatching a secret or legendary" />
   <meta name="twitter:image" content="https://wiktorxd-1.github.io/bgsi-chances/Images/Icons/favicon.ico" />
-  <meta property="og:footer" content="Made By Wiktorxd_1" />
   <link rel="icon" href="Images/Icons/favicon.ico" type="image/ico">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BGSI Chance Calculator</title>
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Ferdoka+One&family=Lato:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ferdoka+One&family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Lexend:wght@400;700&display=swap" rel="stylesheet">
   <style>
     .world-button {
       min-height: 50px;
@@ -98,7 +97,8 @@
 
 
   <div class="settings-popup" id="settings-popup" style="display:none;">
-    <h2>Settings</h2>
+    <img src="Images/Icons/close.ico" alt="Close" title="Close" id="settings-close-btn" style="position:absolute;top:10px;right:12px;width:20px;height:20px;cursor:pointer;opacity:0.7;z-index:2;" onclick="document.getElementById('settings-popup').style.display='none'">
+    <h2 style="margin-right:24px;">Settings</h2>
     <label for="font-select">Choose your preferred font:</label>
     <select id="font-select">
       <option value="Arial">Arial (Default)</option>
@@ -106,22 +106,33 @@
       <option value="Lato">Lato</option>
       <option value="Roboto">Roboto</option>
       <option value="Comic Sans MS">Comic Sans MS</option>
+      <option value="Lexend">Lexend</option>
     </select>
   </div>
 
   <button class="menu-icon" onclick="toggleSidebar()">
-    <img src="Images/Icons/menu.ico" alt="Menu" />
+    <img id="menu-icon-img" src="Images/Icons/menu.ico" alt="Menu" />
   </button>
 
   <script src="script.js"></script>
   <script>
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
-      if (sidebar.classList.contains('open')) {
-        sidebar.classList.remove('open');
-      } else {
-        sidebar.classList.add('open');
-      }
+      const menuIconImg = document.getElementById('menu-icon-img');
+      if (!menuIconImg) return;
+      menuIconImg.classList.add('fading');
+      setTimeout(() => {
+        if (sidebar.classList.contains('open')) {
+          sidebar.classList.remove('open');
+          menuIconImg.src = 'Images/Icons/menu.ico';
+          menuIconImg.alt = 'Menu';
+        } else {
+          sidebar.classList.add('open');
+          menuIconImg.src = 'Images/Icons/close.ico';
+          menuIconImg.alt = 'Close';
+        }
+        menuIconImg.classList.remove('fading');
+      }, 180);
     }
 
     function showCreditsPopup(event) {
@@ -158,6 +169,9 @@
           break;
         case 'Roboto':
           fontFamily = 'Roboto, Arial, Helvetica, sans-serif';
+          break;
+        case 'Lexend':
+          fontFamily = 'Lexend, Arial, Helvetica, sans-serif';
           break;
         case 'Helvetica':
           fontFamily = 'Helvetica, Arial, sans-serif';
