@@ -5,6 +5,7 @@ async function fetchEggsData() {
 }
 
 const eggs = [
+  {"name": "500M Egg", "image": "Images/Eggs/500M_Egg.webp", "Pets": [{"name": "Paragon", "baseOdds": 2857.2, "icon": "Images/Pets/Paragon.webp"}, {"name": "Platinum Dualcorn", "baseOdds": 50000, "icon": "Images/Pets/Platinum_Dualcorn.webp"}, {"name": "Super Hexarium", "baseOdds": 1000000, "icon": "Images/Pets/Super_Hexarium.webp"}, {"name": "Glitch", "baseOdds": 2000000, "icon": "Images/Pets/Glitch.webp"}, {"name": "Diamond Overlord (Secret)", "baseOdds": 33333333.4, "icon": "Images/Pets/Diamond_Overlord.webp"}, {"name": "Super Trophy (Secret)", "baseOdds": 100000000, "icon": "Images/Pets/Super_Trophy.webp"}, {"name": "Eternal Star (Secret)", "baseOdds": 200000000, "icon": "Images/Pets/Eternal_Star.webp"}, {"name": "Fallen Angel (Secret)", "baseOdds": 133333333.4, "icon": "Images/Pets/Fallen_Angel.webp"}, {"name": "King Kitty (Secret)", "baseOdds": 1000000000, "icon": "Images/Pets/King_Kitty.webp"}, {"name": "Giant Robot (Infinity)", "baseOdds": 40000000000, "icon": "Images/Pets/Giant_Robot.webp"}]},
   { name: "Common Egg", image: "Images/Eggs/Common_Egg.webp", Pets: [ { name: "King Doggy (Secret)", baseOdds: 100000000, icon: "Images/Pets/King_Doggy.webp" } ], world: "1" },
   { name: "Spikey Egg", image: "Images/Eggs/Spikey_Egg.webp", Pets: [ { name: "Emerald Golem", baseOdds: 200, icon: "Images/Pets/Emerald_Golem.webp" } ], world: "1" },
   { name: "Magma Egg", image: "Images/Eggs/Magma_Egg.webp", Pets: [ { name: "Inferno Dragon", baseOdds: 400, icon: "Images/Pets/Inferno_Dragon.webp" } ], world: "1" },
@@ -300,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
   setTheme(savedTheme);
 
-  // Ensure the default theme is dark if no theme is saved
+
   if (!localStorage.getItem('selectedTheme')) {
     setTheme('dark');
   }

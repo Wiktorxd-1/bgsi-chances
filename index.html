@@ -194,7 +194,6 @@
       const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
       setTheme(savedTheme);
 
-      // Ensure the default theme is dark if no theme is saved
       if (!localStorage.getItem('selectedTheme')) {
         setTheme('dark');
       }
