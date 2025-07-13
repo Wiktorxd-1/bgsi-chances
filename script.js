@@ -30,7 +30,7 @@ function createEggCard(egg, canSpawnAsRift) {
   const eggHeader = document.createElement("div");
   eggHeader.className = "egg-header";
   eggHeader.innerHTML = `<img src="${egg.image}" alt="${egg.name}" style="width: 40px; height: 40px;" />
-                         <h2>${egg.name}</h2>`;
+                           <h2>${egg.name}</h2>`;
 
   const controls = document.createElement("div");
   controls.className = "controls";
@@ -280,7 +280,6 @@ function setupPetStatsHover() {
     });
     cell.addEventListener('mouseleave', function(e) {
       isMouseOverCell = false;
-      // If moving to popup, don't hide
       if (e && statsCard.contains(e.relatedTarget)) return;
       fadeTimeout = setTimeout(tryHideStatsCard, 10);
     });
@@ -292,8 +291,63 @@ function setupPetStatsHover() {
   });
   statsCard.addEventListener('mouseleave', function(e) {
     isMouseOverPopup = false;
-    // If moving to a cell, don't hide
     if (e && currentCell && currentCell.contains(e.relatedTarget)) return;
     fadeTimeout = setTimeout(tryHideStatsCard, 10);
   });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
+  setTheme(savedTheme);
+
+  // Ensure the default theme is dark if no theme is saved
+  if (!localStorage.getItem('selectedTheme')) {
+    setTheme('dark');
+  }
+});
+
+function setTheme(theme) {
+  document.body.className = theme === 'dark' ? 'theme-dark' : 'theme-purple';
+  localStorage.setItem('selectedTheme', theme);
+
+  const root = document.documentElement;
+  if (theme === 'dark') {
+    root.style.setProperty('--main-bg', '#121212');
+    root.style.setProperty('--main-bg-accent', '#2a2a2a');
+    root.style.setProperty('--main-bg-accent2', '#3a3a3a');
+    root.style.setProperty('--main-text', '#e0e0e0');
+    root.style.setProperty('--container-bg', '#1e1e1e');
+    root.style.setProperty('--container-border', '#2a2a2a');
+    root.style.setProperty('--table-bg', '#2a2a2a');
+    root.style.setProperty('--table-th-bg', '#1e1e1e');
+    root.style.setProperty('--table-td-bg', '#1e1e1e');
+    root.style.setProperty('--table-border', '#3a3a3a');
+    root.style.setProperty('--egg-card-bg', '#2a2a2a');
+    root.style.setProperty('--egg-header-bg', '#1e1e1e');
+    root.style.setProperty('--controls-bg', '#1e1e1e');
+    root.style.setProperty('--sidebar-bg', '#1e1e1e');
+    root.style.setProperty('--sidebar-header-bg', '#2a2a2a');
+    root.style.setProperty('--credits-bg', '#1e1e1e');
+    root.style.setProperty('--settings-bg', '#1e1e1e');
+    root.style.setProperty('--popup-bg', 'rgba(30,30,30,0.98)');
+  } else {
+    root.style.setProperty('--main-bg', '#2e003e');
+    root.style.setProperty('--main-bg-accent', '#3c005d');
+    root.style.setProperty('--main-bg-accent2', '#4a006b');
+    root.style.setProperty('--main-text', '#fff');
+    root.style.setProperty('--container-bg', '#18101c');
+    root.style.setProperty('--container-border', '#2e003e');
+    root.style.setProperty('--table-bg', '#5b0077');
+    root.style.setProperty('--table-th-bg', '#450056');
+    root.style.setProperty('--table-td-bg', '#450056');
+    root.style.setProperty('--table-border', '#5e0081');
+    root.style.setProperty('--egg-card-bg', '#3c005d');
+    root.style.setProperty('--egg-header-bg', '#4a006b');
+    root.style.setProperty('--controls-bg', '#4a006b');
+    root.style.setProperty('--sidebar-bg', '#4a006b');
+    root.style.setProperty('--sidebar-header-bg', '#32004d');
+    root.style.setProperty('--credits-bg', '#4a006b');
+    root.style.setProperty('--settings-bg', '#4a006b');
+    root.style.setProperty('--popup-bg', 'rgba(40,0,60,0.98)');
+  }
 }

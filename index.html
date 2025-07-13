@@ -17,23 +17,6 @@
   <title>BGSI Chance Calculator</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Ferdoka+One&family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Lexend:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    .world-button {
-      min-height: 50px;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .world-button.active {
-      box-shadow: 0 0 10px #fdffb6;
-    }
-    body, html {
-      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    }
-  </style>
 </head>
 <body>
   <div class="container">
@@ -99,6 +82,17 @@
   <div class="settings-popup" id="settings-popup" style="display:none;">
     <img src="Images/Icons/close.ico" alt="Close" title="Close" id="settings-close-btn" style="position:absolute;top:10px;right:12px;width:20px;height:20px;cursor:pointer;opacity:0.7;z-index:2;" onclick="document.getElementById('settings-popup').style.display='none'">
     <h2 style="margin-right:24px;">Settings</h2>
+    
+    <label for="theme-select">Choose your preferred theme:</label>
+    <div class="theme-options">
+      <div class="theme-circle" id="theme-dark" onclick="setTheme('dark')" title="Dark theme">
+        <span>Dark theme</span>
+      </div>
+      <div class="theme-circle" id="theme-purple" onclick="setTheme('purple')" title="Purple (Legacy)">
+        <span>Purple (Legacy)</span>
+      </div>
+    </div>
+    
     <label for="font-select">Choose your preferred font:</label>
     <select id="font-select">
       <option value="Arial">Arial (Default)</option>
@@ -196,7 +190,67 @@
           setFont(this.value);
         });
       }
+
+      const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
+      setTheme(savedTheme);
+
+      // Ensure the default theme is dark if no theme is saved
+      if (!localStorage.getItem('selectedTheme')) {
+        setTheme('dark');
+      }
     });
+
+    function setTheme(theme) {
+      document.body.className = theme === 'dark' ? 'theme-dark' : 'theme-purple';
+      localStorage.setItem('selectedTheme', theme);
+
+      document.querySelectorAll('.theme-circle').forEach(circle => circle.classList.remove('selected'));
+      const selectedCircle = document.getElementById(`theme-${theme}`);
+      if (selectedCircle) {
+        selectedCircle.classList.add('selected');
+      }
+
+      const root = document.documentElement;
+      if (theme === 'dark') {
+        root.style.setProperty('--main-bg', '#1212121');
+        root.style.setProperty('--main-bg-accent', '#2a2a2a');
+        root.style.setProperty('--main-bg-accent2', '#3a3a3a');
+        root.style.setProperty('--main-text', '#e0e0e0');
+        root.style.setProperty('--container-bg', '#1e1e1e');
+        root.style.setProperty('--container-border', '#2a2a2a');
+        root.style.setProperty('--table-bg', '#2a2a2a');
+        root.style.setProperty('--table-th-bg', '#1e1e1e');
+        root.style.setProperty('--table-td-bg', '#1e1e1e');
+        root.style.setProperty('--table-border', '#3a3a3a');
+        root.style.setProperty('--egg-card-bg', '#2a2a2a');
+        root.style.setProperty('--egg-header-bg', '#1e1e1e');
+        root.style.setProperty('--controls-bg', '#1e1e1e');
+        root.style.setProperty('--sidebar-bg', '#1e1e1e');
+        root.style.setProperty('--sidebar-header-bg', '#2a2a2a');
+        root.style.setProperty('--credits-bg', '#1e1e1e');
+        root.style.setProperty('--settings-bg', '#1e1e1e');
+        root.style.setProperty('--popup-bg', 'rgba(30,30,30,0.98)');
+      } else {
+        root.style.setProperty('--main-bg', '#2e003e');
+        root.style.setProperty('--main-bg-accent', '#3c005d');
+        root.style.setProperty('--main-bg-accent2', '#4a006b');
+        root.style.setProperty('--main-text', '#fff');
+        root.style.setProperty('--container-bg', '#18101c');
+        root.style.setProperty('--container-border', '#2e003e');
+        root.style.setProperty('--table-bg', '#5b0077');
+        root.style.setProperty('--table-th-bg', '#450056');
+        root.style.setProperty('--table-td-bg', '#450056');
+        root.style.setProperty('--table-border', '#5e0081');
+        root.style.setProperty('--egg-card-bg', '#3c005d');
+        root.style.setProperty('--egg-header-bg', '#4a006b');
+        root.style.setProperty('--controls-bg', '#4a006b');
+        root.style.setProperty('--sidebar-bg', '#4a006b');
+        root.style.setProperty('--sidebar-header-bg', '#32004d');
+        root.style.setProperty('--credits-bg', '#4a006b');
+        root.style.setProperty('--settings-bg', '#4a006b');
+        root.style.setProperty('--popup-bg', 'rgba(40,0,60,0.98)');
+      }
+    }
 
     function filterEggsByWorld(world) {
       const eggList = document.getElementById('egg-list');
@@ -255,6 +309,7 @@
     document.addEventListener('click', (event) => {
       const sidebar = document.getElementById('sidebar');
       const menuIcon = document.querySelector('.menu-icon');
+      const menuIconImg = document.getElementById('menu-icon-img');
       const popup = document.getElementById('credits-popup');
       const creditsButton = document.querySelector('.credits-button-sidebar');
       const settingsPopup = document.getElementById('settings-popup');
@@ -262,6 +317,10 @@
 
       if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
         sidebar.classList.remove('open');
+        if (menuIconImg) {
+          menuIconImg.src = 'Images/Icons/menu.ico';
+          menuIconImg.alt = 'Menu';
+        }
       }
 
       if (
