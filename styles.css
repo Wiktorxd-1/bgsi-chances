@@ -776,9 +776,9 @@ td.pet-name span {
     top: 0;
     right: -100%;
     width: 100%;
-    height: 100%; /* Make the sidebar take the full height of the screen */
+    height: 100%; 
     box-shadow: none;
-    padding: 1rem; /* Add padding to ensure close button is visible */
+    padding: 1rem;
     transition: right 0.3s ease;
   }
 
@@ -789,7 +789,7 @@ td.pet-name span {
 
   .sidebar-header {
     display: flex;
-    justify-content: space-between; /* Ensure the close button is always visible */
+    justify-content: space-between; 
     align-items: center;
     padding: 10px;
     background-color: var(--sidebar-header-bg);
@@ -798,7 +798,7 @@ td.pet-name span {
   .sidebar-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Ensure proper alignment of settings and credits */
+    justify-content: space-between;
     gap: 1rem;
     align-items: center;
     height: 100%;
@@ -806,7 +806,7 @@ td.pet-name span {
 
   .credits-container {
     position: absolute;
-    bottom: 20px; /* Place credits at the bottom */
+    bottom: 20px; 
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
@@ -814,7 +814,7 @@ td.pet-name span {
 
   .discord-invite {
     position: absolute;
-    bottom: 20px; /* Properly position Discord icon */
+    bottom: 20px; 
     right: 20px;
     display: flex;
     align-items: center;

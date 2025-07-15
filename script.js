@@ -116,6 +116,8 @@ function createEggCard(egg, canSpawnAsRift) {
       `;
       petList.appendChild(row);
     });
+
+    setupPetStatsHover();
   }
 
   updateChances();
