@@ -440,7 +440,6 @@ td.pet-name span {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow-y: auto;
 }
 
 .sidebar.open {
@@ -453,27 +452,17 @@ td.pet-name span {
   align-items: center;
   padding: 10px;
   background-color: var(--sidebar-header-bg);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  position: relative;
 }
-
-.sidebar-footer {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    padding: 1rem;
-    position: sticky;
-    bottom: 0;
-    background-color: var(--sidebar-bg);
-    width: 100%;
-  }
 
 .sidebar-content {
   padding: 10px;
   overflow-y: auto;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .credits-button-sidebar {
@@ -785,66 +774,55 @@ td.pet-name span {
     display: none;
     position: fixed;
     top: 0;
-    right: 0;
+    right: -100%;
     width: 100%;
-    height: 100%;
+    height: 100%; /* Make the sidebar take the full height of the screen */
     box-shadow: none;
-    padding: 1rem;
-    transition: transform 0.3s ease;
-    transform: translateX(100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-y: auto;
+    padding: 1rem; /* Add padding to ensure close button is visible */
+    transition: right 0.3s ease;
   }
 
   .sidebar.open {
-    display: flex;
-    transform: translateX(0);
+    display: block;
+    right: 0;
   }
 
   .sidebar-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Ensure the close button is always visible */
     align-items: center;
-    padding: 1rem;
+    padding: 10px;
     background-color: var(--sidebar-header-bg);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-
-  .sidebar-footer {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    padding: 1rem;
-    position: sticky;
-    bottom: 0;
-    background-color: var(--sidebar-bg);
-    width: 100%;
-  }
-
-  .credits-button-sidebar,
-  .settings-button-sidebar,
-  .discord-invite {
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem;
-    width: 100%;
-    text-align: center;
   }
 
   .sidebar-content {
     display: flex;
     flex-direction: column;
+    justify-content: space-between; /* Ensure proper alignment of settings and credits */
     gap: 1rem;
     align-items: center;
+    height: 100%;
   }
 
-  .credits-button-sidebar {
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem;
+  .credits-container {
+    position: absolute;
+    bottom: 20px; /* Place credits at the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+  }
+
+  .discord-invite {
+    position: absolute;
+    bottom: 20px; /* Properly position Discord icon */
+    right: 20px;
+    display: flex;
+    align-items: center;
+    background: none;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
   }
 
   .settings-button-sidebar {
