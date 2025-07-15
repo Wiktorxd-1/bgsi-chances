@@ -831,11 +831,7 @@ td.pet-name span {
   }
 
   .menu-icon {
-    display: block;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1000;
+    display: none;
   }
 
   .settings-popup {
@@ -851,15 +847,5 @@ td.pet-name span {
   .theme-circle {
     width: 35px;
     height: 35px;
-  }
-
-  .menu-icon {
-    width: 28px;
-    height: 28px;
-  }
-
-  .menu-icon img {
-    width: 100%;
-    height: auto;
   }
 }
