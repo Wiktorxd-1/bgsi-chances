@@ -88,7 +88,7 @@ function createEggCard(egg, canSpawnAsRift) {
   function updateChances() {
     const multiplierValue = multiplierSelect ? parseFloat(multiplierSelect.value) : 0;
     const riftBonusPercent = multiplierValue * 100;
-    const luckPercent = parseFloat(luckInput.value);
+    const luckPercent = luckInput.value === "" ? 0 : parseFloat(luckInput.value);
     const effectiveLuckPercent = luckPercent + riftBonusPercent;
     const combinedMultiplier = 1 + effectiveLuckPercent / 100;
 
@@ -122,10 +122,37 @@ function createEggCard(egg, canSpawnAsRift) {
 
   updateChances();
   if (multiplierSelect) multiplierSelect.addEventListener("change", updateChances);
-  luckInput.addEventListener("input", () => {
-    if (luckInput.value === "" || parseFloat(luckInput.value) < 0) {
-      luckInput.value = 0;
+  
+
+  luckInput.addEventListener("focus", () => {
+    if (luckInput.value === "0") {
+      luckInput.value = "";
     }
+  });
+  
+  luckInput.addEventListener("blur", () => {
+    if (luckInput.value === "") {
+      luckInput.value = "0";
+    }
+  });
+  
+  luckInput.addEventListener("input", () => {
+
+    if (luckInput.value === "") {
+      updateChances();
+      return;
+    }
+    
+
+    const value = parseFloat(luckInput.value);
+    if (isNaN(value) || value < 0) {
+  
+      luckInput.value = luckInput.value.slice(0, -1);
+      if (luckInput.value === "" || luckInput.value === "-") {
+        luckInput.value = "";
+      }
+    }
+    
     updateChances();
   });
 }
