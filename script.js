@@ -302,9 +302,21 @@ function setupPetStatsHover() {
   function showStatsCard(cell) {
     const petName = cell.textContent.trim();
     const petData = findPetData(petName);
-    if (!petData || !petData.variants || !petData.variants.length) return;
+    if (!petData || !petData.variants || !Array.isArray(petData.variants) || !petData.variants.length) {
+      statsCard.style.display = 'none';
+      statsCard.style.pointerEvents = 'none';
+      isCardVisible = false;
+      currentCell = null;
+      return;
+    }
     const normalVariant = petData.variants.find(v => v.name === 'Normal');
-    if (!normalVariant || !normalVariant.stats) return;
+    if (!normalVariant || !normalVariant.stats) {
+      statsCard.style.display = 'none';
+      statsCard.style.pointerEvents = 'none';
+      isCardVisible = false;
+      currentCell = null;
+      return;
+    }
     lastStats = normalVariant.stats;
     showingMax = false;
     renderStatsCard(lastStats.base, 'Base stats');
