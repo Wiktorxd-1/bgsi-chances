@@ -5,6 +5,7 @@ async function fetchEggsData() {
 }
 
 const eggs = [
+  { name: "Bee Egg", image: "Images/Eggs/Bee_Egg.webp", Pets: [{"name": "Angel Bee", "baseOdds": 10000, "icon": "Images/Pets/Angel_Bee.webp"}, {"name": "Evil Bee", baseOdds: 250000, "icon": "Images/Pets/Evil_Bee.webp"}, {"name": "Bee Bee Bee", baseOdds: 1000000, icon: "Images/Pets/Bee_Bee_Bee.webp"}, {"name": "Queen Bee (Secret)", baseOdds: 20000000, icon: "Images/Pets/Queen_Bee.webp"}], world: "1" },
   { name: "500M Egg", "image": "Images/Eggs/500M_Egg.webp", "Pets": [{"name": "Paragon", "baseOdds": 2857.2, "icon": "Images/Pets/Paragon.webp"}, {"name": "Platinum Dualcorn", "baseOdds": 50000, "icon": "Images/Pets/Platinum_Dualcorn.webp"}, {"name": "Super Hexarium", "baseOdds": 1000000, "icon": "Images/Pets/Super_Hexarium.webp"}, {"name": "Glitch", "baseOdds": 2000000, "icon": "Images/Pets/Glitch.webp"}, {"name": "Diamond Overlord (Secret)", "baseOdds": 33333333.4, "icon": "Images/Pets/Diamond_Overlord.webp"}, {"name": "Super Trophy (Secret)", "baseOdds": 100000000, "icon": "Images/Pets/Super_Trophy.webp"}, {"name": "Eternal Star (Secret)", "baseOdds": 200000000, "icon": "Images/Pets/Eternal_Star.webp"}, {"name": "Fallen Angel (Secret)", "baseOdds": 133333333.4, "icon": "Images/Pets/Fallen_Angel.webp"}, {"name": "King Kitty (Secret)", "baseOdds": 1000000000, "icon": "Images/Pets/King_Kitty.webp"}, {"name": "Giant Robot (Infinity)", "baseOdds": 40000000000, "icon": "Images/Pets/Giant_Robot.webp"}]},
   { name: "Common Egg", image: "Images/Eggs/Common_Egg.webp", Pets: [ { name: "King Doggy (Secret)", baseOdds: 100000000, icon: "Images/Pets/King_Doggy.webp" } ], world: "1" },
   { name: "Spikey Egg", image: "Images/Eggs/Spikey_Egg.webp", Pets: [ { name: "Emerald Golem", baseOdds: 200, icon: "Images/Pets/Emerald_Golem.webp" } ], world: "1" },
@@ -36,11 +37,14 @@ function createEggCard(egg, canSpawnAsRift) {
   const controls = document.createElement("div");
   controls.className = "controls";
   let controlsHtml = '';
+
+  const hasSecret = egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name));
+
   if (canSpawnAsRift) {
     controlsHtml += `
       <label>Rift:</label>
-      <select class="multiplier">
-        <option value="0">No</option>
+      <select class="multiplier multiplier-spaced">
+        ${egg.name !== "Bee Egg" ? '<option value="0">No</option>' : ''}
         <option value="5">5x</option>
         <option value="10">10x</option>
         <option value="20">20x</option>
@@ -48,10 +52,41 @@ function createEggCard(egg, canSpawnAsRift) {
       </select>
     `;
   }
+
+if (!document.getElementById('multiplier-spacing-style')) {
+  const style = document.createElement('style');
+  style.id = 'multiplier-spacing-style';
+  style.innerHTML = `
+    select.multiplier-spaced {
+      padding: 6px 16px 6px 8px;
+      margin: 0 8px 0 4px;
+      min-width: 80px;
+      font-size: 1em;
+      border-radius: 6px;
+    }
+    select.multiplier-spaced option {
+      padding: 8px 16px;
+      margin: 4px 0;
+      font-size: 1em;
+    }
+  `;
+  document.head.appendChild(style);
+}
   controlsHtml += `
     <label>Luck Multiplier (%):</label>
     <input type="number" class="luck" value="0" />
   `;
+  if (hasSecret) {
+    controlsHtml += `
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px;width:100%;">
+        <label style="margin-bottom:0;">Secret Multiplier (x):</label>
+        <input type="number" class="secret-mult" value="1" min="1" step="0.01" style="width:70px;margin-bottom:0;" />
+        <label style="display:inline-flex;align-items:center;margin-left:8px;margin-bottom:0;">
+          <input type="checkbox" class="secret-elixir" style="margin-right:4px;" /> Secret Infinity Elixir
+        </label>
+      </div>
+    `;
+  }
   controls.innerHTML = controlsHtml;
 
   const table = document.createElement("table");
@@ -74,6 +109,8 @@ function createEggCard(egg, canSpawnAsRift) {
 
   const multiplierSelect = controls.querySelector(".multiplier");
   const luckInput = controls.querySelector(".luck");
+  const secretInput = controls.querySelector(".secret-mult");
+  const elixirInput = controls.querySelector(".secret-elixir");
   const petList = table.querySelector(".pet-list");
 
   function formatAdjustedPercent(adjustedChance) {
@@ -89,21 +126,26 @@ function createEggCard(egg, canSpawnAsRift) {
     const multiplierValue = multiplierSelect ? parseFloat(multiplierSelect.value) : 0;
     const riftBonusPercent = multiplierValue * 100;
     const luckPercent = luckInput.value === "" ? 0 : parseFloat(luckInput.value);
+    const secretTimes = secretInput ? (secretInput.value === "" ? 1 : Math.max(1, parseFloat(secretInput.value))) : 1;
+    const elixirActive = elixirInput ? elixirInput.checked : false;
     const effectiveLuckPercent = luckPercent + riftBonusPercent;
-    const combinedMultiplier = 1 + effectiveLuckPercent / 100;
-
     petList.innerHTML = "";
-
     egg.Pets.forEach(pet => {
+      const isSecret = /(Secret|Infinity)/i.test(pet.name);
       const baseChance = 1 / pet.baseOdds;
+      let combinedMultiplier = 1 + effectiveLuckPercent / 100;
+      if (isSecret) {
+        combinedMultiplier *= secretTimes;
+        if (elixirActive) {
+          combinedMultiplier *= 2;
+        }
+      }
       const adjustedChance = baseChance * combinedMultiplier;
       const adjustedOneIn = adjustedChance > 0 ? Math.round(1 / adjustedChance).toLocaleString() : "∞";
       let adjustedPercent = formatAdjustedPercent(adjustedChance);
-
       if (adjustedPercent.length > 16) {
         adjustedPercent = `<button class='show-amount'>Show amount</button>`;
       }
-
       const row = document.createElement("tr");
       row.innerHTML = `
         <td class="pet-name">
@@ -116,45 +158,64 @@ function createEggCard(egg, canSpawnAsRift) {
       `;
       petList.appendChild(row);
     });
-
     setupPetStatsHover();
   }
 
   updateChances();
   if (multiplierSelect) multiplierSelect.addEventListener("change", updateChances);
-  
-
   luckInput.addEventListener("focus", () => {
     if (luckInput.value === "0") {
       luckInput.value = "";
     }
   });
-  
   luckInput.addEventListener("blur", () => {
     if (luckInput.value === "") {
       luckInput.value = "0";
     }
   });
-  
   luckInput.addEventListener("input", () => {
-
     if (luckInput.value === "") {
       updateChances();
       return;
     }
-    
-
     const value = parseFloat(luckInput.value);
     if (isNaN(value) || value < 0) {
-  
       luckInput.value = luckInput.value.slice(0, -1);
       if (luckInput.value === "" || luckInput.value === "-") {
         luckInput.value = "";
       }
     }
-    
     updateChances();
   });
+  if (secretInput) {
+    secretInput.addEventListener("focus", () => {
+      if (secretInput.value === "1") {
+        secretInput.value = "";
+      }
+    });
+    secretInput.addEventListener("blur", () => {
+      if (secretInput.value === "" || isNaN(parseFloat(secretInput.value)) || parseFloat(secretInput.value) < 1) {
+        secretInput.value = "1";
+      }
+    });
+    secretInput.addEventListener("input", () => {
+      if (secretInput.value === "") {
+        updateChances();
+        return;
+      }
+      const value = parseFloat(secretInput.value);
+      if (isNaN(value) || value < 1) {
+        secretInput.value = secretInput.value.slice(0, -1);
+        if (secretInput.value === "" || secretInput.value === "-") {
+          secretInput.value = "";
+        }
+      }
+      updateChances();
+    });
+  }
+  if (elixirInput) {
+    elixirInput.addEventListener("change", updateChances);
+  }
 }
 
 
