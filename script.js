@@ -53,6 +53,16 @@ function createEggCard(egg, canSpawnAsRift) {
     <label>Luck Multiplier (%):</label>
     <input type="number" class="luck" value="0" />
   `;
+  // Add secret multiplier if egg has a secret/infinity pet
+  const hasSecret = egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name));
+  if (hasSecret) {
+    controlsHtml += `
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px;width:100%;">
+        <label style="margin-bottom:0;">Secret Multiplier (x):</label>
+        <input type="number" class="secret-mult" value="1" min="1" step="0.01" style="width:70px;margin-bottom:0;" />
+      </div>
+    `;
+  }
   controls.innerHTML = controlsHtml;
 
   const table = document.createElement("table");
@@ -75,6 +85,7 @@ function createEggCard(egg, canSpawnAsRift) {
 
   const multiplierSelect = controls.querySelector(".multiplier");
   const luckInput = controls.querySelector(".luck");
+  const secretInput = controls.querySelector(".secret-mult");
   const petList = table.querySelector(".pet-list");
 
   function formatAdjustedPercent(adjustedChance) {
@@ -90,21 +101,22 @@ function createEggCard(egg, canSpawnAsRift) {
     const multiplierValue = multiplierSelect ? parseFloat(multiplierSelect.value) : 0;
     const riftBonusPercent = multiplierValue * 100;
     const luckPercent = luckInput.value === "" ? 0 : parseFloat(luckInput.value);
+    const secretTimes = secretInput ? (secretInput.value === "" ? 1 : Math.max(1, parseFloat(secretInput.value))) : 1;
     const effectiveLuckPercent = luckPercent + riftBonusPercent;
-    const combinedMultiplier = 1 + effectiveLuckPercent / 100;
-
     petList.innerHTML = "";
-
     egg.Pets.forEach(pet => {
+      const isSecret = /(Secret|Infinity)/i.test(pet.name);
       const baseChance = 1 / pet.baseOdds;
+      let combinedMultiplier = 1 + effectiveLuckPercent / 100;
+      if (isSecret) {
+        combinedMultiplier *= secretTimes;
+      }
       const adjustedChance = baseChance * combinedMultiplier;
       const adjustedOneIn = adjustedChance > 0 ? Math.round(1 / adjustedChance).toLocaleString() : "∞";
       let adjustedPercent = formatAdjustedPercent(adjustedChance);
-
       if (adjustedPercent.length > 16) {
         adjustedPercent = `<button class='show-amount'>Show amount</button>`;
       }
-
       const row = document.createElement("tr");
       row.innerHTML = `
         <td class="pet-name">
@@ -117,45 +129,61 @@ function createEggCard(egg, canSpawnAsRift) {
       `;
       petList.appendChild(row);
     });
-
     setupPetStatsHover();
   }
 
   updateChances();
   if (multiplierSelect) multiplierSelect.addEventListener("change", updateChances);
-  
-
   luckInput.addEventListener("focus", () => {
     if (luckInput.value === "0") {
       luckInput.value = "";
     }
   });
-  
   luckInput.addEventListener("blur", () => {
     if (luckInput.value === "") {
       luckInput.value = "0";
     }
   });
-  
   luckInput.addEventListener("input", () => {
-
     if (luckInput.value === "") {
       updateChances();
       return;
     }
-    
-
     const value = parseFloat(luckInput.value);
     if (isNaN(value) || value < 0) {
-  
       luckInput.value = luckInput.value.slice(0, -1);
       if (luckInput.value === "" || luckInput.value === "-") {
         luckInput.value = "";
       }
     }
-    
     updateChances();
   });
+  if (secretInput) {
+    secretInput.addEventListener("focus", () => {
+      if (secretInput.value === "1") {
+        secretInput.value = "";
+      }
+    });
+    secretInput.addEventListener("blur", () => {
+      if (secretInput.value === "" || isNaN(parseFloat(secretInput.value)) || parseFloat(secretInput.value) < 1) {
+        secretInput.value = "1";
+      }
+    });
+    secretInput.addEventListener("input", () => {
+      if (secretInput.value === "") {
+        updateChances();
+        return;
+      }
+      const value = parseFloat(secretInput.value);
+      if (isNaN(value) || value < 1) {
+        secretInput.value = secretInput.value.slice(0, -1);
+        if (secretInput.value === "" || secretInput.value === "-") {
+          secretInput.value = "";
+        }
+      }
+      updateChances();
+    });
+  }
 }
 
 
