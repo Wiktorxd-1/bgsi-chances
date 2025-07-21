@@ -38,22 +38,34 @@ function createEggCard(egg, canSpawnAsRift) {
   controls.className = "controls";
   let controlsHtml = '';
   if (canSpawnAsRift) {
-    controlsHtml += `
-      <label>Rift:</label>
-      <select class="multiplier">
-        <option value="0">No</option>
-        <option value="5">5x</option>
-        <option value="10">10x</option>
-        <option value="20">20x</option>
-        <option value="25">25x</option>
-      </select>
-    `;
+    if (egg.name === "Bee Egg") {
+      controlsHtml += `
+        <label>Rift:</label>
+        <select class="multiplier">
+          <option value="5" selected>5x</option>
+          <option value="10">10x</option>
+          <option value="20">20x</option>
+          <option value="25">25x</option>
+        </select>
+      `;
+    } else {
+      controlsHtml += `
+        <label>Rift:</label>
+        <select class="multiplier">
+          <option value="0">No</option>
+          <option value="5">5x</option>
+          <option value="10">10x</option>
+          <option value="20">20x</option>
+          <option value="25">25x</option>
+        </select>
+      `;
+    }
   }
   controlsHtml += `
     <label>Luck Multiplier (%):</label>
     <input type="number" class="luck" value="0" />
   `;
-  // Add secret multiplier if egg has a secret/infinity pet
+
   const hasSecret = egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name));
   if (hasSecret) {
     controlsHtml += `
