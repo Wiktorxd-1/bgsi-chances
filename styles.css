@@ -572,6 +572,10 @@ td.pet-name span {
   background-color: #ffb1ad;
 }
 
+.world-button.limited {
+  background-color: #ffb1ad;
+}
+
 .settings-button {
   position: fixed;
   bottom: 20px;
