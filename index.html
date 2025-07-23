@@ -23,20 +23,30 @@
     <h1>BGSI Chance Calculator</h1>
     <p>Calculator for BGSI legendaries and secret pets chances, easy to use, just enter the luck multiplier and see the chances</p>
 
-    <div class="world-buttons" style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-      <input type="text" id="search-bar" placeholder="Search eggs or pets..." style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 150px;" oninput="searchEggsAndPets()">
-      <button class="world-button overworld" onclick="filterEggsByWorld('1')">
-        <img src="Images/Icons/The_Overworld_Icon.webp" alt="Overworld Icon" style="vertical-align: middle; margin-right: 5px;"> Overworld
-      </button>
-      <button class="world-button minigame" onclick="filterEggsByWorld('2')">
-        <img src="Images/Icons/Minigame_Paradise_Icon.webp" alt="Minigame Paradise Icon" style="vertical-align: middle; margin-right: 5px;"> Minigame Paradise
-      </button>
-      <button class="world-button limited" onclick="filterEggsByWorld('limited')">
-        <img src="Images/Icons/Timer_Icon.webp" alt="Limited Icon" style="vertical-align: middle; margin-right: 5px;"> Limited
-      </button>
+    <div class="main-layout">
+      <div class="worlds-sidebar">
+        <button class="world-icon-btn overworld" onclick="selectWorld('1')">
+          <img src="Images/Icons/The_Overworld_Icon.webp" alt="Overworld Icon" class="world-icon overworld" />
+          <div class="world-label">Overworld</div>
+        </button>
+        <button class="world-icon-btn minigame" onclick="selectWorld('2')">
+          <img src="Images/Icons/Minigame_Paradise_Icon.webp" alt="Minigame Paradise Icon" class="world-icon minigame" />
+          <div class="world-label">Minigame Paradise</div>
+        </button>
+        <button class="world-icon-btn limited" onclick="selectWorld('limited')">
+          <img src="Images/Icons/Timer_Icon.webp" alt="Limited Icon" class="world-icon limited" />
+          <div class="world-label">Limited</div>
+        </button>
+      </div>
+      <div class="eggs-area">
+        <div class="search-bar-row" id="search-bar-row" style="display:flex;align-items:center;gap:8px;position:relative;">
+          <input type="text" id="search-bar" class="egg-search-bar" placeholder="Search eggs or pets..." />
+          <img src="Images/Icons/warning.ico" id="search-warning-icon" style="width:22px;height:22px;cursor:pointer;opacity:0.85;" title="" />
+          <div id="search-warning-tooltip" style="display:none;position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);background:rgba(40,0,60,0.98);color:#fff;padding:7px 14px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.18);font-size:15px;white-space:nowrap;z-index:100;">Searching pets is currently broken</div>
+        </div>
+        <div id="egg-list" class="egg-list-grid"></div>
+      </div>
     </div>
-
-    <div id="egg-list"></div>
   </div>
 
   <div class="sidebar" id="sidebar">

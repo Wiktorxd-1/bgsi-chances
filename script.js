@@ -6,7 +6,7 @@ async function fetchEggsData() {
 
 const eggs = [
   { name: "Bee Egg", image: "Images/Eggs/Bee_Egg.webp", Pets: [{"name": "Angel Bee", "baseOdds": 10000, "icon": "Images/Pets/Angel_Bee.webp"}, {"name": "Evil Bee", baseOdds: 250000, "icon": "Images/Pets/Evil_Bee.webp"}, {"name": "Bee Bee Bee", baseOdds: 1000000, icon: "Images/Pets/Bee_Bee_Bee.webp"}, {"name": "Queen Bee (Secret)", baseOdds: 20000000, icon: "Images/Pets/Queen_Bee.webp"}], world: "limited" },
-  { name: "500M Egg", "image": "Images/Eggs/500M_Egg.webp", "Pets": [{"name": "Paragon", "baseOdds": 2857.2, "icon": "Images/Pets/Paragon.webp"}, {"name": "Platinum Dualcorn", "baseOdds": 50000, "icon": "Images/Pets/Platinum_Dualcorn.webp"}, {"name": "Super Hexarium", "baseOdds": 1000000, "icon": "Images/Pets/Super_Hexarium.webp"}, {"name": "Glitch", "baseOdds": 2000000, "icon": "Images/Pets/Glitch.webp"}, {"name": "Diamond Overlord (Secret)", "baseOdds": 33333333.4, "icon": "Images/Pets/Diamond_Overlord.webp"}, {"name": "Super Trophy (Secret)", "baseOdds": 100000000, "icon": "Images/Pets/Super_Trophy.webp"}, {"name": "Eternal Star (Secret)", "baseOdds": 200000000, "icon": "Images/Pets/Eternal_Star.webp"}, {"name": "Fallen Angel (Secret)", "baseOdds": 133333333.4, "icon": "Images/Pets/Fallen_Angel.webp"}, {"name": "King Kitty (Secret)", "baseOdds": 1000000000, "icon": "Images/Pets/King_Kitty.webp"}, {"name": "Giant Robot (Infinity)", "baseOdds": 40000000000, "icon": "Images/Pets/Giant_Robot.webp"}], world: "limited"},
+  { name: "500M Egg", "image": "Images/Eggs/500M_Egg.webp", "Pets": [{"name": "Paragon", "baseOdds": 2857.2, "icon": "Images/Pets/Paragon.webp"}, {"name": "Platinum Dualcorn", "baseOdds": 50000, "icon": "Images/Pets/Platinum_Dualcorn.webp"}, {"name": "Super Hexarium", "baseOdds": 1000000, "icon": "Images/Pets/Super_Hexarium.webp"}, {"name": "Glitch", "baseOdds": 2000000, "icon": "Images/Pets/Glitch.webp"}, {"name": "Diamond Overlord (Secret)", "baseOdds": 33333333.4, "icon": "Images/Pets/Diamond_Overlord.webp"}, {"name": "Super Trophy (Secret)", "baseOdds": 100000000, "icon": "Images/Pets/Super_Trophy.webp"},   {"name": "Fallen Angel (Secret)", "baseOdds": 133333333.4, "icon": "Images/Pets/Fallen_Angel.webp"}, {"name": "Eternal Star (Secret)", "baseOdds": 200000000, "icon": "Images/Pets/Eternal_Star.webp"},  {"name": "King Kitty (Secret)", "baseOdds": 1000000000, "icon": "Images/Pets/King_Kitty.webp"}, {"name": "Giant Robot (Infinity)", "baseOdds": 40000000000, "icon": "Images/Pets/Giant_Robot.webp"}], world: "limited" },
   { name: "Common Egg", image: "Images/Eggs/Common_Egg.webp", Pets: [ { name: "King Doggy (Secret)", baseOdds: 100000000, icon: "Images/Pets/King_Doggy.webp" } ], world: "1" },
   { name: "Spikey Egg", image: "Images/Eggs/Spikey_Egg.webp", Pets: [ { name: "Emerald Golem", baseOdds: 200, icon: "Images/Pets/Emerald_Golem.webp" } ], world: "1" },
   { name: "Magma Egg", image: "Images/Eggs/Magma_Egg.webp", Pets: [ { name: "Inferno Dragon", baseOdds: 400, icon: "Images/Pets/Inferno_Dragon.webp" } ], world: "1" },
@@ -22,18 +22,165 @@ const eggs = [
   { name: "Chance Egg", image: "Images/Eggs/Chance_Egg.webp", Pets: [ { name: "Ring Master", baseOdds: 100000, icon: "Images/Pets/Ring_Master.webp" }, { name: "Royal Guardian", baseOdds: 200000000, icon: "Images/Pets/Royal_Guardian.webp" } ], world: "2" }
 ];
 
+let selectedWorld = null;
+let selectedEgg = null;
+let lastSearchValue = '';
 const eggList = document.getElementById("egg-list");
 
-function createEggCard(egg, canSpawnAsRift) {
+function renderEggs() {
+  animateEggList(() => {
+    eggList.innerHTML = '';
+    const eggsJson = window.eggsJson || [];
+    const searchBarRow = document.getElementById('search-bar-row');
+    const worldsSidebar = document.querySelector('.worlds-sidebar');
+    
+    const searchInput = document.getElementById('search-bar');
+    if (searchInput) lastSearchValue = searchInput.value;
+    document.querySelectorAll('.world-icon-btn').forEach(btn => {
+      btn.classList.remove('selected');
+      if (selectedWorld) {
+        if (
+          (selectedWorld === '1' && btn.classList.contains('overworld')) ||
+          (selectedWorld === '2' && btn.classList.contains('minigame')) ||
+          (selectedWorld === 'limited' && btn.classList.contains('limited'))
+        ) {
+          btn.classList.add('selected');
+        }
+      }
+    });
+    if (selectedEgg) {
+      
+      if (searchBarRow) searchBarRow.classList.add('hide-search-bar-row');
+      
+      if (worldsSidebar) worldsSidebar.style.display = 'none';
+
+      const egg = eggs.find(e => e.name === selectedEgg);
+      const jsonEgg = eggsJson.find(e => e.name === egg.name);
+      const canSpawnAsRift = jsonEgg && jsonEgg.canSpawnAsRift;
+      animateEggDetails(() => createEggDetailsView(egg, canSpawnAsRift));
+      return;
+    }
+    
+    if (searchBarRow) searchBarRow.classList.remove('hide-search-bar-row');
+    if (worldsSidebar) worldsSidebar.style.display = '';
+    let filteredEggs = eggs;
+    if (selectedWorld) {
+      filteredEggs = eggs.filter(egg => egg.world === selectedWorld);
+    }
+    filteredEggs.forEach(egg => {
+      createEggGridItem(egg);
+    });
+  });
+}
+
+function selectWorld(world) {
+  const eggList = document.getElementById("egg-list");
+  
+  if (selectedWorld === world) {
+    selectedWorld = null;
+    selectedEgg = null;
+    animateEggList(() => renderEggs());
+    return;
+  }
+  selectedWorld = world;
+  selectedEgg = null;
+  animateEggList(() => renderEggs());
+}
+
+function animateEggList(callback) {
+  const eggList = document.getElementById("egg-list");
+  eggList.classList.add("fading");
+  setTimeout(() => {
+    eggList.innerHTML = '';
+    callback();
+    eggList.classList.remove("fading");
+  }, 200);
+}
+
+function animateEggDetails(callback) {
+  const layout = document.querySelector(".egg-details-layout");
+  if (layout) {
+    layout.classList.add("fading");
+    setTimeout(() => {
+      callback();
+      layout.classList.remove("fading");
+    }, 200);
+  } else {
+    callback();
+  }
+}
+
+function createEggGridItem(egg) {
   const card = document.createElement("div");
   card.className = "egg-card";
   card.setAttribute("data-world", egg.world);
-
+  card.style.cursor = "pointer";
+  card.onclick = () => {
+    selectedEgg = egg.name;
+    renderEggs();
+  };
   const eggHeader = document.createElement("div");
   eggHeader.className = "egg-header";
-  eggHeader.innerHTML = `<img src="${egg.image}" alt="${egg.name}" style="width: 40px; height: 40px;" />
-                           <h2>${egg.name}</h2>`;
+  eggHeader.innerHTML = `<img src="${egg.image}" alt="${egg.name}" style="width: 56px; height: 56px;" />
+                         <h2>${egg.name}</h2>`;
+  card.appendChild(eggHeader);
+  eggList.appendChild(card);
+}
 
+function createEggDetailsView(egg, canSpawnAsRift) {
+  eggList.innerHTML = '';
+  const backBtn = document.createElement("button");
+  backBtn.className = "egg-back-btn";
+  backBtn.style.position = "absolute";
+  backBtn.style.left = "20px";
+  backBtn.style.top = "140px";
+  backBtn.style.background = "none";
+  backBtn.style.border = "none";
+  backBtn.style.padding = "10px";
+  backBtn.style.zIndex = "20";
+  backBtn.style.cursor = "pointer";
+  backBtn.innerHTML = `<img src="Images/Icons/back.ico" alt="Back" style="width:32px;height:32px;vertical-align:middle;">`;
+  backBtn.onclick = () => {
+    selectedEgg = null;
+    const searchInput = document.getElementById('search-bar');
+    if (searchInput) searchInput.value = lastSearchValue;
+    renderEggs();
+  };
+
+  const layout = document.createElement('div');
+  layout.className = 'egg-details-layout';
+
+  const left = document.createElement('div');
+  left.className = 'egg-details-left';
+  const eggIcon = document.createElement('img');
+  eggIcon.className = 'egg-icon-big';
+  eggIcon.src = egg.image;
+  eggIcon.alt = egg.name;
+  left.appendChild(eggIcon);
+  const eggName = document.createElement('div');
+  eggName.className = 'egg-name';
+  eggName.textContent = egg.name;
+  left.appendChild(eggName);
+  left.appendChild(createEggSettings(egg, canSpawnAsRift));
+
+  const middle = document.createElement('div');
+  middle.className = 'egg-details-middle';
+  middle.appendChild(createEggPetInfoCard(egg, canSpawnAsRift));
+
+  const right = document.createElement('div');
+  right.className = 'egg-details-right';
+
+  layout.appendChild(left);
+  layout.appendChild(middle);
+  layout.appendChild(right);
+
+  eggList.appendChild(backBtn);
+  eggList.appendChild(layout);
+}
+
+
+
+function createEggSettings(egg, canSpawnAsRift) {
   const controls = document.createElement("div");
   controls.className = "controls";
   let controlsHtml = '';
@@ -65,7 +212,6 @@ function createEggCard(egg, canSpawnAsRift) {
     <label>Luck Multiplier (%):</label>
     <input type="number" class="luck" value="0" />
   `;
-
   const hasSecret = egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name));
   if (hasSecret) {
     controlsHtml += `
@@ -76,7 +222,13 @@ function createEggCard(egg, canSpawnAsRift) {
     `;
   }
   controls.innerHTML = controlsHtml;
+  return controls;
+}
 
+function createEggPetInfoCard(egg, canSpawnAsRift) {
+  const card = document.createElement("div");
+  card.className = "egg-card";
+  card.setAttribute("data-world", egg.world);
   const table = document.createElement("table");
   table.innerHTML = `
     <thead>
@@ -89,113 +241,73 @@ function createEggCard(egg, canSpawnAsRift) {
     </thead>
     <tbody class="pet-list"></tbody>
   `;
-
-  card.appendChild(eggHeader);
-  card.appendChild(controls);
   card.appendChild(table);
-  eggList.appendChild(card);
 
-  const multiplierSelect = controls.querySelector(".multiplier");
-  const luckInput = controls.querySelector(".luck");
-  const secretInput = controls.querySelector(".secret-mult");
-  const petList = table.querySelector(".pet-list");
+  setTimeout(() => {
+    const layout = document.querySelector('.egg-details-layout');
+    if (!layout) return;
+    const controls = layout.querySelector('.egg-details-left .controls');
+    if (!controls) return;
+    const multiplierSelect = controls.querySelector(".multiplier");
+    const luckInput = controls.querySelector(".luck");
+    const secretInput = controls.querySelector(".secret-mult");
+    const petList = table.querySelector(".pet-list");
 
-  function formatAdjustedPercent(adjustedChance) {
-    const adjustedPercent = adjustedChance * 100;
-    if (adjustedPercent === 0) {
-      return "Unknown";
+    function formatAdjustedPercent(adjustedChance) {
+      const adjustedPercent = adjustedChance * 100;
+      if (adjustedPercent === 0) return "Unknown";
+      const formatted = adjustedPercent.toExponential(8);
+      return parseFloat(formatted).toString();
     }
-    const formatted = adjustedPercent.toExponential(8);
-    return parseFloat(formatted).toString();
-  }
 
-  function updateChances() {
-    const multiplierValue = multiplierSelect ? parseFloat(multiplierSelect.value) : 0;
-    const riftBonusPercent = multiplierValue * 100;
-    const luckPercent = luckInput.value === "" ? 0 : parseFloat(luckInput.value);
-    const secretTimes = secretInput ? (secretInput.value === "" ? 1 : Math.max(1, parseFloat(secretInput.value))) : 1;
-    const effectiveLuckPercent = luckPercent + riftBonusPercent;
-    petList.innerHTML = "";
-    egg.Pets.forEach(pet => {
-      const isSecret = /(Secret|Infinity)/i.test(pet.name);
-      const baseChance = 1 / pet.baseOdds;
-      let combinedMultiplier = 1 + effectiveLuckPercent / 100;
-      if (isSecret) {
-        combinedMultiplier *= secretTimes;
-      }
-      const adjustedChance = baseChance * combinedMultiplier;
-      const adjustedOneIn = adjustedChance > 0 ? Math.round(1 / adjustedChance).toLocaleString() : "∞";
-      let adjustedPercent = formatAdjustedPercent(adjustedChance);
-      if (adjustedPercent.length > 16) {
-        adjustedPercent = `<button class='show-amount'>Show amount</button>`;
-      }
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td class="pet-name">
-          <img src="${pet.icon}" alt="${pet.name}" />
-          ${pet.name}
-        </td>
-        <td>1 in ${pet.baseOdds.toLocaleString()}</td>
-        <td>1 in ${adjustedOneIn}</td>
-        <td>${adjustedPercent}%</td>
-      `;
-      petList.appendChild(row);
-    });
-    setupPetStatsHover();
-  }
-
-  updateChances();
-  if (multiplierSelect) multiplierSelect.addEventListener("change", updateChances);
-  luckInput.addEventListener("focus", () => {
-    if (luckInput.value === "0") {
-      luckInput.value = "";
-    }
-  });
-  luckInput.addEventListener("blur", () => {
-    if (luckInput.value === "") {
-      luckInput.value = "0";
-    }
-  });
-  luckInput.addEventListener("input", () => {
-    if (luckInput.value === "") {
-      updateChances();
-      return;
-    }
-    const value = parseFloat(luckInput.value);
-    if (isNaN(value) || value < 0) {
-      luckInput.value = luckInput.value.slice(0, -1);
-      if (luckInput.value === "" || luckInput.value === "-") {
-        luckInput.value = "";
-      }
-    }
-    updateChances();
-  });
-  if (secretInput) {
-    secretInput.addEventListener("focus", () => {
-      if (secretInput.value === "1") {
-        secretInput.value = "";
-      }
-    });
-    secretInput.addEventListener("blur", () => {
-      if (secretInput.value === "" || isNaN(parseFloat(secretInput.value)) || parseFloat(secretInput.value) < 1) {
-        secretInput.value = "1";
-      }
-    });
-    secretInput.addEventListener("input", () => {
-      if (secretInput.value === "") {
-        updateChances();
-        return;
-      }
-      const value = parseFloat(secretInput.value);
-      if (isNaN(value) || value < 1) {
-        secretInput.value = secretInput.value.slice(0, -1);
-        if (secretInput.value === "" || secretInput.value === "-") {
-          secretInput.value = "";
+    function updateChances() {
+      const multiplierValue = multiplierSelect ? parseFloat(multiplierSelect.value) : 0;
+      const riftBonusPercent = multiplierValue * 100;
+      const luckPercent = luckInput.value === "" ? 0 : parseFloat(luckInput.value);
+      const secretTimes = secretInput ? (secretInput.value === "" ? 1 : Math.max(1, parseFloat(secretInput.value))) : 1;
+      const effectiveLuckPercent = luckPercent + riftBonusPercent;
+      petList.innerHTML = "";
+      egg.Pets.forEach(pet => {
+        const isSecret = /(Secret|Infinity)/i.test(pet.name);
+        const baseChance = 1 / pet.baseOdds;
+        let combinedMultiplier = 1 + effectiveLuckPercent / 100;
+        if (isSecret) {
+          combinedMultiplier *= secretTimes;
         }
-      }
-      updateChances();
+        const adjustedChance = baseChance * combinedMultiplier;
+        const adjustedOneIn = adjustedChance > 0 ? Math.round(1 / adjustedChance).toLocaleString() : "∞";
+        let adjustedPercent = formatAdjustedPercent(adjustedChance);
+        if (adjustedPercent.length > 16) {
+          adjustedPercent = `<button class='show-amount'>Show amount</button>`;
+        }
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td class="pet-name">
+            <img src="${pet.icon}" alt="${pet.name}" />
+            ${pet.name}
+          </td>
+          <td>1 in ${pet.baseOdds.toLocaleString()}</td>
+          <td>1 in ${adjustedOneIn}</td>
+          <td>${adjustedPercent}%</td>
+        `;
+        petList.appendChild(row);
+      });
+      setupPetStatsHover();
+    }
+
+    updateChances();
+    if (multiplierSelect) multiplierSelect.addEventListener("change", updateChances);
+    luckInput.addEventListener("focus", () => {
+      if (luckInput.value === "0") luckInput.value = "";
     });
-  }
+    luckInput.addEventListener("blur", () => {
+      if (luckInput.value === "") luckInput.value = "0";
+    });
+    luckInput.addEventListener("input", updateChances);
+    if (secretInput) secretInput.addEventListener("input", updateChances);
+  }, 0);
+
+  return card;
 }
 
 
@@ -208,16 +320,35 @@ async function fetchPetsData() {
   return petsData;
 }
 
+
 (async function() {
-  const eggsJson = await fetchEggsData();
+  window.eggsJson = await fetchEggsData();
   await fetchPetsData();
+  renderEggs();
+  setupPetStatsHover();
+  const warningIcon = document.getElementById('search-warning-icon');
+  const warningTooltip = document.getElementById('search-warning-tooltip');
+  if (warningIcon && warningTooltip) {
+    warningIcon.addEventListener('mouseenter', () => {
+      warningTooltip.style.display = 'block';
+    });
+    warningIcon.addEventListener('mouseleave', () => {
+      warningTooltip.style.display = 'none';
+    });
+  }
+})();
+function searchEggsAndPets() {
+  const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+  eggList.innerHTML = '';
+  const eggsJson = window.eggsJson || [];
   eggs.forEach(egg => {
     const jsonEgg = eggsJson.find(e => e.name === egg.name);
     const canSpawnAsRift = jsonEgg && jsonEgg.canSpawnAsRift;
-    createEggCard(egg, canSpawnAsRift);
+    if (egg.world === selectedWorld && (egg.name.toLowerCase().includes(searchTerm) || egg.Pets.some(pet => pet.name.toLowerCase().includes(searchTerm)))) {
+      createEggCard(egg, canSpawnAsRift);
+    }
   });
-  setupPetStatsHover();
-})();
+}
 
 function setupPetStatsHover() {
   let statsCard = document.createElement('div');

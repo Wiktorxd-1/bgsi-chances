@@ -1,3 +1,262 @@
+.egg-back-btn {
+  position: absolute;
+  left: 20px;
+  top: 140px;
+  background: none;
+  border: none;
+  padding: 10px;
+  z-index: 20;
+  cursor: pointer;
+}
+.hide-search-bar-row {
+  display: none !important;
+}
+
+.egg-details-layout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 340px;
+  gap: 64px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.egg-details-layout.fading {
+  opacity: 0;
+  transform: translateY(5px);
+}
+
+.egg-details-left {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 32px 0 0 0;
+  background: none;
+}
+
+.egg-details-left .egg-icon-big {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 18px;
+}
+
+.egg-details-left .egg-name {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--main-text);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.egg-details-middle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 32px 0 0 64px;
+}
+
+.egg-details-right {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 32px 0 0 0;
+  background: none;
+}
+
+.egg-details-middle .egg-card {
+  min-width: 400px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  background-size: cover;
+  padding: 20px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .egg-details-layout {
+    flex-direction: column;
+    min-height: 0;
+  }
+  .egg-details-left, .egg-details-right {
+    flex: none;
+    padding: 16px 0 0 0;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .egg-details-middle .egg-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  width: 100%;
+  min-height: 70vh;
+}
+
+.worlds-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  padding: 12px 0 12px 0;
+  border-radius: 16px;
+  min-width: 120px;
+  gap: 24px;
+  margin-right: 32px;
+  box-shadow: none;
+}
+
+.world-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  outline: none;
+}
+
+.world-icon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: box-shadow 0.3s;
+}
+
+.world-icon-btn.selected .world-icon.overworld {
+  box-shadow:
+    0 0 0 2px #6bd61e,
+    0 0 12px 4px #6bd61e88,
+    0 0 24px 8px #6bd61e44;
+  z-index: 10;
+}
+.world-icon-btn.selected .world-icon.minigame {
+  box-shadow:
+    0 0 0 2px #fa271b,
+    0 0 12px 4px #fa271b88,
+    0 0 24px 8px #fa271b44;
+  z-index: 10;
+}
+.world-icon-btn.selected .world-icon.limited {
+  box-shadow:
+    0 0 0 2px #ffb1ad,
+    0 0 12px 4px #ffb1ad88,
+    0 0 24px 8px #ffb1ad44;
+  z-index: 10;
+}
+
+.world-label {
+  font-size: 15px;
+  color: var(--main-text);
+  margin-top: 2px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.eggs-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.egg-search-bar {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 220px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.search-bar-row {
+  margin-bottom: 10px;
+}
+
+.egg-list-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px 18px;
+  width: 100%;
+  justify-items: center;
+  transition: opacity 0.2s ease, transform 0.2s ease; /* Reduced duration */
+}
+
+.egg-list-grid.fading {
+  opacity: 0;
+  transform: translateY(5px); /* Reduced movement */
+}
+
+.egg-card {
+  min-width: 120px;
+  max-width: 220px;
+  padding: 10px 8px 8px 8px;
+  background-color: var(--egg-card-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  min-height: 160px;
+  max-width: 180px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 0;
+  transform: scale(0.95);
+  animation: eggCardFadeIn 0.25s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+@keyframes eggCardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.egg-header {
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.egg-header img {
+  width: 72px !important;
+  height: 72px !important;
+  margin-bottom: 4px;
+}
+
+.egg-header h2 {
+  font-size: 15px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
 @import url('https://fonts.googleapis.com/css2?family=Ferdoka+One&family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Lexend:wght@400;700&display=swap');
 
 :root {
@@ -68,19 +327,26 @@ p {
 
 #egg-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px 18px;
     text-align: center;
+    width: 100%;
+    justify-items: center;
 }
 
 .egg-card {
     background-color: var(--egg-card-bg);
     border-radius: 10px;
-    padding: 12px 10px 10px 10px;
+    padding: 10px 8px 8px 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
-    min-height: 220px;
+    min-height: 160px;
+    max-width: 180px;
+    width: 100%;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: flex-start;
 }
 
@@ -93,9 +359,10 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--egg-header-bg);
-    padding: 1rem;
-    border-radius: 8px;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    width: 100%;
 }
 
 .egg-header h2 {
@@ -109,10 +376,17 @@ p {
     border-radius: 8px;
     padding: 0.5rem;
     margin-top: 0.5rem;
+    min-width: 260px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
 .controls label {
     font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
 }
 
 .controls select,
@@ -121,11 +395,8 @@ p {
     border-radius: 6px;
     border: 1px solid #ccc;
     min-width: 80px;
-}
-
-.controls select:focus,
-.controls input:focus {
-    outline: 2px solid var(--main-text);
+    display: block;
+    margin-bottom: 10px;
 }
 
 table {
@@ -568,9 +839,6 @@ td.pet-name span {
   background-color: #fa271b;
 }
 
-.world-button.event {
-  background-color: #ffb1ad;
-}
 
 .world-button.limited {
   background-color: #ffb1ad;
