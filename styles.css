@@ -1,3 +1,8 @@
+.world-icon-btn.selected .world-icon.seas {
+  box-shadow:
+    0 0 24px 8px #6bd61e44;
+  z-index: 10;
+}
 .egg-back-btn {
   position: absolute;
   left: 20px;
