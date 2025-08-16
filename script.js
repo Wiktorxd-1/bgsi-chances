@@ -367,6 +367,7 @@ function setupPetStatsHover() {
     coins: 'Images/Icons/Coins.webp',
     tickets: 'Images/Icons/Tickets.webp',
     festival_coins: 'Images/Icons/Festival_Coins.webp',
+    pearls: 'Images/Icons/Pearls.webp' 
   };
 
   function getStatIcon(stat) {
@@ -375,12 +376,14 @@ function setupPetStatsHover() {
     if (stat === 'coins') return statIcons.coins;
     if (stat === 'tickets') return statIcons.tickets;
     if (stat === 'festival_coins') return statIcons.festival_coins;
+    if (stat === 'pearls') return statIcons.pearls;
     return '';
   }
 
   function buildStatsRows(stats) {
     let html = '';
-    const statOrder = ['bubbles', 'gems', 'coins', 'tickets', 'festival_coins'];
+
+    const statOrder = ['bubbles', 'gems', 'coins', 'tickets', 'festival_coins', 'pearls'];
     for (const stat of statOrder) {
       if (stats[stat] !== undefined && stats[stat] !== null) {
         if (stat === 'gems' && Number(stats[stat]) === 0) continue;
