@@ -621,7 +621,7 @@
   });
 </script>
 <script>
-  const HATCHES_API = "http://panel.fytage.com:2011/hatches";
+  const HATCHES_API = "https://bgsiapi.fytg.me/hatches";
   let allHatches = [];
   let filteredHatches = [];
   let searchTerm = '';
@@ -724,8 +724,8 @@
     }
     try {
       const url = showVerifiedOnly
-        ? "http://panel.fytage.com:2011/hatches?verified"
-        : "http://panel.fytage.com:2011/hatches";
+        ? "https://bgsiapi.fytg.me/hatches?verified"
+        : "https://bgsiapi.fytg.me/hatches";
       const res = await fetch(url);
       if (res.status === 429) {
         loadingEl.textContent = "Api is rate limited, please wait";
