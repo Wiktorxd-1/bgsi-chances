@@ -511,28 +511,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!localStorage.getItem('selectedTheme')) {
     setTheme('dark');
   }
-
-  // --- Hatches page logic ---
-  const url = window.location.pathname.toLowerCase();
-  if (url.includes('/bgsi-chances/hatches')) {
-    document.body.innerHTML = `
-      <div style="max-width:700px;margin:60px auto 0 auto;padding:32px 18px 32px 18px;background:var(--container-bg);border-radius:18px;box-shadow:0 4px 24px rgba(0,0,0,0.18);color:var(--main-text);">
-        <h1 style="text-align:center;font-size:2.2rem;margin-bottom:18px;">BGSI Hatches</h1>
-        <p style="text-align:center;font-size:1.1rem;margin-bottom:32px;">
-          This page will show recent hatches and hatch statistics.<br>
-          <b>Coming soon!</b>
-        </p>
-        <div style="text-align:center;">
-          <img src="Images/Icons/egg.ico" alt="Egg" style="width:80px;height:80px;opacity:0.7;">
-        </div>
-        <div style="margin-top:32px;text-align:center;">
-          <a href="https://wiktorxd-1.github.io/bgsi-chances/" style="color:#fdffb6;font-weight:bold;text-decoration:underline;font-size:1.1rem;">← Back to main site</a>
-        </div>
-      </div>
-    `;
-    document.title = "BGSI Hatches";
-    return;
-  }
 });
 
 function setTheme(theme) {
