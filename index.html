@@ -57,6 +57,18 @@
     <div class="sidebar-header">
       <h2>Menu</h2>
     </div>
+    <div class="sidebar-nav">
+      <a 
+        href="https://wiktorxd-1.github.io/bgsi-chances/"
+        class="sidebar-link sidebar-calc-link"
+        id="sidebar-calc-link"
+        >Calculator</a>
+      <a 
+        href="https://wiktorxd-1.github.io/bgsi-chances/hatches"
+        class="sidebar-link sidebar-hatches-link"
+        id="sidebar-hatches-link"
+        >Hatches</a>
+    </div>
     <div class="sidebar-content">
       <a href="https://discord.gg/4zXsCpqF3m" class="discord-invite" target="_blank">
         <img src="Images/Icons/discord.ico" alt="Discord Icon">
@@ -68,6 +80,47 @@
       </button>
     </div>
     <button class="credits-button-sidebar" onclick="showCreditsPopup(event)">Credits</button>
+
+    <style>
+    .sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+}
+.sidebar-header {
+  margin-bottom: 0;
+}
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 18px 0 0 0;
+  align-items: center;
+}
+.sidebar-link {
+  color: var(--main-text);
+  text-decoration: none;
+  font-size: 1.18rem;
+  font-weight: 600;
+  padding: 2px 0 0 0;
+  border-bottom: 2px solid transparent;
+  border-top: none;
+  transition: font-size 0.18s, border-bottom 0.18s;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+.sidebar-link:hover {
+  font-size: 1.28rem;
+  border-bottom: 2px solid #fff;
+  text-decoration: none;
+}
+.sidebar-link.active, .sidebar-link[aria-current="page"] {
+  border-bottom: 2.5px solid #fff;
+  text-decoration: none;
+}
+    </style>
   </div>
 
 
@@ -121,6 +174,8 @@
   <button class="menu-icon" onclick="toggleSidebar()">
     <img id="menu-icon-img" src="Images/Icons/menu.ico" alt="Menu" />
   </button>
+
+  <div id="main-content"></div>
 
   <script src="script.js"></script>
   <script>
@@ -366,6 +421,20 @@
     document.querySelector('.credits-popup').addEventListener('mouseleave', () => {
       hideCreditsPopup();
     });
+
+    // Highlight the current page in the sidebar menu
+    (function() {
+      const path = window.location.pathname.replace(/\/+$/, "");
+      const calcLink = document.getElementById('sidebar-calc-link');
+      const hatchesLink = document.getElementById('sidebar-hatches-link');
+      if (path.endsWith('/hatches') || path.endsWith('/hatches.html')) {
+        hatchesLink.classList.add('active');
+        hatchesLink.setAttribute('aria-current', 'page');
+      } else {
+        calcLink.classList.add('active');
+        calcLink.setAttribute('aria-current', 'page');
+      }
+    })();
   </script>
 
 <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>

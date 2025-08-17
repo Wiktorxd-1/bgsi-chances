@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hatches</title>
+  <!-- Load theme and font from main site -->
+  <link rel="stylesheet" href="../styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Ferdoka+One&family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+  <script async="" src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  <style>
+    body {
+      background: var(--main-bg);
+      color: var(--main-text);
+      font-family: inherit;
+    }
+    .hatches-title {
+      font-family: inherit;
+      color: var(--main-text);
+      font-size: 2.4rem;
+      margin-top: 18px; /* moved more to the top */
+      margin-bottom: 10px;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      transition: margin-top 0.3s;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto 0 auto;
+      padding: 32px 32px 40px 32px;
+      background: var(--container-bg);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      color: var(--main-text);
+      margin-top: 12px; /* moved more to the top */
+      transition: margin-top 0.3s;
+    }
+    .hatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px 28px;
+      margin: 0 auto;
+      justify-items: center;
+      padding: 18px 0 18px 0;
+    }
+    @keyframes fadeInHatch {
+      from { opacity: 0.98; transform: none;}
+      to   { opacity: 1; transform: none;}
+    }
+    .hatch-card {
+      background: var(--egg-card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      padding: 14px 12px 10px 12px;
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 18px;
+      min-width: 240px;
+      max-width: 420px;
+      width: 100%;
+      color: var(--main-text);
+      font-family: inherit;
+      transition: transform 0.2s;
+      animation: fadeInHatch 0.18s linear both;
+      will-change: opacity;
+    }
+    .hatch-card:hover {
+      transform: scale(1.03);
+      z-index: 2;
+    }
+    .hatch-card.shiny {
+      border: 2px solid #fdffb6;
+      box-shadow: 0 0 16px #fdffb6cc;
+    }
+    .hatch-card.mythic {
+      border: 2px solid #ffb1ad;
+      box-shadow: 0 0 16px #ffb1adcc;
+    }
+    .hatch-card .pet {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      background: var(--main-bg-accent);
+    }
+    .hatch-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .hatch-name {
+      font-size: 1.15rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .timestamp {
+      font-size: 0.98rem;
+      font-weight: normal;
+      color: #fdffb6;
+      background: var(--sidebar-header-bg);
+      padding: 2px 10px;
+      border-radius: 6px;
+    }
+    .hatch-details {
+      margin-top: 7px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .detail-line {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .detail-line img {
+      width: 18px;
+      height: 18px;
+      opacity: 0.85;
+    }
+    .label {
+      font-weight: 600;
+    }
+    .value {
+      font-family: monospace;
+    }
+    .controls {
+      margin: 0 auto 18px auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      gap: 6px; /* Reduce gap between all controls */
+      background: var(--controls-bg);
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      min-width: 260px;
+      box-sizing: border-box;
+      max-width: 600px;
+      position: relative;
+      height: 48px;
+      overflow: visible;
+    }
+    .search-toggle-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      height: 38px;
+      width: 38px;
+      opacity: 0.7;
+      transition: opacity 0.18s;
+      justify-content: center;
+      position: relative;
+    }
+    .search-toggle-btn img {
+      width: 22px;
+      height: 22px;
+      display: block;
+      margin: 0 auto;
+      position: relative;
+      top: 1px;
+    }
+    .search-toggle-btn:hover {
+      opacity: 1;
+    }
+    .search-container {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex: 0 1 260px; /* Slightly less width */
+      transition: max-width 0.3s, opacity 0.3s, margin-left 0.3s;
+      max-width: 0;
+      opacity: 0;
+      overflow: visible;
+      margin-left: 0;
+      position: relative;
+      z-index: 2;
+      height: 38px;
+      pointer-events: none;
+    }
+    .search-container.open {
+      max-width: 270px; /* Slightly less than before */
+      opacity: 1;
+      margin-left: 4px;
+      pointer-events: auto;
+    }
+    .controls input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 240px; /* Slightly less width */
+      min-width: 0;
+      font-size: 1rem;
+      font-family: inherit;
+      background: var(--main-bg-accent);
+      color: var(--main-text);
+      transition: border 0.2s;
+      margin: 0;
+      box-sizing: border-box;
+      height: 38px;
+      line-height: 1.2;
+      opacity: 1;
+      overflow: visible;
+    }
+    .controls input:focus {
+      outline: none;
+      border: 1.5px solid #fdffb6;
+    }
+    #publicBtn {
+      margin-left: 0;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      background: var(--sidebar-header-bg);
+      color: var(--main-text);
+      border: 1.5px solid #444;
+      border-radius: 8px;
+      padding: 0 18px;
+      font-size: 1rem;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s, border 0.18s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      outline: none;
+    }
+    #publicBtn.active {
+      background: #fdffb6;
+      color: #222;
+      border: 1.5px solid #fdffb6;
+    }
+    #publicBtn:focus {
+      border: 1.5px solid #fdffb6;
+    }
+    .menu-discord-wrapper {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 1201;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 48px;
+    }
+    .menu-icon {
+      position: static;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .menu-icon img {
+      display: block;
+      margin: 0 auto;
+    }
+    .discord-invite-under-menu {
+      position: static;
+      opacity: 0.7;
+      transition: opacity 0.18s;
+      background: none;
+      border: none;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .discord-invite-under-menu img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+    .discord-invite-under-menu:hover {
+      opacity: 1;
+    }
+    #settings-close-btn {
+      top: 18px !important;
+      right: 18px !important;
+    }
+    @media (max-width: 600px) {
+      .hatches-title {
+        margin-top: 8px;
+      }
+      .container {
+        margin-top: 4px;
+        padding: 10px 2px 10px 2px;
+      }
+      .menu-discord-wrapper {
+        top: 8px;
+        right: 8px;
+        gap: 10px;
+        width: 38px;
+      }
+      #settings-close-btn {
+        top: 8px !important;
+        right: 8px !important;
+      }
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        height: auto;
+        max-width: 100%;
+      }
+      .search-container,
+      .search-container.open {
+        max-width: 100%;
+        width: 100%;
+        margin-left: 0;
+      }
+      #publicBtn {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 6px;
+      }
+    }
+
+    /* Sidebar navigation styles */
+    .sidebar {
+      /* ...existing sidebar styles... */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* Make sure content starts at the top */
+      height: 100vh;
+    }
+    .sidebar-header {
+      /* ...existing styles... */
+      margin-bottom: 0;
+    }
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 18px 0 0 0; /* Remove extra top margin, no bottom margin */
+      align-items: center;
+    }
+    .sidebar-link {
+      color: var(--main-text);
+      text-decoration: none;
+      font-size: 1.18rem;
+      font-weight: 600;
+      padding: 2px 0 0 0;
+      border-bottom: 2px solid transparent; /* Underline under text */
+      border-top: none;
+      transition: font-size 0.18s, border-bottom 0.18s;
+      cursor: pointer;
+      display: inline-block;
+      text-align: center;
+    }
+    .sidebar-link:hover {
+      font-size: 1.28rem;
+      border-bottom: 2px solid #fff; /* White underline on hover */
+      text-decoration: none;
+    }
+    .sidebar-link.active, .sidebar-link[aria-current="page"] {
+      border-bottom: 2.5px solid #fff; /* White underline for active */
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Menu and Discord Invite Icons Wrapper -->
+  <div class="menu-discord-wrapper" id="menu-discord-wrapper">
+    <!-- Menu Button -->
+    <button class="menu-icon" onclick="toggleSidebar()">
+      <img id="menu-icon-img" src="../Images/Icons/menu.ico" alt="Menu" />
+    </button>
+    <!-- Discord Invite Icon (under menu icon, not fixed) -->
+    <a href="https://discord.gg/4zXsCpqF3m"
+       class="discord-invite-under-menu"
+       target="_blank"
+       title="Join our Discord!">
+      <img src="../Images/Icons/discord.ico" alt="Discord Icon">
+    </a>
+  </div>
+
+  <!-- Sidebar Menu -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>Menu</h2>
+    </div>
+    <div class="sidebar-nav">
+      <a 
+        href="https://wiktorxd-1.github.io/bgsi-chances/"
+        class="sidebar-link sidebar-calc-link"
+        id="sidebar-calc-link"
+        >Calculator</a>
+      <a 
+        href="https://wiktorxd-1.github.io/bgsi-chances/hatches"
+        class="sidebar-link sidebar-hatches-link"
+        id="sidebar-hatches-link"
+        >Hatches</a>
+    </div>
+    <div class="sidebar-content">
+      <a href="https://discord.gg/4zXsCpqF3m" class="discord-invite" target="_blank">
+        <img src="../Images/Icons/discord.ico" alt="Discord Icon">
+      </a>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center; gap: 10px; margin-bottom: 10px;">
+      <button class="settings-button-sidebar" onclick="toggleSettingsPopup(event)" style="background: none; border: none; padding: 0; cursor: pointer; margin-right: 5px;">
+        <img src="../Images/Icons/settings.ico" alt="Settings Icon" style="width: 32px; height: 32px; display: block;">
+      </button>
+    </div>
+    <button class="credits-button-sidebar" onclick="showCreditsPopup(event)">Credits</button>
+  </div>
+
+  <!-- Credits Popup -->
+  <div class="credits-popup" id="credits-popup">
+    <p><strong>piczu123:</strong> Old site, not being maintained<br>
+      <a href="https://piczu123.github.io/BGSI-Chance-Calculator/" target="_blank" class="globe-link" title="https://piczu123.github.io/BGSI-Chance-Calculator/">
+        <img src="../Images/Icons/website.ico" alt="Website" class="globe-icon">
+      </a>
+      <a href="https://www.reddit.com/user/Working-Rest-3538/" target="_blank" class="globe-link" title="https://www.reddit.com/user/Working-Rest-3538/">
+        <img src="../Images/Icons/reddit.ico" alt="Reddit" class="globe-icon">
+      </a>
+    </p>
+    <p><strong>BGSI wiki:</strong> Egg and Pet icons<br>
+      <a href="https://bgs-infinity.fandom.com/" target="_blank" class="globe-link" title="https://bgs-infinity.fandom.com/">
+        <img src="../Images/Icons/website.ico" alt="Website" class="globe-icon">
+      </a>
+    </p>
+    <p><strong>borngame:</strong> Egg and Pet Info<br>
+      <a href="https://github.com/borngame" target="_blank" class="globe-link" title="https://github.com/borngame">
+        <img src="../Images/Icons/website.ico" alt="Website" class="globe-icon">
+      </a>
+    </p>
+  </div>
+
+  <!-- Settings Popup -->
+  <div class="settings-popup" id="settings-popup" style="display:none;">
+    <img src="../Images/Icons/close.ico" alt="Close" title="Close" id="settings-close-btn" style="position:absolute;top:10px;right:12px;width:20px;height:20px;cursor:pointer;opacity:0.7;z-index:2;" onclick="document.getElementById('settings-popup').style.display='none'">
+    <h2 style="margin-right:24px;">Settings</h2>
+    <label for="theme-select">Choose your preferred theme:</label>
+    <div class="theme-options">
+      <div class="theme-circle" id="theme-dark" onclick="setTheme('dark')" title="Dark theme">
+        <span>Dark theme</span>
+      </div>
+      <div class="theme-circle" id="theme-purple" onclick="setTheme('purple')" title="Purple (Legacy)">
+        <span>Purple (Legacy)</span>
+      </div>
+    </div>
+    <label for="font-select">Choose your preferred font:</label>
+    <select id="font-select">
+      <option value="Arial">Arial (Default)</option>
+      <option value="Ferdoka One">Ferdoka One</option>
+      <option value="Lato">Lato</option>
+      <option value="Roboto">Roboto</option>
+      <option value="Comic Sans MS">Comic Sans MS</option>
+      <option value="Lexend">Lexend</option>
+    </select>
+  </div>
+
+  <!-- Main Content -->
+  <div class="hatches-title">Hatches</div>
+  <div class="container">
+    <main style="padding-top: 1rem; text-align: center;">
+      <div class="controls">
+        <button class="search-toggle-btn" id="searchToggleBtn" title="Search">
+          <img src="../Images/Icons/search.png" alt="Search">
+        </button>
+        <div class="search-container" id="searchContainer">
+          <input id="searchInput" type="text" placeholder="Search by username or pet">
+        </div>
+        <button id="publicBtn">Verified Hatches</button>
+      </div>
+      <div id="loading" style="display: none; color: var(--main-text); font-size:1.1rem;">Loading hatches…</div>
+      <section id="hatchGrid" class="hatch-grid"></section>
+    </main>
+    <div style="margin-top:32px;text-align:center;">
+      <a href="/" style="color:#fdffb6;font-weight:bold;text-decoration:underline;font-size:1.1rem;">← Back to main site</a>
+    </div>
+  </div>
+
+<script src="../script.js"></script>
+<script>
+  // --- Menu/Sidebar logic (copied from main page) ---
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const menuIconImg = document.getElementById('menu-icon-img');
+    const discordBtn = document.querySelector('.discord-invite-under-menu');
+    if (!menuIconImg) return;
+    menuIconImg.classList.add('fading');
+    setTimeout(() => {
+      if (sidebar.classList.contains('open')) {
+        sidebar.classList.remove('open');
+        menuIconImg.src = '../Images/Icons/menu.ico';
+        menuIconImg.alt = 'Menu';
+        if (discordBtn) discordBtn.style.display = '';
+      } else {
+        sidebar.classList.add('open');
+        menuIconImg.src = '../Images/Icons/close.ico';
+        menuIconImg.alt = 'Close';
+        if (discordBtn) discordBtn.style.display = 'none';
+      }
+      menuIconImg.classList.remove('fading');
+    }, 180);
+  }
+
+  function showCreditsPopup(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const popup = document.getElementById('credits-popup');
+    popup.classList.add('show');
+  }
+
+  function hideCreditsPopup() {
+    const popup = document.getElementById('credits-popup');
+    popup.classList.remove('show');
+  }
+
+  function toggleSettingsPopup(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const popup = document.getElementById('settings-popup');
+    if (popup.style.display === 'block') {
+      popup.style.display = 'none';
+    } else {
+      popup.style.display = 'block';
+    }
+  }
+
+  function setFont(font) {
+    let fontFamily;
+    switch (font) {
+      case 'Ferdoka One':
+        fontFamily = 'Ferdoka One, Arial, Helvetica, sans-serif';
+        break;
+      case 'Lato':
+        fontFamily = 'Lato, Arial, Helvetica, sans-serif';
+        break;
+      case 'Roboto':
+        fontFamily = 'Roboto, Arial, Helvetica, sans-serif';
+        break;
+      case 'Lexend':
+        fontFamily = 'Lexend, Arial, Helvetica, sans-serif';
+        break;
+      case 'Comic Sans MS':
+        fontFamily = 'Comic Sans MS, Arial, Helvetica, sans-serif';
+        break;
+      case 'Arial':
+      default:
+        fontFamily = 'Arial, Helvetica, sans-serif';
+    }
+    document.body.style.fontFamily = fontFamily;
+    localStorage.setItem('selectedFont', font);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Font select
+    const fontSelect = document.getElementById('font-select');
+    if (fontSelect) {
+      const savedFont = localStorage.getItem('selectedFont') || 'Arial';
+      fontSelect.value = savedFont;
+      setFont(savedFont);
+      fontSelect.addEventListener('change', function() {
+        setFont(this.value);
+      });
+    }
+
+    // Theme select
+    const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
+    setTheme(savedTheme);
+
+    if (!localStorage.getItem('selectedTheme')) {
+      setTheme('dark');
+    }
+  });
+
+  // Hide popups on click outside
+  document.addEventListener('click', (event) => {
+    const sidebar = document.getElementById('sidebar');
+    const menuIcon = document.querySelector('.menu-icon');
+    const menuIconImg = document.getElementById('menu-icon-img');
+    const popup = document.getElementById('credits-popup');
+    const creditsButton = document.querySelector('.credits-button-sidebar');
+    const settingsPopup = document.getElementById('settings-popup');
+    const settingsButton = document.querySelector('.settings-button-sidebar');
+
+    if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
+      sidebar.classList.remove('open');
+      if (menuIconImg) {
+        menuIconImg.src = '../Images/Icons/menu.ico';
+        menuIconImg.alt = 'Menu';
+      }
+    }
+
+    if (
+      popup &&
+      !popup.contains(event.target) &&
+      !creditsButton.contains(event.target) &&
+      !event.target.closest('.credits-button-sidebar')
+    ) {
+      hideCreditsPopup();
+    }
+
+    if (
+      settingsPopup &&
+      !settingsPopup.contains(event.target) &&
+      !settingsButton.contains(event.target) &&
+      !event.target.closest('.settings-button-sidebar')
+    ) {
+      settingsPopup.style.display = 'none';
+    }
+  });
+
+  document.getElementById('sidebar').addEventListener('click', (event) => {
+    event.stopPropagation();
+  });
+
+  document.querySelector('.credits-button-sidebar').addEventListener('mouseenter', (event) => {
+    showCreditsPopup(event);
+  });
+
+  document.querySelector('.credits-popup').addEventListener('mouseleave', () => {
+    hideCreditsPopup();
+  });
+
+  // --- Search bar toggle logic ---
+  const searchToggleBtn = document.getElementById('searchToggleBtn');
+  const searchContainer = document.getElementById('searchContainer');
+  const searchInput = document.getElementById('searchInput');
+
+  searchToggleBtn.addEventListener('click', () => {
+    searchContainer.classList.toggle('open');
+    if (searchContainer.classList.contains('open')) {
+      setTimeout(() => searchInput.focus(), 200);
+    } else {
+      searchInput.value = '';
+      searchTerm = '';
+      applyAndRender();
+    }
+  });
+
+  // Optional: open search with "/" key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && !searchContainer.classList.contains('open') && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+      searchContainer.classList.add('open');
+      setTimeout(() => searchInput.focus(), 200);
+    }
+    if (e.key === 'Escape' && searchContainer.classList.contains('open')) {
+      searchContainer.classList.remove('open');
+      searchInput.value = '';
+      searchTerm = '';
+      applyAndRender();
+    }
+  });
+</script>
+<script>
+  // API endpoint
+  const HATCHES_API = "http://panel.fytage.com:2011/hatches";
+
+  let allHatches = [];
+  let filteredHatches = [];
+  let searchTerm = '';
+
+  const loadingEl = document.getElementById('loading');
+  const grid = document.getElementById('hatchGrid');
+  const publicBtn = document.getElementById('publicBtn');
+  // searchInput is already defined above
+
+  searchInput.addEventListener('input', () => {
+    searchTerm = searchInput.value.trim().toLowerCase();
+    applyAndRender();
+  });
+
+  function getTimeAgo(ts) {
+    if (!ts) return '';
+    const now = Date.now();
+    const diff = Math.floor((now - new Date(ts).getTime()) / 1000);
+    if (diff < 60) return `${diff}s ago`;
+    const min = Math.floor(diff / 60);
+    if (min < 60) return `${min}m ago`;
+    const hr = Math.floor(min / 60);
+    if (hr < 24) return `${hr}h ago`;
+    const d = Math.floor(hr / 24);
+    return `${d}d ago`;
+  }
+
+  function isVerifiedHatch(hatch) {
+    // Consider verified if hatchedBy is present and not "Unknown", "Private User", empty, or null
+    const hatchedBy = hatch.hatchedBy || hatch.user || hatch.username || "";
+    const val = hatchedBy.trim().toLowerCase();
+    return !!val && val !== "unknown" && val !== "private user";
+  }
+
+  function applyAndRender() {
+    const verifiedOnly = publicBtn.classList.contains('active');
+    filteredHatches = allHatches.filter(h =>
+      (!verifiedOnly || isVerifiedHatch(h)) &&
+      (!searchTerm ||
+        ((h.name && h.name.toLowerCase().includes(searchTerm)) ||
+         (h.petName && h.petName.toLowerCase().includes(searchTerm)) ||
+         (h.hatchedBy && h.hatchedBy.toLowerCase().includes(searchTerm)) ||
+         (h.user && h.user.toLowerCase().includes(searchTerm)) ||
+         (h.username && h.username.toLowerCase().includes(searchTerm)))
+      )
+    );
+    grid.innerHTML = '';
+    if (filteredHatches.length === 0) {
+      loadingEl.textContent = "No hatches found.";
+      loadingEl.style.display = "block";
+      grid.style.display = "none";
+    } else {
+      loadingEl.style.display = "none";
+      grid.style.display = "grid";
+      renderBatch();
+    }
+  }
+
+  let isFirstLoad = true;
+  let lastHatchIds = [];
+
+  function renderBatch() {
+    grid.classList.remove('fading');
+    // Show all filtered hatches at once
+    for (const hatch of filteredHatches) {
+      const petImg = hatch.imageUrl || hatch.petImage || hatch.icon || "../Images/Icons/egg.ico";
+      const petName = hatch.name || hatch.petName || "Unknown";
+      const hatchedBy = hatch.hatchedBy || hatch.user || hatch.username || "Unknown";
+      const rarity = hatch.rarity || hatch.petRarity || "Unknown";
+      const totalHatched = hatch.totalHatched ?? hatch.count ?? "Unknown";
+      const isShiny = hatch.shiny || hatch.isShiny;
+      const isMythic = hatch.mythic || hatch.isMythic;
+
+      const card = document.createElement('article');
+      card.className = 'hatch-card' + (isShiny ? ' shiny' : '') + (isMythic ? ' mythic' : '');
+      card.innerHTML = `
+        <img class="pet" src="${petImg}" alt="${petName}">
+        <div class="hatch-info">
+          <div class="hatch-name">
+            ${petName}
+            <span class="timestamp" data-ts="${hatch.timestamp || ''}">
+              <img src="../Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;">
+              ${getTimeAgo(hatch.timestamp)}
+            </span>
+          </div>
+          <div class="hatch-details">
+            <div class="detail-line">
+              <img src="../Images/Icons/paw.png" alt="Exists">
+              <span class="label">Exists:</span>
+              <span class="value">${totalHatched}</span>
+            </div>
+            <div class="detail-line">
+              <img src="../Images/Icons/luck.png" alt="Pet Rarity">
+              <span class="label">Pet Rarity:</span>
+              <span class="value">${rarity}</span>
+            </div>
+            <div class="detail-line">
+              <img src="../Images/Icons/user.png" alt="Hatched By">
+              <span class="label">Hatched By:</span>
+              <span class="value">${hatchedBy}</span>
+            </div>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    }
+  }
+
+  async function fetchHatches() {
+    // Only fade grid if not first load
+    if (!isFirstLoad) {
+      grid.classList.add('fading');
+    }
+    try {
+      const url = showVerifiedOnly
+        ? "http://panel.fytage.com:2011/hatches?verified"
+        : "http://panel.fytage.com:2011/hatches";
+      const res = await fetch(url);
+      if (res.status === 429) {
+        loadingEl.textContent = "Api is rate limited, please wait";
+        loadingEl.style.display = "block";
+        return;
+      }
+      if (!res.ok) {
+        loadingEl.textContent = "Api isnt respoding, if it doesnt work for a longer time, its down";
+        loadingEl.style.display = "block";
+        return;
+      }
+      loadingEl.style.display = "none";
+      const text = await res.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+        if (!Array.isArray(data)) throw new Error("Not an array");
+      } catch {
+        data = text
+          .split('\n')
+          .filter(line => line.trim().length > 0)
+          .map(line => {
+            try { return JSON.parse(line); } catch { return null; }
+          })
+          .filter(Boolean);
+      }
+      allHatches = data;
+      allHatches.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+      // Only animate if new hatches are different
+      const newIds = allHatches.slice(0, 20).map(h => h.id).join(',');
+      if (!isFirstLoad && newIds !== lastHatchIds.join(',')) {
+        grid.classList.add('fading');
+        setTimeout(() => {
+          applyAndRender();
+          grid.classList.remove('fading');
+        }, 250);
+      } else if (isFirstLoad) {
+        applyAndRender();
+      }
+      lastHatchIds = allHatches.slice(0, 20).map(h => h.id);
+      isFirstLoad = false;
+    } catch (e) {
+      loadingEl.textContent = "Api isnt respoding, if it doesnt work for a longer time, its down";
+      loadingEl.style.display = "block";
+    }
+  }
+
+  let showVerifiedOnly = false;
+
+  publicBtn.addEventListener('click', () => {
+    showVerifiedOnly = !showVerifiedOnly;
+    publicBtn.classList.toggle('active', showVerifiedOnly);
+    if (showVerifiedOnly) {
+      publicBtn.style.background = "#fdffb6";
+      publicBtn.style.color = "#222";
+    } else {
+      publicBtn.style.background = "var(--sidebar-header-bg)";
+      publicBtn.style.color = "var(--main-text)";
+    }
+    fetchHatches(); // Fetch from the correct endpoint
+  });
+
+  fetchHatches();
+  setInterval(fetchHatches, 7000); // Refresh every 7s
+  setInterval(() => {
+    document.querySelectorAll('.timestamp').forEach(el => {
+      el.innerHTML = `<img src="../Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;"> ${getTimeAgo(el.dataset.ts)}`;
+    });
+  }, 10000);
+
+  // Highlight the current page in the sidebar menu
+  (function() {
+    const path = window.location.pathname.replace(/\/+$/, "");
+    const calcLink = document.getElementById('sidebar-calc-link');
+    const hatchesLink = document.getElementById('sidebar-hatches-link');
+    if (path.endsWith('/hatches') || path.endsWith('/hatches.html')) {
+      hatchesLink.classList.add('active');
+      hatchesLink.setAttribute('aria-current', 'page');
+    } else {
+      calcLink.classList.add('active');
+      calcLink.setAttribute('aria-current', 'page');
+    }
+  })();
+</script>
+</body>
+</html>
