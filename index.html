@@ -22,7 +22,6 @@
   <div class="container">
     <h1>BGSI Chance Calculator</h1>
     <p>Calculator for BGSI legendaries and secret pets chances, easy to use, just enter the luck multiplier and see the chances</p>
-
     <div class="main-layout">
       <div class="worlds-sidebar">
         <button class="world-icon-btn overworld" onclick="selectWorld('1')">
@@ -52,7 +51,6 @@
       </div>
     </div>
   </div>
-
   <div class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <h2>Menu</h2>
@@ -80,50 +78,47 @@
       </button>
     </div>
     <button class="credits-button-sidebar" onclick="showCreditsPopup(event)">Credits</button>
-
     <style>
     .sidebar {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100vh;
-}
-.sidebar-header {
-  margin-bottom: 0;
-}
-.sidebar-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 18px 0 0 0;
-  align-items: center;
-}
-.sidebar-link {
-  color: var(--main-text);
-  text-decoration: none;
-  font-size: 1.18rem;
-  font-weight: 600;
-  padding: 2px 0 0 0;
-  border-bottom: 2px solid transparent;
-  border-top: none;
-  transition: font-size 0.18s, border-bottom 0.18s;
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-}
-.sidebar-link:hover {
-  font-size: 1.28rem;
-  border-bottom: 2px solid #fff;
-  text-decoration: none;
-}
-.sidebar-link.active, .sidebar-link[aria-current="page"] {
-  border-bottom: 2.5px solid #fff;
-  text-decoration: none;
-}
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100vh;
+    }
+    .sidebar-header {
+      margin-bottom: 0;
+    }
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 18px 0 0 0;
+      align-items: center;
+    }
+    .sidebar-link {
+      color: var(--main-text);
+      text-decoration: none;
+      font-size: 1.18rem;
+      font-weight: 600;
+      padding: 2px 0 0 0;
+      border-bottom: 2px solid transparent;
+      border-top: none;
+      transition: font-size 0.18s, border-bottom 0.18s;
+      cursor: pointer;
+      display: inline-block;
+      text-align: center;
+    }
+    .sidebar-link:hover {
+      font-size: 1.28rem;
+      border-bottom: 2px solid #fff;
+      text-decoration: none;
+    }
+    .sidebar-link.active, .sidebar-link[aria-current="page"] {
+      border-bottom: 2.5px solid #fff;
+      text-decoration: none;
+    }
     </style>
   </div>
-
-
   <div class="credits-popup" id="credits-popup">
     <p><strong>piczu123:</strong> Old site, not being maintained<br>
       <a href="https://piczu123.github.io/BGSI-Chance-Calculator/" target="_blank" class="globe-link" title="https://piczu123.github.io/BGSI-Chance-Calculator/">
@@ -144,12 +139,9 @@
       </a>
     </p>
   </div>
-
-
   <div class="settings-popup" id="settings-popup" style="display:none;">
     <img src="Images/Icons/close.ico" alt="Close" title="Close" id="settings-close-btn" style="position:absolute;top:10px;right:12px;width:20px;height:20px;cursor:pointer;opacity:0.7;z-index:2;" onclick="document.getElementById('settings-popup').style.display='none'">
     <h2 style="margin-right:24px;">Settings</h2>
-    
     <label for="theme-select">Choose your preferred theme:</label>
     <div class="theme-options">
       <div class="theme-circle" id="theme-dark" onclick="setTheme('dark')" title="Dark theme">
@@ -159,7 +151,6 @@
         <span>Purple (Legacy)</span>
       </div>
     </div>
-    
     <label for="font-select">Choose your preferred font:</label>
     <select id="font-select">
       <option value="Arial">Arial (Default)</option>
@@ -170,13 +161,10 @@
       <option value="Lexend">Lexend</option>
     </select>
   </div>
-
   <button class="menu-icon" onclick="toggleSidebar()">
     <img id="menu-icon-img" src="Images/Icons/menu.ico" alt="Menu" />
   </button>
-
   <div id="main-content"></div>
-
   <script src="script.js"></script>
   <script>
     function toggleSidebar() {
@@ -197,19 +185,16 @@
         menuIconImg.classList.remove('fading');
       }, 180);
     }
-
     function showCreditsPopup(event) {
       event.preventDefault();
       event.stopPropagation();
       const popup = document.getElementById('credits-popup');
       popup.classList.add('show');
     }
-
     function hideCreditsPopup() {
       const popup = document.getElementById('credits-popup');
       popup.classList.remove('show');
     }
-
     function toggleSettingsPopup(event) {
       event.preventDefault();
       event.stopPropagation();
@@ -220,7 +205,6 @@
         popup.style.display = 'block';
       }
     }
-
     function setFont(font) {
       let fontFamily;
       switch (font) {
@@ -246,12 +230,9 @@
       document.body.style.fontFamily = fontFamily;
       localStorage.setItem('selectedFont', font);
     }
-
     document.addEventListener('DOMContentLoaded', function() {
-
       const fontSelect = document.getElementById('font-select');
       if (fontSelect) {
-
         const savedFont = localStorage.getItem('selectedFont') || 'Arial';
         fontSelect.value = savedFont;
         setFont(savedFont);
@@ -259,25 +240,20 @@
           setFont(this.value);
         });
       }
-
       const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
       setTheme(savedTheme);
-
       if (!localStorage.getItem('selectedTheme')) {
         setTheme('dark');
       }
     });
-
     function setTheme(theme) {
       document.body.className = theme === 'dark' ? 'theme-dark' : 'theme-purple';
       localStorage.setItem('selectedTheme', theme);
-
       document.querySelectorAll('.theme-circle').forEach(circle => circle.classList.remove('selected'));
       const selectedCircle = document.getElementById(`theme-${theme}`);
       if (selectedCircle) {
         selectedCircle.classList.add('selected');
       }
-
       const root = document.documentElement;
       if (theme === 'dark') {
         root.style.setProperty('--main-bg', '#1212121');
@@ -319,25 +295,17 @@
         root.style.setProperty('--popup-bg', 'rgba(40,0,60,0.98)');
       }
     }
-
     function filterEggsByWorld(world) {
       const eggList = document.getElementById('egg-list');
       const eggs = eggList.querySelectorAll('.egg-card');
-
       const activeButton = document.querySelector('.world-button.active');
-
       if (activeButton && activeButton.getAttribute('onclick').includes(world)) {
         activeButton.classList.remove('active');
         eggs.forEach(egg => egg.style.display = 'block');
         return;
       }
-
-
       document.querySelectorAll('.world-button').forEach(button => button.classList.remove('active'));
-
-
       document.querySelector(`.world-button[onclick*="${world}"]`).classList.add('active');
-
       eggs.forEach(egg => {
         const eggWorld = egg.getAttribute('data-world');
         if (eggWorld === world) {
@@ -346,26 +314,19 @@
           egg.style.display = 'none';
         }
       });
-
       searchEggsAndPets();
     }
-
     function searchEggsAndPets() {
       const searchTerm = document.getElementById('search-bar').value.toLowerCase();
       const eggList = document.getElementById('egg-list');
       const eggs = eggList.querySelectorAll('.egg-card');
-
-
       const selectedWorld = document.querySelector('.world-button.active')?.getAttribute('onclick')?.match(/\('(.*?)'\)/)?.[1];
-
       eggs.forEach(egg => {
         const eggName = egg.querySelector('.egg-header h2').textContent.toLowerCase();
         const petNames = Array.from(egg.querySelectorAll('.pet-name')).map(pet => pet.textContent.toLowerCase());
         const eggWorld = egg.getAttribute('data-world');
-
         const matchesSearch = eggName.includes(searchTerm) || petNames.some(petName => petName.includes(searchTerm));
         const matchesWorld = !selectedWorld || eggWorld === selectedWorld;
-
         if (matchesSearch && matchesWorld) {
           egg.style.display = 'block';
         } else {
@@ -373,7 +334,6 @@
         }
       });
     }
-
     document.addEventListener('click', (event) => {
       const sidebar = document.getElementById('sidebar');
       const menuIcon = document.querySelector('.menu-icon');
@@ -382,7 +342,6 @@
       const creditsButton = document.querySelector('.credits-button-sidebar');
       const settingsPopup = document.getElementById('settings-popup');
       const settingsButton = document.querySelector('.settings-button-sidebar');
-
       if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
         sidebar.classList.remove('open');
         if (menuIconImg) {
@@ -390,7 +349,6 @@
           menuIconImg.alt = 'Menu';
         }
       }
-
       if (
         popup &&
         !popup.contains(event.target) &&
@@ -399,7 +357,6 @@
       ) {
         hideCreditsPopup();
       }
-
       if (
         settingsPopup &&
         !settingsPopup.contains(event.target) &&
@@ -409,20 +366,15 @@
         settingsPopup.style.display = 'none';
       }
     });
-
     document.getElementById('sidebar').addEventListener('click', (event) => {
       event.stopPropagation();
     });
-
     document.querySelector('.credits-button-sidebar').addEventListener('mouseenter', (event) => {
       showCreditsPopup(event);
     });
-
     document.querySelector('.credits-popup').addEventListener('mouseleave', () => {
       hideCreditsPopup();
     });
-
-    // Highlight the current page in the sidebar menu
     (function() {
       const path = window.location.pathname.replace(/\/+$/, "");
       const calcLink = document.getElementById('sidebar-calc-link');
@@ -436,7 +388,6 @@
       }
     })();
   </script>
-
-<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 </body>
 </html>
