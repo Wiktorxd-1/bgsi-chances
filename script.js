@@ -44,6 +44,7 @@ function renderEggs() {
         if (
           (selectedWorld === '1' && btn.classList.contains('overworld')) ||
           (selectedWorld === '2' && btn.classList.contains('minigame')) ||
+          (selectedWorld === '3' && btn.classList.contains('seas')) || // <-- add this line
           (selectedWorld === 'limited' && btn.classList.contains('limited'))
         ) {
           btn.classList.add('selected');

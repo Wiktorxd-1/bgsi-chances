@@ -1,6 +1,8 @@
 .world-icon-btn.selected .world-icon.seas {
   box-shadow:
-    0 0 24px 8px #6bd61e44;
+    0 0 0 2px #00e1ff,
+    0 0 12px 4px #00e1ff88,
+    0 0 24px 8px #00e1ff44;
   z-index: 10;
 }
 .egg-back-btn {
@@ -16,7 +18,6 @@
 .hide-search-bar-row {
   display: none !important;
 }
-
 .egg-details-layout {
   display: flex;
   flex-direction: row;
@@ -25,12 +26,10 @@
   gap: 64px;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
-
 .egg-details-layout.fading {
   opacity: 0;
   transform: translateY(5px);
 }
-
 .egg-details-left {
   flex: 0 0 220px;
   display: flex;
@@ -40,14 +39,12 @@
   padding: 32px 0 0 0;
   background: none;
 }
-
 .egg-details-left .egg-icon-big {
   width: 120px;
   height: 120px;
   object-fit: contain;
   margin-bottom: 18px;
 }
-
 .egg-details-left .egg-name {
   font-size: 2rem;
   font-weight: bold;
@@ -55,7 +52,6 @@
   margin-bottom: 24px;
   text-align: center;
 }
-
 .egg-details-middle {
   flex: 1;
   display: flex;
@@ -64,7 +60,6 @@
   justify-content: flex-start;
   padding: 32px 0 0 64px;
 }
-
 .egg-details-right {
   flex: 0 0 220px;
   display: flex;
@@ -74,7 +69,6 @@
   padding: 32px 0 0 0;
   background: none;
 }
-
 .egg-details-middle .egg-card {
   min-width: 400px;
   max-width: 600px;
@@ -88,7 +82,6 @@
   justify-content: center;
   align-items: center;
 }
-
 @media (max-width: 900px) {
   .egg-details-layout {
     flex-direction: column;
@@ -105,7 +98,6 @@
     max-width: 100%;
   }
 }
-
 .main-layout {
   display: flex;
   flex-direction: row;
@@ -113,7 +105,6 @@
   width: 100%;
   min-height: 70vh;
 }
-
 .worlds-sidebar {
   display: flex;
   flex-direction: column;
@@ -126,7 +117,6 @@
   margin-right: 32px;
   box-shadow: none;
 }
-
 .world-icon-btn {
   background: none;
   border: none;
@@ -138,7 +128,6 @@
   padding: 0;
   outline: none;
 }
-
 .world-icon {
   width: 56px;
   height: 56px;
@@ -147,7 +136,6 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   transition: box-shadow 0.3s;
 }
-
 .world-icon-btn.selected .world-icon.overworld {
   box-shadow:
     0 0 0 2px #6bd61e,
@@ -169,7 +157,6 @@
     0 0 24px 8px #ffb1ad44;
   z-index: 10;
 }
-
 .world-label {
   font-size: 15px;
   color: var(--main-text);
@@ -177,7 +164,6 @@
   text-align: center;
   font-weight: bold;
 }
-
 .eggs-area {
   flex: 1;
   display: flex;
@@ -185,7 +171,6 @@
   align-items: flex-start;
   gap: 18px;
 }
-
 .egg-search-bar {
   padding: 10px;
   border-radius: 5px;
@@ -194,25 +179,21 @@
   margin-bottom: 10px;
   box-sizing: border-box;
 }
-
 .search-bar-row {
   margin-bottom: 10px;
 }
-
 .egg-list-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px 18px;
   width: 100%;
   justify-items: center;
-  transition: opacity 0.2s ease, transform 0.2s ease; /* Reduced duration */
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
-
 .egg-list-grid.fading {
   opacity: 0;
-  transform: translateY(5px); /* Reduced movement */
+  transform: translateY(5px);
 }
-
 .egg-card {
   min-width: 120px;
   max-width: 220px;
@@ -233,7 +214,6 @@
   transform: scale(0.95);
   animation: eggCardFadeIn 0.25s cubic-bezier(0.4,0,0.2,1) forwards;
 }
-
 @keyframes eggCardFadeIn {
   from {
     opacity: 0;
@@ -244,26 +224,22 @@
     transform: scale(1);
   }
 }
-
 .egg-header {
   flex-direction: column;
   align-items: center;
   padding: 0.5rem;
 }
-
 .egg-header img {
   width: 72px !important;
   height: 72px !important;
   margin-bottom: 4px;
 }
-
 .egg-header h2 {
   font-size: 15px;
   margin-bottom: 0;
   margin-top: 0;
 }
 @import url('https://fonts.googleapis.com/css2?family=Ferdoka+One&family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Lexend:wght@400;700&display=swap');
-
 :root {
   --main-bg: #2e003e;
   --main-bg-accent: #3c005d;
@@ -284,7 +260,6 @@
   --settings-bg: #4a006b;
   --popup-bg: rgba(40,0,60,0.98);
 }
-
 body.theme-dark {
   --main-bg: #121212;
   --main-bg-accent: #2a2a2a;
@@ -305,15 +280,12 @@ body.theme-dark {
   --settings-bg: #1e1e1e;
   --popup-bg: rgba(30,30,30,0.98);
 }
-
 .ferdoka-font, .ferdoka-font * {
     font-family: 'Ferdoka One', cursive, Arial, Helvetica, sans-serif !important;
 }
-
 .lexend-font, .lexend-font * {
   font-family: 'Lexend', Arial, Helvetica, sans-serif !important;
 }
-
 body, html {
     font-family: Arial, Helvetica, sans-serif;
     background-color: var(--main-bg);
@@ -321,15 +293,12 @@ body, html {
     padding: 2rem;
     color: var(--main-text);
 }
-
 h1 {
     text-align: center;
 }
-
 p {
     text-align: center;
 }
-
 #egg-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -338,7 +307,6 @@ p {
     width: 100%;
     justify-items: center;
 }
-
 .egg-card {
     background-color: var(--egg-card-bg);
     border-radius: 10px;
@@ -354,12 +322,10 @@ p {
     align-items: center;
     justify-content: flex-start;
 }
-
 .egg-card:hover {
     transform: scale(1.05);
     z-index: 10;
 }
-
 .egg-header {
     display: flex;
     flex-direction: column;
@@ -369,13 +335,11 @@ p {
     border-radius: 0;
     width: 100%;
 }
-
 .egg-header h2 {
     color: var(--main-text);
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
 }
-
 .controls {
     background-color: var(--controls-bg);
     border-radius: 8px;
@@ -387,13 +351,11 @@ p {
     flex-direction: column;
     gap: 0;
 }
-
 .controls label {
     font-weight: bold;
     display: block;
     margin-bottom: 4px;
 }
-
 .controls select,
 .controls input {
     padding: 0.4rem;
@@ -403,7 +365,6 @@ p {
     display: block;
     margin-bottom: 10px;
 }
-
 table {
     background-color: var(--table-bg);
     border-radius: 16px;
@@ -413,7 +374,6 @@ table {
     border-spacing: 0;
     overflow: hidden;
 }
-
 th, td {
     background-color: var(--table-td-bg);
     padding: 10px;
@@ -421,32 +381,25 @@ th, td {
     vertical-align: middle;
     border: 1px solid var(--table-border);
 }
-
 thead {
     background-color: var(--table-th-bg);
     font-weight: bold;
 }
-
 table thead tr th:first-child {
     border-top-left-radius: 16px;
 }
-
 table thead tr th:last-child {
     border-top-right-radius: 16px;
 }
-
 table tbody tr:last-child td:first-child {
     border-bottom-left-radius: 16px;
 }
-
 table tbody tr:last-child td:last-child {
     border-bottom-right-radius: 16px;
 }
-
 tbody tr:nth-child(even) {
     background-color: var(--table-th-bg);
 }
-
 td.pet-name {
     display: flex;
     flex-direction: column;
@@ -456,21 +409,18 @@ td.pet-name {
     gap: 6px;
     text-align: center;
 }
-
 td.pet-name img {
     height: 32px;
     width: 32px;
     border-radius: 4px;
     flex-shrink: 0;
 }
-
 td.pet-name span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100px;
 }
-
 .pet-stats-popup {
   display: none;
   position: fixed;
@@ -490,19 +440,16 @@ td.pet-name span {
   backdrop-filter: blur(2px);
   font-family: inherit;
 }
-
 .pet-stats-popup[style*="display: block"] {
   pointer-events: auto;
   opacity: 1;
 }
-
 .pet-stats-row {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 4px;
 }
-
 .pet-stats-icon {
   width: 24px;
   height: 24px;
@@ -511,18 +458,15 @@ td.pet-name span {
   object-fit: contain;
   vertical-align: middle;
 }
-
 .pet-stats-value {
   font-size: 15px;
 }
-
 .pet-stats-label {
   font-weight: bold;
   font-size: 16px;
   margin-bottom: 8px;
   padding-right: 24px;
 }
-
 .toggle-max-stats {
   margin-top: 10px;
   width: 100%;
@@ -539,11 +483,9 @@ td.pet-name span {
   outline: none;
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
 }
-
 .toggle-max-stats:hover {
   background: var(--main-bg-accent2);
 }
-
 .close-stats-card {
   position: absolute;
   top: 8px;
@@ -555,29 +497,24 @@ td.pet-name span {
   z-index: 2;
   pointer-events: auto;
 }
-
 #pet-stats-card {
   font-family: inherit;
   box-sizing: border-box;
   user-select: none;
   pointer-events: none;
 }
-
 #pet-stats-card button {
   font-family: inherit;
   pointer-events: auto;
   outline: none;
 }
-
 #pet-stats-card button:hover {
   background: var(--main-bg-accent2);
 }
-
 .globe-link {
   text-decoration: none;
   position: relative;
 }
-
 .globe-link .globe-icon {
   vertical-align: middle;
   margin-right: 0;
@@ -588,23 +525,19 @@ td.pet-name span {
   height: 32px;
   object-fit: contain;
 }
-
 .globe-link:hover .globe-icon {
   text-decoration: underline;
   filter: brightness(1.2);
 }
-
 .credits-popup p {
   position: relative;
 }
-
 .credits-container {
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 1000;
 }
-
 .credits-button {
     background-color: var(--sidebar-header-bg);
     color: var(--main-text);
@@ -614,11 +547,9 @@ td.pet-name span {
     border-radius: 5px;
     transition: transform 0.3s ease;
 }
-
 .credits-button:hover {
     transform: scale(1.05);
 }
-
 .credits-menu {
     display: none;
     background-color: var(--credits-bg);
@@ -632,13 +563,11 @@ td.pet-name span {
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
-
 .credits-menu.show {
     display: block;
     opacity: 1;
     transform: translateY(0);
 }
-
 .credits-menu a {
     color: var(--main-text);
     text-decoration: none;
@@ -646,16 +575,13 @@ td.pet-name span {
     align-items: center;
     gap: 10px;
 }
-
 .credits-menu a:hover {
     text-decoration: underline;
 }
-
 .credits-menu a img {
     width: 24px;
     height: 24px;
 }
-
 .show-amount {
     background-color: var(--sidebar-header-bg);
     color: var(--main-text);
@@ -665,11 +591,9 @@ td.pet-name span {
     border-radius: 5px;
     transition: transform 0.3s ease;
 }
-
 .show-amount:hover {
     transform: scale(1.05);
 }
-
 .menu-icon {
   position: fixed;
   top: 10px;
@@ -681,27 +605,22 @@ td.pet-name span {
   cursor: pointer;
   z-index: 1000;
 }
-
 .menu-icon img {
   object-fit: contain;
   transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1);
   opacity: 1;
 }
-
 .menu-icon img[src$="menu.ico"] {
   width: 40px;
   height: 40px;
 }
-
 .menu-icon img[src$="close.ico"] {
   width: 32px;
   height: 32px;
 }
-
 .menu-icon img.fading {
   opacity: 0;
 }
-
 .sidebar {
   position: fixed;
   top: 0;
@@ -717,11 +636,9 @@ td.pet-name span {
   flex-direction: column;
   justify-content: space-between;
 }
-
 .sidebar.open {
   right: 0; 
 }
-
 .sidebar-header {
   display: flex;
   justify-content: space-between;
@@ -730,7 +647,6 @@ td.pet-name span {
   background-color: var(--sidebar-header-bg);
   position: relative;
 }
-
 .sidebar-content {
   padding: 10px;
   overflow-y: auto;
@@ -740,7 +656,6 @@ td.pet-name span {
   justify-content: space-between;
   gap: 1rem;
 }
-
 .credits-button-sidebar {
   background: none;
   border: none;
@@ -750,11 +665,9 @@ td.pet-name span {
   font-size: inherit;
   padding: 0;
 }
-
 .credits-button-sidebar:hover {
   text-decoration: underline;
 }
-
 .credits-popup {
   display: block;
   position: fixed;
@@ -771,45 +684,38 @@ td.pet-name span {
   pointer-events: none;
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
-
 .credits-popup.show {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
-
 .sidebar:hover .credits-popup,
 .credits-button-sidebar:hover + .credits-popup {
   opacity: 1;
   transform: translateY(0);
   display: block;
 }
-
 .sidebar:not(:hover) .credits-popup,
 .credits-button-sidebar:not(:hover) + .credits-popup {
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
 }
-
 .credits-popup a {
   color: var(--main-text);
   text-decoration: none;
   cursor: default;
 }
-
 .credits-popup a:hover {
   text-decoration: none;
   color: var(--main-text);
 }
-
 .world-buttons {
   display: flex;
   justify-content: center;
   gap: 5px;
   margin-bottom: 10px;
 }
-
 .world-button {
   padding: 12px 16px;
   border: none;
@@ -825,30 +731,23 @@ td.pet-name span {
   justify-content: center;
   transition: box-shadow 0.3s ease;
 }
-
 .world-button.active {
   box-shadow: 0 0 10px #fdffb6;
 }
-
 .world-button img {
   width: 16px;
   height: 16px;
   object-fit: contain;
 }
-
 .world-button.overworld {
   background-color: #6bd61e;
 }
-
 .world-button.minigame {
   background-color: #fa271b;
 }
-
-
 .world-button.limited {
   background-color: #ffb1ad;
 }
-
 .settings-button {
   position: fixed;
   bottom: 20px;
@@ -857,12 +756,10 @@ td.pet-name span {
   border: none;
   cursor: pointer;
 }
-
 .settings-button img {
   width: 32px;
   height: 32px;
 }
-
 .settings-popup {
   display: none;
   position: fixed;
@@ -876,22 +773,18 @@ td.pet-name span {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1001;
 }
-
 .settings-popup.show {
   display: block;
 }
-
 .settings-popup h2 {
   margin-top: 0;
 }
-
 .theme-options {
   display: flex;
   align-items: center;
   gap: 18px;
   margin: 12px 0 18px 0;
 }
-
 .theme-circle {
   position: relative;
   width: 50px;
@@ -904,31 +797,25 @@ td.pet-name span {
   cursor: pointer;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
-
 .theme-circle.selected {
   border-color: yellow;
   box-shadow: 0 0 10px yellow;
 }
-
 #theme-dark {
   background-color: #1e1e1e;
 }
-
 #theme-purple {
   background-color: #4a006b;
 }
-
 .theme-circle:hover {
   background-color: var(--main-bg-accent2);
 }
-
 .theme-circle span {
   position: absolute;
   bottom: -20px;
   font-size: 10px;
   white-space: nowrap;
 }
-
 .theme-half {
   width: 100%;
   height: 100%;
@@ -937,37 +824,29 @@ td.pet-name span {
   top: 0;
   left: 0;
 }
-
 .theme-half.left {
   clip-path: inset(0 50% 0 0);
 }
-
 .theme-half.right {
   clip-path: inset(0 0 0 50%);
 }
-
 .theme-half.theme1-left {
   background: linear-gradient(135deg, #2e003e 60%, #3c005d 100%);
 }
-
 .theme-half.theme1-right {
   background: linear-gradient(225deg, #4a006b 60%, #fdffb6 100%);
 }
-
 .theme-half.theme2-left {
   background: linear-gradient(135deg, #121212 60%, #2a2a2a 100%);
 }
-
 .theme-half.theme2-right {
   background: linear-gradient(225deg, #3a3a3a 60%, #e0e0e0 100%);
 }
-
 .settings-popup select {
   margin-top: 10px;
   padding: 5px;
   border-radius: 5px;
 }
-
 .discord-invite {
   position: absolute;
   bottom: 20px;
@@ -980,73 +859,58 @@ td.pet-name span {
   cursor: pointer;
   z-index: 1000;
 }
-
 .discord-invite img {
   width: 32px;
   height: 32px;
   object-fit: contain;
 }
-
 .discord-invite:hover {
   transform: scale(1.1);
 }
-
-
 @media (max-width: 768px) {
   body, html {
     padding: 0.5rem;
   }
-
   h1 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
   }
-
   p {
     font-size: 0.9rem;
     margin-bottom: 1rem;
   }
-
   #egg-list {
     grid-template-columns: 1fr;
     gap: 0.5rem;
   }
-
   .egg-card {
     padding: 8px;
     box-shadow: none;
     border-radius: 6px;
   }
-
   .egg-header h2 {
     font-size: 0.9rem;
   }
-
   .controls {
     flex-direction: column;
     gap: 0.3rem;
   }
-
   .world-buttons {
     flex-wrap: wrap;
     gap: 3px;
     justify-content: center;
   }
-
   .world-button {
     font-size: 0.8rem;
     padding: 8px;
     min-height: 40px;
   }
-
   table {
     font-size: 0.8rem;
   }
-
   th, td {
     padding: 5px;
   }
-
   .sidebar {
     display: none;
     position: fixed;
@@ -1058,12 +922,10 @@ td.pet-name span {
     padding: 1rem;
     transition: right 0.3s ease;
   }
-
   .sidebar.open {
     display: block;
     right: 0;
   }
-
   .sidebar-header {
     display: flex;
     justify-content: space-between; 
@@ -1071,7 +933,6 @@ td.pet-name span {
     padding: 10px;
     background-color: var(--sidebar-header-bg);
   }
-
   .sidebar-content {
     display: flex;
     flex-direction: column;
@@ -1080,7 +941,6 @@ td.pet-name span {
     align-items: center;
     height: 100%;
   }
-
   .credits-container {
     position: absolute;
     bottom: 20px; 
@@ -1088,7 +948,6 @@ td.pet-name span {
     transform: translateX(-50%);
     z-index: 1000;
   }
-
   .discord-invite {
     position: absolute;
     bottom: 20px; 
@@ -1101,28 +960,86 @@ td.pet-name span {
     cursor: pointer;
     z-index: 1000;
   }
-
   .settings-button-sidebar {
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
   }
-
   .menu-icon {
     display: none;
   }
-
   .settings-popup {
     width: 95%;
     padding: 10px;
   }
-
   .theme-options {
     flex-wrap: wrap;
     gap: 5px;
   }
-
   .theme-circle {
     width: 35px;
     height: 35px;
   }
+}
+.menu-discord-wrapper {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 1201;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 48px;
+}
+.menu-icon {
+  position: static;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.menu-icon img {
+  width: 38px;
+  height: 38px;
+  display: block;
+  margin: 0 auto;
+}
+.menu-discord-wrapper .discord-invite-under-menu img,
+.menu-discord-wrapper .discord-invite img {
+  width: 28px !important;
+  height: 28px !important;
+  object-fit: contain;
+  margin: 0;
+  padding: 0;
+}
+.sidebar {
+  right: -320px;
+  opacity: 0;
+  pointer-events: none;
+  transition: right 0.3s, opacity 0.3s;
+}
+.sidebar.open {
+  right: 0;
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    right: -100vw;
+    width: 100vw;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .sidebar.open {
+    right: 0;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+body.theme-purple {
+  --container-bg: #32004d;
 }
