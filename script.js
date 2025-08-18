@@ -21,13 +21,14 @@ const eggs = [
   { name: "Icy Egg", image: "Images/Eggs/Icy_Egg.webp", Pets: [ { name: "Marshmallow", baseOdds: 200, icon: "Images/Pets/Marshmallow.png"}, { name: "Minty Serpent", baseOdds: 66667, icon: "Images/Pets/Minty_Serpent.png"}, { name: "Ice Winged Hydra", baseOdds: 333334, icon: "Images/Pets/Ice_Winged_Hydra.png"}, { name: "Giant Pearl (Secret)", baseOdds: 125000000, icon: "Images/Pets/Giant_Pearl.png"}], world: "3"},
   { name: "Vine Egg", image: "Images/Eggs/Vine_Egg.webp", Pets: [ { name: "Thorn Dragon", baseOdds: 4000, icon: "Images/Pets/Thorn_Dragon.webp"}, { name: "Flower Pot", baseOdds: 100000, icon: "Images/Pets/Flower_Pot.webp"}, { name: "Lovely Lotus", baseOdds: 1000000, icon: "Images/Pets/Lovely_Lotus.webp"}, { name: "Fire Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Fire_Champion.webp"}, { name: "Dark Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Dark_Champion.webp"}, { name: "Earth Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Earth_Champion.webp"}, { name: "Sky Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Sky_Champion.webp"}], world: "3"},
   { name: "Lava Egg", image: "Images/Eggs/Lava_Egg.webp", Pets: [ { name: "Magma Cube", baseOdds: 4000, icon: "Images/Pets/Magma_Cube.webp"}, { name: "Night Dweller", baseOdds: 100000, icon: "Images/Pets/Night_Dweller.webp"}, { name: "Fire King", baseOdds: 3333334, icon: "Images/Pets/Fire_King.webp"}, { name: "Hellshard", baseOdds: 1000000000, icon: "Images/Pets/Hellshard.webp"}], world: "3"},
-  { name: "Atlantis Egg", image: "Images/Eggs/Atlantis_Egg.webp", Pets: [ { name: "Angler fish", baseOdds: 4000, icon: "Images/Pets/Angler_Fish.webp"}, { name: "Jellyfish", baseOdds: 200000, icon: "Images/Pets/Jellyfish.webp"}, { name: "Atlantis Guardian", baseOdds: 2000000, icon: "Images/Pets/Atlantis_Guardian.webp"}, { name: "Tidal God (Secret)", baseOdds: 250000000, icon: "Images/Pets/Tidal_God.webp"}, { name: "Koi (Secret)", baseOdds: 1000000000, icon: "Images/Pets/Koi.webp"}], world: "3"}
+  { name: "Atlantis Egg", image: "Images/Eggs/Atlantis_Egg.webp", Pets: [ { name: "Angler fish", baseOdds: 4000, icon: "Images/Pets/Angler_Fish.webp"}, { name: "Jellyfish", baseOdds: 200000, icon: "Images/Pets/Jellyfish.webp"}, { name: "Atlantis Guardian", baseOdds: 2000000, icon: "Images/Pets/Atlantis_Guardian.webp"}, { name: "Tidal God (Secret)", baseOdds: 250000000, icon: "Images/Pets/Tidal_God.webp"}, { name: "Koi (Secret)", baseOdds: 1000000000, icon: "Images/Pets/Koi.webp"}, { name: "Abyssal Sea Dragon (Secret)", baseOdds: 2000000000, icon: "Images/Pets/Abyssal_Sea_Dragon.webp"}], world: "3"}
 ];
 
 let selectedWorld = null;
 let selectedEgg = null;
 let lastSearchValue = '';
 const eggList = document.getElementById("egg-list");
+let lastNormalWorld = null;
 
 function renderEggs() {
   animateEggList(() => {
@@ -35,7 +36,6 @@ function renderEggs() {
     const eggsJson = window.eggsJson || [];
     const searchBarRow = document.getElementById('search-bar-row');
     const worldsSidebar = document.querySelector('.worlds-sidebar');
-    
     const searchInput = document.getElementById('search-bar');
     if (searchInput) lastSearchValue = searchInput.value;
     document.querySelectorAll('.world-icon-btn').forEach(btn => {
@@ -44,26 +44,23 @@ function renderEggs() {
         if (
           (selectedWorld === '1' && btn.classList.contains('overworld')) ||
           (selectedWorld === '2' && btn.classList.contains('minigame')) ||
-          (selectedWorld === '3' && btn.classList.contains('seas')) || // <-- add this line
-          (selectedWorld === 'limited' && btn.classList.contains('limited'))
+          (selectedWorld === '3' && btn.classList.contains('seas')) ||
+          (selectedWorld === 'limited' && btn.classList.contains('limited')) ||
+          (selectedWorld === 'infinity' && btn.classList.contains('infinity'))
         ) {
           btn.classList.add('selected');
         }
       }
     });
     if (selectedEgg) {
-      
       if (searchBarRow) searchBarRow.classList.add('hide-search-bar-row');
-      
       if (worldsSidebar) worldsSidebar.style.display = 'none';
-
       const egg = eggs.find(e => e.name === selectedEgg);
       const jsonEgg = eggsJson.find(e => e.name === egg.name);
       const canSpawnAsRift = jsonEgg && jsonEgg.canSpawnAsRift;
       animateEggDetails(() => createEggDetailsView(egg, canSpawnAsRift));
       return;
     }
-    
     if (searchBarRow) searchBarRow.classList.remove('hide-search-bar-row');
     if (worldsSidebar) worldsSidebar.style.display = '';
     let filteredEggs = eggs;
@@ -78,15 +75,20 @@ function renderEggs() {
 
 function selectWorld(world) {
   const eggList = document.getElementById("egg-list");
-  
   if (selectedWorld === world) {
     selectedWorld = null;
     selectedEgg = null;
     animateEggList(() => renderEggs());
     return;
   }
+  if (["1", "2", "3", "limited"].includes(world)) {
+    lastNormalWorld = world;
+  }
   selectedWorld = world;
   selectedEgg = null;
+  if (world === "infinity") {
+    selectedEgg = "Infinity Egg";
+  }
   animateEggList(() => renderEggs());
 }
 
@@ -130,7 +132,17 @@ function createEggGridItem(egg) {
   eggList.appendChild(card);
 }
 
-function createEggDetailsView(egg, canSpawnAsRift) {
+let infinityEggData = null;
+let selectedInfinityWorld = "1";
+
+async function loadInfinityEggData() {
+  if (infinityEggData) return infinityEggData;
+  const res = await fetch("Data/infinity_egg.json");
+  infinityEggData = await res.json();
+  return infinityEggData;
+}
+
+async function createEggDetailsView(egg, canSpawnAsRift) {
   eggList.innerHTML = '';
   const backBtn = document.createElement("button");
   backBtn.className = "egg-back-btn";
@@ -145,6 +157,9 @@ function createEggDetailsView(egg, canSpawnAsRift) {
   backBtn.innerHTML = `<img src="Images/Icons/back.ico" alt="Back" style="width:32px;height:32px;vertical-align:middle;">`;
   backBtn.onclick = () => {
     selectedEgg = null;
+    if (selectedWorld === "infinity") {
+      selectedWorld = lastNormalWorld || null;
+    }
     const searchInput = document.getElementById('search-bar');
     if (searchInput) searchInput.value = lastSearchValue;
     renderEggs();
@@ -164,11 +179,79 @@ function createEggDetailsView(egg, canSpawnAsRift) {
   eggName.className = 'egg-name';
   eggName.textContent = egg.name;
   left.appendChild(eggName);
+
+  if (egg.name === "Infinity Egg") {
+    await loadInfinityEggData();
+    const theme = document.body.classList.contains('theme-dark') ? 'dark' : 'purple';
+    const worlds = [
+      { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
+      { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
+      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" }
+    ];
+    const btnRow = document.createElement("div");
+    btnRow.style.display = "flex";
+    btnRow.style.gap = "10px";
+    btnRow.style.margin = "16px 0";
+    btnRow.style.justifyContent = "center";
+    btnRow.style.width = "100%";
+    worlds.forEach(w => {
+      const btn = document.createElement("button");
+      btn.style.display = "flex";
+      btn.style.alignItems = "center";
+      btn.style.gap = "8px";
+      btn.textContent = "";
+      btn.style.padding = "7px 18px";
+      btn.style.borderRadius = "8px";
+      btn.style.border = "none";
+      btn.style.fontWeight = "bold";
+      btn.style.cursor = "pointer";
+      btn.style.fontSize = "1rem";
+      if (selectedInfinityWorld === w.id) {
+        if (theme === "dark") {
+          btn.style.background = "#424ea6";
+          btn.style.color = "#fff";
+        } else {
+          btn.style.background = "#fdffb6";
+          btn.style.color = "#222";
+        }
+      } else {
+        btn.style.background = "#292929";
+        btn.style.color = "#fff";
+      }
+      const iconImg = document.createElement("img");
+      iconImg.src = w.icon;
+      iconImg.alt = w.label + " Icon";
+      iconImg.style.width = "28px";
+      iconImg.style.height = "28px";
+      iconImg.style.objectFit = "contain";
+      btn.appendChild(iconImg);
+      const labelSpan = document.createElement("span");
+      labelSpan.textContent = w.label;
+      btn.appendChild(labelSpan);
+
+      btn.onclick = () => {
+        selectedInfinityWorld = w.id;
+        createEggDetailsView(egg, canSpawnAsRift);
+      };
+      btnRow.appendChild(btn);
+    });
+    left.appendChild(btnRow);
+  }
+
   left.appendChild(createEggSettings(egg, canSpawnAsRift));
 
   const middle = document.createElement('div');
   middle.className = 'egg-details-middle';
-  middle.appendChild(createEggPetInfoCard(egg, canSpawnAsRift));
+
+
+  let petsToShow = egg.Pets;
+  if (egg.name === "Infinity Egg" && infinityEggData && infinityEggData[selectedInfinityWorld]) {
+    petsToShow = infinityEggData[selectedInfinityWorld].Pets;
+  }
+
+
+  const eggForTable = { ...egg, Pets: petsToShow };
+  middle.appendChild(createEggPetInfoCard(eggForTable, canSpawnAsRift));
 
   const right = document.createElement('div');
   right.className = 'egg-details-right';
@@ -507,8 +590,6 @@ function setupPetStatsHover() {
 document.addEventListener('DOMContentLoaded', function () {
   const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
   setTheme(savedTheme);
-
-
   if (!localStorage.getItem('selectedTheme')) {
     setTheme('dark');
   }
@@ -517,7 +598,6 @@ document.addEventListener('DOMContentLoaded', function () {
 function setTheme(theme) {
   document.body.className = theme === 'dark' ? 'theme-dark' : 'theme-purple';
   localStorage.setItem('selectedTheme', theme);
-
   const root = document.documentElement;
   if (theme === 'dark') {
     root.style.setProperty('--main-bg', '#121212');
@@ -558,4 +638,35 @@ function setTheme(theme) {
     root.style.setProperty('--settings-bg', '#4a006b');
     root.style.setProperty('--popup-bg', 'rgba(40,0,60,0.98)');
   }
+}
+
+
+eggs.unshift({
+  name: "Infinity Egg",
+  image: "Images/Eggs/Infinity_Egg.webp",
+  Pets: [
+    { name: "Infinity Guardian", baseOdds: 1000000000, icon: "Images/Pets/Infinity_Guardian.webp" }
+  ],
+  world: "infinity"
+});
+
+
+
+function selectWorld(world) {
+  const eggList = document.getElementById("egg-list");
+  if (selectedWorld === world) {
+    selectedWorld = null;
+    selectedEgg = null;
+    animateEggList(() => renderEggs());
+    return;
+  }
+  if (["1", "2", "3", "limited"].includes(world)) {
+    lastNormalWorld = world;
+  }
+  selectedWorld = world;
+  selectedEgg = null;
+  if (world === "infinity") {
+    selectedEgg = "Infinity Egg";
+  }
+  animateEggList(() => renderEggs());
 }

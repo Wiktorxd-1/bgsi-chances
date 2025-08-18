@@ -157,6 +157,13 @@
     0 0 24px 8px #ffb1ad44;
   z-index: 10;
 }
+.world-icon-btn.selected .world-icon.infinity {
+  box-shadow:
+    0 0 0 2px #424ea6,
+    0 0 12px 4px #424ea688,
+    0 0 24px 8px #424ea644;
+  z-index: 10;
+}
 .world-label {
   font-size: 15px;
   color: var(--main-text);

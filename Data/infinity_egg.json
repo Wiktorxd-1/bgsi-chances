@@ -1,0 +1,254 @@
+{
+  "1": {
+    "Pets": [
+      {
+        "name": "King Doggy (Secret)",
+        "baseOdds": 120000000,
+        "icon": "Images/Pets/King_Doggy.webp"
+      },
+      {
+        "name": "The Overlord (Secret)",
+        "baseOdds": 60000000,
+        "icon": "Images/Pets/The_Overlord.webp"
+      },
+      {
+        "name": "NULLVoid",
+        "baseOdds": 3100000,
+        "icon": "Images/Pets/NULLVoid.webp"
+      },
+      {
+        "name": "Rainbow Shock",
+        "baseOdds": 621440,
+        "icon": "Images/Pets/Rainbow_Shock.webp"
+      },
+      {
+        "name": "Demonic Hydra",
+        "baseOdds": 310720,
+        "icon": "Images/Pets/Demonic_Hydra.webp"
+      },
+      {
+        "name": "Hexarium",
+        "baseOdds": 310720,
+        "icon": "Images/Pets/Hexarium.webp"
+      },
+      {
+        "name": "Virus",
+        "baseOdds": 155360,
+        "icon": "Images/Pets/Virus.webp"
+      },
+      {
+        "name": "Green Hydra",
+        "baseOdds": 77680,
+        "icon": "Images/Pets/Green_Hydra.webp"
+      },
+      {
+        "name": "Neon Elemental",
+        "baseOdds": 15530,
+        "icon": "Images/Pets/Neon_Elemental.webp"
+      },
+      {
+        "name": "Inferno Cube",
+        "baseOdds": 12420,
+        "icon": "Images/Pets/Inferno_Cube.webp"
+      },
+      {
+        "name": "Dark Phoenix",
+        "baseOdds": 6210,
+        "icon": "Images/Pets/Dark_Phoenix.webp"
+      },
+      {
+        "name": "Flying Pig",
+        "baseOdds": 3100,
+        "icon": "Images/Pets/Flying_Pig.webp"
+      },
+      {
+        "name": "Electra",
+        "baseOdds": 3100,
+        "icon": "Images/Pets/Electra.webp"
+      },
+      {
+        "name": "Unicorn",
+        "baseOdds": 1240,
+        "icon": "Images/Pets/Unicorn.webp"
+      },
+      {
+        "name": "Lunar Serpent",
+        "baseOdds": 1240,
+        "icon": "Images/Pets/Lunar_Serpent.webp"
+      },
+      {
+        "name": "Inferno Dragon",
+        "baseOdds": 1240,
+        "icon": "Images/Pets/Inferno_Dragon.webp"
+      },
+      {
+        "name": "Emerald Golem",
+        "baseOdds": 621,
+        "icon": "Images/Pets/Emerald_Golem.webp"
+      }
+    ]
+  },
+  "2": {
+    "Pets": [
+      {
+        "name": "Hyperwave Kitty (Secret)",
+        "baseOdds": 115000000,
+        "icon": "Images/Pets/Hyperwave_Kitty.webp"
+      },
+      {
+        "name": "Mech Robot (Secret)",
+        "baseOdds": 61330000,
+        "icon": "Images/Pets/Mech_Robot.webp"
+      },
+      {
+        "name": "Equalizer",
+        "baseOdds": 964610,
+        "icon": "Images/Pets/Equalizer.webp"
+      },
+      {
+        "name": "Bionic Shard",
+        "baseOdds": 771690,
+        "icon": "Images/Pets/Bionic_Shard.webp"
+      },
+      {
+        "name": "Neon Wire Eye",
+        "baseOdds": 77160,
+        "icon": "Images/Pets/Neon_Wire_Eye.webp"
+      },
+      {
+        "name": "Space Invader",
+        "baseOdds": 57870,
+        "icon": "Images/Pets/Space_Invader.webp"
+      },
+      {
+        "name": "Stone Gargoyle",
+        "baseOdds": 23150,
+        "icon": "Images/Pets/Stone_Gargoyle.webp"
+      },
+      {
+        "name": "Neon Wyvern",
+        "baseOdds": 3850,
+        "icon": "Images/Pets/Neon_Wyvern.webp"
+      },
+      {
+        "name": "Cyborg Phoenix",
+        "baseOdds": 2890,
+        "icon": "Images/Pets/Cyborg_Phoenix.webp"
+      },
+      {
+        "name": "Crystal Unicorn",
+        "baseOdds": 231,
+        "icon": "Images/Pets/Crystal_Unicorn.webp"
+      }
+    ]
+  },
+  "3": {
+    "Pets": [
+      {
+        "name": "Abyssal Sea Dragon (Secret)",
+        "baseOdds": 1790000000,
+        "icon": "Images/Pets/Abyssal_Sea_Dragon.webp"
+      },
+      {
+        "name": "Koi (Secret)",
+        "baseOdds": 899990000,
+        "icon": "Images/Pets/Koi.webp"
+      },
+      {
+        "name": "Hellshard (Secret)",
+        "baseOdds": 899990000,
+        "icon": "Images/Pets/Hellshard.webp"
+      },
+      {
+        "name": "Earth Champion (Secret)",
+        "baseOdds": 449990000,
+        "icon": "Images/Pets/Earth_Champion.webp"
+      },
+      {
+        "name": "Dark Champion (Secret)",
+        "baseOdds": 449990000,
+        "icon": "Images/Pets/Dark_Champion.webp"
+      },
+      {
+        "name": "Fire Champion (Secret)",
+        "baseOdds": 449990000,
+        "icon": "Images/Pets/Fire_Champion.webp"
+      },
+      {
+        "name": "Sky Champion (Secret)",
+        "baseOdds": 449990000,
+        "icon": "Images/Pets/Sky_Champion.webp"
+      },
+      {
+        "name": "Tidal God (Secret)",
+        "baseOdds": 224990000,
+        "icon": "Images/Pets/Tidal_God.webp"
+      },
+      {
+        "name": "Giant Pearl (Secret)",
+        "baseOdds": 112490000,
+        "icon": "Images/Pets/Giant_Pearl.webp"
+      },
+      {
+        "name": "Atlantis Guardian",
+        "baseOdds": 517380,
+        "icon": "Images/Pets/Atlantis_Guardian.webp"
+      },
+      {
+        "name": "Fire King",
+        "baseOdds": 344920,
+        "icon": "Images/Pets/Fire_King.webp"
+      },
+      {
+        "name": "Lovely Lotus",
+        "baseOdds": 258690,
+        "icon": "Images/Pets/Lovely_Lotus.webp"
+      },
+      {
+        "name": "Ice Winged Hydra",
+        "baseOdds": 215570,
+        "icon": "Images/Pets/Ice_Winged_Hydra.webp"
+      },
+      {
+        "name": "Jellyfish",
+        "baseOdds": 51730,
+        "icon": "Images/Pets/Jellyfish.webp"
+      },
+      {
+        "name": "Flower Pot",
+        "baseOdds": 25860,
+        "icon": "Images/Pets/Flower_Pot.webp"
+      },
+      {
+        "name": "Night Dweller",
+        "baseOdds": 25860,
+        "icon": "Images/Pets/Night_Dweller.webp"
+      },
+      {
+        "name": "Minty Serpent",
+        "baseOdds": 17240,
+        "icon": "Images/Pets/Minty_Serpent.webp"
+      },
+      {
+        "name": "Magma Cube",
+        "baseOdds": 1030,
+        "icon": "Images/Pets/Magma_Cube.webp"
+      },
+      {
+        "name": "Thorn Dragon",
+        "baseOdds": 1030,
+        "icon": "Images/Pets/Thorn_Dragon.webp"
+      },
+      {
+        "name": "Angler Fish",
+        "baseOdds": 1030,
+        "icon": "Images/Pets/Angler_Fish.webp"
+      },
+      {
+        "name": "Marshmallow",
+        "baseOdds": 517,
+        "icon": "Images/Pets/Marshmallow.webp"
+      }
+    ]
+  }
+}
