@@ -920,7 +920,7 @@
   async function loadMoreHatches() {
     if (!lastLoadedId) return;
     loadingEl.style.display = "block";
-    let url = "http://panel.fytage.com:2011/hatches?after=" + encodeURIComponent(lastLoadedId);
+    let url = "https://bgsiapi.fytg.me/hatches?after=" + encodeURIComponent(lastLoadedId);
     if (showVerifiedOnly) url += "&verified";
     try {
       const res = await fetch(url);
