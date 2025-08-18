@@ -489,12 +489,12 @@
     setTimeout(() => {
       if (sidebar.classList.contains('open')) {
         sidebar.classList.remove('open');
-        menuIconImg.src = '/Images/Icons/menu.ico';
+        menuIconImg.src = '../Images/Icons/menu.ico';
         menuIconImg.alt = 'Menu';
         if (discordBtn) discordBtn.style.display = '';
       } else {
         sidebar.classList.add('open');
-        menuIconImg.src = '/Images/Icons/close.ico';
+        menuIconImg.src = '../Images/Icons/close.ico';
         menuIconImg.alt = 'Close';
         if (discordBtn) discordBtn.style.display = 'none';
       }
@@ -573,7 +573,7 @@
     if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
       sidebar.classList.remove('open');
       if (menuIconImg) {
-        menuIconImg.src = '/Images/Icons/menu.ico';
+        menuIconImg.src = '../Images/Icons/menu.ico';
         menuIconImg.alt = 'Menu';
       }
     }
