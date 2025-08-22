@@ -719,23 +719,23 @@
           <div class="hatch-name">
             ${petName}
             <span class="timestamp" data-ts="${hatch.timestamp || ''}">
-              <img src="/Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;">
+              <img src="../Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;">
               ${getTimeAgo(hatch.timestamp)}
             </span>
           </div>
           <div class="hatch-details">
             <div class="detail-line">
-              <img src="/Images/Icons/paw.png" alt="Exists">
+              <img src="../Images/Icons/paw.png" alt="Exists">
               <span class="label">Exists:</span>
               <span class="value">${totalHatched}</span>
             </div>
             <div class="detail-line">
-              <img src="/Images/Icons/luck.png" alt="Pet Rarity">
+              <img src="../Images/Icons/luck.png" alt="Pet Rarity">
               <span class="label">Pet Rarity:</span>
               <span class="value">${rarity}</span>
             </div>
             <div class="detail-line">
-              <img src="/Images/Icons/user.png" alt="Hatched By">
+              <img src="../Images/Icons/user.png" alt="Hatched By">
               <span class="label">Hatched By:</span>
               <span class="value">${hatchedBy}</span>
             </div>
@@ -1228,14 +1228,13 @@
       } else if (!isApiSearch) {
         fetchHatches();
       }
-      // (If username search, do nothing: verified is hidden anyway)
+
     });
-    // --- Timer update for all .timestamp elements every 1s, including hover ---
+
 setInterval(() => {
   document.querySelectorAll('.timestamp').forEach(el => {
     const ts = el.dataset.ts;
     if (!ts) return;
-    // If being hovered (data-hover), show full time, else show short time
     if (el.getAttribute('data-hover') === '1') {
       el.innerHTML = `<img src="../Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;"> ${getFullTimeAgo(ts)}`;
     } else {
@@ -1244,12 +1243,12 @@ setInterval(() => {
   });
 }, 1000);
 
-// --- Hover logic for .timestamp elements ---
+
 document.addEventListener('mouseover', function (e) {
   const el = e.target.closest('.timestamp');
   if (!el) return;
   el.setAttribute('data-hover', '1');
-  // Immediate update to full time
+
   const ts = el.dataset.ts;
   if (ts) {
     el.innerHTML = `<img src="../Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;"> ${getFullTimeAgo(ts)}`;
