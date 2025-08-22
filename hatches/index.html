@@ -5,7 +5,7 @@
   <link rel="icon" href="../Images/Icons/favicon.ico" type="image/ico">
   <title>Hatches</title>
   <link rel="stylesheet" href="../styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Ferdoka+One&family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Lexend:wght@400;700&display=swap" rel="stylesheet">
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
   <style>
     body {
@@ -25,7 +25,7 @@
       transition: margin-top 0.3s;
     }
     .container {
-      max-width: 1300px;
+      max-width: 1700px;
       margin: 0 auto 0 auto;
       padding: 32px 32px 40px 32px;
       background: var(--container-bg);
@@ -37,11 +37,19 @@
     }
     .hatch-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      grid-template-columns: repeat(3, minmax(340px, 1fr));
       gap: 32px 28px;
       margin: 0 auto;
       justify-items: center;
       padding: 18px 0 18px 0;
+    }
+    @media (max-width: 1100px) {
+      .hatch-grid { grid-template-columns: repeat(2, minmax(300px, 1fr)); }
+    }
+    @media (max-width: 600px) {
+      .hatch-grid { grid-template-columns: 1fr; }
+      .hatch-card .pet { width: 80px; height: 80px; }
+      .hatch-card { gap: 14px; padding: 12px; }
     }
     @keyframes fadeInHatch {
       from { opacity: 0.98; transform: none;}
@@ -49,22 +57,22 @@
     }
     .hatch-card {
       background: var(--egg-card-bg);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-      padding: 14px 12px 10px 12px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.20);
+      padding: 18px 18px;
       margin: 0;
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 18px;
-      min-width: 240px;
-      max-width: 420px;
+      gap: 22px;
+      min-width: 300px;
+      max-width: 520px;
       width: 100%;
       color: var(--main-text);
       font-family: inherit;
-      transition: transform 0.2s;
+      transition: transform 0.18s, box-shadow 0.18s;
       animation: fadeInHatch 0.18s linear both;
-      will-change: opacity;
+      will-change: transform, box-shadow;
     }
     .hatch-card:hover {
       transform: scale(1.03);
@@ -79,8 +87,8 @@
       box-shadow: 0 0 16px #ffb1adcc;
     }
     .hatch-card .pet {
-      width: 64px;
-      height: 64px;
+      width: 96px;
+      height: 96px;
       object-fit: contain;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.10);
@@ -94,7 +102,7 @@
       justify-content: center;
     }
     .hatch-name {
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       font-weight: bold;
       display: flex;
       align-items: center;
@@ -243,53 +251,23 @@
     #publicBtn:focus {
       border: 1.5px solid #fdffb6;
     }
-    .menu-discord-wrapper {
+    .settings-popup {
+      display: none;
       position: fixed;
-      top: 18px;
-      right: 18px;
-      z-index: 1201;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      width: 48px;
-    }
-    .menu-icon {
-      position: static;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-    .menu-icon img {
-      display: block;
-      margin: 0 auto;
-    }
-    .discord-invite-under-menu {
-      position: static;
-      opacity: 0.7;
-      transition: opacity 0.18s;
-      background: none;
-      border: none;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-    .discord-invite-under-menu img {
-      width: 38px;
-      height: 38px;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto;
-    }
-    .discord-invite-under-menu:hover {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      min-width: 280px;
+      max-width: 98vw;
+      background: var(--settings-bg, #18101c);
+      color: var(--main-text);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+      padding: 32px 32px 24px 32px;
+      z-index: 14010;
+      font-size: 1.08rem;
       opacity: 1;
-    }
-    #settings-close-btn {
-      top: 18px !important;
-      right: 18px !important;
+      pointer-events: auto;
     }
     @media (max-width: 600px) {
       .hatches-title {
@@ -298,16 +276,6 @@
       .container {
         margin-top: 4px;
         padding: 10px 2px 10px 2px;
-      }
-      .menu-discord-wrapper {
-        top: 8px;
-        right: 8px;
-        gap: 10px;
-        width: 38px;
-      }
-      #settings-close-btn {
-        top: 8px !important;
-        right: 8px !important;
       }
       .controls {
         flex-direction: column;
@@ -327,15 +295,6 @@
         margin-left: 0;
         margin-top: 6px;
       }
-    }
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      height: 100vh;
-    }
-    .sidebar-header {
-      margin-bottom: 0;
     }
     .sidebar-nav {
       display: flex;
@@ -366,12 +325,59 @@
       border-bottom: 2.5px solid #fff;
       text-decoration: none;
     }
-    body.theme-purple {
-      --container-bg: #32004d;
+    .theme-options {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .theme-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .24s ease, background .18s ease;
+      background: var(--controls-bg);
+      color: var(--main-text);
+      font-size: 0.85rem;
+      box-sizing: border-box;
+      padding: 6px;
+    }
+    .theme-circle:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+    .theme-circle.selected {
+      box-shadow:
+        0 0 0 3px rgba(253,255,182,0.16),
+        0 0 0 6px rgba(66,78,166,0.12);
+      transform: scale(1.03);
+      animation: theme-select-pulse .6s cubic-bezier(.2,.9,.3,1);
+    }
+    @keyframes theme-select-pulse {
+      0% { transform: scale(0.985); }
+      50% { transform: scale(1.04); }
+      100% { transform: scale(1.03); }
+    }
+    .theme-circle span {
+      display: none;
+    }
+    .settings-popup label[for="font-select"] {
+      margin-top: 6px !important;
+      margin-bottom: 2px !important;
+      display: block;
+    }
+    .settings-popup select#font-select {
+      margin-top: 0 !important;
     }
   </style>
 </head>
 <body>
+  <!-- Menu/Sidebar/Credits/Settings from main index.html -->
   <div class="menu-discord-wrapper" id="menu-discord-wrapper">
     <button class="menu-icon" onclick="toggleSidebar()">
       <img id="menu-icon-img" src="../Images/Icons/menu.ico" alt="Menu" />
@@ -401,7 +407,7 @@
     </div>
     <div class="sidebar-content">
       <a href="https://discord.gg/4zXsCpqF3m" class="discord-invite" target="_blank">
-        <img src="../Images/Icons/discord.ico" alt="Discord Icon">
+        <img src="../Images/Icons/discord.ico" alt="Discord Icon" style="width:38px;height:38px;">
       </a>
     </div>
     <div style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center; gap: 10px; margin-bottom: 10px;">
@@ -432,40 +438,43 @@
     </p>
   </div>
   <div class="settings-popup" id="settings-popup" style="display:none;">
-    <img src="../Images/Icons/close.ico" alt="Close" title="Close" id="settings-close-btn" style="position:absolute;top:10px;right:12px;width:20px;height:20px;cursor:pointer;opacity:0.7;z-index:2;" onclick="document.getElementById('settings-popup').style.display='none'">
+    <img src="../Images/Icons/close.ico" alt="Close" title="Close" id="settings-close-btn"
+      style="position:absolute;top:10px;right:12px;width:20px;height:20px;cursor:pointer;opacity:0.7;z-index:2;"
+      onclick="document.getElementById('settings-popup').style.display='none'">
     <h2 style="margin-right:24px;">Settings</h2>
     <label for="theme-select">Choose your preferred theme:</label>
     <div class="theme-options">
-      <div class="theme-circle" id="theme-dark" onclick="setTheme('dark')" title="Dark theme">
+      <div class="theme-circle" id="theme-dark" onclick="animateThemeSwitch('dark')" title="Dark theme">
         <span>Dark theme</span>
       </div>
-      <div class="theme-circle" id="theme-purple" onclick="setTheme('purple')" title="Purple (Legacy)">
+      <div class="theme-circle" id="theme-purple" onclick="animateThemeSwitch('purple')" title="Purple (Legacy)">
         <span>Purple (Legacy)</span>
       </div>
     </div>
-    <label for="font-select">Choose your preferred font:</label>
-    <select id="font-select">
+    <label for="font-select" style="margin-top:6px;margin-bottom:2px;display:block;">Choose your preferred font:</label>
+    <select id="font-select" style="margin-top:0;">
       <option value="Arial">Arial (Default)</option>
-      <option value="Ferdoka One">Ferdoka One</option>
       <option value="Lato">Lato</option>
       <option value="Roboto">Roboto</option>
       <option value="Comic Sans MS">Comic Sans MS</option>
       <option value="Lexend">Lexend</option>
     </select>
   </div>
+  <div id="theme-overlay" aria-hidden="true" style="position:fixed;inset:0;z-index:99999;pointer-events:none;background:var(--main-bg);opacity:0;transition:opacity .36s cubic-bezier(.4,0,.2,1);"></div>
+  <!-- Main content -->
   <div class="hatches-title">Hatches</div>
   <div class="container">
     <main style="padding-top: 1rem; text-align: center;">
       <div class="controls">
-        <button class="search-toggle-btn" id="searchToggleBtn" title="Search">
-          <img src="../Images/Icons/search.png" alt="Search">
-        </button>
-        <div class="search-container" id="searchContainer">
-          <input id="searchInput" type="text" placeholder="Search by username or pet">
+        <div class="search-container open" id="searchContainer" style="flex:1;">
+          <input id="searchInput" type="text" placeholder="Search by username or pet..." style="width:100%;">
+          <button class="search-toggle-btn" id="searchBtn" title="Search" style="margin-left:8px;">
+            <img src="../Images/Icons/search.png" alt="Search">
+          </button>
         </div>
         <button id="publicBtn">Verified Hatches</button>
       </div>
-      <div id="loading" style="display: none; color: var(--main-text); font-size:1.1rem;">Loading hatches…</div>
+      <div id="loading" style="display: none; position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); color: var(--main-text); font-size:1.1rem; background: var(--controls-bg); padding:8px 12px; border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,0.25); z-index:13000;">Loading hatches…</div>
       <section id="hatchGrid" class="hatch-grid"></section>
     </main>
     <div style="margin-top:32px;text-align:center;">
@@ -478,498 +487,849 @@
       <img id="pet-modal-close" src="../Images/Icons/close.ico" alt="Close" title="Close" style="position:absolute;top:-28px;right:-28px;width:38px;height:38px;cursor:pointer;opacity:0.85;">
     </div>
   </div>
-<script src="../script.js"></script>
-<script>
-  function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const menuIconImg = document.getElementById('menu-icon-img');
-    const discordBtn = document.querySelector('.discord-invite-under-menu');
-    if (!menuIconImg) return;
-    menuIconImg.classList.add('fading');
-    setTimeout(() => {
-      if (sidebar.classList.contains('open')) {
-        sidebar.classList.remove('open');
-        menuIconImg.src = '../Images/Icons/menu.ico';
-        menuIconImg.alt = 'Menu';
-        if (discordBtn) discordBtn.style.display = '';
+  <script src="../script.js"></script>
+  <script>
+    // Sidebar/menu/credits/settings logic from main index.html
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const menuIconImg = document.getElementById('menu-icon-img');
+      const discordInvite = document.querySelector('.discord-invite-under-menu');
+      if (!sidebar || !menuIconImg) return;
+      const opening = !sidebar.classList.contains('open');
+      sidebar.classList.toggle('open', opening);
+      sidebar.setAttribute('aria-hidden', opening ? 'false' : 'true');
+      menuIconImg.src = opening ? '../Images/Icons/close.ico' : '../Images/Icons/menu.ico';
+      menuIconImg.alt = opening ? 'Close' : 'Menu';
+      if (discordInvite) discordInvite.style.display = opening ? 'none' : '';
+      if (opening) {
+        document.body.classList.add('sidebar-open');
+        document.body.style.overflow = 'hidden';
       } else {
-        sidebar.classList.add('open');
-        menuIconImg.src = '../Images/Icons/close.ico';
-        menuIconImg.alt = 'Close';
-        if (discordBtn) discordBtn.style.display = 'none';
-      }
-      menuIconImg.classList.remove('fading');
-    }, 180);
-  }
-  function showCreditsPopup(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    const popup = document.getElementById('credits-popup');
-    popup.classList.add('show');
-  }
-  function hideCreditsPopup() {
-    const popup = document.getElementById('credits-popup');
-    popup.classList.remove('show');
-  }
-  function toggleSettingsPopup(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    const popup = document.getElementById('settings-popup');
-    if (popup.style.display === 'block') {
-      popup.style.display = 'none';
-    } else {
-      popup.style.display = 'block';
-    }
-  }
-  function setFont(font) {
-    let fontFamily;
-    switch (font) {
-      case 'Ferdoka One':
-        fontFamily = 'Ferdoka One, Arial, Helvetica, sans-serif';
-        break;
-      case 'Lato':
-        fontFamily = 'Lato, Arial, Helvetica, sans-serif';
-        break;
-      case 'Roboto':
-        fontFamily = 'Roboto, Arial, Helvetica, sans-serif';
-        break;
-      case 'Lexend':
-        fontFamily = 'Lexend, Arial, Helvetica, sans-serif';
-        break;
-      case 'Comic Sans MS':
-        fontFamily = 'Comic Sans MS, Arial, Helvetica, sans-serif';
-        break;
-      case 'Arial':
-      default:
-        fontFamily = 'Arial, Helvetica, sans-serif';
-    }
-    document.body.style.fontFamily = fontFamily;
-    localStorage.setItem('selectedFont', font);
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    const fontSelect = document.getElementById('font-select');
-    if (fontSelect) {
-      const savedFont = localStorage.getItem('selectedFont') || 'Arial';
-      fontSelect.value = savedFont;
-      setFont(savedFont);
-      fontSelect.addEventListener('change', function() {
-        setFont(this.value);
-      });
-    }
-    const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
-    setTheme(savedTheme);
-    if (!localStorage.getItem('selectedTheme')) {
-      setTheme('dark');
-    }
-  });
-  document.addEventListener('click', (event) => {
-    const sidebar = document.getElementById('sidebar');
-    const menuIcon = document.querySelector('.menu-icon');
-    const menuIconImg = document.getElementById('menu-icon-img');
-    const popup = document.getElementById('credits-popup');
-    const creditsButton = document.querySelector('.credits-button-sidebar');
-    const settingsPopup = document.getElementById('settings-popup');
-    const settingsButton = document.querySelector('.settings-button-sidebar');
-    if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
-      sidebar.classList.remove('open');
-      if (menuIconImg) {
-        menuIconImg.src = '../Images/Icons/menu.ico';
-        menuIconImg.alt = 'Menu';
+        document.body.classList.remove('sidebar-open');
+        document.body.style.overflow = '';
       }
     }
-    if (
-      popup &&
-      !popup.contains(event.target) &&
-      !creditsButton.contains(event.target) &&
-      !event.target.closest('.credits-button-sidebar')
-    ) {
-      hideCreditsPopup();
+    function showCreditsPopup(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const popup = document.getElementById('credits-popup');
+      popup.classList.add('show');
     }
-    if (
-      settingsPopup &&
-      !settingsPopup.contains(event.target) &&
-      !settingsButton.contains(event.target) &&
-      !event.target.closest('.settings-button-sidebar')
-    ) {
-      settingsPopup.style.display = 'none';
+    function hideCreditsPopup() {
+      const popup = document.getElementById('credits-popup');
+      popup.classList.remove('show');
     }
-  });
-  document.getElementById('sidebar').addEventListener('click', (event) => {
-    event.stopPropagation();
-  });
-  document.querySelector('.credits-button-sidebar').addEventListener('mouseenter', (event) => {
-    showCreditsPopup(event);
-  });
-  document.querySelector('.credits-popup').addEventListener('mouseleave', () => {
-    hideCreditsPopup();
-  });
-  const searchToggleBtn = document.getElementById('searchToggleBtn');
-  const searchContainer = document.getElementById('searchContainer');
-  const searchInput = document.getElementById('searchInput');
-  searchToggleBtn.addEventListener('click', () => {
-    searchContainer.classList.toggle('open');
-    if (searchContainer.classList.contains('open')) {
-      setTimeout(() => searchInput.focus(), 200);
-    } else {
-      searchInput.value = '';
-      searchTerm = '';
-      applyAndRender();
-    }
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === '/' && !searchContainer.classList.contains('open') && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-      e.preventDefault();
-      searchContainer.classList.add('open');
-      setTimeout(() => searchInput.focus(), 200);
-    }
-    if (e.key === 'Escape' && searchContainer.classList.contains('open')) {
-      searchContainer.classList.remove('open');
-      searchInput.value = '';
-      searchTerm = '';
-      applyAndRender();
-    }
-  });
-</script>
-<script>
-  const HATCHES_API = "https://bgsiapi.fytg.me/hatches";
-  let allHatches = [];
-  let filteredHatches = [];
-  let searchTerm = '';
-  const loadingEl = document.getElementById('loading');
-  const grid = document.getElementById('hatchGrid');
-  const publicBtn = document.getElementById('publicBtn');
-  searchInput.addEventListener('input', () => {
-    searchTerm = searchInput.value.trim().toLowerCase();
-    applyAndRender();
-  });
-  function getTimeAgo(ts) {
-    if (!ts) return '';
-    const now = Date.now();
-    const diff = Math.floor((now - new Date(ts).getTime()) / 1000);
-    if (diff < 60) return `${diff}s ago`;
-    const min = Math.floor(diff / 60);
-    if (min < 60) return `${min}m ago`;
-    const hr = Math.floor(min / 60);
-    if (hr < 24) return `${hr}h ago`;
-    const d = Math.floor(hr / 24);
-    return `${d}d ago`;
-  }
-  function isVerifiedHatch(hatch) {
-    const hatchedBy = hatch.hatchedBy || hatch.user || hatch.username || "";
-    const val = hatchedBy.trim().toLowerCase();
-    return !!val && val !== "unknown" && val !== "private user";
-  }
-  function applyAndRender() {
-    const verifiedOnly = publicBtn.classList.contains('active');
-    filteredHatches = allHatches.filter(h =>
-      (!verifiedOnly || isVerifiedHatch(h)) &&
-      (!searchTerm ||
-        ((h.name && h.name.toLowerCase().includes(searchTerm)) ||
-         (h.petName && h.petName.toLowerCase().includes(searchTerm)) ||
-         (h.hatchedBy && h.hatchedBy.toLowerCase().includes(searchTerm)) ||
-         (h.user && h.user.toLowerCase().includes(searchTerm)) ||
-         (h.username && h.username.toLowerCase().includes(searchTerm)))
-      )
-    );
-    let renderHatches = filteredHatches;
-    if (isMobile()) {
-      if (mobileLoadedCount === 0) mobileLoadedCount = MOBILE_BATCH_SIZE;
-      renderHatches = filteredHatches.slice(0, mobileLoadedCount);
-    }
-    grid.innerHTML = '';
-    if (renderHatches.length === 0) {
-      loadingEl.textContent = "No hatches found.";
-      loadingEl.style.display = "block";
-      grid.style.display = "none";
-    } else {
-      loadingEl.style.display = "none";
-      grid.style.display = "grid";
-      renderBatch(renderHatches);
-    }
-    let loadMoreBtn = document.getElementById('load-more-hatches');
-    if (isMobile() && renderHatches.length < filteredHatches.length) {
-      if (!loadMoreBtn) {
-        loadMoreBtn = document.createElement('button');
-        loadMoreBtn.id = 'load-more-hatches';
-        loadMoreBtn.textContent = 'Load more';
-        loadMoreBtn.style = 'margin: 24px auto 32px auto; display: block; font-size: 1.1rem; background: #fdffb6; color: #222; border-radius: 8px; border: none; padding: 10px 28px; font-weight: bold; cursor: pointer;';
-        loadMoreBtn.onclick = function() {
-          mobileLoadedCount += MOBILE_BATCH_SIZE;
-          applyAndRender();
-        };
-        grid.parentNode.appendChild(loadMoreBtn);
+    function toggleSettingsPopup(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const popup = document.getElementById('settings-popup');
+      if (popup.style.display === 'block') {
+        popup.style.display = 'none';
+      } else {
+        popup.style.display = 'block';
       }
-      loadMoreBtn.style.display = 'block';
-    } else if (loadMoreBtn) {
-      loadMoreBtn.style.display = 'none';
     }
-  }
-  let isFirstLoad = true;
-  let lastHatchIds = [];
-  let isLoadingMore = false;
-  let lastLoadedId = null;
-  function renderBatch(hatches) {
-    grid.classList.remove('fading');
-    for (const hatch of hatches) {
+    function setFont(font) {
+      let fontFamily;
+      switch (font) {
+        case 'Lato':
+          fontFamily = 'Lato, Arial, Helvetica, sans-serif';
+          break;
+        case 'Roboto':
+          fontFamily = 'Roboto, Arial, Helvetica, sans-serif';
+          break;
+        case 'Lexend':
+          fontFamily = 'Lexend, Arial, Helvetica, sans-serif';
+          break;
+        case 'Helvetica':
+          fontFamily = 'Helvetica, Arial, sans-serif';
+          break;
+        case 'Comic Sans MS':
+          fontFamily = 'Comic Sans MS, Arial, Helvetica, sans-serif';
+          break;
+        case 'Arial':
+        default:
+          fontFamily = 'Arial, Helvetica, sans-serif';
+      }
+      document.body.style.fontFamily = fontFamily;
+      localStorage.setItem('selectedFont', font);
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const fontSelect = document.getElementById('font-select');
+      if (fontSelect) {
+        const savedFont = localStorage.getItem('selectedFont') || 'Arial';
+        fontSelect.value = savedFont;
+        setFont(savedFont);
+        fontSelect.addEventListener('change', function() {
+          setFont(this.value);
+        });
+      }
+      const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
+      setTheme(savedTheme);
+      if (!localStorage.getItem('selectedTheme')) {
+        setTheme('dark');
+      }
+    });
+    function setTheme(theme) {
+      document.body.className = theme === 'dark' ? 'theme-dark' : 'theme-purple';
+      localStorage.setItem('selectedTheme', theme);
+      document.querySelectorAll('.theme-circle').forEach(circle => circle.classList.remove('selected'));
+      const selectedCircle = document.getElementById(`theme-${theme}`);
+      if (selectedCircle) {
+        selectedCircle.classList.add('selected');
+      }
+      const root = document.documentElement;
+      if (theme === 'dark') {
+        root.style.setProperty('--main-bg', '#1212121');
+        root.style.setProperty('--main-bg-accent', '#2a2a2a');
+        root.style.setProperty('--main-bg-accent2', '#3a3a3a');
+        root.style.setProperty('--main-text', '#e0e0e0');
+        root.style.setProperty('--container-bg', '#1e1e1e');
+        root.style.setProperty('--container-border', '#2a2a2a');
+        root.style.setProperty('--table-bg', '#2a2a2a');
+        root.style.setProperty('--table-th-bg', '#1e1e1e');
+        root.style.setProperty('--table-td-bg', '#1e1e1e');
+        root.style.setProperty('--table-border', '#3a3a3a');
+        root.style.setProperty('--egg-card-bg', '#2a2a2a');
+        root.style.setProperty('--egg-header-bg', '#1e1e1e');
+        root.style.setProperty('--controls-bg', '#1e1e1e');
+        root.style.setProperty('--sidebar-bg', '#1e1e1e');
+        root.style.setProperty('--sidebar-header-bg', '#2a2a2a');
+        root.style.setProperty('--credits-bg', '#1e1e1e');
+        root.style.setProperty('--settings-bg', '#1e1e1e');
+        root.style.setProperty('--popup-bg', 'rgba(30,30,30,0.98)');
+      } else {
+        root.style.setProperty('--main-bg', '#2e003e');
+        root.style.setProperty('--main-bg-accent', '#3c005d');
+        root.style.setProperty('--main-bg-accent2', '#4a006b');
+        root.style.setProperty('--main-text', '#fff');
+        root.style.setProperty('--container-bg', '#18101c');
+        root.style.setProperty('--container-border', '#2e003e');
+        root.style.setProperty('--table-bg', '#5b0077');
+        root.style.setProperty('--table-th-bg', '#450056');
+        root.style.setProperty('--table-td-bg', '#450056');
+        root.style.setProperty('--table-border', '#5e0081');
+        root.style.setProperty('--egg-card-bg', '#3c005d');
+        root.style.setProperty('--egg-header-bg', '#4a006b');
+        root.style.setProperty('--controls-bg', '#4a006b');
+        root.style.setProperty('--sidebar-bg', '#4a006b');
+        root.style.setProperty('--sidebar-header-bg', '#32004d');
+        root.style.setProperty('--credits-bg', '#4a006b');
+        root.style.setProperty('--settings-bg', '#4a006b');
+        root.style.setProperty('--popup-bg', 'rgba(40,0,60,0.98)');
+      }
+    }
+    function animateThemeSwitch(theme) {
+      const overlay = document.getElementById('theme-overlay');
+      if (!overlay) {
+        setTheme(theme);
+        return;
+      }
+      overlay.style.transition = "opacity .36s cubic-bezier(.4,0,.2,1)";
+      overlay.style.background = getComputedStyle(document.documentElement).getPropertyValue('--main-bg') || overlay.style.background;
+      overlay.style.opacity = '1';
+      setTimeout(() => {
+        setTheme(theme);
+        overlay.style.background = getComputedStyle(document.documentElement).getPropertyValue('--main-bg') || overlay.style.background;
+        requestAnimationFrame(() => { overlay.style.opacity = '0'; });
+      }, 120);
+    }
+    document.querySelector('.credits-button-sidebar').addEventListener('mouseenter', showCreditsPopup);
+    document.querySelector('.credits-popup').addEventListener('mouseleave', hideCreditsPopup);
+    document.getElementById('settings-close-btn').addEventListener('click', function() {
+      document.getElementById('settings-popup').style.display = 'none';
+    });
+    const exhaustedQueries = {};
+    function getQueryKey(isApi = isApiSearch, username = apiSearchUsername) {
+      if (isApi) {
+        if (!username) return 'api:empty';
+        if (username.startsWith('@')) return `user:${username.replace(/^@/, '')}`;
+        return `pet:${username}`;
+      }
+      return showVerifiedOnly ? 'main:verified' : 'main';
+    }
+    function clearExhaustedForKey(key) {
+      if (!key) return;
+      delete exhaustedQueries[key];
+    }
+    function markQueryActive(key) {
+      if (!key) return;
+      exhaustedQueries[key] = false;
+    }
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const grid = document.getElementById('hatchGrid');
+    const loadingEl = document.getElementById('loading');
+    const publicBtn = document.getElementById('publicBtn');
+    let allHatches = [];
+    let filteredHatches = [];
+    let searchTerm = '';
+    let isApiSearch = false;
+    let apiSearchUsername = '';
+    let showVerifiedOnly = false;
+    let fetchInterval = null;
+    let isLoadingMore = false;
+    let lastLoadedId = null;
+    let isInitialLoading = false;
+    let hasLoadedOnce = false;
+
+    function getTimeAgo(ts) {
+      if (!ts) return '';
+      const now = Date.now();
+      const diff = Math.floor((now - new Date(ts).getTime()) / 1000);
+      if (diff < 60) return `${diff}s ago`;
+      const min = Math.floor(diff / 60);
+      if (min < 60) return `${min}m ago`;
+      const hr = Math.floor(min / 60);
+      if (hr < 24) return `${hr}h ago`;
+      const d = Math.floor(hr / 24);
+      return `${d}d ago`;
+    }
+    function getFullTimeAgo(ts) {
+      if (!ts) return '';
+      const now = Date.now();
+      let diff = Math.floor((now - new Date(ts).getTime()) / 1000);
+      const months = Math.floor(diff / (30 * 24 * 60 * 60));
+      diff -= months * 30 * 24 * 60 * 60;
+      const days = Math.floor(diff / (24 * 60 * 60));
+      diff -= days * 24 * 60 * 60;
+      const hours = Math.floor(diff / (60 * 60));
+      diff -= hours * 60 * 60;
+      const minutes = Math.floor(diff / 60);
+      const seconds = diff % 60;
+      let parts = [];
+      if (months) parts.push(`${months}mo`);
+      if (days) parts.push(`${days}d`);
+      if (hours) parts.push(`${hours}h`);
+      if (minutes) parts.push(`${minutes}m`);
+      parts.push(`${seconds}s`);
+      return parts.join(' ') + ' ago';
+    }
+    function createHatchCard(hatch) {
       const petImg = hatch.imageUrl || hatch.petImage || hatch.icon || "/Images/Icons/egg.ico";
       const petName = hatch.name || hatch.petName || "Unknown";
       const hatchedBy = hatch.hatchedBy || hatch.user || hatch.username || "Unknown";
       const rarity = hatch.rarity || hatch.petRarity || "Unknown";
       const totalHatched = hatch.totalHatched ?? hatch.count ?? "Unknown";
-      const isShiny = hatch.shiny || hatch.isShiny;
-      const isMythic = hatch.mythic || hatch.isMythic;
       const card = document.createElement('article');
-      card.className = 'hatch-card' + (isShiny ? ' shiny' : '') + (isMythic ? ' mythic' : '');
+      card.className = 'hatch-card';
       card.innerHTML = `
         <img class="pet" src="${petImg}" alt="${petName}">
         <div class="hatch-info">
           <div class="hatch-name">
             ${petName}
             <span class="timestamp" data-ts="${hatch.timestamp || ''}">
-              <img src="../Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;">
+              <img src="/Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;">
               ${getTimeAgo(hatch.timestamp)}
             </span>
           </div>
           <div class="hatch-details">
             <div class="detail-line">
-              <img src="../Images/Icons/paw.png" alt="Exists">
+              <img src="/Images/Icons/paw.png" alt="Exists">
               <span class="label">Exists:</span>
               <span class="value">${totalHatched}</span>
             </div>
             <div class="detail-line">
-              <img src="../Images/Icons/luck.png" alt="Pet Rarity">
+              <img src="/Images/Icons/luck.png" alt="Pet Rarity">
               <span class="label">Pet Rarity:</span>
               <span class="value">${rarity}</span>
             </div>
             <div class="detail-line">
-              <img src="../Images/Icons/user.png" alt="Hatched By">
+              <img src="/Images/Icons/user.png" alt="Hatched By">
               <span class="label">Hatched By:</span>
               <span class="value">${hatchedBy}</span>
+            </div>
+            <div class="pet-img-warning-text" style="display:none;color:#fdffb6;font-size:0.98em;margin-top:4px;">
+              <img src="../Images/Icons/warning.ico" alt="Warning" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;">
+              Pet image didn't load due to discord's cdn
             </div>
           </div>
         </div>
       `;
-      grid.appendChild(card);
+      const img = card.querySelector('.pet');
+      const warnText = card.querySelector('.pet-img-warning-text');
+      let triedFytg = false;
+      let triedDoggy = false;
+      img.onerror = function () {
+        if (!triedFytg && petName && petName !== "Unknown") {
+          triedFytg = true;
+          img.src = "https://cdn.fytg.me/" + encodeURIComponent(petName.replace(/\s+/g, "-")) + ".png";
+          return;
+        }
+        if (!triedDoggy) {
+          triedDoggy = true;
+          img.src = "https://static.wikia.nocookie.net/bgs-infinity/images/0/09/Doggy.png";
+          if (warnText) warnText.style.display = "block";
+        }
+      };
+      return card;
     }
-    if (hatches.length > 0) {
-      lastLoadedId = hatches[hatches.length - 1].id;
-    }
-  }
-  async function fetchHatches() {
-    if (!isFirstLoad) {
-      grid.classList.add('fading');
-    }
-    try {
-      const url = showVerifiedOnly
-        ? "https://bgsiapi.fytg.me/hatches?verified"
-        : "https://bgsiapi.fytg.me/hatches";
-      const res = await fetch(url);
-      if (res.status === 429) {
-        loadingEl.textContent = "Api is rate limited, please wait";
-        loadingEl.style.display = "block";
-        return;
+    function renderBatch(hatches) {
+      grid.classList.remove('fading');
+      grid.innerHTML = '';
+      const sorted = [...hatches].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      for (const hatch of sorted) {
+        grid.appendChild(createHatchCard(hatch));
       }
-      if (!res.ok) {
-        loadingEl.textContent = "Api isnt respoding, if it doesnt work for a longer time, its down";
-        loadingEl.style.display = "block";
-        return;
+      if (sorted.length > 0) {
+        lastLoadedId = sorted[sorted.length - 1].id;
       }
-      loadingEl.style.display = "none";
-      const text = await res.text();
-      let data;
+    }
+    function appendHatches(newHatches) {
+      if (!Array.isArray(newHatches) || newHatches.length === 0) return;
+      const sortedNew = [...newHatches].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      for (const hatch of sortedNew) {
+        grid.appendChild(createHatchCard(hatch));
+      }
+      lastLoadedId = sortedNew[sortedNew.length - 1].id;
+    }
+    function prependHatches(newHatches) {
+      if (!Array.isArray(newHatches) || newHatches.length === 0) return;
+      const sortedNew = [...newHatches].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      // Save scroll position relative to the top of the grid
+      const gridRect = grid.getBoundingClientRect();
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const gridTop = gridRect.top + scrollTop;
+      const offset = scrollTop - gridTop;
+
+      for (const hatch of sortedNew) {
+        const card = createHatchCard(hatch);
+        grid.insertBefore(card, grid.firstChild);
+      }
+      allHatches = sortedNew.concat(allHatches);
+      filteredHatches = allHatches;
+      const allSorted = [...filteredHatches].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      lastLoadedId = allSorted[allSorted.length - 1]?.id || lastLoadedId;
+
+      // Restore scroll position so user doesn't get moved down
+      if (typeof offset === "number") {
+        const newGridRect = grid.getBoundingClientRect();
+        const newGridTop = newGridRect.top + (window.scrollY || window.pageYOffset);
+        window.scrollTo({ top: newGridTop + offset, behavior: 'auto' });
+      }
+    }
+    let bottomLoadingTimeout = null;
+    let bottomLoadingFadeTimeout = null;
+    let bottomLoadingEndTime = 0;
+    function showLoadingInfo(msg, { isLoadMore = false } = {}) {
+      if (isLoadMore && hasLoadedOnce) {
+        loadingEl.textContent = msg;
+        loadingEl.style.display = "block";
+        loadingEl.style.opacity = "1";
+        loadingEl.style.transition = "opacity 2s";
+        loadingEl.style.position = "fixed";
+        loadingEl.style.left = "50%";
+        loadingEl.style.bottom = "18px";
+        loadingEl.style.transform = "translateX(-50%)";
+        if (bottomLoadingTimeout) clearTimeout(bottomLoadingTimeout);
+        if (bottomLoadingFadeTimeout) clearTimeout(bottomLoadingFadeTimeout);
+        bottomLoadingEndTime = Date.now() + 6000;
+        function scheduleFade() {
+          const now = Date.now();
+          const msLeft = bottomLoadingEndTime - now;
+          if (msLeft <= 0) {
+            loadingEl.style.opacity = "0";
+            bottomLoadingFadeTimeout = setTimeout(() => {
+              loadingEl.style.display = "none";
+              loadingEl.style.opacity = "1";
+              loadingEl.style.transition = "";
+            }, 2000);
+          } else {
+            bottomLoadingTimeout = setTimeout(scheduleFade, msLeft);
+          }
+        }
+        scheduleFade();
+      } else {
+        loadingEl.textContent = msg;
+        loadingEl.style.display = "block";
+        loadingEl.style.opacity = "1";
+        loadingEl.style.transition = "";
+        loadingEl.style.position = "static";
+        loadingEl.style.left = "";
+        loadingEl.style.bottom = "";
+        loadingEl.style.transform = "";
+      }
+    }
+    function fadeOutLoadingEl() {
+      loadingEl.style.transition = "opacity 2s";
+      loadingEl.style.opacity = "0";
+      setTimeout(() => {
+        loadingEl.style.display = "none";
+        loadingEl.style.opacity = "1";
+        loadingEl.style.transition = "";
+      }, 2000);
+    }
+    async function fetchHatches() {
+      if (isInitialLoading || isLoadingMore) return;
+      isInitialLoading = true;
+      showLoadingInfo("Loading hatches…", { isLoadMore: false });
       try {
-        data = JSON.parse(text);
-        if (!Array.isArray(data)) throw new Error("Not an array");
-      } catch {
-        data = text
-          .split('\n')
-          .filter(line => line.trim().length > 0)
-          .map(line => {
-            try { return JSON.parse(line); } catch { return null; }
-          })
-          .filter(Boolean);
+        let url = "https://bgsiapi.fytg.me/hatches";
+        const val = searchInput.value.trim();
+        let params = [];
+        if (val) {
+          if (val.startsWith('@')) {
+            params.push("username=" + encodeURIComponent(val.slice(1)));
+          } else {
+            params.push("pet=" + encodeURIComponent(val));
+          }
+        }
+        if (showVerifiedOnly) params.push("verified");
+        if (params.length > 0) url += "?" + params.join("?");
+        const res = await fetch(url);
+        if (!res.ok) {
+          if (res.status === 429) {
+            showLoadingInfo("API is rate limited.", { isLoadMore: false });
+          } else {
+            showLoadingInfo("API didn't respond, please wait. If it doesn't work, API is down.", { isLoadMore: false });
+          }
+          isInitialLoading = false;
+          return;
+        }
+        let data = await res.json();
+        if (!Array.isArray(data)) data = [];
+        data = data.slice();
+        if (data.length > 1 && new Date(data[0].timestamp) < new Date(data[data.length - 1].timestamp)) {
+          data = data.reverse();
+        }
+        const existingIds = new Set(allHatches.map(h => h.id));
+        const newHatches = data.filter(h => h && !existingIds.has(h.id));
+        if (allHatches.length === 0) {
+          allHatches = data;
+          filteredHatches = allHatches;
+          grid.innerHTML = '';
+          if (filteredHatches.length > 0) {
+            renderBatch(filteredHatches);
+          }
+          hasLoadedOnce = true;
+        } else if (newHatches.length > 0) {
+          prependHatches(newHatches);
+        }
+        if (filteredHatches.length === 0) {
+          showLoadingInfo("No hatches found.", { isLoadMore: false });
+          grid.style.display = "none";
+        } else {
+          fadeOutLoadingEl();
+          grid.style.display = "grid";
+        }
+      } catch (e) {
+        showLoadingInfo("API didn't respond, please wait. If it doesn't work, API is down.", { isLoadMore: false });
+      } finally {
+        isInitialLoading = false;
       }
-      allHatches = data;
-      allHatches.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-      const newIds = allHatches.slice(0, 20).map(h => h.id).join(',');
-      if (!isFirstLoad && newIds !== lastHatchIds.join(',')) {
-        grid.classList.add('fading');
-        setTimeout(() => {
-          applyAndRender();
-          grid.classList.remove('fading');
-        }, 250);
-      } else if (isFirstLoad) {
-        applyAndRender();
+    }
+    async function fetchHatchesByPet(petName, after = null, append = false) {
+      showLoadingInfo("Loading hatches…", { isLoadMore: !!after });
+      if (!append) grid.innerHTML = "";
+      try {
+        let url = `https://bgsiapi.fytg.me/hatches?pet=${encodeURIComponent(petName)}`;
+        if (publicBtn.classList.contains('active')) url += "?verified";
+        if (after) url += "?after=" + encodeURIComponent(after);
+        const res = await fetch(url);
+        if (!res.ok) {
+          if (res.status === 429) {
+            showLoadingInfo("API is rate limited.", { isLoadMore: !!after });
+          } else {
+            showLoadingInfo("API didn't respond, please wait. If it doesn't work, API is down.", { isLoadMore: !!after });
+          }
+          return;
+        }
+        const data = await res.json();
+        if (append) {
+          const existingIds = new Set(allHatches.map(h => h.id));
+          const newHatches = Array.isArray(data) ? data.filter(h => !existingIds.has(h.id)) : [];
+          const key = getQueryKey(true, petName);
+          if (Array.isArray(data) && data.length === 0) {
+            exhaustedQueries[key] = true;
+          } else {
+            exhaustedQueries[key] = false;
+          }
+          if (newHatches.length === 0) {
+            showLoadingInfo("No more hatches found", { isLoadMore: true });
+            return;
+          }
+          allHatches = allHatches.concat(newHatches);
+          filteredHatches = allHatches;
+          appendHatches(newHatches);
+        } else {
+          exhaustedQueries[getQueryKey(true, petName)] = false;
+          allHatches = Array.isArray(data) ? data : [];
+          filteredHatches = allHatches;
+          grid.innerHTML = '';
+          if (filteredHatches.length > 0) renderBatch(filteredHatches);
+          if (filteredHatches.length === 0) {
+            showLoadingInfo("No hatches found.", { isLoadMore: false });
+            grid.style.display = "none";
+          } else {
+            fadeOutLoadingEl();
+            grid.style.display = "grid";
+          }
+        }
+      } catch (e) {
+        showLoadingInfo("API didn't respond, please wait. If it doesn't work, API is down.", { isLoadMore: !!after });
+        if (!append) grid.innerHTML = "";
       }
-      lastHatchIds = allHatches.slice(0, 20).map(h => h.id);
-      isFirstLoad = false;
-    } catch (e) {
-      loadingEl.textContent = "Api isnt respoding, if it doesnt work for a longer time, its down";
-      loadingEl.style.display = "block";
     }
-  }
-  let showVerifiedOnly = false;
-  publicBtn.addEventListener('click', () => {
-    showVerifiedOnly = !showVerifiedOnly;
-    publicBtn.classList.toggle('active', showVerifiedOnly);
-    if (showVerifiedOnly) {
-      publicBtn.style.background = "#fdffb6";
-      publicBtn.style.color = "#222";
-    } else {
-      publicBtn.style.background = "var(--sidebar-header-bg)";
-      publicBtn.style.color = "var(--main-text)";
+    async function fetchHatchesByUsername(username, after = null, append = false) {
+      showLoadingInfo("Loading hatches…", { isLoadMore: !!after });
+      if (!append) grid.innerHTML = "";
+      try {
+        let url = `https://bgsiapi.fytg.me/hatches?username=${encodeURIComponent(username)}`;
+        if (publicBtn.classList.contains('active')) url += "?verified";
+        if (after) url += "?after=" + encodeURIComponent(after);
+        const res = await fetch(url);
+        if (!res.ok) {
+          if (res.status === 429) {
+            showLoadingInfo("API is rate limited.", { isLoadMore: !!after });
+          } else {
+            showLoadingInfo("API didn't respond, please wait. If it doesn't work, API is down.", { isLoadMore: !!after });
+          }
+          return;
+        }
+        const data = await res.json();
+        if (append) {
+          const existingIds = new Set(allHatches.map(h => h.id));
+          const newHatches = Array.isArray(data) ? data.filter(h => !existingIds.has(h.id)) : [];
+          const key = getQueryKey(true, username);
+          if (Array.isArray(data) && data.length === 0) {
+            exhaustedQueries[key] = true;
+          } else {
+            exhaustedQueries[key] = false;
+          }
+          if (newHatches.length === 0) {
+            showLoadingInfo("No more hatches found", { isLoadMore: true });
+            return;
+          }
+          allHatches = allHatches.concat(newHatches);
+          filteredHatches = allHatches;
+          appendHatches(newHatches);
+        } else {
+          exhaustedQueries[getQueryKey(true, username)] = false;
+          allHatches = Array.isArray(data) ? data : [];
+          filteredHatches = allHatches;
+          grid.innerHTML = '';
+          if (filteredHatches.length > 0) renderBatch(filteredHatches);
+          if (filteredHatches.length === 0) {
+            showLoadingInfo("No hatches found.", { isLoadMore: false });
+            grid.style.display = "none";
+          } else {
+            fadeOutLoadingEl();
+            grid.style.display = "grid";
+          }
+        }
+      } catch (e) {
+        showLoadingInfo("API didn't respond, please wait. If it doesn't work, API is down.", { isLoadMore: !!after });
+        if (!append) grid.innerHTML = "";
+      }
     }
-    fetchHatches();
-  });
-  fetchHatches();
-  setInterval(fetchHatches, 7000);
-  setInterval(() => {
-    document.querySelectorAll('.timestamp').forEach(el => {
-      if (el !== hoverTimestamp) {
-        el.innerHTML = `<img src="../Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;"> ${getTimeAgo(el.dataset.ts)}`;
+    async function fetchHatches() {
+      if (isInitialLoading || isLoadingMore) return;
+      isInitialLoading = true;
+      showLoadingInfo("Loading hatches…", { isLoadMore: false });
+      try {
+        let url = "https://bgsiapi.fytg.me/hatches";
+        const val = searchInput.value.trim();
+        let params = [];
+        if (val) {
+          if (val.startsWith('@')) {
+            params.push("username=" + encodeURIComponent(val.slice(1)));
+          } else {
+            params.push("pet=" + encodeURIComponent(val));
+          }
+        }
+        if (showVerifiedOnly) params.push("verified");
+        if (params.length > 0) url += "?" + params.join("?");
+        const res = await fetch(url);
+        if (!res.ok) {
+          if (res.status === 429) {
+            showLoadingInfo("API is rate limited.", { isLoadMore: false });
+          } else {
+            showLoadingInfo("API didn't respond, please wait. If it doesn't work, API is down.", { isLoadMore: false });
+          }
+          isInitialLoading = false;
+          return;
+        }
+        let data = await res.json();
+        if (!Array.isArray(data)) data = [];
+        data = data.slice();
+        if (data.length > 1 && new Date(data[0].timestamp) < new Date(data[data.length - 1].timestamp)) {
+          data = data.reverse();
+        }
+        const existingIds = new Set(allHatches.map(h => h.id));
+        const newHatches = data.filter(h => h && !existingIds.has(h.id));
+        if (allHatches.length === 0) {
+          allHatches = data;
+          filteredHatches = allHatches;
+          grid.innerHTML = '';
+          if (filteredHatches.length > 0) {
+            renderBatch(filteredHatches);
+          }
+          hasLoadedOnce = true;
+        } else if (newHatches.length > 0) {
+          prependHatches(newHatches);
+        }
+        if (filteredHatches.length === 0) {
+          showLoadingInfo("No hatches found.", { isLoadMore: false });
+          grid.style.display = "none";
+        } else {
+          fadeOutLoadingEl();
+          grid.style.display = "grid";
+        }
+      } catch (e) {
+        showLoadingInfo("API didn't respond, please wait. If it doesn't work, API is down.", { isLoadMore: false });
+      } finally {
+        isInitialLoading = false;
+      }
+    }
+    searchBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      allHatches = [];
+      filteredHatches = [];
+      lastLoadedId = null;
+      isApiSearch = false;
+      const val = searchInput.value.trim();
+      // Hide verified button if username search, show otherwise
+      if (val.startsWith('@')) {
+        publicBtn.style.display = "none";
+        publicBtn.classList.remove('active');
+        showVerifiedOnly = false;
+      } else {
+        publicBtn.style.display = "";
+      }
+      fetchHatches();
+    });
+    searchInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        searchBtn.click();
       }
     });
-  }, 1000);
-  function getFullTimeAgo(ts) {
-    if (!ts) return '';
-    const now = Date.now();
-    let diff = Math.floor((now - new Date(ts).getTime()) / 1000);
-    const months = Math.floor(diff / (30 * 24 * 60 * 60));
-    diff -= months * 30 * 24 * 60 * 60;
-    const days = Math.floor(diff / (24 * 60 * 60));
-    diff -= days * 24 * 60 * 60;
-    const hours = Math.floor(diff / (60 * 60));
-    diff -= hours * 60 * 60;
-    const minutes = Math.floor(diff / 60);
-    const seconds = diff % 60;
-    let parts = [];
-    if (months) parts.push(`${months}mo`);
-    if (days) parts.push(`${days}d`);
-    if (hours) parts.push(`${hours}h`);
-    if (minutes) parts.push(`${minutes}m`);
-    parts.push(`${seconds}s`);
-    return parts.join(' ') + ' ago';
-  }
-  let hoverTimestamp = null;
-  let hoverInterval = null;
-  setInterval(() => {
-    document.querySelectorAll('.timestamp').forEach(el => {
-      if (el !== hoverTimestamp) {
-        el.innerHTML = `<img src="../Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;"> ${getTimeAgo(el.dataset.ts)}`;
+    // Also, when editing the input, show/hide the button live
+    searchInput.addEventListener('input', function () {
+      const val = searchInput.value.trim();
+      if (val.startsWith('@')) {
+        publicBtn.style.display = "none";
+      } else {
+        publicBtn.style.display = "";
+      }
+      // If input is cleared, reset results to default (no search)
+      if (!val) {
+        allHatches = [];
+        filteredHatches = [];
+        lastLoadedId = null;
+        isApiSearch = false;
+        fetchHatches();
       }
     });
-  }, 1000);
-  function showFullTimeAgo(el) {
-    if (!el) return;
-    if (!el.hasAttribute('data-orig')) {
-      el.setAttribute('data-orig', el.innerHTML);
-    }
-    function updateFull() {
-      el.innerHTML = `<img src="../Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;"> ${getFullTimeAgo(el.dataset.ts)}`;
-    }
-    updateFull();
-    hoverInterval = setInterval(updateFull, 1000);
-  }
-  function hideFullTimeAgo(el) {
-    if (!el || !el.hasAttribute('data-orig')) return;
-    el.innerHTML = el.getAttribute('data-orig');
-    el.removeAttribute('data-orig');
-    if (hoverInterval) {
-      clearInterval(hoverInterval);
-      hoverInterval = null;
-    }
-  }
-  document.addEventListener('mouseenter', function(e) {
-    const el = e.target.closest('.timestamp');
-    if (el && hoverTimestamp !== el) {
-      hoverTimestamp = el;
-      showFullTimeAgo(el);
-    }
-  }, true);
-  document.addEventListener('mouseleave', function(e) {
-    const el = e.target.closest('.timestamp');
-    if (el && hoverTimestamp === el) {
-      hideFullTimeAgo(el);
-      hoverTimestamp = null;
-    }
-  }, true);
-  (function() {
-    const path = window.location.pathname.replace(/\/+$/, "");
-    const calcLink = document.getElementById('sidebar-calc-link');
-    const hatchesLink = document.getElementById('sidebar-hatches-link');
-    if (path.endsWith('/hatches') || path.endsWith('/hatches.html')) {
-      hatchesLink.classList.add('active');
-      hatchesLink.setAttribute('aria-current', 'page');
-    } else {
-      calcLink.classList.add('active');
-      calcLink.setAttribute('aria-current', 'page');
-    }
-  })();
-  window.addEventListener('scroll', async function () {
-    if (isLoadingMore) return;
-    if (filteredHatches.length < 12) return;
-    const scrollY = window.scrollY || window.pageYOffset;
-    const viewport = window.innerHeight;
-    const fullHeight = document.body.offsetHeight;
-    if (scrollY + viewport > fullHeight - 200) {
+    // --- FIX LOAD MORE: Support pet and username search for load more ---
+    async function loadMoreHatches() {
+      if (isInitialLoading || isLoadingMore) return; // Prevent load more during initial/search load or another load more
+      const mainKey = getQueryKey(false, '');
+      if (exhaustedQueries[mainKey]) return;
+      if (!lastLoadedId) return;
       isLoadingMore = true;
-      await loadMoreHatches();
-      isLoadingMore = false;
-    }
-  });
-  async function loadMoreHatches() {
-    if (!lastLoadedId) return;
-    loadingEl.style.display = "block";
-    let url = "https://bgsiapi.fytg.me/hatches?after=" + encodeURIComponent(lastLoadedId);
-    if (showVerifiedOnly) url += "&verified";
-    try {
-      const res = await fetch(url);
-      if (!res.ok) return;
-      const text = await res.text();
-      let data;
-      try {
-        data = JSON.parse(text);
-        if (!Array.isArray(data)) throw new Error("Not an array");
-      } catch {
-        data = text
-          .split('\n')
-          .filter(line => line.trim().length > 0)
-          .map(line => {
-            try { return JSON.parse(line); } catch { return null; }
-          })
-          .filter(Boolean);
+      showLoadingInfo("Loading hatches…", { isLoadMore: true });
+      let url = "https://bgsiapi.fytg.me/hatches";
+      const val = searchInput.value.trim();
+      let params = [];
+      if (val) {
+        if (val.startsWith('@')) {
+          params.push("username=" + encodeURIComponent(val.slice(1)));
+        } else {
+          params.push("pet=" + encodeURIComponent(val));
+        }
       }
-      if (data.length === 0) return;
-      allHatches = allHatches.concat(data);
-      allHatches.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-      applyAndRender();
-      loadingEl.style.display = "none";
-    } catch (e) {
-      loadingEl.style.display = "none";
+      params.push("after=" + encodeURIComponent(lastLoadedId));
+      if (showVerifiedOnly) params.push("verified");
+      if (params.length > 0) url += "?" + params.join("?");
+      try {
+        const res = await fetch(url);
+        if (!res.ok) {
+          if (res.status === 429) {
+            showLoadingInfo("API is rate limited.", { isLoadMore: true });
+          } else {
+            showLoadingInfo("API didn't respond, please wait. If it doesn't work, API is down.", { isLoadMore: true });
+          }
+          isLoadingMore = false;
+          return;
+        }
+        let data = await res.json();
+        if (!Array.isArray(data) || data.length === 0) {
+          exhaustedQueries[mainKey] = true;
+          showLoadingInfo("No more hatches found", { isLoadMore: true });
+          isLoadingMore = false;
+          return;
+        }
+        const existingIds = new Set(allHatches.map(h => h.id));
+        const newHatches = data.filter(h => h && !existingIds.has(h.id));
+        if (newHatches.length === 0) {
+          showLoadingInfo("No more hatches found", { isLoadMore: true });
+          isLoadingMore = false;
+          return;
+        }
+        allHatches = allHatches.concat(newHatches);
+        filteredHatches = allHatches;
+        appendHatches(newHatches);
+        const allSorted = [...filteredHatches].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        lastLoadedId = allSorted[allSorted.length - 1]?.id || lastLoadedId;
+        // Fade out the bottom loading message
+        loadingEl.style.transition = "opacity 2s";
+        loadingEl.style.opacity = "0";
+        setTimeout(() => {
+          loadingEl.style.display = "none";
+          loadingEl.style.opacity = "1";
+          loadingEl.style.transition = "";
+        }, 2000);
+      } catch (e) {
+        showLoadingInfo("API didn't respond, please wait. If it doesn't work, API is down.", { isLoadMore: true });
+      } finally {
+        isLoadingMore = false;
+      }
     }
-  }
-  function isMobile() {
-    return window.innerWidth <= 600;
-  }
-  let mobileLoadedCount = 0;
-  const MOBILE_BATCH_SIZE = 12;
-  window.addEventListener('resize', function() {
-    if (isMobile()) {
-      mobileLoadedCount = MOBILE_BATCH_SIZE;
-      applyAndRender();
+    // --- Update scroll event to always use loadMoreHatches ---
+    window.addEventListener('scroll', async function () {
+      if (
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 400 &&
+        !isLoadingMore &&
+        !isInitialLoading &&
+        allHatches.length > 0 &&
+        hasLoadedOnce
+      ) {
+        if (loadingEl.style.display === "block" && loadingEl.style.position === "fixed") {
+          showLoadingInfo("Loading hatches…", { isLoadMore: true });
+        }
+        await loadMoreHatches();
+      }
+    });
+    function startAutoFetch() {
+      clearInterval(fetchInterval);
+      fetchHatches();
+      fetchInterval = setInterval(() => {
+        if (!isInitialLoading && !isLoadingMore) {
+          fetchHatches();
+        }
+      }, 7000);
+    }
+    // --- Initial load ---
+    startAutoFetch();
+    publicBtn.addEventListener('click', function () {
+      showVerifiedOnly = !showVerifiedOnly;
+      publicBtn.classList.toggle('active', showVerifiedOnly);
+      // Clear exhausted queries so infinite scroll works with new filter
+      Object.keys(exhaustedQueries).forEach(k => delete exhaustedQueries[k]);
+      // Reset state and reload
+      allHatches = [];
+      filteredHatches = [];
+      lastLoadedId = null;
+      // If searching for a pet, re-run the pet search with verified filter
+      const val = searchInput.value.trim();
+      if (isApiSearch && val && !val.startsWith('@')) {
+        fetchHatchesByPet(val);
+      } else if (!isApiSearch) {
+        fetchHatches();
+      }
+      // (If username search, do nothing: verified is hidden anyway)
+    });
+    // --- Timer update for all .timestamp elements every 1s, including hover ---
+setInterval(() => {
+  document.querySelectorAll('.timestamp').forEach(el => {
+    const ts = el.dataset.ts;
+    if (!ts) return;
+    // If being hovered (data-hover), show full time, else show short time
+    if (el.getAttribute('data-hover') === '1') {
+      el.innerHTML = `<img src="../Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;"> ${getFullTimeAgo(ts)}`;
     } else {
-      mobileLoadedCount = 0;
-      applyAndRender();
+      el.innerHTML = `<img src="../Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;"> ${getTimeAgo(ts)}`;
     }
   });
-  searchInput.addEventListener('input', () => {
-    mobileLoadedCount = isMobile() ? MOBILE_BATCH_SIZE : 0;
-    searchTerm = searchInput.value.trim().toLowerCase();
-    applyAndRender();
+}, 1000);
+
+// --- Hover logic for .timestamp elements ---
+document.addEventListener('mouseover', function (e) {
+  const el = e.target.closest('.timestamp');
+  if (!el) return;
+  el.setAttribute('data-hover', '1');
+  // Immediate update to full time
+  const ts = el.dataset.ts;
+  if (ts) {
+    el.innerHTML = `<img src="../Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;"> ${getFullTimeAgo(ts)}`;
+  }
+});
+document.addEventListener('mouseout', function (e) {
+  const el = e.target.closest('.timestamp');
+  if (!el) return;
+  el.removeAttribute('data-hover');
+  // Immediate update to short time
+  const ts = el.dataset.ts;
+  if (ts) {
+    el.innerHTML = `<img src="../Images/Icons/clock.png" alt="Time" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;"> ${getTimeAgo(ts)}`;
+  }
+});
+
+// --- Typewriter effect for search bar ---
+const typewriterExamples = [
+  "Doggy",
+  "@schiedamwikto",
+  "Giant Pearl",
+  "@Dortik98CZ"
+];
+let typewriterIndex = 0;
+let typewriterChar = 0;
+let typewriterTimeout = null;
+let typewriterErasing = false;
+
+function runTypewriter() {
+  const input = document.getElementById('searchInput');
+  if (!input) return;
+  // Only run if input is empty and not focused
+  if (document.activeElement === input || input.value.length > 0) {
+    typewriterTimeout = setTimeout(runTypewriter, 500);
+    return;
+  }
+  const current = typewriterExamples[typewriterIndex];
+  if (!typewriterErasing) {
+    input.setAttribute('placeholder', current.slice(0, typewriterChar + 1));
+    typewriterChar++;
+    if (typewriterChar < current.length) {
+      typewriterTimeout = setTimeout(runTypewriter, 80);
+    } else {
+      typewriterErasing = true;
+      typewriterTimeout = setTimeout(runTypewriter, 1200);
+    }
+  } else {
+    input.setAttribute('placeholder', current.slice(0, typewriterChar - 1));
+    typewriterChar--;
+    if (typewriterChar > 0) {
+      typewriterTimeout = setTimeout(runTypewriter, 40);
+    } else {
+      typewriterErasing = false;
+      typewriterIndex = (typewriterIndex + 1) % typewriterExamples.length;
+      typewriterTimeout = setTimeout(runTypewriter, 400);
+    }
+  }
+}
+
+// Pause typewriter on focus/input, resume on blur/empty
+const searchInputEl = document.getElementById('searchInput');
+if (searchInputEl) {
+  searchInputEl.addEventListener('focus', () => {
+    if (typewriterTimeout) clearTimeout(typewriterTimeout);
+    searchInputEl.setAttribute('placeholder', "Search by username or pet...");
   });
-  publicBtn.addEventListener('click', () => {
-    mobileLoadedCount = isMobile() ? MOBILE_BATCH_SIZE : 0;
+  searchInputEl.addEventListener('input', () => {
+    if (typewriterTimeout) clearTimeout(typewriterTimeout);
+    searchInputEl.setAttribute('placeholder', "Search by username or pet...");
   });
-</script>
+  searchInputEl.addEventListener('blur', () => {
+    if (!searchInputEl.value) {
+      typewriterChar = 0;
+      typewriterErasing = false;
+      typewriterTimeout = setTimeout(runTypewriter, 600);
+    }
+  });
+  // Start the effect
+  runTypewriter();
+}
+  </script>
 </body>
 </html>

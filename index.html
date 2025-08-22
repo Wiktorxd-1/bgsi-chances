@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BGSI Chance Calculator</title>
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Ferdoka+One&family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Lexend:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="menu-discord-wrapper" id="menu-discord-wrapper">
@@ -59,8 +59,6 @@
       <div class="eggs-area">
         <div class="search-bar-row" id="search-bar-row" style="display:flex;align-items:center;gap:8px;position:relative;">
           <input type="text" id="search-bar" class="egg-search-bar" placeholder="Search eggs or pets..." />
-          <img src="Images/Icons/warning.ico" id="search-warning-icon" style="width:22px;height:22px;cursor:pointer;opacity:0.85;" title="" />
-          <div id="search-warning-tooltip" style="display:none;position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);background:rgba(40,0,60,0.98);color:#fff;padding:7px 14px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.18);font-size:15px;white-space:nowrap;z-index:100;">Searching pets is currently broken</div>
         </div>
         <div id="egg-list" class="egg-list-grid"></div>
       </div>
@@ -132,6 +130,70 @@
       border-bottom: 2.5px solid #fff;
       text-decoration: none;
     }
+
+    .theme-options {
+      display: flex;
+      gap: 6px; 
+      margin-top: 8px;
+      align-items: center;
+      margin-bottom: 8px; 
+    }
+
+    .theme-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .24s ease, background .18s ease;
+      background: var(--controls-bg);
+      color: var(--main-text);
+      font-size: 0.85rem;
+      box-sizing: border-box;
+      padding: 6px;
+    }
+
+    .theme-circle:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+
+    .theme-circle.selected {
+      box-shadow:
+        0 0 0 3px rgba(253,255,182,0.16),
+        0 0 0 6px rgba(66,78,166,0.12);
+      transform: scale(1.03);
+      animation: theme-select-pulse .6s cubic-bezier(.2,.9,.3,1);
+    }
+
+    @keyframes theme-select-pulse {
+      0% { transform: scale(0.985); }
+      50% { transform: scale(1.04); }
+      100% { transform: scale(1.03); }
+    }
+
+    .theme-circle span {
+      display: none; 
+    }
+
+
+    body, .container, .sidebar, .egg-card, .hatch-card, .controls, .sidebar-link, .theme-circle, .menu-discord-wrapper, .world-icon-btn {
+      transition: background-color .34s ease, color .34s ease, box-shadow .28s ease, border-color .28s ease, transform .18s ease;
+    }
+
+
+    #theme-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      pointer-events: none;
+      background: var(--main-bg);
+      opacity: 0;
+      transition: opacity .36s ease;
+    }
     </style>
   </div>
   <div class="credits-popup" id="credits-popup">
@@ -159,17 +221,16 @@
     <h2 style="margin-right:24px;">Settings</h2>
     <label for="theme-select">Choose your preferred theme:</label>
     <div class="theme-options">
-      <div class="theme-circle" id="theme-dark" onclick="setTheme('dark')" title="Dark theme">
+      <div class="theme-circle" id="theme-dark" onclick="animateThemeSwitch('dark')" title="Dark theme">
         <span>Dark theme</span>
       </div>
-      <div class="theme-circle" id="theme-purple" onclick="setTheme('purple')" title="Purple (Legacy)">
+      <div class="theme-circle" id="theme-purple" onclick="animateThemeSwitch('purple')" title="Purple (Legacy)">
         <span>Purple (Legacy)</span>
       </div>
     </div>
-    <label for="font-select">Choose your preferred font:</label>
-    <select id="font-select">
+    <label for="font-select" style="margin-top:6px;margin-bottom:2px;display:block;">Choose your preferred font:</label>
+    <select id="font-select" style="margin-top:0;">
       <option value="Arial">Arial (Default)</option>
-      <option value="Ferdoka One">Ferdoka One</option>
       <option value="Lato">Lato</option>
       <option value="Roboto">Roboto</option>
       <option value="Comic Sans MS">Comic Sans MS</option>
@@ -182,18 +243,15 @@
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
       const menuIconImg = document.getElementById('menu-icon-img');
+      const discordInvite = document.querySelector('.discord-invite-under-menu');
       if (!menuIconImg) return;
       menuIconImg.classList.add('fading');
       setTimeout(() => {
-        if (sidebar.classList.contains('open')) {
-          sidebar.classList.remove('open');
-          menuIconImg.src = 'Images/Icons/menu.ico';
-          menuIconImg.alt = 'Menu';
-        } else {
-          sidebar.classList.add('open');
-          menuIconImg.src = 'Images/Icons/close.ico';
-          menuIconImg.alt = 'Close';
-        }
+        const opening = !sidebar.classList.contains('open');
+        sidebar.classList.toggle('open', opening);
+        menuIconImg.src = opening ? 'Images/Icons/close.ico' : 'Images/Icons/menu.ico';
+        menuIconImg.alt = opening ? 'Close' : 'Menu';
+        if (discordInvite) discordInvite.style.display = opening ? 'none' : '';
         menuIconImg.classList.remove('fading');
       }, 180);
     }
@@ -220,9 +278,6 @@
     function setFont(font) {
       let fontFamily;
       switch (font) {
-        case 'Ferdoka One':
-          fontFamily = 'Ferdoka One, Arial, Helvetica, sans-serif';
-          break;
         case 'Lato':
           fontFamily = 'Lato, Arial, Helvetica, sans-serif';
           break;
@@ -234,6 +289,9 @@
           break;
         case 'Helvetica':
           fontFamily = 'Helvetica, Arial, sans-serif';
+          break;
+        case 'Comic Sans MS':
+          fontFamily = 'Comic Sans MS, Arial, Helvetica, sans-serif';
           break;
         case 'Arial':
         default:
@@ -307,6 +365,26 @@
         root.style.setProperty('--popup-bg', 'rgba(40,0,60,0.98)');
       }
     }
+
+    function animateThemeSwitch(theme) {
+      const overlay = document.getElementById('theme-overlay');
+      if (!overlay) {
+        setTheme(theme);
+        return;
+      }
+
+      overlay.style.background = getComputedStyle(document.documentElement).getPropertyValue('--main-bg') || overlay.style.background;
+      overlay.style.opacity = '1';
+
+      setTimeout(() => {
+        setTheme(theme);
+
+        overlay.style.background = getComputedStyle(document.documentElement).getPropertyValue('--main-bg') || overlay.style.background;
+
+        requestAnimationFrame(() => { overlay.style.opacity = '0'; });
+      }, 120);
+    }
+    
     function filterEggsByWorld(world) {
       const eggList = document.getElementById('egg-list');
       const eggs = eggList.querySelectorAll('.egg-card');
@@ -350,16 +428,14 @@
       const sidebar = document.getElementById('sidebar');
       const menuIcon = document.querySelector('.menu-icon');
       const menuIconImg = document.getElementById('menu-icon-img');
-      const popup = document.getElementById('credits-popup');
-      const creditsButton = document.querySelector('.credits-button-sidebar');
-      const settingsPopup = document.getElementById('settings-popup');
-      const settingsButton = document.querySelector('.settings-button-sidebar');
+      const discordInvite = document.querySelector('.discord-invite-under-menu');
       if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
         sidebar.classList.remove('open');
         if (menuIconImg) {
           menuIconImg.src = 'Images/Icons/menu.ico';
           menuIconImg.alt = 'Menu';
         }
+        if (discordInvite) discordInvite.style.display = '';
       }
       if (
         popup &&
