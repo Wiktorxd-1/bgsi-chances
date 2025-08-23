@@ -21,9 +21,11 @@ const eggs = [
   { name: "Icy Egg", image: "Images/Eggs/Icy_Egg.webp", Pets: [ { name: "Marshmallow", baseOdds: 200, icon: "Images/Pets/Marshmallow.webp"}, { name: "Minty Serpent", baseOdds: 66667, icon: "Images/Pets/Minty_Serpent.webp"}, { name: "Ice Winged Hydra", baseOdds: 333334, icon: "Images/Pets/Ice_Winged_Hydra.webp"}, { name: "Giant Pearl (Secret)", baseOdds: 125000000, icon: "Images/Pets/Giant_Pearl.webp"}], world: "3"},
   { name: "Vine Egg", image: "Images/Eggs/Vine_Egg.webp", Pets: [ { name: "Thorn Dragon", baseOdds: 4000, icon: "Images/Pets/Thorn_Dragon.webp"}, { name: "Flower Pot", baseOdds: 100000, icon: "Images/Pets/Flower_Pot.webp"}, { name: "Lovely Lotus", baseOdds: 1000000, icon: "Images/Pets/Lovely_Lotus.webp"}, { name: "Fire Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Fire_Champion.webp"}, { name: "Dark Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Dark_Champion.webp"}, { name: "Earth Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Earth_Champion.webp"}, { name: "Sky Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Sky_Champion.webp"}], world: "3"},
   { name: "Secret Egg", image: "Images/Eggs/Placeholder_Egg.webp", Pets: [ { name: "Gigantic Spitty (Infinity)", baseOdds: 40000000000, icon: "Images/Pets/Gigantic_Spitty.webp"}], world: "3"},
-  { name: "Lava Egg", image: "Images/Eggs/Lava_Egg.webp", Pets: [ { name: "Magma Cube", baseOdds: 4000, icon: "Images/Pets/Magma_Cube.webp"}, { name: "Night Dweller", baseOdds: 100000, icon: "Images/Pets/Night_Dweller.webp"}, { name: "Fire King", baseOdds: 3333334, icon: "Images/Pets/Fire_King.webp"}, { name: "Hellshard", baseOdds: 1000000000, icon: "Images/Pets/Hellshard.webp"}], world: "3"},
-  { name: "Atlantis Egg", image: "Images/Eggs/Atlantis_Egg.webp", Pets: [ { name: "Angler fish", baseOdds: 4000, icon: "Images/Pets/Angler_Fish.webp"}, { name: "Jellyfish", baseOdds: 200000, icon: "Images/Pets/Jellyfish.webp"}, { name: "Atlantis Guardian", baseOdds: 2000000, icon: "Images/Pets/Atlantis_Guardian.webp"}, { name: "Tidal God (Secret)", baseOdds: 250000000, icon: "Images/Pets/Tidal_God.webp"}, { name: "Koi (Secret)", baseOdds: 1000000000, icon: "Images/Pets/Koi.webp"}, { name: "Abyssal Sea Dragon (Secret)", baseOdds: 2000000000, icon: "Images/Pets/Abyssal_Sea_Dragon.webp"}], world: "3"}
+  { name: "Lava Egg", image: "Images/Eggs/Lava_Egg.webp", Pets: [ { name: "Magma Cube", baseOdds: 4000, icon: "Images/Pets/Magma_Cube.webp"}, { name: "Night Dweller", baseOdds: 100000, icon: "Images/Pets/Night_Dweller.webp"}, { name: "Fire King", baseOdds: 3333334, icon: "Images/Pets/Fire_King.webp"}, { name: "Hellshard (Secret)", baseOdds: 1000000000, icon: "Images/Pets/Hellshard.webp"}], world: "3"},
+  { name: "Atlantis Egg", image: "Images/Eggs/Atlantis_Egg.webp", Pets: [ { name: "Angler fish", baseOdds: 4000, icon: "Images/Pets/Angler_Fish.webp"}, { name: "Jellyfish", baseOdds: 200000, icon: "Images/Pets/Jellyfish.webp"}, { name: "Atlantis Guardian", baseOdds: 2000000, icon: "Images/Pets/Atlantis_Guardian.webp"}, { name: "Tidal God (Secret)", baseOdds: 250000000, icon: "Images/Pets/Tidal_God.webp"}, { name: "Koi (Secret)", baseOdds: 1000000000, icon: "Images/Pets/Koi.webp"}, { name: "Abyssal Sea Dragon (Secret)", baseOdds: 2000000000, icon: "Images/Pets/Abyssal_Sea_Dragon.webp"}], world: "3"},
+  { name: "Dreamer Egg", image: "Images/Eggs/Placeholder_Egg.webp", Pets: [ { name: "Dreamscape Influence", baseOdds: 4000, icon: "Images/Pets/Dreamscape_Influence.webp"}, { name: "Serene Axolotl", baseOdds: 200000, icon: "Images/Pets/Serene_Axolotl.webp"}, { name: "Cosmic Herald", baseOdds: 2000000, icon: "Images/Pets/Cosmic_Herald.webp"}, { name: "Eternity (Secret)", baseOdds: 125000000, icon: "Images/Pets/Eternity.webp"}, { name: "Bloomshifter (Secret)", baseOdds: 500000000, icon: "Images/Pets/Bloomshifter.webp"}, { name: "Parasol Paladin (Secret)", baseOdds: 1000000000, icon: "Images/Pets/Parasol_Paladin.webp"}], world: "3"}
 ];
+
 
 let selectedWorld = null;
 let selectedEgg = null;
@@ -329,7 +331,7 @@ function createEggSettings(egg, canSpawnAsRift) {
     <label>Luck Multiplier (%):</label>
     <input type="number" class="luck" value="0" />
   `;
-  const hasSecret = egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name));
+  const hasSecret = egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name)) || egg.name === "Infinity Egg";
   if (hasSecret) {
     controlsHtml += `
       <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px;width:100%;">
@@ -687,7 +689,7 @@ eggs.unshift({
   name: "Infinity Egg",
   image: "Images/Eggs/Infinity_Egg.webp",
   Pets: [
-    { name: "Infinity Guardian", baseOdds: 1000000000, icon: "Images/Pets/Infinity_Guardian.webp" }
+    { name: "Placeholder", baseOdds: 1, icon: "Images/Pets/Placeholder.webp" }
   ],
   world: "infinity"
 });

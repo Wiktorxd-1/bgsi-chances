@@ -145,110 +145,140 @@
   "3": {
     "Pets": [
       {
-        "name": "Abyssal Sea Dragon (Secret)",
-        "baseOdds": 1790000000,
-        "icon": "Images/Pets/Abyssal_Sea_Dragon.webp"
-      },
+    "name": "Abyssal Sea Dragon (Secret)",
+    "baseOdds": 2670000000,
+    "icon": "Images/Pets/Abyssal_Sea_Dragon.webp"
+  },
+  {
+    "name": "Hellshard (Secret)",
+    "baseOdds": 1330000000,
+    "icon": "Images/Pets/Hellshard.webp"
+  },
+  {
+    "name": "Koi (Secret)",
+    "baseOdds": 1330000000,
+    "icon": "Images/Pets/Koi.webp"
+  },
+  {
+    "name": "Parasol Paladin (Secret)",
+    "baseOdds": 1330000000,
+    "icon": "Images/Pets/Parasol_Paladin.webp"
+  },
+  {
+    "name": "Earth Champion (Secret)",
+    "baseOdds": 669990000,
+    "icon": "Images/Pets/Earth_Champion.webp"
+  },
+  {
+    "name": "Dark Champion (Secret)",
+    "baseOdds": 669990000,
+    "icon": "Images/Pets/Dark_Champion.webp"
+  },
+  {
+    "name": "Fire Champion (Secret)",
+    "baseOdds": 669990000,
+    "icon": "Images/Pets/Fire_Champion.webp"
+  },
+  {
+    "name": "Sky Champion (Secret)",
+    "baseOdds": 669990000,
+    "icon": "Images/Pets/Sky_Champion.webp"
+  },
+  {
+    "name": "Bloomshifter (Secret)",
+    "baseOdds": 669990000,
+    "icon": "Images/Pets/Bloomshifter.webp"
+  },
+  {
+    "name": "Tidal God (Secret)",
+    "baseOdds": 334990000,
+    "icon": "Images/Pets/Tidal_God.webp"
+  },
+  {
+    "name": "Giant Pearl (Secret)",
+    "baseOdds": 167490000,
+    "icon": "Images/Pets/Giant_Pearl.webp"
+  },
+  {
+    "name": "Eternity (Secret)",
+    "baseOdds": 167490000,
+    "icon": "Images/Pets/Eternity.webp"
+  },
       {
-        "name": "Koi (Secret)",
-        "baseOdds": 899990000,
-        "icon": "Images/Pets/Koi.webp"
-      },
-      {
-        "name": "Hellshard (Secret)",
-        "baseOdds": 899990000,
-        "icon": "Images/Pets/Hellshard.webp"
-      },
-      {
-        "name": "Earth Champion (Secret)",
-        "baseOdds": 449990000,
-        "icon": "Images/Pets/Earth_Champion.webp"
-      },
-      {
-        "name": "Dark Champion (Secret)",
-        "baseOdds": 449990000,
-        "icon": "Images/Pets/Dark_Champion.webp"
-      },
-      {
-        "name": "Fire Champion (Secret)",
-        "baseOdds": 449990000,
-        "icon": "Images/Pets/Fire_Champion.webp"
-      },
-      {
-        "name": "Sky Champion (Secret)",
-        "baseOdds": 449990000,
-        "icon": "Images/Pets/Sky_Champion.webp"
-      },
-      {
-        "name": "Tidal God (Secret)",
-        "baseOdds": 224990000,
-        "icon": "Images/Pets/Tidal_God.webp"
-      },
-      {
-        "name": "Giant Pearl (Secret)",
-        "baseOdds": 112490000,
-        "icon": "Images/Pets/Giant_Pearl.webp"
-      },
-      {
-        "name": "Atlantis Guardian",
-        "baseOdds": 517380,
-        "icon": "Images/Pets/Atlantis_Guardian.webp"
-      },
-      {
-        "name": "Fire King",
-        "baseOdds": 344920,
-        "icon": "Images/Pets/Fire_King.webp"
-      },
-      {
-        "name": "Lovely Lotus",
-        "baseOdds": 258690,
-        "icon": "Images/Pets/Lovely_Lotus.webp"
-      },
-      {
-        "name": "Ice Winged Hydra",
-        "baseOdds": 215570,
-        "icon": "Images/Pets/Ice_Winged_Hydra.webp"
-      },
-      {
-        "name": "Jellyfish",
-        "baseOdds": 51730,
-        "icon": "Images/Pets/Jellyfish.webp"
-      },
-      {
-        "name": "Flower Pot",
-        "baseOdds": 25860,
-        "icon": "Images/Pets/Flower_Pot.webp"
-      },
-      {
-        "name": "Night Dweller",
-        "baseOdds": 25860,
-        "icon": "Images/Pets/Night_Dweller.webp"
-      },
-      {
-        "name": "Minty Serpent",
-        "baseOdds": 17240,
-        "icon": "Images/Pets/Minty_Serpent.webp"
-      },
-      {
-        "name": "Magma Cube",
-        "baseOdds": 1030,
-        "icon": "Images/Pets/Magma_Cube.webp"
-      },
-      {
-        "name": "Thorn Dragon",
-        "baseOdds": 1030,
-        "icon": "Images/Pets/Thorn_Dragon.webp"
-      },
-      {
-        "name": "Angler Fish",
-        "baseOdds": 1030,
-        "icon": "Images/Pets/Angler_Fish.webp"
-      },
-      {
-        "name": "Marshmallow",
-        "baseOdds": 517,
-        "icon": "Images/Pets/Marshmallow.webp"
-      }
+    "name": "Atlantis Guardian",
+    "baseOdds": 619570,
+    "icon": "Images/Pets/Atlantis_Guardian.webp"
+  },
+  {
+    "name": "Cosmic Herald",
+    "baseOdds": 619570,
+    "icon": "Images/Pets/Cosmic_Herald.webp"
+  },
+  {
+    "name": "Fire King",
+    "baseOdds": 413050,
+    "icon": "Images/Pets/Fire_King.webp"
+  },
+  {
+    "name": "Lovely Lotus",
+    "baseOdds": 309780,
+    "icon": "Images/Pets/Lovely_Lotus.webp"
+  },
+  {
+    "name": "Ice Winged Hydra",
+    "baseOdds": 258150,
+    "icon": "Images/Pets/Ice_Winged_Hydra.webp"
+  },
+  {
+    "name": "Jellyfish",
+    "baseOdds": 61950,
+    "icon": "Images/Pets/Jellyfish.webp"
+  },
+  {
+    "name": "Serene Axolotl",
+    "baseOdds": 61950,
+    "icon": "Images/Pets/Serene_Axolotl.webp"
+  },
+  {
+    "name": "Night Dweller",
+    "baseOdds": 30970,
+    "icon": "Images/Pets/Night_Dweller.webp"
+  },
+  {
+    "name": "Flower Pot",
+    "baseOdds": 30970,
+    "icon": "Images/Pets/Flower_Pot.webp"
+  },
+  {
+    "name": "Minty Serpent",
+    "baseOdds": 20650,
+    "icon": "Images/Pets/Minty_Serpent.webp"
+  },
+  {
+    "name": "Dreamscape Influence",
+    "baseOdds": 1230,
+    "icon": "Images/Pets/Dreamscape_Influence.webp"
+  },
+  {
+    "name": "Magma Cube",
+    "baseOdds": 1230,
+    "icon": "Images/Pets/Magma_Cube.webp"
+  },
+  {
+    "name": "Thorn Dragon",
+    "baseOdds": 1230,
+    "icon": "Images/Pets/Thorn_Dragon.webp"
+  },
+  {
+    "name": "Angler Fish",
+    "baseOdds": 1230,
+    "icon": "Images/Pets/Angler_Fish.webp"
+  },
+  {
+    "name": "Marshmallow",
+    "baseOdds": 619,
+    "icon": "Images/Pets/Marshmallow.webp"
+  }
     ]
   }
 }

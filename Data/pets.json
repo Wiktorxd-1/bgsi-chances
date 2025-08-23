@@ -28308,6 +28308,1410 @@
     ]
   },
   {
+    "pet_name": "Sleepy Fox",
+    "egg_id": "common",
+    "bubbles": 25,
+    "pearls": 2,
+    "gems": 0,
+    "chance": "",
+    "title": "Common",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/sleepy_fox.webp",
+        "stats": {
+          "base": {
+            "bubbles": 25,
+            "pearls": 2,
+            "gems": 0
+          },
+          "max": {
+            "bubbles": 33.75,
+            "pearls": 2.72,
+            "gems": 0
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_sleepy_fox.webp",
+        "stats": {
+          "base": {
+            "bubbles": 37.5,
+            "pearls": 3,
+            "gems": 0
+          },
+          "max": {
+            "bubbles": 71.25,
+            "pearls": 5.46,
+            "gems": 0
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Stellar Goat",
+    "egg_id": "rare",
+    "bubbles": 100,
+    "pearls": 5,
+    "gems": 0,
+    "chance": "",
+    "title": "Rare",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/stellar_goat.webp",
+        "stats": {
+          "base": {
+            "bubbles": 100,
+            "pearls": 5,
+            "gems": 0
+          },
+          "max": {
+            "bubbles": 135,
+            "pearls": 6.8,
+            "gems": 0
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_stellar_goat.webp",
+        "stats": {
+          "base": {
+            "bubbles": 150,
+            "pearls": 7.5,
+            "gems": 0
+          },
+          "max": {
+            "bubbles": 285,
+            "pearls": 13.65,
+            "gems": 0
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Cosmic Antlers",
+    "egg_id": "epic",
+    "bubbles": 225,
+    "pearls": 8,
+    "gems": 0,
+    "chance": "",
+    "title": "Epic",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/cosmic_antlers.webp",
+        "stats": {
+          "base": {
+            "bubbles": 225,
+            "pearls": 8,
+            "gems": 0
+          },
+          "max": {
+            "bubbles": 303.75,
+            "pearls": 10.88,
+            "gems": 0
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_cosmic_antlers.webp",
+        "stats": {
+          "base": {
+            "bubbles": 337.5,
+            "pearls": 12,
+            "gems": 0
+          },
+          "max": {
+            "bubbles": 641.25,
+            "pearls": 21.84,
+            "gems": 0
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Dreamscape Influence",
+    "egg_id": "legendary",
+    "bubbles": 1450,
+    "pearls": 25,
+    "gems": 30,
+    "chance": "",
+    "title": "Legendary",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/dreamscape_influence.webp",
+        "stats": {
+          "base": {
+            "bubbles": 1450,
+            "pearls": 25,
+            "gems": 30
+          },
+          "max": {
+            "bubbles": 1957.5,
+            "pearls": 34,
+            "gems": 40.5
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_dreamscape_influence.webp",
+        "stats": {
+          "base": {
+            "bubbles": 2175,
+            "pearls": 37.5,
+            "gems": 45
+          },
+          "max": {
+            "bubbles": 4132.5,
+            "pearls": 68.25,
+            "gems": 85.5
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_dreamscape_influence.webp",
+        "stats": {
+          "base": {
+            "bubbles": 2537.5,
+            "pearls": 43.75,
+            "gems": 52.5
+          },
+          "max": {
+            "bubbles": 5328.75,
+            "pearls": 92.31,
+            "gems": 110.25
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_dreamscape_influence.webp",
+        "stats": {
+          "base": {
+            "bubbles": 3262.5,
+            "pearls": 56.25,
+            "gems": 67.5
+          },
+          "max": {
+            "bubbles": 8482.5,
+            "pearls": 146.25,
+            "gems": 175.5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Serene Axolotl",
+    "egg_id": "legendary",
+    "bubbles": 3350,
+    "pearls": 90,
+    "gems": 45,
+    "chance": "",
+    "title": "Legendary",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/serene_axolotl.webp",
+        "stats": {
+          "base": {
+            "bubbles": 3350,
+            "pearls": 90,
+            "gems": 45
+          },
+          "max": {
+            "bubbles": 4522.5,
+            "pearls": 122.4,
+            "gems": 60.75
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_serene_axolotl.webp",
+        "stats": {
+          "base": {
+            "bubbles": 5025,
+            "pearls": 135,
+            "gems": 67.5
+          },
+          "max": {
+            "bubbles": 9547.5,
+            "pearls": 245.7,
+            "gems": 128.25
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_serene_axolotl.webp",
+        "stats": {
+          "base": {
+            "bubbles": 5862.5,
+            "pearls": 157.5,
+            "gems": 78.75
+          },
+          "max": {
+            "bubbles": 12311.25,
+            "pearls": 332.32,
+            "gems": 165.38
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_serene_axolotl.webp",
+        "stats": {
+          "base": {
+            "bubbles": 7537.5,
+            "pearls": 202.5,
+            "gems": 101.25
+          },
+          "max": {
+            "bubbles": 19597.5,
+            "pearls": 526.5,
+            "gems": 263.25
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Cosmic Herald",
+    "egg_id": "legendary",
+    "bubbles": 4200,
+    "pearls": 180,
+    "gems": 90,
+    "chance": "",
+    "title": "Legendary",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/cosmic_herald.webp",
+        "stats": {
+          "base": {
+            "bubbles": 4200,
+            "pearls": 180,
+            "gems": 90
+          },
+          "max": {
+            "bubbles": 5670,
+            "pearls": 244.8,
+            "gems": 121.5
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_cosmic_herald.webp",
+        "stats": {
+          "base": {
+            "bubbles": 6300,
+            "pearls": 270,
+            "gems": 135
+          },
+          "max": {
+            "bubbles": 11970,
+            "pearls": 491.4,
+            "gems": 256.5
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_cosmic_herald.webp",
+        "stats": {
+          "base": {
+            "bubbles": 7350,
+            "pearls": 315,
+            "gems": 157.5
+          },
+          "max": {
+            "bubbles": 15435,
+            "pearls": 664.65,
+            "gems": 330.75
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_cosmic_herald.webp",
+        "stats": {
+          "base": {
+            "bubbles": 9450,
+            "pearls": 405,
+            "gems": 202.5
+          },
+          "max": {
+            "bubbles": 24570,
+            "pearls": 1053,
+            "gems": 526.5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Eternity",
+    "egg_id": "secret",
+    "bubbles": 5850,
+    "pearls": 450,
+    "gems": 125,
+    "chance": "",
+    "title": "Secret",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/eternity.webp",
+        "stats": {
+          "base": {
+            "bubbles": 5850,
+            "pearls": 450,
+            "gems": 125
+          },
+          "max": {
+            "bubbles": 7897.5,
+            "pearls": 612,
+            "gems": 168.75
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_eternity.webp",
+        "stats": {
+          "base": {
+            "bubbles": 8775,
+            "pearls": 675,
+            "gems": 187.5
+          },
+          "max": {
+            "bubbles": 16672.5,
+            "pearls": 1228.5,
+            "gems": 356.25
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_eternity.webp",
+        "stats": {
+          "base": {
+            "bubbles": 10237.5,
+            "pearls": 787.5,
+            "gems": 218.75
+          },
+          "max": {
+            "bubbles": 21498.75,
+            "pearls": 1661.63,
+            "gems": 459.38
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_eternity.webp",
+        "stats": {
+          "base": {
+            "bubbles": 13162.5,
+            "pearls": 1012.5,
+            "gems": 281.25
+          },
+          "max": {
+            "bubbles": 34222.5,
+            "pearls": 2632.5,
+            "gems": 731.25
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Bloomshifter",
+    "egg_id": "secret",
+    "bubbles": 6500,
+    "pearls": 800,
+    "gems": 120,
+    "chance": "",
+    "title": "Secret",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/bloomshifter.webp",
+        "stats": {
+          "base": {
+            "bubbles": 6500,
+            "pearls": 800,
+            "gems": 120
+          },
+          "max": {
+            "bubbles": 8775,
+            "pearls": 1088,
+            "gems": 162
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_bloomshifter.webp",
+        "stats": {
+          "base": {
+            "bubbles": 9750,
+            "pearls": 1200,
+            "gems": 180
+          },
+          "max": {
+            "bubbles": 18525,
+            "pearls": 2184,
+            "gems": 342
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_bloomshifter.webp",
+        "stats": {
+          "base": {
+            "bubbles": 11375,
+            "pearls": 1400,
+            "gems": 210
+          },
+          "max": {
+            "bubbles": 23887.5,
+            "pearls": 2954,
+            "gems": 441
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_bloomshifter.webp",
+        "stats": {
+          "base": {
+            "bubbles": 14625,
+            "pearls": 1800,
+            "gems": 270
+          },
+          "max": {
+            "bubbles": 38025,
+            "pearls": 4680,
+            "gems": 702
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Parasol Paladin",
+    "egg_id": "secret",
+    "bubbles": 6650,
+    "pearls": 850,
+    "gems": 125,
+    "chance": "",
+    "title": "Secret",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/parasol_paladin.webp",
+        "stats": {
+          "base": {
+            "bubbles": 6650,
+            "pearls": 850,
+            "gems": 125
+          },
+          "max": {
+            "bubbles": 8977.5,
+            "pearls": 1156,
+            "gems": 168.75
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_parasol_paladin.webp",
+        "stats": {
+          "base": {
+            "bubbles": 9975,
+            "pearls": 1275,
+            "gems": 187.5
+          },
+          "max": {
+            "bubbles": 18952.5,
+            "pearls": 2320.5,
+            "gems": 356.25
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_parasol_paladin.webp",
+        "stats": {
+          "base": {
+            "bubbles": 11637.5,
+            "pearls": 1487.5,
+            "gems": 218.75
+          },
+          "max": {
+            "bubbles": 24438.75,
+            "pearls": 3138.63,
+            "gems": 459.38
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_parasol_paladin.webp",
+        "stats": {
+          "base": {
+            "bubbles": 14962.5,
+            "pearls": 1912.5,
+            "gems": 281.25
+          },
+          "max": {
+            "bubbles": 38902.5,
+            "pearls": 4972.5,
+            "gems": 731.25
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Lunar Bloom",
+    "egg_id": "robux",
+    "bubbles": 1750,
+    "pearls": 10,
+    "gems": 35,
+    "chance": "",
+    "title": "Legendary",
+    "limited_pet": true,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/lunar_bloom.webp",
+        "stats": {
+          "base": {
+            "bubbles": 1750,
+            "pearls": 10,
+            "gems": 35
+          },
+          "max": {
+            "bubbles": 2362.5,
+            "pearls": 13.6,
+            "gems": 47.25
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_lunar_bloom.webp",
+        "stats": {
+          "base": {
+            "bubbles": 2625,
+            "pearls": 15,
+            "gems": 52.5
+          },
+          "max": {
+            "bubbles": 4987.5,
+            "pearls": 27.3,
+            "gems": 99.75
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_lunar_bloom.webp",
+        "stats": {
+          "base": {
+            "bubbles": 3062.5,
+            "pearls": 17.5,
+            "gems": 61.25
+          },
+          "max": {
+            "bubbles": 6431.25,
+            "pearls": 36.92,
+            "gems": 128.63
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_lunar_bloom.webp",
+        "stats": {
+          "base": {
+            "bubbles": 3937.5,
+            "pearls": 22.5,
+            "gems": 78.75
+          },
+          "max": {
+            "bubbles": 10237.5,
+            "pearls": 58.5,
+            "gems": 204.75
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Lamp Ghost",
+    "egg_id": "robux",
+    "bubbles": 1350,
+    "pearls": 5,
+    "gems": 28,
+    "chance": "",
+    "title": "Legendary",
+    "limited_pet": true,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/lamp_ghost.webp",
+        "stats": {
+          "base": {
+            "bubbles": 1350,
+            "pearls": 5,
+            "gems": 28
+          },
+          "max": {
+            "bubbles": 1822.5,
+            "pearls": 6.8,
+            "gems": 37.8
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_lamp_ghost.webp",
+        "stats": {
+          "base": {
+            "bubbles": 2025,
+            "pearls": 7.5,
+            "gems": 42
+          },
+          "max": {
+            "bubbles": 3847.5,
+            "pearls": 13.65,
+            "gems": 79.8
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_lamp_ghost.webp",
+        "stats": {
+          "base": {
+            "bubbles": 2362.5,
+            "pearls": 8.75,
+            "gems": 49
+          },
+          "max": {
+            "bubbles": 4961.25,
+            "pearls": 18.46,
+            "gems": 102.9
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_lamp_ghost.webp",
+        "stats": {
+          "base": {
+            "bubbles": 3037.5,
+            "pearls": 11.25,
+            "gems": 63
+          },
+          "max": {
+            "bubbles": 7897.5,
+            "pearls": 29.25,
+            "gems": 163.8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Soul Jam",
+    "egg_id": "legendary",
+    "bubbles": 2000,
+    "coins": 550,
+    "gems": 65,
+    "chance": "",
+    "title": "Legendary",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/soul_jam.webp",
+        "stats": {
+          "base": {
+            "bubbles": 2000,
+            "coins": 550,
+            "gems": 65
+          },
+          "max": {
+            "bubbles": 2700,
+            "coins": 748,
+            "gems": 87.75
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_soul_jam.webp",
+        "stats": {
+          "base": {
+            "bubbles": 3000,
+            "coins": 825,
+            "gems": 97.5
+          },
+          "max": {
+            "bubbles": 5700,
+            "coins": 1501.5,
+            "gems": 185.25
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_soul_jam.webp",
+        "stats": {
+          "base": {
+            "bubbles": 3500,
+            "coins": 962.5,
+            "gems": 113.75
+          },
+          "max": {
+            "bubbles": 7350,
+            "coins": 2030.88,
+            "gems": 238.88
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_soul_jam.webp",
+        "stats": {
+          "base": {
+            "bubbles": 4500,
+            "coins": 1237.5,
+            "gems": 146.25
+          },
+          "max": {
+            "bubbles": 11700,
+            "coins": 3217.5,
+            "gems": 380.25
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "MISSING OBJECT",
+    "egg_id": "legendary",
+    "bubbles": 6000,
+    "pearls": 700,
+    "gems": 120,
+    "chance": "",
+    "title": "Legendary",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/missing_object.webp",
+        "stats": {
+          "base": {
+            "bubbles": 6000,
+            "pearls": 700,
+            "gems": 120
+          },
+          "max": {
+            "bubbles": 8100,
+            "pearls": 952,
+            "gems": 162
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_missing_object.webp",
+        "stats": {
+          "base": {
+            "bubbles": 9000,
+            "pearls": 1050,
+            "gems": 180
+          },
+          "max": {
+            "bubbles": 17100,
+            "pearls": 1911,
+            "gems": 342
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Surreal Seeker",
+    "egg_id": "secret",
+    "bubbles": 6500,
+    "pearls": 850,
+    "gems": 135,
+    "chance": "",
+    "title": "Secret",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/surreal_seeker.webp",
+        "stats": {
+          "base": {
+            "bubbles": 6500,
+            "pearls": 850,
+            "gems": 135
+          },
+          "max": {
+            "bubbles": 8775,
+            "pearls": 1156,
+            "gems": 182.25
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_surreal_seeker.webp",
+        "stats": {
+          "base": {
+            "bubbles": 9750,
+            "pearls": 1275,
+            "gems": 202.5
+          },
+          "max": {
+            "bubbles": 18525,
+            "pearls": 2320.5,
+            "gems": 384.75
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_surreal_seeker.webp",
+        "stats": {
+          "base": {
+            "bubbles": 11375,
+            "pearls": 1487.5,
+            "gems": 236.25
+          },
+          "max": {
+            "bubbles": 23887.5,
+            "pearls": 3138.63,
+            "gems": 496.13
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_surreal_seeker.webp",
+        "stats": {
+          "base": {
+            "bubbles": 14625,
+            "pearls": 1912.5,
+            "gems": 303.75
+          },
+          "max": {
+            "bubbles": 38025,
+            "pearls": 4972.5,
+            "gems": 789.75
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Disturbed Unicorn",
+    "egg_id": "duality",
+    "bubbles": 40,
+    "pearls": 4,
+    "gems": 0,
+    "chance": "90%",
+    "title": "Rare",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/disturbed_unicorn.webp",
+        "stats": {
+          "base": {
+            "bubbles": 40,
+            "pearls": 4,
+            "gems": 0
+          },
+          "max": {
+            "bubbles": 54,
+            "pearls": 5.44,
+            "gems": 0
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_disturbed_unicorn.webp",
+        "stats": {
+          "base": {
+            "bubbles": 60,
+            "pearls": 6,
+            "gems": 0
+          },
+          "max": {
+            "bubbles": 114,
+            "pearls": 10.92,
+            "gems": 0
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Disturbed Dragon",
+    "egg_id": "duality",
+    "bubbles": 210,
+    "pearls": 30,
+    "gems": 0,
+    "chance": "9.9%",
+    "title": "Epic",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/disturbed_dragon.webp",
+        "stats": {
+          "base": {
+            "bubbles": 210,
+            "pearls": 30,
+            "gems": 0
+          },
+          "max": {
+            "bubbles": 283.5,
+            "pearls": 40.8,
+            "gems": 0
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_disturbed_dragon.webp",
+        "stats": {
+          "base": {
+            "bubbles": 315,
+            "pearls": 45,
+            "gems": 0
+          },
+          "max": {
+            "bubbles": 598.5,
+            "pearls": 81.9,
+            "gems": 0
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Shadow Hunter",
+    "egg_id": "duality",
+    "bubbles": 1750,
+    "pearls": 100,
+    "gems": 40,
+    "chance": "0.075%",
+    "title": "Legendary",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/shadow_hunter.webp",
+        "stats": {
+          "base": {
+            "bubbles": 1750,
+            "pearls": 100,
+            "gems": 40
+          },
+          "max": {
+            "bubbles": 2362.5,
+            "pearls": 136,
+            "gems": 54
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_shadow_hunter.webp",
+        "stats": {
+          "base": {
+            "bubbles": 2625,
+            "pearls": 150,
+            "gems": 60
+          },
+          "max": {
+            "bubbles": 4987.5,
+            "pearls": 273,
+            "gems": 114
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_shadow_hunter.webp",
+        "stats": {
+          "base": {
+            "bubbles": 3062.5,
+            "pearls": 175,
+            "gems": 70
+          },
+          "max": {
+            "bubbles": 6431.25,
+            "pearls": 369.25,
+            "gems": 147
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_shadow_hunter.webp",
+        "stats": {
+          "base": {
+            "bubbles": 3937.5,
+            "pearls": 225,
+            "gems": 90
+          },
+          "max": {
+            "bubbles": 10237.5,
+            "pearls": 585,
+            "gems": 234
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Duality",
+    "egg_id": "duality",
+    "bubbles": 4500,
+    "pearls": 225,
+    "gems": 100,
+    "chance": "0.005%",
+    "title": "Legendary",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/duality.webp",
+        "stats": {
+          "base": {
+            "bubbles": 4500,
+            "pearls": 225,
+            "gems": 100
+          },
+          "max": {
+            "bubbles": 6075,
+            "pearls": 306,
+            "gems": 135
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_duality.webp",
+        "stats": {
+          "base": {
+            "bubbles": 6750,
+            "pearls": 337.5,
+            "gems": 150
+          },
+          "max": {
+            "bubbles": 12825,
+            "pearls": 614.25,
+            "gems": 285
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_duality.webp",
+        "stats": {
+          "base": {
+            "bubbles": 7875,
+            "pearls": 393.75,
+            "gems": 175
+          },
+          "max": {
+            "bubbles": 16537.5,
+            "pearls": 830.81,
+            "gems": 367.5
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_duality.webp",
+        "stats": {
+          "base": {
+            "bubbles": 10125,
+            "pearls": 506.25,
+            "gems": 225
+          },
+          "max": {
+            "bubbles": 26325,
+            "pearls": 1316.25,
+            "gems": 585
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Prisma",
+    "egg_id": "duality",
+    "bubbles": 5850,
+    "pearls": 450,
+    "gems": 125,
+    "chance": "0.001%",
+    "title": "Secret",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/prisma.webp",
+        "stats": {
+          "base": {
+            "bubbles": 5850,
+            "pearls": 450,
+            "gems": 125
+          },
+          "max": {
+            "bubbles": 7897.5,
+            "pearls": 612,
+            "gems": 168.75
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_prisma.webp",
+        "stats": {
+          "base": {
+            "bubbles": 8775,
+            "pearls": 675,
+            "gems": 187.5
+          },
+          "max": {
+            "bubbles": 16672.5,
+            "pearls": 1228.5,
+            "gems": 356.25
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_prisma.webp",
+        "stats": {
+          "base": {
+            "bubbles": 10237.5,
+            "pearls": 787.5,
+            "gems": 218.75
+          },
+          "max": {
+            "bubbles": 21498.75,
+            "pearls": 1661.63,
+            "gems": 459.38
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_prisma.webp",
+        "stats": {
+          "base": {
+            "bubbles": 13162.5,
+            "pearls": 1012.5,
+            "gems": 281.25
+          },
+          "max": {
+            "bubbles": 34222.5,
+            "pearls": 2632.5,
+            "gems": 731.25
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Ethereal One",
+    "egg_id": "secret",
+    "bubbles": 6500,
+    "pearls": 850,
+    "gems": 135,
+    "chance": "",
+    "title": "Secret",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/ethereal_one.webp",
+        "stats": {
+          "base": {
+            "bubbles": 6500,
+            "pearls": 850,
+            "gems": 135
+          },
+          "max": {
+            "bubbles": 8775,
+            "pearls": 1156,
+            "gems": 182.25
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_ethereal_one.webp",
+        "stats": {
+          "base": {
+            "bubbles": 9750,
+            "pearls": 1275,
+            "gems": 202.5
+          },
+          "max": {
+            "bubbles": 18525,
+            "pearls": 2320.5,
+            "gems": 384.75
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_ethereal_one.webp",
+        "stats": {
+          "base": {
+            "bubbles": 11375,
+            "pearls": 1487.5,
+            "gems": 236.25
+          },
+          "max": {
+            "bubbles": 23887.5,
+            "pearls": 3138.63,
+            "gems": 496.13
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_ethereal_one.webp",
+        "stats": {
+          "base": {
+            "bubbles": 14625,
+            "pearls": 1912.5,
+            "gems": 303.75
+          },
+          "max": {
+            "bubbles": 38025,
+            "pearls": 4972.5,
+            "gems": 789.75
+          }
+        }
+      }
+    ]
+  },
+  {
+    "pet_name": "Moonlit Gaze",
+    "egg_id": "secret",
+    "bubbles": 7000,
+    "pearls": 1250,
+    "gems": 150,
+    "chance": "",
+    "title": "Secret",
+    "limited_pet": false,
+    "variants": [
+      {
+        "name": "Normal",
+        "image": "https://images.bgsi.io/moonlit_gaze.webp",
+        "stats": {
+          "base": {
+            "bubbles": 7000,
+            "pearls": 1250,
+            "gems": 150
+          },
+          "max": {
+            "bubbles": 9450,
+            "pearls": 1700,
+            "gems": 202.5
+          }
+        }
+      },
+      {
+        "name": "Shiny",
+        "image": "https://images.bgsi.io/shiny_moonlit_gaze.webp",
+        "stats": {
+          "base": {
+            "bubbles": 10500,
+            "pearls": 1875,
+            "gems": 225
+          },
+          "max": {
+            "bubbles": 19950,
+            "pearls": 3412.5,
+            "gems": 427.5
+          }
+        }
+      },
+      {
+        "name": "Mythic",
+        "image": "https://images.bgsi.io/mythic_moonlit_gaze.webp",
+        "stats": {
+          "base": {
+            "bubbles": 12250,
+            "pearls": 2187.5,
+            "gems": 262.5
+          },
+          "max": {
+            "bubbles": 25725,
+            "pearls": 4615.63,
+            "gems": 551.25
+          }
+        }
+      },
+      {
+        "name": "Shiny Mythic",
+        "image": "https://images.bgsi.io/shiny_mythic_moonlit_gaze.webp",
+        "stats": {
+          "base": {
+            "bubbles": 15750,
+            "pearls": 2812.5,
+            "gems": 337.5
+          },
+          "max": {
+            "bubbles": 40950,
+            "pearls": 7312.5,
+            "gems": 877.5
+          }
+        }
+      }
+    ]
+  },
+  {
     "pet_name": "Giant D.I.Y Robot",
     "egg_id": "secret",
     "bubbles": 5350,
