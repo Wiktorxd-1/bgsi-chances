@@ -155,11 +155,6 @@
     "icon": "Images/Pets/Hellshard.webp"
   },
   {
-    "name": "Koi (Secret)",
-    "baseOdds": 1330000000,
-    "icon": "Images/Pets/Koi.webp"
-  },
-  {
     "name": "Parasol Paladin (Secret)",
     "baseOdds": 1330000000,
     "icon": "Images/Pets/Parasol_Paladin.webp"
