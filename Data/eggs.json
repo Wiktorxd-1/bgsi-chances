@@ -396,26 +396,36 @@
     "index": "Seven Seas"
   },
   {
-    "name": "Dreamer Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0e/Dreamer_Egg.png",
+    "name": "Stellaris Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/60/Stellaris_Egg.png",
     "pets": [
-      "Sleepy Fox",
-      "Stellar Goat",
-      "Cosmic Antlers",
-      "Dreamscape Influence",
-      "Serene Axolotl",
-      "Cosmic Herald",
-      "Eternity",
-      "Bloomshifter",
-      "Parasol Paladin"
+      "Stellar Entity",
+      "Stellar Drop",
+      "Moonchanter",
+      "Stellaris",
+      "Andromeda"
     ],
-    "luckIgnored": false,
-    "infinityEgg": "Seven Seas",
+    "luckIgnored": true,
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
-    "dateAdded": "2025-08-22",
-    "dateRemoved": "",
-    "index": "Seven Seas"
+    "dateAdded": "2025-09-12",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Season 7 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4b/Season_7_Egg.png",
+    "pets": [
+      "Virtual Kitty",
+      "Virtual Bat",
+      "Vectorlord",
+      "Rooted Ratio",
+      "The Missing Ones"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-09-05",
+    "dateRemoved": "2025-09-25"
   },
   {
     "name": "Season 6 Egg",
@@ -556,6 +566,22 @@
     "dateRemoved": "2025-04-30"
   },
   {
+    "name": "Brainrot Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Brainrot_Egg.png",
+    "pets": [
+      "Brainrot Doggy",
+      "Brainrot Mouse",
+      "Brainrot Shark",
+      "Nert Pufferfish",
+      "BIG ROUND"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": true,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-09-12",
+    "dateRemoved": ""
+  },
+  {
     "name": "Shadow Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6b/Shadow_Egg.png",
     "pets": [
@@ -578,7 +604,28 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-08-29",
-    "dateRemoved": "2025-09-12"
+    "dateRemoved": "2025-09-19"
+  },
+  {
+    "name": "Dreamer Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "pets": [
+      "Sleepy Fox",
+      "Stellar Goat",
+      "Cosmic Antlers",
+      "Dreamscape Influence",
+      "Serene Axolotl",
+      "Cosmic Herald",
+      "Eternity",
+      "Bloomshifter",
+      "Parasol Paladin"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-08-22",
+    "dateRemoved": "2025-09-05",
+    "index": "Seven Seas"
   },
   {
     "name": "Candy Egg",
