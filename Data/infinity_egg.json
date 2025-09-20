@@ -143,46 +143,45 @@
     ]
   },
   "3": {
-    "Pets": [
-      {
-    "name": "Abyssal Sea Dragon (Secret)",
-    "baseOdds": 2670000000,
-    "icon": "Images/Pets/Abyssal_Sea_Dragon.webp"
-  },
+    "Pets": [ {
+      "name":"Giant Classic Chicken (Secret)",
+      "baseOdds": 3380000000,
+      "icon":"Images/Pets/Giant_Classic_Chicken.webp"
+    },
+    {
+      "name": "Abyssal Sea Dragon (Secret)",
+      "baseOdds": 2710000000,
+      "icon": "Images/Pets/Abyssal_Sea_Dragon.webp"
+    },
   {
     "name": "Hellshard (Secret)",
-    "baseOdds": 1330000000,
+    "baseOdds": 1350000000,
     "icon": "Images/Pets/Hellshard.webp"
   },
   {
-    "name": "Parasol Paladin (Secret)",
-    "baseOdds": 1330000000,
-    "icon": "Images/Pets/Parasol_Paladin.webp"
+    "name": "1x1x1x1 (Secret)",
+    "baseOdds": 677990000,
+    "icon": "Images/Pets/1x1x1x1.webp"
   },
   {
     "name": "Earth Champion (Secret)",
-    "baseOdds": 669990000,
+    "baseOdds": 677990000,
     "icon": "Images/Pets/Earth_Champion.webp"
   },
   {
     "name": "Dark Champion (Secret)",
-    "baseOdds": 669990000,
+    "baseOdds": 677990000,
     "icon": "Images/Pets/Dark_Champion.webp"
   },
   {
     "name": "Fire Champion (Secret)",
-    "baseOdds": 669990000,
+    "baseOdds": 677990000,
     "icon": "Images/Pets/Fire_Champion.webp"
   },
   {
     "name": "Sky Champion (Secret)",
-    "baseOdds": 669990000,
+    "baseOdds": 677990000,
     "icon": "Images/Pets/Sky_Champion.webp"
-  },
-  {
-    "name": "Bloomshifter (Secret)",
-    "baseOdds": 669990000,
-    "icon": "Images/Pets/Bloomshifter.webp"
   },
   {
     "name": "Tidal God (Secret)",
@@ -199,7 +198,12 @@
     "baseOdds": 167490000,
     "icon": "Images/Pets/Eternity.webp"
   },
-      {
+  {
+    "name": "Classic Overlord (Secret)",
+    "baseOdds": 135590000,
+    "icon": "Images/Pets/Classic_Overlord.webp"
+  },
+  {
     "name": "Atlantis Guardian",
     "baseOdds": 619570,
     "icon": "Images/Pets/Atlantis_Guardian.webp"
