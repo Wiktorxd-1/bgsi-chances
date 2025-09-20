@@ -23,7 +23,6 @@ const eggs = [
   { name: "Secret Egg", image: "Images/Eggs/Placeholder_Egg.webp", Pets: [ { name: "Gigantic Spitty (Infinity)", baseOdds: 40000000000, icon: "Images/Pets/Gigantic_Spitty.webp"}], world: "3"},
   { name: "Lava Egg", image: "Images/Eggs/Lava_Egg.webp", Pets: [ { name: "Magma Cube", baseOdds: 4000, icon: "Images/Pets/Magma_Cube.webp"}, { name: "Night Dweller", baseOdds: 100000, icon: "Images/Pets/Night_Dweller.webp"}, { name: "Fire King", baseOdds: 3333334, icon: "Images/Pets/Fire_King.webp"}, { name: "Hellshard (Secret)", baseOdds: 1000000000, icon: "Images/Pets/Hellshard.webp"}], world: "3"},
   { name: "Atlantis Egg", image: "Images/Eggs/Atlantis_Egg.webp", Pets: [ { name: "Angler fish", baseOdds: 4000, icon: "Images/Pets/Angler_Fish.webp"}, { name: "Jellyfish", baseOdds: 200000, icon: "Images/Pets/Jellyfish.webp"}, { name: "Atlantis Guardian", baseOdds: 2000000, icon: "Images/Pets/Atlantis_Guardian.webp"}, { name: "Tidal God (Secret)", baseOdds: 250000000, icon: "Images/Pets/Tidal_God.webp"}, { name: "Abyssal Sea Dragon (Secret)", baseOdds: 2000000000, icon: "Images/Pets/Abyssal_Sea_Dragon.webp"}], world: "3"},
-  { name: "Dreamer Egg", image: "Images/Eggs/Placeholder_Egg.webp", Pets: [ { name: "Dreamscape Influence", baseOdds: 4000, icon: "Images/Pets/Dreamscape_Influence.webp"}, { name: "Serene Axolotl", baseOdds: 200000, icon: "Images/Pets/Serene_Axolotl.webp"}, { name: "Cosmic Herald", baseOdds: 2000000, icon: "Images/Pets/Cosmic_Herald.webp"}, { name: "Eternity (Secret)", baseOdds: 125000000, icon: "Images/Pets/Eternity.webp"}, { name: "Bloomshifter (Secret)", baseOdds: 500000000, icon: "Images/Pets/Bloomshifter.webp"}, { name: "Parasol Paladin (Secret)", baseOdds: 1000000000, icon: "Images/Pets/Parasol_Paladin.webp"}], world: "3"},
   { name: "Brainrot Egg" , image: "Images/Eggs/Brainrot_Egg.webp", Pets: [ { name: "Brainrot Shark", baseOdds: 20000, icon: "Images/Pets/Brainrot_Shark.webp"}, {name: "Nert Pufferfish", baseOdds: 50000, icon: "Images/Pets/Nert_Pufferfish.webp"}, { name: "BIG ROUND (Secret)", baseOdds: 200000000, icon: "Images/Pets/BIG_ROUND.webp"}], world: "limited"},
   { name: "Classic egg", image: "Images/Eggs/Classic_Egg.webp", Pets: [ { name: "Classic Unicorn", baseOdds: 4000, icon: "Images/Pets/Classic_Unicorn.webp"}, { name: "Classic Dominus", baseOdds: 200000, icon: "Images/Pets/Classic_Dominus.webp"}, { name: "Classic Noob", baseOdds: 2000000, icon: "Images/Pets/Classic_Noob.webp"}, { name: "Classic Overlord (Secret)", baseOdds: 100000000, icon: "Images/Pets/Classic_Overlord.webp"}, { name: "1x1x1x1 (Secret)", baseOdds: 500000000, icon: "Images/Pets/1x1x1x1.webp"}, { name: "Giant Classic Chicken (Secret)", baseOdds: 2500000000, icon: "Images/Pets/Giant_Classic_Chicken.webp"}], world: "3"},
 ];
@@ -153,7 +152,8 @@ function createEggGridItem(egg) {
   };
   const eggHeader = document.createElement("div");
   eggHeader.className = "egg-header";
-  eggHeader.innerHTML = `<img src="${egg.image}" alt="${egg.name}" style="width: 56px; height: 56px;" />
+  const eggImg = getEggImagePath(egg);
+  eggHeader.innerHTML = `<img src="${eggImg}" alt="${egg.name}" style="width: 56px; height: 56px;" />
                          <h2>${egg.name}</h2>`;
   card.appendChild(eggHeader);
   eggList.appendChild(card);
@@ -199,7 +199,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   left.className = 'egg-details-left';
   const eggIcon = document.createElement('img');
   eggIcon.className = 'egg-icon-big';
-  eggIcon.src = egg.image;
+  eggIcon.src = getEggImagePath(egg);
   eggIcon.alt = egg.name;
   left.appendChild(eggIcon);
   const eggName = document.createElement('div');
@@ -270,8 +270,10 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     });
     left.appendChild(btnRow);
     left.appendChild(createEggSettings(egg, canSpawnAsRift));
+  } else if (egg.name === "Bounty") {
+    left.appendChild(createEggSettings(egg, canSpawnAsRift));
+    // create bounty-specific middle/right content in createBountyView when invoked
   } else {
-
     left.appendChild(createEggSettings(egg, canSpawnAsRift));
   }
 
@@ -283,7 +285,27 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   if (egg.name === "Infinity Egg" && infinityEggData && infinityEggData[selectedInfinityWorld]) {
     petsToShow = infinityEggData[selectedInfinityWorld].Pets;
   }
-
+  if (egg.name === "Bounty") {
+    // Bounty page will be created separately
+    const middleInner = document.createElement('div');
+    middleInner.className = 'egg-card';
+    middleInner.style.textAlign = 'center';
+    middleInner.style.padding = '18px';
+    middleInner.innerHTML = `<div id="bounty-placeholder">Loading bounty…</div>`;
+    const middle = document.createElement('div');
+    middle.className = 'egg-details-middle';
+    middle.appendChild(middleInner);
+    const right = document.createElement('div');
+    right.className = 'egg-details-right';
+    layout.appendChild(left);
+    layout.appendChild(middle);
+    layout.appendChild(right);
+    eggList.appendChild(backBtn);
+    eggList.appendChild(layout);
+    // populate bounty content (and schedule refresh)
+    await populateBountyView();
+    return;
+  }
 
   const eggForTable = { ...egg, Pets: petsToShow };
   middle.appendChild(createEggPetInfoCard(eggForTable, canSpawnAsRift));
@@ -397,10 +419,12 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         let adjustedPercent = formatAdjustedPercent(adjustedChance);
         const adjustedPercentCell = adjustedPercent === "Unknown" ? "Unknown" : `${adjustedPercent}%`;
 
+        const petIconPath = pet.icon || getPetIconByName(pet.name) || "Images/pets/Doggy.webp";
+
         const row = document.createElement("tr");
         row.innerHTML = `
           <td class="pet-name">
-            <img src="${pet.icon}" alt="${pet.name}" />
+            <img src="${petIconPath}" alt="${pet.name}" />
             ${pet.name}
           </td>
           <td>1 in ${pet.baseOdds ? pet.baseOdds.toLocaleString() : 'Unknown'}</td>
@@ -617,6 +641,130 @@ function setupPetStatsHover() {
   });
 }
 
+// bounty button + icon update (fetches API and updates icon; opens custom bounty page)
+async function fetchBounties() {
+  try {
+    const res = await fetch('https://bgsiapi.fytg.me/bounties');
+    if (!res.ok) return [];
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function formatUTCDateToLabel(d) {
+  const day = d.getUTCDate();
+  const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const month = monthNames[d.getUTCMonth()];
+  const year = d.getUTCFullYear();
+  return `${day} ${month} ${year}`;
+}
+
+async function updateBountyButtonIcon() {
+  let btn = document.querySelector('.world-icon-btn.bounty');
+  if (!btn) btn = ensureBountyButton();
+  const bounties = await fetchBounties();
+  const petPlaceholder = `Images/Pets/Doggy.webp`;
+  const imgEl = btn.querySelector('.world-icon-img') || btn.querySelector('img');
+  const labelEl = btn.querySelector('.world-icon-label') || btn.querySelector('div,span');
+  if (!bounties || bounties.length === 0) {
+    if (imgEl) imgEl.src = petPlaceholder;
+    if (labelEl) labelEl.textContent = 'Bounty';
+    btn.title = 'Bounty (no data)';
+    btn.style.display = '';
+    return;
+  }
+  const todayLabel = formatUTCDateToLabel(new Date());
+  const todays = bounties.find(b => b.Time === todayLabel) || bounties[0];
+  const petName = (todays && todays.Pet) ? todays.Pet : 'Doggy';
+  const eggName = (todays && todays.Egg) ? todays.Egg : '';
+  const petIcon = `Images/Pets/${formatNameToPath(petName)}.webp`;
+  if (imgEl) {
+    imgEl.src = petIcon;
+    imgEl.alt = petName;
+    imgEl.style.objectFit = 'contain';
+  }
+  if (labelEl) {
+    labelEl.textContent = 'Bounty';
+  }
+  btn.title = `Bounty (UTC): ${petName}${eggName ? ' — ' + eggName : ''}`;
+  btn.style.display = '';
+}
+
+function ensureBountyButton() {
+  const sidebar = document.querySelector('.worlds-sidebar') || document.querySelector('#sidebar') || document.querySelector('.sidebar') || document.body;
+  let existing = sidebar.querySelector('.world-icon-btn.bounty');
+  if (existing) return existing;
+
+  const reference = sidebar.querySelector('.world-icon-btn:not(.bounty)');
+  let btn;
+  if (reference) {
+    btn = reference.cloneNode(true);
+    btn.className = btn.className.split(' ').filter(c => !/overworld|minigame|seas|limited|infinity|infinite/.test(c)).join(' ');
+    btn.classList.add('world-icon-btn', 'bounty');
+    const labelEl = btn.querySelector('.world-icon-label') || btn.querySelector('div,span');
+    if (labelEl) labelEl.textContent = 'Bounty';
+    const imgEl = btn.querySelector('.world-icon-img') || btn.querySelector('img');
+    if (imgEl) {
+      imgEl.src = 'Images/Pets/Doggy.webp';
+      imgEl.alt = 'Bounty';
+      imgEl.style.objectFit = 'contain';
+    }
+  } else {
+    btn = document.createElement('button');
+    btn.className = 'world-icon-btn bounty';
+    btn.innerHTML = `
+      <img class="world-icon-img" src="Images/Pets/Doggy.webp" alt="Bounty" />
+      <div class="world-icon-label">Bounty</div>
+    `;
+  }
+
+  btn.type = 'button';
+  btn.title = 'Bounty';
+
+  // Placeholder behavior: do NOT open an egg page for now.
+  btn.onclick = (e) => {
+    e.preventDefault();
+    // brief non-intrusive toast so user knows this is a placeholder
+    if (document.getElementById('bounty-placeholder-toast')) return;
+    const toast = document.createElement('div');
+    toast.id = 'bounty-placeholder-toast';
+    toast.style.position = 'fixed';
+    toast.style.left = '50%';
+    toast.style.bottom = '88px';
+    toast.style.transform = 'translateX(-50%)';
+    toast.style.background = 'var(--controls-bg)';
+    toast.style.color = 'var(--main-text)';
+    toast.style.padding = '8px 12px';
+    toast.style.borderRadius = '8px';
+    toast.style.boxShadow = '0 6px 20px rgba(0,0,0,0.18)';
+    toast.style.fontFamily = 'inherit';
+    toast.style.fontSize = '0.95rem';
+    toast.style.zIndex = '14000';
+    toast.style.opacity = '0';
+    toast.style.transition = 'opacity 220ms';
+    toast.textContent = 'Bounty page coming soon';
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => { toast.style.opacity = '1'; });
+    setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 400); }, 1800);
+  };
+
+  const referenceBtn = sidebar.querySelector('.world-icon-btn.infinity, .world-icon-btn.infinite, .world-icon-btn.limited') || null;
+  if (referenceBtn && referenceBtn.parentNode) {
+    referenceBtn.parentNode.insertBefore(btn, referenceBtn.nextSibling);
+  } else {
+    sidebar.appendChild(btn);
+  }
+  return btn;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  ensureBountyButton();
+  updateBountyButtonIcon();
+  setInterval(updateBountyButtonIcon, 5 * 60 * 1000); // refresh every 5 minutes
+});
+
 document.addEventListener('DOMContentLoaded', function () {
   const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
   setTheme(savedTheme);
@@ -752,3 +900,27 @@ function setFont(font) {
   document.body.style.fontFamily = fontFamily;
   localStorage.setItem('selectedFont', font);
 }
+
+// new helper: resolve pet/egg icon paths if explicit icon/image missing
+function formatNameToPath(name) {
+  if (!name) return '';
+  return name.replace(/\s+/g, '_').replace(/[\/\\'"]/g, '');
+}
+function getPetIconByName(petName) {
+  if (!petName) return "Images/pets/Doggy.webp";
+  const baseName = petName.replace(/\(.*?\)/g, '').trim();
+  const candidate = `Images/Pets/${formatNameToPath(baseName)}.webp`;
+  return candidate;
+}
+function getEggImagePath(eggOrName) {
+  if (!eggOrName) return "Images/pets/Doggy.webp";
+  if (typeof eggOrName === 'string') {
+    const candidate = `Images/Eggs/${formatNameToPath(eggOrName)}.webp`;
+    return candidate;
+  }
+  if (eggOrName.image) return eggOrName.image;
+  const candidate = `Images/Eggs/${formatNameToPath(eggOrName.name)}.webp`;
+  return candidate;
+}
+
+// replace usages to use helpers
