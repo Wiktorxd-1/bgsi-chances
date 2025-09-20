@@ -169,6 +169,254 @@ async function loadInfinityEggData() {
   return infinityEggData;
 }
 
+function parseChanceString(chanceStr) {
+  if (!chanceStr || typeof chanceStr !== 'string') return null;
+  const s = chanceStr.trim().toLowerCase();
+  // examples: "1/200m", "1/400m", "1/1b", "1/200000000"
+  const m = s.match(/1\/\s*([\d,.]+)\s*([mb]?)/i);
+  if (!m) return null;
+  let num = m[1].replace(/[,]/g, '');
+  let val = Number(num);
+  const suffix = (m[2] || '').toLowerCase();
+  if (suffix === 'm') val = val * 1_000_000;
+  if (suffix === 'b') val = val * 1_000_000_000;
+  if (!isFinite(val) || val <= 0) return null;
+  return Math.round(val);
+}
+
+function secondsUntilNextUTCDate() {
+  const now = new Date();
+  const next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 0, 0, 0));
+  return Math.max(0, Math.floor((next.getTime() - now.getTime()) / 1000));
+}
+
+async function createBountyDetailsView() {
+  const bounties = await fetchBounties();
+  const todayLabel = formatUTCDateToLabel(new Date());
+  const todays = (bounties || []).find(b => b.Time === todayLabel) || (bounties && bounties[0]) || null;
+
+  // hide search and sidebar
+  const searchBarRow = document.getElementById('search-bar-row');
+  if (searchBarRow) searchBarRow.classList.add('hide-search-bar-row');
+  const worldsSidebar = document.querySelector('.worlds-sidebar');
+  if (worldsSidebar) worldsSidebar.style.display = 'none';
+
+  // remove any previous bounty divider (cleanup from previous views)
+  const oldDiv = document.getElementById('bounty-divider');
+  if (oldDiv && oldDiv.parentNode) oldDiv.parentNode.removeChild(oldDiv);
+
+  eggList.innerHTML = '';
+  const backBtn = document.createElement("button");
+  backBtn.className = "egg-back-btn";
+  backBtn.style.position = "absolute";
+  backBtn.style.left = "20px";
+  backBtn.style.top = "140px";
+  backBtn.style.background = "none";
+  backBtn.style.border = "none";
+  backBtn.style.padding = "10px";
+  backBtn.style.zIndex = "20";
+  backBtn.style.cursor = "pointer";
+  backBtn.innerHTML = `<img src="Images/Icons/back.ico" alt="Back" style="width:32px;height:32px;vertical-align:middle;">`;
+  backBtn.onclick = () => {
+    // cleanup and restore
+    selectedEgg = null;
+    if (selectedWorld === "infinity") {
+      selectedWorld = lastNormalWorld || null;
+    }
+    const searchInput = document.getElementById('search-bar');
+    if (searchInput) searchInput.value = lastSearchValue;
+    renderEggs();
+  };
+
+  const layout = document.createElement('div');
+  layout.className = 'egg-details-layout';
+  layout.style.position = 'relative';
+
+  const left = document.createElement('div');
+  left.className = 'egg-details-left';
+
+  const middle = document.createElement('div');
+  middle.className = 'egg-details-middle';
+
+  const right = document.createElement('div');
+  right.className = 'egg-details-right';
+
+  // Pet icon (smaller for better quality)
+  const petIconWrap = document.createElement('div');
+  petIconWrap.style.display = 'flex';
+  petIconWrap.style.justifyContent = 'center';
+  petIconWrap.style.alignItems = 'center';
+  petIconWrap.style.marginTop = '-8px';
+  petIconWrap.style.marginBottom = '8px';
+  const petImg = document.createElement('img');
+  const petName = (todays && todays.Pet) ? todays.Pet : 'Doggy';
+  petImg.src = getPetIconByName(petName) || 'Images/pets/Doggy.webp';
+  petImg.alt = petName;
+  petImg.style.width = '150px'; // slightly smaller
+  petImg.style.height = '150px';
+  petImg.style.objectFit = 'contain';
+  petImg.style.borderRadius = '12px';
+  petImg.style.boxShadow = '0 6px 24px rgba(0,0,0,0.22)';
+  petIconWrap.appendChild(petImg);
+  left.appendChild(petIconWrap);
+
+  // Pet info below icon
+  const infoWrap = document.createElement('div');
+  infoWrap.style.textAlign = 'center';
+  infoWrap.style.margin = '8px 6px';
+  const nameEl = document.createElement('div');
+  nameEl.style.fontWeight = '700';
+  nameEl.style.fontSize = '1.4rem';
+  nameEl.textContent = petName;
+  infoWrap.appendChild(nameEl);
+
+  const chanceText = (todays && todays.Chance) ? todays.Chance : 'Unknown';
+  const chanceEl = document.createElement('div');
+  chanceEl.style.color = 'var(--main-text)';
+  chanceEl.style.marginTop = '6px';
+  chanceEl.style.fontWeight = '700';
+  chanceEl.textContent = `Chance (base): ${chanceText}`;
+  infoWrap.appendChild(chanceEl);
+
+  const eggText = (todays && todays.Egg) ? todays.Egg : 'Unknown Egg';
+  const eggEl = document.createElement('div');
+  eggEl.style.marginTop = '6px';
+  eggEl.innerHTML = `Egg: <strong>${eggText}</strong>`;
+  infoWrap.appendChild(eggEl);
+
+  const timerEl = document.createElement('div');
+  timerEl.style.marginTop = '8px';
+  timerEl.style.fontWeight = '600';
+  timerEl.id = 'bounty-timer';
+  const updateTimer = () => {
+    const secs = secondsUntilNextUTCDate();
+    const h = Math.floor(secs / 3600);
+    const m = Math.floor((secs % 3600) / 60);
+    const s = secs % 60;
+    timerEl.textContent = `Next update in: ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  };
+  updateTimer();
+  const timerInterval = setInterval(updateTimer, 1000);
+  infoWrap.appendChild(timerEl);
+
+  left.appendChild(infoWrap);
+
+  // Egg icon placed more to the left, egg name under it
+  const eggIconWrap = document.createElement('div');
+  eggIconWrap.style.display = 'flex';
+  eggIconWrap.style.flexDirection = 'column';
+  eggIconWrap.style.justifyContent = 'flex-start';
+  eggIconWrap.style.alignItems = 'flex-start';
+  eggIconWrap.style.marginTop = '8px';
+  eggIconWrap.style.marginLeft = '8px';
+  const eggImg = document.createElement('img');
+  eggImg.src = `Images/Eggs/${formatNameToPath(eggText)}.webp`;
+  eggImg.alt = eggText;
+  eggImg.style.width = '160px';
+  eggImg.style.height = '160px';
+  eggImg.style.objectFit = 'contain';
+  eggImg.style.borderRadius = '8px';
+  eggImg.style.boxShadow = '0 6px 20px rgba(0,0,0,0.15)';
+  eggIconWrap.appendChild(eggImg);
+
+  const eggNameUnder = document.createElement('div');
+  eggNameUnder.style.textAlign = 'left';
+  eggNameUnder.style.fontSize = '1rem';
+  eggNameUnder.style.marginTop = '8px';
+  eggNameUnder.textContent = eggText;
+  eggIconWrap.appendChild(eggNameUnder);
+
+  middle.appendChild(eggIconWrap);
+
+  // Controls (luck + secret) should be on the right, above the pets table
+  const fakeEggForControls = { name: 'Bounty', Pets: [], world: 'bounty' };
+  const controlsEl = createEggSettings(fakeEggForControls, false);
+  controlsEl.style.marginTop = '8px';
+  right.appendChild(controlsEl);
+
+  // Build pets list for the egg and add bounty pet on top (label as (Bounty))
+  const eggObj = eggs.find(e => e.name === eggText) || (window.eggsJson || []).find(e => e.name === eggText) || null;
+  const petsList = eggObj && Array.isArray(eggObj.Pets) ? eggObj.Pets.slice() : [];
+
+  const bountyBaseOdds = parseChanceString(chanceText);
+  const bountyPetObj = { name: petName + ' (Bounty)', baseOdds: bountyBaseOdds || 0, icon: getPetIconByName(petName) };
+
+  const combinedEggForTable = { name: eggText, Pets: [] };
+  if (bountyBaseOdds) combinedEggForTable.Pets.push(bountyPetObj);
+  combinedEggForTable.Pets = combinedEggForTable.Pets.concat(petsList);
+
+  // create pets card and ensure it's visually large enough and sits below controls
+  const petsCard = createEggPetInfoCard(combinedEggForTable, false);
+  petsCard.style.marginTop = '18px';
+  petsCard.style.minHeight = '420px';
+  petsCard.style.boxSizing = 'border-box';
+  petsCard.style.width = '100%';
+  petsCard.style.minWidth = '480px'; // ensure it's not too narrow in constrained layouts
+  right.appendChild(petsCard);
+
+  // append layout parts then the layout itself so we can compute divider position accurately
+  layout.appendChild(left);
+  layout.appendChild(middle);
+  layout.appendChild(right);
+
+  eggList.appendChild(backBtn);
+  eggList.appendChild(layout);
+
+  // Vertical divider placed inside layout between left (pet info) and middle (egg info)
+  const diag = document.createElement('div');
+  diag.id = 'bounty-divider';
+  diag.style.position = 'absolute';
+  diag.style.width = '2px';
+  diag.style.background = 'var(--table-border)';
+  diag.style.top = '0';
+  diag.style.opacity = '0.9';
+  diag.style.zIndex = '5';
+  layout.appendChild(diag);
+
+  // position divider between left and middle columns (use midpoint)
+  function updateDivider() {
+    if (!layout.contains(diag)) return;
+    try {
+      const layoutRect = layout.getBoundingClientRect();
+      const leftRect = left.getBoundingClientRect();
+      const middleRect = middle.getBoundingClientRect();
+      // preferred: midpoint between right edge of left and left edge of middle
+      let midpoint = Math.round((leftRect.right + middleRect.left) / 2);
+      // fallback: if columns stack (middle left <= left right) or values invalid, place a bit right of left column
+      if (!isFinite(midpoint) || middleRect.left <= leftRect.right) {
+        midpoint = Math.round(leftRect.right + 24);
+      }
+      const offset = Math.max(8, midpoint - layoutRect.left); // keep inside layout with small padding
+      diag.style.left = offset + 'px';
+      // span the layout content height
+      diag.style.height = layout.scrollHeight + 'px';
+    } catch (e) { /* ignore */ }
+  }
+  updateDivider();
+
+  // keep divider in place on resize / layout changes
+  const ro = new ResizeObserver(updateDivider);
+  ro.observe(layout);
+  ro.observe(left);
+  ro.observe(middle);
+  window.addEventListener('resize', updateDivider);
+
+  // cleanup timer & observers when leaving view
+  const observer = new MutationObserver(() => {
+    // when layout or timerEl removed from DOM, clear interval and remove divider and observers
+    if (!document.body.contains(timerEl)) {
+      clearInterval(timerInterval);
+      observer.disconnect();
+      try { ro.disconnect(); } catch (e) {}
+      window.removeEventListener('resize', updateDivider);
+      const div = document.getElementById('bounty-divider');
+      if (div && div.parentNode) div.parentNode.removeChild(div);
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+}
+
+// modify createEggDetailsView: replace the old bounty placeholder branch with call to new view
 async function createEggDetailsView(egg, canSpawnAsRift) {
   eggList.innerHTML = '';
   const backBtn = document.createElement("button");
@@ -191,6 +439,11 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     if (searchInput) searchInput.value = lastSearchValue;
     renderEggs();
   };
+
+  if (egg.name === "Bounty") {
+    await createBountyDetailsView();
+    return;
+  }
 
   const layout = document.createElement('div');
   layout.className = 'egg-details-layout';
@@ -328,10 +581,11 @@ function createEggSettings(egg, canSpawnAsRift) {
   controls.className = "controls";
   let controlsHtml = '';
   if (canSpawnAsRift) {
-    if (egg.name === "Bee Egg") {
+    if (egg.name === "Brainrot Egg") {
       controlsHtml += `
         <label>Rift:</label>
         <select class="multiplier">
+          <option value="2">2x</option>
           <option value="5" selected>5x</option>
           <option value="10">10x</option>
           <option value="20">20x</option>
@@ -355,7 +609,8 @@ function createEggSettings(egg, canSpawnAsRift) {
     <label>Luck Multiplier (%):</label>
     <input type="number" class="luck" value="0" />
   `;
-  const hasSecret = egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name)) || egg.name === "Infinity Egg";
+  // show secret multiplier for Infinity Egg and for Bounty
+  const hasSecret = egg.Pets && egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name)) || egg.name === "Infinity Egg" || egg.name === "Bounty";
   if (hasSecret) {
     controlsHtml += `
       <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px;width:100%;">
@@ -371,7 +626,7 @@ function createEggSettings(egg, canSpawnAsRift) {
 function createEggPetInfoCard(egg, canSpawnAsRift) {
   const card = document.createElement("div");
   card.className = "egg-card";
-  card.setAttribute("data-world", egg.world);
+  card.setAttribute("data-world", egg.world || "");
   const table = document.createElement("table");
   table.innerHTML = `
     <thead>
@@ -388,7 +643,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
 
   setTimeout(() => {
     const layout = document.querySelector('.egg-details-layout');
-    const controls = layout ? layout.querySelector('.egg-details-left .controls') : null;
+    const controls = layout ? (layout.querySelector('.egg-details-left .controls') || layout.querySelector('.egg-details-right .controls')) : null;
     const multiplierSelect = controls ? controls.querySelector(".multiplier") : null;
     const luckInput = controls ? controls.querySelector(".luck") : null;
     const secretInput = controls ? controls.querySelector(".secret-mult") : null;
@@ -408,8 +663,8 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       const secretTimes = secretInput ? (secretInput.value === "" ? 1 : Math.max(1, parseFloat(secretInput.value))) : 1;
       const effectiveLuckPercent = luckPercent + riftBonusPercent;
       petList.innerHTML = "";
-      egg.Pets.forEach(pet => {
-        const isSecret = /\((Secret|Infinity)\)/i.test(pet.name);
+      (egg.Pets || []).forEach(pet => {
+        const isSecret = /\((Secret|Infinity|Bounty)\)/i.test(pet.name) || /\bBounty\b/i.test(pet.name);
         const baseChance = pet.baseOdds && pet.baseOdds > 0 ? 1 / pet.baseOdds : 0;
         let combinedMultiplier = 1 + effectiveLuckPercent / 100;
         if (isSecret) combinedMultiplier *= secretTimes;
@@ -419,7 +674,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         let adjustedPercent = formatAdjustedPercent(adjustedChance);
         const adjustedPercentCell = adjustedPercent === "Unknown" ? "Unknown" : `${adjustedPercent}%`;
 
-        const petIconPath = pet.icon || getPetIconByName(pet.name) || "Images/pets/Doggy.webp";
+        const petIconPath = pet.icon || getPetIconByName(pet.name) || "Images/Pets/Doggy.webp";
 
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -427,7 +682,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
             <img src="${petIconPath}" alt="${pet.name}" />
             ${pet.name}
           </td>
-          <td>1 in ${pet.baseOdds ? pet.baseOdds.toLocaleString() : 'Unknown'}</td>
+          <td>${pet.baseOdds ? `1 in ${pet.baseOdds.toLocaleString()}` : 'Unknown'}</td>
           <td>1 in ${adjustedOneIn}</td>
           <td>${adjustedPercentCell}</td>
         `;
@@ -723,31 +978,10 @@ function ensureBountyButton() {
   btn.type = 'button';
   btn.title = 'Bounty';
 
-  // Placeholder behavior: do NOT open an egg page for now.
+  // Open bounty details view (no placeholder toast)
   btn.onclick = (e) => {
     e.preventDefault();
-    // brief non-intrusive toast so user knows this is a placeholder
-    if (document.getElementById('bounty-placeholder-toast')) return;
-    const toast = document.createElement('div');
-    toast.id = 'bounty-placeholder-toast';
-    toast.style.position = 'fixed';
-    toast.style.left = '50%';
-    toast.style.bottom = '88px';
-    toast.style.transform = 'translateX(-50%)';
-    toast.style.background = 'var(--controls-bg)';
-    toast.style.color = 'var(--main-text)';
-    toast.style.padding = '8px 12px';
-    toast.style.borderRadius = '8px';
-    toast.style.boxShadow = '0 6px 20px rgba(0,0,0,0.18)';
-    toast.style.fontFamily = 'inherit';
-    toast.style.fontSize = '0.95rem';
-    toast.style.zIndex = '14000';
-    toast.style.opacity = '0';
-    toast.style.transition = 'opacity 220ms';
-    toast.textContent = 'Bounty page coming soon';
-    document.body.appendChild(toast);
-    requestAnimationFrame(() => { toast.style.opacity = '1'; });
-    setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 400); }, 1800);
+    animateEggDetails(() => createBountyDetailsView());
   };
 
   const referenceBtn = sidebar.querySelector('.world-icon-btn.infinity, .world-icon-btn.infinite, .world-icon-btn.limited') || null;
