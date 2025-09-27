@@ -232,7 +232,8 @@
       "Cave Mole",
       "Ore Golem",
       "Crystal Unicorn",
-      "Stone Gargoyle"
+      "Stone Gargoyle",
+      "Giant Cave Mole"
     ],
     "luckIgnored": false,
     "infinityEgg": "Minigame Paradise",
@@ -384,7 +385,6 @@
       "Jellyfish",
       "Atlantis Guardian",
       "Tidal God",
-      "Koi",
       "Abyssal Sea Dragon"
     ],
     "luckIgnored": false,
@@ -392,6 +392,27 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-08-15",
+    "dateRemoved": "",
+    "index": "Seven Seas"
+  },
+  {
+    "name": "Classic Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/34/Classic_Egg.png",
+    "pets": [
+      "Classic Doggy",
+      "Classic Kitty",
+      "Classic Dragon",
+      "Classic Unicorn",
+      "Classic Dominus",
+      "Classic Noob",
+      "Classic Overlord",
+      "1x1x1x1"
+    ],
+    "luckIgnored": false,
+    "infinityEgg": "Seven Seas",
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-09-19",
     "dateRemoved": "",
     "index": "Seven Seas"
   },
@@ -410,6 +431,21 @@
     "secretBountyRotation": false,
     "dateAdded": "2025-09-12",
     "dateRemoved": ""
+  },
+  {
+    "name": "Season 8 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/60/Season_8_Egg.png",
+    "pets": [
+      "Leaf Doggy",
+      "Leaf Kitty",
+      "Autumn Dragon",
+      "Demon Tree"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-09-26",
+    "dateRemoved": "2025-10-22"
   },
   {
     "name": "Season 7 Egg",
@@ -566,6 +602,48 @@
     "dateRemoved": "2025-04-30"
   },
   {
+    "name": "Autumn Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Autumn_Egg.png",
+    "pets": [
+      "Squirrel",
+      "Moose",
+      "Leafy",
+      "Autumn Paragon",
+      "Monarch Butterfly",
+      "Crystal Acorn",
+      "Big Leafy",
+      "Candycorn Shard",
+      "Almighty Pumpkin"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-09-26",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Developer Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6e/Developer_Egg.png",
+    "pets": [
+      "Sircfenner Doggy",
+      "Quamatic Bear",
+      "Nert Dragon",
+      "Sylently's Hats",
+      "Isaac Rainbow Shock",
+      "Nert Plushie",
+      "ObscureEntity Plushie",
+      "Quamatic Plushie",
+      "Sircfenner Plushie",
+      "Sylently Plushie",
+      "Sylently's Pet"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": true,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-09-26",
+    "dateRemoved": ""
+  },
+  {
     "name": "Brainrot Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Brainrot_Egg.png",
     "pets": [
@@ -579,7 +657,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-09-12",
-    "dateRemoved": ""
+    "dateRemoved": "2025-09-26"
   },
   {
     "name": "Shadow Egg",
@@ -624,8 +702,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-08-22",
-    "dateRemoved": "2025-09-05",
-    "index": "Seven Seas"
+    "dateRemoved": "2025-09-05"
   },
   {
     "name": "Candy Egg",
