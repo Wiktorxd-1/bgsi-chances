@@ -346,7 +346,8 @@ async function createBountyDetailsView() {
   });
 
   let upcomingPage = 0;
-  const pageSize = 6;
+  // show 5 pets per upcoming page as requested
+  const pageSize = 5;
 
   function renderUpcomingPage() {
     upcomingWrap.innerHTML = '';
@@ -490,8 +491,11 @@ async function createBountyDetailsView() {
       backPageBtn.style.padding = '6px 10px';
       backPageBtn.style.borderRadius = '8px';
       backPageBtn.style.border = '1px solid var(--table-border)';
+      // ensure white text and use the currently-selected UI font
       backPageBtn.style.background = 'var(--controls-bg)';
       backPageBtn.style.cursor = 'pointer';
+      backPageBtn.style.color = '#ffffff';
+      backPageBtn.style.fontFamily = document.body.style.fontFamily || 'inherit';
       backPageBtn.onclick = () => { upcomingPage = Math.max(0, upcomingPage - 1); renderUpcomingPage(); };
       navWrap.appendChild(backPageBtn);
     } else {
@@ -505,8 +509,11 @@ async function createBountyDetailsView() {
       loadMoreBtn.style.padding = '6px 10px';
       loadMoreBtn.style.borderRadius = '8px';
       loadMoreBtn.style.border = '1px solid var(--table-border)';
+      // ensure white text and match chosen font
       loadMoreBtn.style.background = 'var(--controls-bg)';
       loadMoreBtn.style.cursor = 'pointer';
+      loadMoreBtn.style.color = '#ffffff';
+      loadMoreBtn.style.fontFamily = document.body.style.fontFamily || 'inherit';
       loadMoreBtn.onclick = () => { upcomingPage++; renderUpcomingPage(); };
       navWrap.appendChild(loadMoreBtn);
     }
@@ -1429,7 +1436,7 @@ async function updateBountyButtonIcon() {
   }
   const todayLabel = formatUTCDateToLabel(new Date());
   const todays = bounties.find(b => b.Time === todayLabel) || bounties[0];
-  const petName = (todays && todays.Pet) ? todays.Pet : 'Doggy';
+   const petName = (todays && todays.Pet) ? todays.Pet : 'Doggy';
   const eggName = (todays && todays.Egg) ? todays.Egg : '';
   const petIcon = `Images/Pets/${formatNameToPath(petName)}.webp`;
   if (imgEl) {
@@ -1635,16 +1642,44 @@ function setFont(font) {
 // new helper: resolve pet/egg icon paths if explicit icon/image missing
 function formatNameToPath(name) {
   if (!name) return '';
-  return name.replace(/\s+/g, '_').replace(/[\/\\'"]/g, '');
+  // normalize and remove any parenthetical suffixes e.g. "(Secret)"
+  let s = String(name).trim();
+  s = s.replace(/\(.*?\)/g, '').trim();
+
+  // Protect any literal "%27" already present so we don't double-encode it
+  s = s.replace(/%27/g, '__PERCENT27__');
+
+  // Convert curly or straight apostrophes to the UI-encoded form %27
+  s = s.replace(/[\u2018\u2019']/g, '%27');
+
+  // Any remaining % should be percent-escaped to avoid accidental decoding issues
+  s = s.replace(/%/g, '%25');
+
+  // replace whitespace with underscores
+  s = s.replace(/\s+/g, '_');
+
+  // remove common path-breaking characters
+  s = s.replace(/[\/\\"]/g, '');
+
+  // allow letters, numbers, underscore, hyphen, dot, parentheses and percent sequences
+  s = s.replace(/[^A-Za-z0-9_%\-\._()]/g, '');
+
+  // collapse multiple underscores
+  s = s.replace(/_+/g, '_');
+
+  // restore protected %27 tokens
+  s = s.replace(/__PERCENT27__/g, '%27');
+
+  return s;
 }
 function getPetIconByName(petName) {
-  if (!petName) return "Images/pets/Doggy.webp";
+  if (!petName) return "Images/Pets/Doggy.webp";
   const baseName = petName.replace(/\(.*?\)/g, '').trim();
   const candidate = `Images/Pets/${formatNameToPath(baseName)}.webp`;
   return candidate;
 }
 function getEggImagePath(eggOrName) {
-  if (!eggOrName) return "Images/pets/Doggy.webp";
+  if (!eggOrName) return "Images/Eggs/Placeholder_Egg.webp";
   if (typeof eggOrName === 'string') {
     const candidate = `Images/Eggs/${formatNameToPath(eggOrName)}.webp`;
     return candidate;
@@ -1652,7 +1687,6 @@ function getEggImagePath(eggOrName) {
   if (eggOrName.image) return eggOrName.image;
   const candidate = `Images/Eggs/${formatNameToPath(eggOrName.name)}.webp`;
   return candidate;
-
 }
 
 // Add a lightweight bounty watcher that refreshes the current egg view when bounties change.
