@@ -12,6 +12,7 @@
   <meta name="twitter:description" content="Easy to use site for calculating chances of hatching a secret or legendary" />
   <meta name="twitter:image" content="https://wiktorxd-1.github.io/bgsi-chances/Images/Icons/favicon.ico" />
   <link rel="icon" href="/Images/Icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="Images/Icons/favicon.ico" type="image/ico">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BGSI Chance Calculator</title>
@@ -487,6 +488,111 @@
         calcLink.classList.add('active');
         calcLink.setAttribute('aria-current', 'page');
       }
+    })();
+
+
+    (function() {
+      function createSupportStyles() {
+        if (document.getElementById('support-thanks-styles')) return;
+        const s = document.createElement('style');
+        s.id = 'support-thanks-styles';
+        s.textContent = `
+          .support-thanks-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.56);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999999;
+          }
+          .support-thanks-modal {
+            background: var(--popup-bg, #fff);
+            color: var(--main-text, #000);
+            padding: 18px 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+            max-width: 560px;
+            width: calc(100% - 40px);
+            font-family: inherit;
+            text-align: left;
+          }
+          .support-thanks-modal h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.05rem;
+          }
+          .support-thanks-modal p { margin: 0 0 12px 0; line-height: 1.35; }
+          .support-thanks-actions { display:flex; gap:10px; justify-content:flex-end; margin-top:8px; }
+          .support-thanks-btn {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.06);
+            color: #ffffff;
+            cursor: pointer;
+            font-family: inherit;
+          }
+          @media (prefers-color-scheme: light) {
+            .support-thanks-modal { background: #fff; color: #111; }
+            .support-thanks-btn { color: #111; }
+          }
+        `;
+        document.head.appendChild(s);
+      }
+
+      function showSupportThankYouPopup() {
+
+        createSupportStyles();
+
+        if (document.getElementById('support-thanks-overlay')) return;
+
+        const overlay = document.createElement('div');
+        overlay.id = 'support-thanks-overlay';
+        overlay.className = 'support-thanks-overlay';
+        overlay.innerHTML = `
+          <div class="support-thanks-modal" role="dialog" aria-modal="true" aria-labelledby="support-thanks-title">
+            <h3 id="support-thanks-title">Thank you!</h3>
+            <p>Thank you so much for your support — this really motivates me to continue!</p>
+            <p style="margin-top:6px;font-size:0.92rem;opacity:0.95">Remember you can disable ads at any point!</p>
+            <div class="support-thanks-actions">
+              <button class="support-thanks-btn" id="support-thanks-close">Close</button>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(overlay);
+
+        const close = document.getElementById('support-thanks-close');
+        function removePopup() {
+          if (!overlay) return;
+          overlay.remove();
+        }
+        close && close.addEventListener('click', removePopup);
+        overlay.addEventListener('click', (ev) => {
+          if (ev.target === overlay) removePopup();
+        });
+
+
+        close && close.focus();
+      }
+
+      document.addEventListener('click', function(e) {
+        const btn = e.target.closest && e.target.closest('.support-yes, [data-support="yes"]');
+        if (btn) {
+          e.preventDefault();
+          showSupportThankYouPopup();
+        }
+      }, true);
+
+
+      document.addEventListener('change', function(e) {
+        const t = e.target;
+        if (!t) return;
+        if ((t.tagName === 'INPUT' && (t.type === 'radio' || t.type === 'checkbox') && (t.value || '').toLowerCase() === 'yes' && t.checked)
+            || (t.tagName === 'SELECT' && (t.value || '').toLowerCase() === 'yes')
+            || (t.dataset && t.dataset.support === 'yes')) {
+          showSupportThankYouPopup();
+        }
+      }, true);
     })();
   </script>
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>

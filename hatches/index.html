@@ -13,6 +13,17 @@
       color: var(--main-text);
       font-family: inherit;
     }
+    /* SEO-only visually-hidden class for indexing (keeps text offscreen for humans) */
+    .seo-hidden {
+      position: absolute !important;
+      left: -99999px !important;
+      top: auto !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      white-space: nowrap !important;
+      clip: rect(1px, 1px, 1px, 1px) !important;
+    }
     .hatches-title {
       font-family: inherit;
       color: var(--main-text);
@@ -377,7 +388,10 @@
   </style>
 </head>
 <body>
-  <!-- Menu/Sidebar/Credits/Settings from main index.html -->
+  <div class="seo-hidden">
+    BGSI (Bubble gum simulator infinity) Live secret pet hatches, live, secret hatches, searching, bgsi hatches, view your hatches
+  </div>
+
   <div class="menu-discord-wrapper" id="menu-discord-wrapper">
     <button class="menu-icon" onclick="toggleSidebar()">
       <img id="menu-icon-img" src="../Images/Icons/menu.ico" alt="Menu" />
@@ -487,6 +501,26 @@
       <img id="pet-modal-close" src="../Images/Icons/close.ico" alt="Close" title="Close" style="position:absolute;top:-28px;right:-28px;width:38px;height:38px;cursor:pointer;opacity:0.85;">
     </div>
   </div>
+
+  <!-- Support thank-you modal (shown when a "yes" support element is selected) -->
+  <div id="support-thanks-modal" role="dialog" aria-modal="true" aria-hidden="true"
+       style="display:none;position:fixed;inset:0;z-index:20000;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;">
+    <div id="support-thanks-inner" style="background:var(--popup-bg, rgba(30,30,30,0.98));color:var(--main-text,#fff);padding:24px;border-radius:14px;max-width:520px;width:92%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.5);position:relative;">
+      <button id="support-thanks-close" aria-label="Close" title="Close"
+              style="position:absolute;top:10px;right:10px;border:0;background:transparent;cursor:pointer;padding:6px;">
+        <img src="../Images/Icons/close.ico" alt="Close" style="width:22px;height:22px;opacity:0.9;">
+      </button>
+      <h3 style="margin:0 0 12px 0;font-size:1.25rem;font-weight:700;">Thank you!</h3>
+      <p style="margin:0;font-size:1rem;line-height:1.4;">
+        Thank you so much for you support, this really motivates me to continue!
+        <br><strong>Remember you can disable ads at any point!</strong>
+      </p>
+      <div style="margin-top:18px;">
+        <button id="support-thanks-ok" style="padding:8px 14px;border-radius:8px;border:1px solid #ccc;background:var(--controls-bg,#2b2b2b);color:#fff;cursor:pointer;font-weight:600;">OK</button>
+      </div>
+    </div>
+  </div>
+
   <script src="../script.js"></script>
   <script>
     // Sidebar/menu/credits/settings logic from main index.html
