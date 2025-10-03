@@ -250,6 +250,11 @@
       <option value="Comic Sans MS">Comic Sans MS</option>
       <option value="Lexend">Lexend</option>
     </select>
+    <!-- Ads setting (appears in Settings) -->
+    <div style="margin-top:10px;display:flex;align-items:center;gap:10px;">
+      <input type="checkbox" id="ads-toggle" />
+      <label for="ads-toggle" style="font-size:0.95rem;cursor:pointer;">Show ads (toggle)</label>
+    </div>
   </div>
   <div id="main-content"></div>
   <script src="script.js"></script>
@@ -324,6 +329,31 @@
           setFont(this.value);
         });
       }
+      // initialize ads toggle in settings
+      (function initAdsToggle(){
+        const adsToggle = document.getElementById('ads-toggle');
+        if (!adsToggle) return;
+        // default: ads enabled (true) unless explicitly disabled
+        let saved = localStorage.getItem('adsEnabled');
+        if (saved === null) {
+          saved = 'true';
+          localStorage.setItem('adsEnabled', saved);
+        }
+        adsToggle.checked = (saved === 'true');
+        function updateAdsVisibility(enabled) {
+          // hide/show any ad placeholders (.ad-slot) and mark body for CSS if needed
+          document.body.dataset.adsEnabled = enabled ? 'true' : 'false';
+          document.querySelectorAll('.ad-slot').forEach(el => {
+            el.style.display = enabled ? '' : 'none';
+          });
+        }
+        updateAdsVisibility(adsToggle.checked);
+        adsToggle.addEventListener('change', function() {
+          const enabled = !!this.checked;
+          localStorage.setItem('adsEnabled', enabled ? 'true' : 'false');
+          updateAdsVisibility(enabled);
+        });
+      })();
       const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
       setTheme(savedTheme);
       if (!localStorage.getItem('selectedTheme')) {
