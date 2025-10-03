@@ -18,7 +18,7 @@
   <title>BGSI Chance Calculator</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Lexend:wght@400;700&display=swap" rel="stylesheet">
-
+  <meta name="google-adsense-account" content="ca-pub-4324352961725890">
   <style>
     .seo-hidden {
       position: absolute !important;
@@ -252,7 +252,8 @@
     </select>
     <!-- Ads setting (appears in Settings) -->
     <div style="margin-top:10px;display:flex;align-items:center;gap:10px;">
-      <input type="checkbox" id="ads-toggle" />
+      <!-- add value and data-support so the existing "yes" handlers trigger the thank-you popup -->
+      <input type="checkbox" id="ads-toggle" value="yes" data-support="yes" />
       <label for="ads-toggle" style="font-size:0.95rem;cursor:pointer;">Show ads (toggle)</label>
     </div>
   </div>
@@ -333,10 +334,11 @@
       (function initAdsToggle(){
         const adsToggle = document.getElementById('ads-toggle');
         if (!adsToggle) return;
-        // default: ads enabled (true) unless explicitly disabled
+        // default: ads disabled (false) unless explicitly enabled
+        // (previously defaulted to true causing ads to appear by default)
         let saved = localStorage.getItem('adsEnabled');
         if (saved === null) {
-          saved = 'true';
+          saved = 'false';
           localStorage.setItem('adsEnabled', saved);
         }
         adsToggle.checked = (saved === 'true');
