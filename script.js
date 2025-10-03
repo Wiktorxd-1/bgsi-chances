@@ -918,6 +918,7 @@ function createEggSettings(egg, canSpawnAsRift) {
           <option value="0">No</option>
           <option value="5">5x</option>
           <option value="10">10x</option>
+          <option value="15">15x</option>
           <option value="20">20x</option>
           <option value="25">25x</option>
         </select>
