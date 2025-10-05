@@ -1,4 +1,4 @@
-async function fetchEggsData() {
+﻿async function fetchEggsData() {
   const response = await fetch('Data/eggs.json');
   const eggsJson = await response.json();
   return eggsJson;
@@ -20,16 +20,15 @@ const eggs = [
   { name: "Chance Egg", image: "Images/Eggs/Chance_Egg.webp", Pets: [ { name: "Ring Master", baseOdds: 100000, icon: "Images/Pets/Ring_Master.webp" }, { name: "Royal Guardian", baseOdds: 200000000, icon: "Images/Pets/Royal_Guardian.webp" } ], world: "2" },
   { name: "Icy Egg", image: "Images/Eggs/Icy_Egg.webp", Pets: [ { name: "Marshmallow", baseOdds: 200, icon: "Images/Pets/Marshmallow.webp"}, { name: "Minty Serpent", baseOdds: 66667, icon: "Images/Pets/Minty_Serpent.webp"}, { name: "Ice Winged Hydra", baseOdds: 333334, icon: "Images/Pets/Ice_Winged_Hydra.webp"}, { name: "Giant Pearl (Secret)", baseOdds: 125000000, icon: "Images/Pets/Giant_Pearl.webp"}], world: "3"},
   { name: "Vine Egg", image: "Images/Eggs/Vine_Egg.webp", Pets: [ { name: "Thorn Dragon", baseOdds: 4000, icon: "Images/Pets/Thorn_Dragon.webp"}, { name: "Flower Pot", baseOdds: 100000, icon: "Images/Pets/Flower_Pot.webp"}, { name: "Lovely Lotus", baseOdds: 1000000, icon: "Images/Pets/Lovely_Lotus.webp"}, { name: "Fire Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Fire_Champion.webp"}, { name: "Dark Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Dark_Champion.webp"}, { name: "Earth Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Earth_Champion.webp"}, { name: "Sky Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Sky_Champion.webp"}], world: "3"},
-  { name: "Secret Egg", image: "Images/Eggs/Placeholder_Egg.webp", Pets: [ { name: "Gigantic Spitty (Infinity)", baseOdds: 40000000000, icon: "Images/Pets/Gigantic_Spitty.webp"}], world: "3"},
+  { name: "Secret Egg", Pets: [ { name: "Gigantic Spitty (Infinity)", baseOdds: 40000000000, icon: "Images/Pets/Gigantic_Spitty.webp"}], world: "3"},
   { name: "Lava Egg", image: "Images/Eggs/Lava_Egg.webp", Pets: [ { name: "Magma Cube", baseOdds: 4000, icon: "Images/Pets/Magma_Cube.webp"}, { name: "Night Dweller", baseOdds: 100000, icon: "Images/Pets/Night_Dweller.webp"}, { name: "Fire King", baseOdds: 3333334, icon: "Images/Pets/Fire_King.webp"}, { name: "Hellshard (Secret)", baseOdds: 1000000000, icon: "Images/Pets/Hellshard.webp"}], world: "3"},
   { name: "Atlantis Egg", image: "Images/Eggs/Atlantis_Egg.webp", Pets: [ { name: "Angler fish", baseOdds: 4000, icon: "Images/Pets/Angler_Fish.webp"}, { name: "Jellyfish", baseOdds: 200000, icon: "Images/Pets/Jellyfish.webp"}, { name: "Atlantis Guardian", baseOdds: 2000000, icon: "Images/Pets/Atlantis_Guardian.webp"}, { name: "Tidal God (Secret)", baseOdds: 250000000, icon: "Images/Pets/Tidal_God.webp"}, { name: "Abyssal Sea Dragon (Secret)", baseOdds: 2000000000, icon: "Images/Pets/Abyssal_Sea_Dragon.webp"}], world: "3"},
   { name: "Brainrot Egg" , image: "Images/Eggs/Brainrot_Egg.webp", Pets: [ { name: "Brainrot Shark", baseOdds: 20000, icon: "Images/Pets/Brainrot_Shark.webp"}, {name: "Nert Pufferfish", baseOdds: 50000, icon: "Images/Pets/Nert_Pufferfish.webp"}, { name: "BIG ROUND (Secret)", baseOdds: 200000000, icon: "Images/Pets/BIG_ROUND.webp"}], world: "limited"},
   { name: "Classic egg", image: "Images/Eggs/Classic_Egg.webp", Pets: [ { name: "Classic Unicorn", baseOdds: 4000, icon: "Images/Pets/Classic_Unicorn.webp"}, { name: "Classic Dominus", baseOdds: 200000, icon: "Images/Pets/Classic_Dominus.webp"}, { name: "Classic Noob", baseOdds: 2000000, icon: "Images/Pets/Classic_Noob.webp"}, { name: "Classic Overlord (Secret)", baseOdds: 100000000, icon: "Images/Pets/Classic_Overlord.webp"}, { name: "1x1x1x1 (Secret)", baseOdds: 500000000, icon: "Images/Pets/1x1x1x1.webp"}, { name: "Giant Classic Chicken (Secret)", baseOdds: 2500000000, icon: "Images/Pets/Giant_Classic_Chicken.webp"}], world: "3"},
   { name: "Autumn Egg", Pets: [ { name: "Autumn Paragon", baseOdds: 5000 }, { name: "Monarch Butterfly", baseOdds: 1000000}, { name:"Crystal Acorn", baseOdds: 5000000 }, { name: "Big Leafy (Secret)", baseOdds: 100000000 }, { name: "Candycorn Shard (Secret)", baseOdds: 500000000}, { name: "Almighty Pumpkin (Secret)", baseOdds: 2000000000}], world: "limited"},
-  { name: "Developer Egg", Pets: [ { name: "Sylently's Hats", baseOdds: 100000}, { name: "Isaac Rainbow Shock", baseOdds: 1000000}, { name: "Sircfenner Plushie (Secret)", baseOdds: 500000000}, { name: "Quamatic Plushie (Secret)", baseOdds: 500000000}, { name: "Nert Plushie (Secret)", baseOdds: 500000000}, { name: "Sylently Plushie (Secret)", baseOdds: 500000000}, { name: "ObscureEntity Plushie (Secret)", baseOdds: 500000000}, { name: "Sylently's Pet (Infinity)", baseOdds: 5000000000}], world: "limited"},
+  { name: "Developer Egg", Pets: [ { name: "Sylently's Hats", baseOdds: 100000}, { name: "Isaac Rainbow Shock", baseOdds: 1000000}, { name: "Sircfenner Plushie (Secret)", baseOdds: 500000000}, { name: "Quamatic Plushie (Secret)", baseOdds: 500000000}, { name: "Nert Plushie (Secret)", baseOdds: 500000000}, { name: "Sylently Plushie (Secret)", baseOdds: 500000000}, { name: "ObscureEntity Plushie (Secret)", baseOdds: 500000000}, { name: "Sylantly's Pet (Infinity)", baseOdds: 5000000000}], world: "limited"},
   { name: "Candle Egg", Pets: [ { name: "Lantern Demon", baseOdds: 10000 }, { name: "Candle Phoenix", baseOdds: 2000000 }, { name: "Willow Chandelier", baseOdds: 10000000 }, { name: "Maple Divinity (Secret)", baseOdds: 2000000000 }, { name: "Aureate Koi (Infinity)", baseOdds: 50000000000}], world: "limited"},
 ];
-
 
 let selectedWorld = null;
 let selectedEgg = null;
@@ -348,7 +347,6 @@ async function createBountyDetailsView() {
   });
 
   let upcomingPage = 0;
-  // show 5 pets per upcoming page as requested
   const pageSize = 5;
 
   function renderUpcomingPage() {
@@ -473,7 +471,7 @@ async function createBountyDetailsView() {
           petsCard.style.overflow = 'visible';
           petsCard.style.display = 'block';
           petsCard.style.width = '100%';
-          petsCard.style.minWidth = '480px';
+          petsCard.style.minWidth = '0';
           petsCard.style.alignSelf = 'stretch';
           right.appendChild(petsCard);
         });
@@ -493,7 +491,6 @@ async function createBountyDetailsView() {
       backPageBtn.style.padding = '6px 10px';
       backPageBtn.style.borderRadius = '8px';
       backPageBtn.style.border = '1px solid var(--table-border)';
-      // ensure white text and use the currently-selected UI font
       backPageBtn.style.background = 'var(--controls-bg)';
       backPageBtn.style.cursor = 'pointer';
       backPageBtn.style.color = '#ffffff';
@@ -511,7 +508,6 @@ async function createBountyDetailsView() {
       loadMoreBtn.style.padding = '6px 10px';
       loadMoreBtn.style.borderRadius = '8px';
       loadMoreBtn.style.border = '1px solid var(--table-border)';
-      // ensure white text and match chosen font
       loadMoreBtn.style.background = 'var(--controls-bg)';
       loadMoreBtn.style.cursor = 'pointer';
       loadMoreBtn.style.color = '#ffffff';
@@ -578,7 +574,7 @@ async function createBountyDetailsView() {
   petsCard.style.overflow = 'visible';
   petsCard.style.display = 'block';
   petsCard.style.width = '100%';
-  petsCard.style.minWidth = '480px';
+  petsCard.style.minWidth = '0';
   petsCard.style.alignSelf = 'stretch';
   right.appendChild(petsCard);
 
@@ -758,7 +754,6 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     left.appendChild(createEggSettings(egg, canSpawnAsRift));
   } else if (egg.name === "Bounty") {
     left.appendChild(createEggSettings(egg, canSpawnAsRift));
-    // create bounty-specific middle/right content in createBountyView when invoked
   } else {
     left.appendChild(createEggSettings(egg, canSpawnAsRift));
   }
@@ -766,9 +761,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   const middle = document.createElement('div');
   middle.className = 'egg-details-middle';
 
-  // determine base pets list
   let petsToShow = egg.Pets ? egg.Pets.slice() : [];
-  // if Infinity Egg, prefer loaded infinity data for the selected world
   if (egg.name === "Infinity Egg") {
     await loadInfinityEggData();
     if (infinityEggData && infinityEggData[selectedInfinityWorld] && Array.isArray(infinityEggData[selectedInfinityWorld].Pets)) {
@@ -776,7 +769,6 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     }
   }
 
-  // If there's a today's bounty that belongs to this egg, prepend the bounty pet so it is shown directly
   try {
     const bounties = await fetchBounties();
     const todayLabel = formatUTCDateToLabel(new Date());
@@ -788,21 +780,18 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
         baseOdds: bountyChance || 0,
         icon: getPetIconByName(todays.Pet)
       };
-      // ensure bounty pet is first
       petsToShow = [bountyPetObj].concat(petsToShow);
-      // ensure controls reflect the new bounty (add secret multiplier if needed)
       const existingControls = left.querySelector('.controls');
       try {
         const controlsReplacement = createEggSettings({ name: egg.name, Pets: petsToShow }, canSpawnAsRift);
         if (existingControls && existingControls.parentNode) {
           existingControls.parentNode.replaceChild(controlsReplacement, existingControls);
         } else {
-          // fallback: append if not present
           left.appendChild(controlsReplacement);
         }
-      } catch (e) { /* ignore control refresh errors */ }
+      } catch (e) { }
     }
-  } catch (e) { /* ignore bounties fetch errors */ }
+  } catch (e) { }
 
   const eggForTable = { ...egg, Pets: petsToShow };
   middle.appendChild(createEggPetInfoCard(eggForTable, canSpawnAsRift));
@@ -810,22 +799,16 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   const right = document.createElement('div');
   right.className = 'egg-details-right';
 
-  // make right column behave like normal egg view: stretch and stack so card background grows with table
   right.style.display = 'flex';
   right.style.flexDirection = 'column';
-  // let card size itself (do not force stretch) so background follows table content like normal eggs
   right.style.alignItems = 'flex-start';
   right.style.flex = '1 1 0%';
-  // ensure the controls/pets card inside will stretch to fill right column width
   right.style.boxSizing = 'border-box';
 
   layout.appendChild(left);
   layout.appendChild(middle);
   layout.appendChild(right);
 
-  // Add a stable vertical divider for all egg detail views.
-  // We create a dedicated divider element per view (id 'layout-divider') and keep it behind content
-  // so it doesn't cut off buttons (Infinity buttons will remain fully clickable/visible).
   const diag = document.createElement('div');
   diag.id = 'layout-divider';
   Object.assign(diag.style, {
@@ -835,12 +818,10 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     top: '0',
     opacity: '0.9',
     pointerEvents: 'none',
-    // keep the divider visually behind controls/buttons
     zIndex: '1'
   });
   layout.appendChild(diag);
 
-  // ensure columns render above the divider
   [left, middle, right].forEach(col => {
     col.style.position = 'relative';
     col.style.zIndex = '2';
@@ -852,17 +833,14 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
       const layoutRect = layout.getBoundingClientRect();
       const leftRect = left.getBoundingClientRect();
       const middleRect = middle.getBoundingClientRect();
-      // safe midpoint between left and middle columns
       let midpoint = Math.round((leftRect.right + middleRect.left) / 2);
       if (!isFinite(midpoint) || middleRect.left <= leftRect.right) {
         midpoint = Math.round(leftRect.right + 24);
       }
-      // keep a small gap so buttons / controls aren't overlapped
       const offset = Math.max(8, midpoint - layoutRect.left);
       diag.style.left = offset + 'px';
-      // height follows layout content; use layout.scrollHeight for robust value
       diag.style.height = Math.max(32, layout.scrollHeight) + 'px';
-    } catch (e) { /* ignore layout read errors */ }
+    } catch (e) { }
   }
 
   const ro = new ResizeObserver(updateDivider);
@@ -870,14 +848,11 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   ro.observe(left);
   ro.observe(middle);
   ro.observe(right);
-  // also watch for content changes that may affect sizes (infinity buttons, tables)
   const mo = new MutationObserver(updateDivider);
   mo.observe(layout, { childList: true, subtree: true, attributes: true });
   window.addEventListener('resize', updateDivider);
-  // run once to position
   requestAnimationFrame(updateDivider);
 
-  // cleanup when leaving this view
   const cleanupObserver = new MutationObserver(() => {
     if (!document.body.contains(layout)) {
       try { ro.disconnect(); } catch (e) {}
@@ -893,8 +868,6 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   eggList.appendChild(backBtn);
   eggList.appendChild(layout);
 }
-
-
 
 function createEggSettings(egg, canSpawnAsRift) {
   const controls = document.createElement("div");
@@ -930,8 +903,7 @@ function createEggSettings(egg, canSpawnAsRift) {
     <label>Luck Multiplier (%):</label>
     <input type="number" class="luck" value="0" />
   `;
-  // show secret multiplier for Infinity Egg and for Bounty
-  // treat explicit Secret/Infinity items and also bounty-tagged pets as "has secret"
+
   const hasSecret = egg.Pets && egg.Pets.some(pet => /(Secret|Infinity|Bounty)/i.test(pet.name)) || egg.name === "Infinity Egg" || egg.name === "Bounty";
   if (hasSecret) {
     controlsHtml += `
@@ -941,6 +913,39 @@ function createEggSettings(egg, canSpawnAsRift) {
       </div>
     `;
   }
+
+  controlsHtml += `
+    <div style="margin-top:8px;position:relative;">
+      <button type="button" class="variants-toggle" aria-expanded="false"
+        style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;border-radius:10px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);width:100%;">
+        <span style="font-weight:600;">Variants</span>
+        <span class="variants-arrow" style="display:inline-block;margin-left:6px;transition:transform 200ms ease;">▾</span>
+      </button>
+
+      <div class="variants-panel" style="display:none;margin-top:8px;flex-direction:column;gap:10px;font-family:inherit;color:var(--main-text);width:100%;padding:10px;border-radius:8px;border:1px solid var(--table-border);background:var(--controls-bg);box-sizing:border-box;overflow:hidden;opacity:0;transition:max-height 260ms ease, opacity 220ms ease;">
+        <div class="variant-row" style="display:flex;align-items:center;gap:10px;flex-wrap:nowrap;">
+          <button type="button" class="variant-btn shiny-btn" data-selected="false"
+            style="border-radius:999px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);min-width:72px;">
+            Shiny
+          </button>
+          <input type="text" class="variant-input shiny-input" placeholder="1 in 40" value="1 in 40"
+            style="width:160px;font-family:inherit;color:var(--main-text);background:transparent;border:1px solid rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;box-sizing:border-box;" />
+        </div>
+
+        <div class="variant-row" style="display:flex;align-items:center;gap:10px;flex-wrap:nowrap;">
+          <button type="button" class="variant-btn mythic-btn" data-selected="false"
+            style="border-radius:999px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);min-width:72px;">
+            Mythic
+          </button>
+          <input type="text" class="variant-input mythic-input" placeholder="1 in 100" value="1 in 100"
+            style="width:160px;font-family:inherit;color:var(--main-text);background:transparent;border:1px solid rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;box-sizing:border-box;" />
+        </div>
+ 
+         <div style="font-size:0.82rem;color:var(--main-text);opacity:0.85;">Examples: "13" or "1 in 13"</div>
+       </div>
+     </div>
+   `;
+
   controls.innerHTML = controlsHtml;
   return controls;
 }
@@ -949,7 +954,6 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
   const card = document.createElement("div");
   card.className = "egg-card";
   card.setAttribute("data-world", egg.world || "");
-  // allow the card to size to its table content (do not force a minHeight)
   card.style.boxSizing = 'border-box';
   card.style.padding = '12px';
   card.style.width = '100%';
@@ -957,33 +961,31 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
   card.style.minHeight = '0';
 
   const table = document.createElement("table");
-  // allow table to size to its content so card background can follow
-  table.style.width = 'auto';
+  table.style.width = '100%';
+  table.style.maxWidth = '100%';
+  table.style.overflowX = 'auto';
   table.style.boxSizing = 'border-box';
   table.style.tableLayout = 'auto';
-   table.style.borderCollapse = 'collapse';
-   table.innerHTML = `
-     <thead>
-       <tr>
-         <th>Pet</th>
-         <th>Base Odds</th>
-         <th>Adjusted (1 in X)</th>
-         <th>Adjusted (%)</th>
-       </tr>
-     </thead>
-     <tbody class="pet-list"></tbody>
-   `;
-   card.appendChild(table);
+    table.style.borderCollapse = 'collapse';
+    table.innerHTML = `
+      <thead>
+        <tr>
+          <th>Pet</th>
+          <th>Base Odds</th>
+          <th>Adjusted (1 in X)</th>
+          <th>Adjusted (%)</th>
+        </tr>
+      </thead>
+      <tbody class="pet-list"></tbody>
+    `;
+    card.appendChild(table);
  
-   // ensure reasonable th / td spacing and column sizing to avoid overlap
-   // set explicit th widths so table allocates space predictably
    Array.from(table.querySelectorAll('th')).forEach((th, i) => {
      th.style.padding = '8px 12px';
      th.style.textAlign = i === 0 ? 'left' : 'center';
      th.style.fontWeight = '600';
      th.style.whiteSpace = 'nowrap';
    });
-   // provide a small stylesheet fallback for cells created later
    const cellBaseStyle = {
      padding: '8px 12px',
      whiteSpace: 'nowrap',
@@ -994,8 +996,6 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
  
    setTimeout(() => {
      const layout = document.querySelector('.egg-details-layout');
-     // Look for controls in left, middle or right so bounty view (which places controls in middle)
-     // is picked up and updates the pet table when luck/secret/rift changes.
      const controls = layout ? (
        layout.querySelector('.egg-details-left .controls') ||
        layout.querySelector('.egg-details-middle .controls') ||
@@ -1004,7 +1004,80 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
     const multiplierSelect = controls ? controls.querySelector(".multiplier") : null;
     const luckInput = controls ? controls.querySelector(".luck") : null;
     const secretInput = controls ? controls.querySelector(".secret-mult") : null;
-    const petList = table.querySelector(".pet-list");
+    const variantsToggle = controls ? controls.querySelector('.variants-toggle') : null;
+    const variantsPanel = controls ? controls.querySelector('.variants-panel') : null;
+    const shinyBtn = controls ? controls.querySelector('.shiny-btn') : null;
+    const mythicBtn = controls ? controls.querySelector('.mythic-btn') : null;
+    const shinyInput = controls ? controls.querySelector('.shiny-input') : null;
+    const mythicInput = controls ? controls.querySelector('.mythic-input') : null;
+     const petList = table.querySelector(".pet-list");
+ 
+    function parseOneInInput(str) {
+      if (!str && str !== 0) return null;
+      const s = String(str).trim().replace(/[,]/g, '');
+      let m = s.match(/(?:1\s*\/\s*|1\s*in\s*)(\d+)/i);
+      if (m && m[1]) return Math.max(1, Math.round(Number(m[1])));
+      const n = Number(s);
+      if (isFinite(n) && n > 0) return Math.max(1, Math.round(n));
+      return null;
+    }
+
+    function applyVariantButtonStyles() {
+      if (shinyBtn) {
+        const sel = shinyBtn.dataset.selected === 'true';
+        if (sel) {
+          shinyBtn.style.background = '#c28e20';
+          shinyBtn.style.color = '#ffffff';
+          shinyBtn.style.boxShadow = '0 0 14px #ffe047, 0 6px 20px rgba(0,0,0,0.12)';
+        } else {
+          shinyBtn.style.background = 'var(--controls-bg)';
+          shinyBtn.style.color = 'var(--main-text)';
+          shinyBtn.style.boxShadow = 'none';
+        }
+      }
+      if (mythicBtn) {
+        const sel = mythicBtn.dataset.selected === 'true';
+        if (sel) {
+          mythicBtn.style.background = '#3602b0';
+          mythicBtn.style.color = '#ffffff';
+          mythicBtn.style.boxShadow = '0 0 16px rgba(123,78,255,0.95), 0 8px 24px rgba(54,2,176,0.35)';
+        } else {
+          mythicBtn.style.background = 'var(--controls-bg)';
+          mythicBtn.style.color = 'var(--main-text)';
+          mythicBtn.style.boxShadow = 'none';
+        }
+      }
+    }
+
+    if (shinyBtn) {
+      shinyBtn.type = 'button';
+      shinyBtn.dataset.selected = 'false';
+      shinyBtn.style.cursor = 'pointer';
+      shinyBtn.addEventListener('click', (e) => {
+        shinyBtn.dataset.selected = shinyBtn.dataset.selected === 'true' ? 'false' : 'true';
+        applyVariantButtonStyles();
+        updateChances();
+      });
+    }
+    if (mythicBtn) {
+      mythicBtn.type = 'button';
+      mythicBtn.dataset.selected = 'false';
+      mythicBtn.style.cursor = 'pointer';
+      mythicBtn.addEventListener('click', (e) => {
+        mythicBtn.dataset.selected = mythicBtn.dataset.selected === 'true' ? 'false' : 'true';
+        applyVariantButtonStyles();
+        updateChances();
+      });
+    }
+    if (shinyInput) {
+      shinyInput.addEventListener('input', () => { applyVariantButtonStyles(); updateChances(); });
+      if (!shinyInput.value) shinyInput.value = '1 in 40';
+    }
+    if (mythicInput) {
+      mythicInput.addEventListener('input', () => { applyVariantButtonStyles(); updateChances(); });
+      if (!mythicInput.value) mythicInput.value = '1 in 100';
+    }
+     applyVariantButtonStyles();
  
      function normalizeName(n) {
        return (n || '').replace(/\(.*?\)/g, '').trim().toLowerCase();
@@ -1013,23 +1086,18 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
      function formatAdjustedPercent(adjustedChance) {
       if (!isFinite(adjustedChance) || adjustedChance <= 0) return "Unknown";
       const percent = adjustedChance * 100;
-      // Normal-range: use locale formatting with reasonable precision
       if (percent >= 0.0001) {
         return percent.toLocaleString(undefined, { maximumFractionDigits: 6 });
       }
-      // Very small percentages: show enough decimals to represent the value instead of "0"
-      // compute fraction digits needed (bounded to avoid extremely long output)
       const abs = Math.abs(percent);
       const digitsNeeded = Math.min(12, Math.max(4, Math.ceil(-Math.log10(abs)) + 3));
       const fixed = percent.toFixed(digitsNeeded);
       const trimmed = fixed.replace(/\.?0+$/, '');
-      // If still excessively long, fall back to exponential with 3 significant digits
       if (trimmed.length > 18) return percent.toExponential(3);
       return trimmed;
      }
  
      function applySelectionGlow() {
-       // Only mark a single pet-row as selected (the first match). Do NOT show gold glow on pet images.
        const selectedName = layout && layout.dataset.selectedPetName ? normalizeName(layout.dataset.selectedPetName) : null;
        let marked = false;
        petList.querySelectorAll('tr').forEach(r => {
@@ -1060,16 +1128,23 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          const baseChance = pet.baseOdds && pet.baseOdds > 0 ? 1 / pet.baseOdds : 0;
          let combinedMultiplier = 1 + effectiveLuckPercent / 100;
          if (isSecret) combinedMultiplier *= secretTimes;
-         const adjustedChance = baseChance * combinedMultiplier;
+         let variantFactor = 1;
+         const shinyOdds = parseOneInInput(shinyInput ? shinyInput.value : null) || 40;
+         const mythicOdds = parseOneInInput(mythicInput ? mythicInput.value : null) || 100;
+         const shinySelected = shinyBtn && shinyBtn.dataset.selected === 'true';
+         const mythicSelected = mythicBtn && mythicBtn.dataset.selected === 'true';
+         if (shinySelected) variantFactor *= (1 / shinyOdds);
+         if (mythicSelected) variantFactor *= (1 / mythicOdds);
+ 
+         const adjustedChance = baseChance * combinedMultiplier * variantFactor;
          const adjustedOneInNum = (adjustedChance > 0 && isFinite(1 / adjustedChance)) ? Math.round(1 / adjustedChance) : Infinity;
-         const adjustedOneIn = adjustedOneInNum === Infinity ? '∞' : adjustedOneInNum.toLocaleString();
+         const adjustedOneIn = adjustedOneInNum === Infinity ? '∞' : adjustedOneInNum;
  
          const adjustedPercentFormatted = formatAdjustedPercent(adjustedChance);
          const adjustedPercentCell = adjustedPercentFormatted === "Unknown" ? "Unknown" : `${adjustedPercentFormatted}%`;
  
          const petIconPath = pet.icon || getPetIconByName(pet.name) || "Images/Pets/Doggy.webp";
  
-         // build row elements so we can style the img for selection
          const row = document.createElement("tr");
          row.dataset.petName = pet.name;
  
@@ -1079,6 +1154,23 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
  
          const img = document.createElement('img');
          img.src = petIconPath;
+         const prefixParts = [];
+         if (shinySelected) prefixParts.push('Shiny');
+         if (mythicSelected) prefixParts.push('Mythic');
+         let iconSrc = petIconPath;
+         if (prefixParts.length) {
+           const m = petIconPath.match(/^(.*[\/\\])?([^\/\\]+?)(\.(webp|png|jpg|jpeg))$/i);
+           if (m) {
+             const dir = m[1] || '';
+             const base = m[2] || '';
+             const ext = m[3] || '';
+             const nameNoPrefix = base.replace(/^(Shiny_|Mythic_|Shiny_Mythic_|Mythic_Shiny_)/i, '');
+             const newName = prefixParts.join('_') + '_' + nameNoPrefix;
+             iconSrc = dir + newName + ext;
+           }
+         }
+         img.src = iconSrc;
+         img.onerror = () => { if (img.src !== petIconPath) img.src = petIconPath; img.onerror = null; };
          img.alt = pet.name;
          img.style.width = '34px';
          img.style.height = '34px';
@@ -1093,24 +1185,18 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          tdPet.appendChild(img);
          tdPet.appendChild(textNode);
  
-         // helper: create cell that truncates long numbers and adds a "More" button to expand
          function createExpandableCell(text, align = 'center') {
           const td = document.createElement('td');
           Object.assign(td.style, cellBaseStyle);
           td.style.textAlign = align;
           const s = (text === null || text === undefined) ? '' : String(text);
- 
-          // short values show directly and centered
           if (s.length <= 20) {
             td.textContent = s;
             td.style.textAlign = 'center';
             return td;
           }
- 
-          // For long numbers: DO NOT show the number until button clicked.
-          // Create a centered placeholder area and a themed button that disappears after click.
           const placeholder = document.createElement('div');
-          placeholder.textContent = ''; // intentionally empty per request
+          placeholder.textContent = '';
           placeholder.style.display = 'block';
           placeholder.style.width = '100%';
           placeholder.style.textAlign = 'center';
@@ -1123,7 +1209,6 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
           btn.type = 'button';
           btn.textContent = 'Show';
           btn.className = 'expand-num-btn';
-          // theme-aware styling (rounded, grey/purple depending on CSS vars)
           btn.style.marginLeft = '8px';
           btn.style.padding = '6px 10px';
           btn.style.fontSize = '0.9em';
@@ -1136,14 +1221,12 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
  
           btn.addEventListener('click', (ev) => {
             ev.stopPropagation();
-            // reveal full number, center it, allow wrapping if needed
             placeholder.textContent = s;
             placeholder.style.whiteSpace = 'normal';
             placeholder.style.overflow = 'visible';
             placeholder.style.height = 'auto';
             placeholder.style.wordBreak = 'break-word';
             placeholder.style.textAlign = 'center';
-            // remove the button so it disappears
             try { btn.remove(); } catch (e) { btn.style.display = 'none'; }
           });
  
@@ -1152,25 +1235,31 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
           return td;
         }
  
-        const tdBase = createExpandableCell(pet.baseOdds ? `1 in ${Number(pet.baseOdds).toLocaleString()}` : 'Unknown', 'center');
-        const tdOneIn = createExpandableCell(`1 in ${adjustedOneIn}`, 'center');
-        const tdPercent = createExpandableCell(adjustedPercentCell, 'center');
+  const FIXED_SHINY_MULT = 40;
+  const FIXED_MYTHIC_MULT = 100;
+  const shinySelectedForBase = shinyBtn && shinyBtn.dataset.selected === 'true';
+  const mythicSelectedForBase = mythicBtn && mythicBtn.dataset.selected === 'true';
+  const variantMultiplierForBase = (shinySelectedForBase ? FIXED_SHINY_MULT : 1) * (mythicSelectedForBase ? FIXED_MYTHIC_MULT : 1);
+  const scaledBaseOneInRaw = pet.baseOdds ? Number(pet.baseOdds) * variantMultiplierForBase : NaN;
+  const scaledBaseOneInDisplay = isFinite(scaledBaseOneInRaw) ? scaledBaseOneInRaw.toLocaleString() : 'Unknown';
+  const tdBaseCell = createExpandableCell(pet.baseOdds ? `1 in ${scaledBaseOneInDisplay}` : 'Unknown', 'center');
+
+  const oneInLabel = adjustedOneIn === '∞' ? '∞' : `1 in ${adjustedOneIn}`;
+  const tdOneIn = createExpandableCell(oneInLabel, 'center');
+  const tdPercent = createExpandableCell(adjustedPercentCell, 'center');
+
+  row.appendChild(tdPet);
+  row.appendChild(tdBaseCell);
+  row.appendChild(tdOneIn);
+  row.appendChild(tdPercent);
+
+  petList.appendChild(row);
+});
  
-         row.appendChild(tdPet);
-         row.appendChild(tdBase);
-         row.appendChild(tdOneIn);
-         row.appendChild(tdPercent);
- 
-         petList.appendChild(row);
-       });
- 
-       // apply glow to currently selected pet (if any)
        applySelectionGlow();
  
        setupPetStatsHover();
  
-       // ensure the card background expands to fit the table content (fixes "table larger than background")
-       // compute using scroll sizes (robust across wrapping) on next frame
        requestAnimationFrame(() => {
          try {
            const tableW = table.scrollWidth || table.getBoundingClientRect().width;
@@ -1180,15 +1269,14 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
            const padRight = parseFloat(cs.paddingRight) || 0;
            const padTop = parseFloat(cs.paddingTop) || 0;
            const padBottom = parseFloat(cs.paddingBottom) || 0;
-           // add small buffer to avoid clipping
-           const targetMinWidth = Math.ceil(tableW + padLeft + padRight + 12);
            const targetMinHeight = Math.ceil(tableH + padTop + padBottom + 12);
-           // apply sizing so background (egg-card) fully contains the table
-           card.style.minWidth = targetMinWidth + 'px';
+           card.style.minWidth = '0';
+           card.style.width = '100%';
+           card.style.maxWidth = '100%';
            card.style.minHeight = targetMinHeight + 'px';
            card.style.overflow = 'visible';
            card.style.display = 'block';
-         } catch (e) { /* ignore */ }
+         } catch (e) { }
        });
      }
  
@@ -1201,7 +1289,6 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
      }
      if (secretInput) secretInput.addEventListener("input", updateChances);
  
-     // observe layout dataset changes to update pet-row selection when selection changes
      if (layout) {
        const mo = new MutationObserver(() => applySelectionGlow());
        mo.observe(layout, { attributes: true, attributeFilter: ['data-selected-bounty-index', 'data-selected-pet-name'] });
@@ -1212,12 +1299,83 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
  }
 
 
-
 let petsData = null;
 async function fetchPetsData() {
   if (petsData) return petsData;
   const response = await fetch('Data/pets.json');
-  petsData = await response.json();
+  const raw = await response.json();
+
+  const source = Array.isArray(raw) ? raw : [];
+
+  const LEVEL25_BONUS = 0.35;
+
+  const TOTAL_AT_LVL25 = {
+    Normal: LEVEL25_BONUS,
+    Shiny: 0.85,
+    Mythic: 1.05,
+    "Shiny Mythic": 1.60
+  };
+
+  function computeVariantBonusForLevel1(totalAtLvl25) {
+    return (1 + totalAtLvl25) / (1 + LEVEL25_BONUS) - 1;
+  }
+
+  const VARIANT_LEVEL1_BONUS = {
+    Normal: 0,
+    Shiny: computeVariantBonusForLevel1(TOTAL_AT_LVL25.Shiny),
+    Mythic: computeVariantBonusForLevel1(TOTAL_AT_LVL25.Mythic),
+    "Shiny Mythic": computeVariantBonusForLevel1(TOTAL_AT_LVL25["Shiny Mythic"])
+  };
+
+  function mulStats(stats, mul) {
+    const out = {};
+    Object.keys(stats || {}).forEach(k => {
+      const v = stats[k];
+      out[k] = (typeof v === 'number' && isFinite(v)) ? (v * mul) : v;
+    });
+    return out;
+  }
+
+  petsData = source.map(item => {
+    const petName = item.pet_name || item.petName || item.name || '';
+
+    const rawBase = {};
+    if (item.bubbles !== undefined) rawBase.bubbles = Number(item.bubbles) || 0;
+    if (item.gems !== undefined) rawBase.gems = Number(item.gems) || 0;
+    if (item.currency !== undefined) {
+      const cv = (item.currencyVariant || '').toLowerCase();
+      if (cv === 'tickets') rawBase.tickets = Number(item.currency) || 0;
+      else if (cv === 'pearls') rawBase.pearls = Number(item.currency) || 0;
+      else if (cv === 'festival_coins' || cv === 'festival') rawBase.festival_coins = Number(item.currency) || 0;
+      else rawBase.coins = Number(item.currency) || 0;
+    }
+
+    let img = null;
+    if (Array.isArray(item.image) && item.image.length) img = item.image[0];
+    else if (typeof item.image === 'string' && item.image) img = item.image;
+    if (!img && petName) img = `Images/Pets/${formatNameToPath(petName)}.webp`;
+
+    const variants = Object.keys(VARIANT_LEVEL1_BONUS).map(variantName => {
+      const variantBonus = VARIANT_LEVEL1_BONUS[variantName];
+      const base = mulStats(rawBase, 1 + variantBonus);
+      const max = mulStats(base, 1 + LEVEL25_BONUS);
+      const v = {
+        name: variantName,
+        stats: {
+          base,
+          max
+        }
+      };
+      if (img) v.image = img;
+      return v;
+    });
+
+    return {
+      pet_name: petName,
+      variants
+    };
+  }).filter(Boolean);
+
   return petsData;
 }
 
@@ -1281,17 +1439,24 @@ function setupPetStatsHover() {
   }
 
   function buildStatsRows(stats) {
-    let html = '';
-
     const statOrder = ['bubbles', 'gems', 'coins', 'tickets', 'festival_coins', 'pearls'];
-    for (const stat of statOrder) {
-      if (stats[stat] !== undefined && stats[stat] !== null) {
-        if (stat === 'gems' && Number(stats[stat]) === 0) continue;
-        html += `<div class="pet-stats-row">
-          <img src="${getStatIcon(stat)}" alt="${stat}" class="pet-stats-icon">
-          <span class="pet-stats-value">x${stats[stat]}</span>
-        </div>`;
+    const formatStatValue = (v) => {
+      if (v === undefined || v === null) return '';
+      if (typeof v === 'number' && isFinite(v)) {
+        return String(Math.round(v));
       }
+      return String(v).replace(/,/g, '');
+    };
+
+    let html = '';
+    for (const stat of statOrder) {
+      const val = stats && stats[stat];
+      if (val === undefined || val === null) continue;
+      if (stat === 'gems' && Number(val) === 0) continue;
+      html += `<div class="pet-stats-row">
+        <img src="${getStatIcon(stat)}" alt="${stat}" class="pet-stats-icon">
+        <span class="pet-stats-value">x${formatStatValue(val)}</span>
+      </div>`;
     }
     return html;
   }
@@ -1319,11 +1484,27 @@ function setupPetStatsHover() {
     const petName = cell.textContent.trim();
     const petData = findPetData(petName);
     if (!petData || !petData.variants || !petData.variants.length) return;
-    const normalVariant = petData.variants.find(v => v.name === 'Normal');
-    if (!normalVariant || !normalVariant.stats) return;
-    lastStats = normalVariant.stats;
+
+    let variantName = 'Normal';
+    const layoutEl = document.querySelector('.egg-details-layout');
+    if (layoutEl) {
+      const controls = layoutEl.querySelector('.controls');
+      const shinyBtn = controls ? controls.querySelector('.shiny-btn') : null;
+      const mythicBtn = controls ? controls.querySelector('.mythic-btn') : null;
+      const shinySelected = shinyBtn && shinyBtn.dataset.selected === 'true';
+      const mythicSelected = mythicBtn && mythicBtn.dataset.selected === 'true';
+      if (shinySelected && mythicSelected) variantName = 'Shiny Mythic';
+      else if (shinySelected) variantName = 'Shiny';
+      else if (mythicSelected) variantName = 'Mythic';
+    }
+
+    let chosenVariant = petData.variants.find(v => v.name === variantName) || petData.variants.find(v => v.name === 'Normal') || petData.variants[0];
+    if (!chosenVariant || !chosenVariant.stats) return;
+
+    lastStats = chosenVariant.stats;
     showingMax = false;
-    renderStatsCard(lastStats.base, 'Base stats');
+    renderStatsCard(lastStats.base, `${chosenVariant.name} Base stats`);
+
     const icon = cell.querySelector('img');
     let rect = cell.getBoundingClientRect();
     let iconRect = icon ? icon.getBoundingClientRect() : rect;
@@ -1403,7 +1584,6 @@ function setupPetStatsHover() {
   });
 }
 
-// bounty button + icon update (fetches API and updates icon; opens custom bounty page)
 async function fetchBounties() {
   try {
     const res = await fetch('https://bgsiapi.fytg.me/bounties');
@@ -1485,7 +1665,6 @@ function ensureBountyButton() {
   btn.type = 'button';
   btn.title = 'Bounty';
 
-  // Open bounty details view (no placeholder toast)
   btn.onclick = (e) => {
     e.preventDefault();
     animateEggDetails(() => createBountyDetailsView());
@@ -1503,7 +1682,7 @@ function ensureBountyButton() {
 document.addEventListener('DOMContentLoaded', function () {
   ensureBountyButton();
   updateBountyButtonIcon();
-  setInterval(updateBountyButtonIcon, 5 * 60 * 1000); // refresh every 5 minutes
+  setInterval(updateBountyButtonIcon, 5 * 60 * 1000);
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -1513,22 +1692,99 @@ document.addEventListener('DOMContentLoaded', function () {
     setTheme('dark');
   }
 
-  const fontSelect = document.getElementById('font-select');
   const savedFont = localStorage.getItem('selectedFont') || 'Arial';
-  function applySavedFont() {
-
-    if (fontSelect) {
-      fontSelect.value = savedFont;
+  (function initFontSelect() {
+    const el = document.getElementById('font-select');
+    if (!el) {
+      setFont(savedFont);
+      return;
     }
-    setFont(savedFont);
-  }
-  applySavedFont();
-  if (fontSelect) {
-    fontSelect.addEventListener('change', function () {
-      setFont(this.value);
-    });
-  }
-});
+    if (el.tagName === 'SELECT') {
+      const select = el;
+      const wrapper = document.createElement('div');
+      wrapper.id = 'font-select';
+      wrapper.className = 'custom-font-select';
+      wrapper.setAttribute('tabindex', '0');
+      wrapper.setAttribute('role', 'listbox');
+      wrapper.style.display = 'inline-flex';
+      wrapper.style.alignItems = 'center';
+      wrapper.style.gap = '8px';
+      wrapper.style.cursor = 'pointer';
+      wrapper.style.fontFamily = 'inherit';
+      wrapper.style.color = 'var(--main-text)';
+      wrapper.innerHTML = `
+        <span class="font-select-label" style="font-family:inherit;">${savedFont}</span>
+        <span class="font-select-arrow" style="transition:transform 180ms ease;">▾</span>
+        <ul class="font-select-options" style="display:none;position:absolute;z-index:9999;margin-top:6px;padding:6px;background:var(--controls-bg);border:1px solid var(--table-border);border-radius:8px;list-style:none;min-width:140px;">
+        </ul>
+      `;
+      const ul = wrapper.querySelector('.font-select-options');
+      Array.from(select.options).forEach(opt => {
+        const li = document.createElement('li');
+        li.textContent = opt.textContent;
+        li.dataset.value = opt.value;
+        li.style.padding = '6px 8px';
+        li.style.cursor = 'pointer';
+        li.style.fontFamily = 'inherit';
+        li.style.color = 'var(--main-text)';
+        li.addEventListener('mouseenter', () => li.style.background = 'rgba(255,255,255,0.03)');
+        li.addEventListener('mouseleave', () => li.style.background = 'transparent');
+        li.addEventListener('click', () => {
+          const v = li.dataset.value || li.textContent;
+          wrapper.querySelector('.font-select-label').textContent = v;
+          setFont(v);
+          localStorage.setItem('selectedFont', v);
+          ul.style.display = 'none';
+          wrapper.querySelector('.font-select-arrow').style.transform = 'rotate(0deg)';
+        });
+        ul.appendChild(li);
+      });
+      select.parentNode.replaceChild(wrapper, select);
+      wrapper.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const expanded = ul.style.display === 'block';
+        ul.style.display = expanded ? 'none' : 'block';
+        wrapper.querySelector('.font-select-arrow').style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+      });
+      document.addEventListener('click', () => { ul.style.display = 'none'; wrapper.querySelector('.font-select-arrow').style.transform = 'rotate(0deg)'; });
+      setFont(savedFont);
+    } else {
+      const wrapper = el;
+      const label = wrapper.querySelector('.font-select-label');
+      const ul = wrapper.querySelector('.font-select-options');
+      if (label && ul) {
+        label.textContent = savedFont;
+        Array.from(ul.querySelectorAll('li')).forEach(li => {
+          li.style.fontFamily = 'inherit';
+          li.addEventListener('click', () => {
+            const v = li.dataset.value || li.textContent;
+            label.textContent = v;
+            setFont(v);
+            localStorage.setItem('selectedFont', v);
+            ul.style.display = 'none';
+            const arrow = wrapper.querySelector('.font-select-arrow');
+            if (arrow) arrow.style.transform = 'rotate(0deg)';
+          });
+        });
+        wrapper.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const arrow = wrapper.querySelector('.font-select-arrow');
+          const expanded = wrapper.getAttribute('data-expanded') === 'true';
+          wrapper.setAttribute('data-expanded', expanded ? 'false' : 'true');
+          ul.style.display = expanded ? 'none' : 'block';
+          if (arrow) arrow.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
+        document.addEventListener('click', () => {
+          if (ul) ul.style.display = 'none';
+          if (wrapper.querySelector('.font-select-arrow')) wrapper.querySelector('.font-select-arrow').style.transform = 'rotate(0deg)';
+        });
+        setFont(savedFont);
+      } else {
+        setFont(savedFont);
+      }
+    }
+  })();
+ });
 
 function setTheme(theme) {
   document.body.className = theme === 'dark' ? 'theme-dark' : 'theme-purple';
@@ -1575,7 +1831,6 @@ function setTheme(theme) {
   }
 }
 
-
 eggs.unshift({
   name: "Infinity Egg",
   image: "Images/Eggs/Infinity_Egg.webp",
@@ -1584,8 +1839,6 @@ eggs.unshift({
   ],
   world: "infinity"
 });
-
-
 
 function selectWorld(world) {
   const eggList = document.getElementById("egg-list");
@@ -1615,7 +1868,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-
 function setFont(font) {
   let fontFamily;
   switch (font) {
@@ -1642,36 +1894,19 @@ function setFont(font) {
   localStorage.setItem('selectedFont', font);
 }
 
-// new helper: resolve pet/egg icon paths if explicit icon/image missing
 function formatNameToPath(name) {
   if (!name) return '';
-  // normalize and remove any parenthetical suffixes e.g. "(Secret)"
   let s = String(name).trim();
   s = s.replace(/\(.*?\)/g, '').trim();
-
-  // Protect any existing encoded forms so we can unify them to a single %27 later.
-  s = s.replace(/%2527/g, '__DOUBLE_ENC_P27__'); // already-double-encoded -> placeholder
-  s = s.replace(/%27/g, '__ENC_P27__');           // already-single-encoded -> placeholder
-
-  // Convert curly or straight apostrophes to the UI-encoded form %27
+  s = s.replace(/%2527/g, '__DOUBLE_ENC_P27__');
+  s = s.replace(/%27/g, '__ENC_P27__');
   s = s.replace(/[\u2018\u2019']/g, '%27');
-
-  // replace whitespace with underscores
   s = s.replace(/\s+/g, '_');
-
-  // remove common path-breaking characters
   s = s.replace(/[\/\\"]/g, '');
-
-  // allow letters, numbers, underscore, hyphen, dot, parentheses and percent sequences
   s = s.replace(/[^A-Za-z0-9_%\-\._()]/g, '');
-
-  // collapse multiple underscores
   s = s.replace(/_+/g, '_');
-
-  // Restore any placeholders as a single %27 so final filenames always use %27 (not %2527)
   s = s.replace(/__DOUBLE_ENC_P27__/g, '%27');
   s = s.replace(/__ENC_P27__/g, '%27');
-
   return s;
 }
 function getPetIconByName(petName) {
@@ -1691,11 +1926,6 @@ function getEggImagePath(eggOrName) {
   return candidate;
 }
 
-// Add a lightweight bounty watcher that refreshes the current egg view when bounties change.
-// This ensures:
-// - when a bounty is added to an egg that previously had no secret control, the view is rebuilt
-//   so the secret multiplier/control appears.
-// - when a secret/bounty expires or changes, the table is updated live for users currently on the page.
 let __lastBountiesJson = null;
 let __bountyWatcherStarted = false;
 
@@ -1703,7 +1933,6 @@ function startBountyWatcher() {
   if (__bountyWatcherStarted) return;
   __bountyWatcherStarted = true;
 
-  // Poll interval (ms). Adjust if you already have a server push mechanism.
   const POLL_MS = 20_000;
 
   async function check() {
@@ -1712,46 +1941,146 @@ function startBountyWatcher() {
       const json = JSON.stringify(bounties || []);
       if (json !== __lastBountiesJson) {
         __lastBountiesJson = json;
-        // If an egg details view is open, refresh it so controls/table update to reflect bounty/secret changes.
         try {
-          // selectedEgg is used elsewhere in the app as the currently-open egg (object or name).
-          // Try to resolve an egg object if selectedEgg is a name.
           if (typeof selectedEgg !== 'undefined' && selectedEgg) {
             let eggObj = selectedEgg;
             if (typeof selectedEgg === 'string') {
               eggObj = (window.eggs || window.eggsJson || []).find(e => e.name === selectedEgg) || null;
             }
             if (eggObj) {
-              // Re-create the egg details view to pick up any bounty/secret changes.
-              // Find whether the egg supports rift from known data if available
               const canRift = !!(eggObj.canSpawnAsRift || (eggObj.canSpawnAsRift === true));
-              // call async view rebuild but don't await to avoid blocking
-              createEggDetailsView(eggObj, canRift).catch(() => { /* ignore */ });
+              createEggDetailsView(eggObj, canRift).catch(() => { });
             }
           }
-          // Also refresh bounty page if it's open
           const bountyLayout = document.querySelector('.egg-details-layout[data-world="bounty"]');
           if (bountyLayout) {
-            // populateBountyView is the existing function that (re)builds the bounty content
             if (typeof populateBountyView === 'function') {
-              populateBountyView().catch(() => { /* ignore */ });
+              populateBountyView().catch(() => { });
             }
           }
         } catch (e) {
-          // best-effort; don't break polling
           console.warn('bounty-watcher: update failed', e);
         }
       }
     } catch (e) {
-      // ignore transient errors
-      // console.debug('bounty-watcher fetch error', e);
     }
   }
 
-  // run immediately then on interval
   check();
   setInterval(check, POLL_MS);
 }
 
-// Start watcher automatically
 startBountyWatcher();
+
+document.addEventListener('click', function (e) {
+  const toggle = e.target.closest('.variants-toggle');
+  if (toggle) {
+    e.preventDefault();
+    e.stopPropagation();
+    const parent = toggle.parentNode;
+    const panel = parent && parent.querySelector('.variants-panel');
+    const arrow = toggle.querySelector('.variants-arrow');
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+
+    if (panel) {
+      if (!expanded) {
+        panel.style.display = 'flex';
+        panel.style.flexDirection = 'column';
+        panel.style.opacity = '0';
+        panel.style.overflow = 'hidden';
+        panel.style.maxHeight = '0px';
+        requestAnimationFrame(() => {
+          const target = panel.scrollHeight + 20;
+          panel.style.transition = 'max-height 260ms ease, opacity 220ms ease';
+          panel.style.maxHeight = target + 'px';
+          panel.style.opacity = '1';
+        });
+      } else {
+        panel.style.overflow = 'hidden';
+        panel.style.transition = 'max-height 240ms ease, opacity 200ms ease';
+        panel.style.maxHeight = '0px';
+        panel.style.opacity = '0';
+        setTimeout(() => {
+          if (panel) panel.style.display = 'none';
+        }, 260);
+      }
+    }
+
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    if (arrow) arrow.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+    return;
+  }
+
+  const vbtn = e.target.closest('.variant-btn');
+  if (vbtn) {
+    e.preventDefault();
+    e.stopPropagation();
+    const was = vbtn.dataset.selected === 'true';
+    vbtn.dataset.selected = was ? 'false' : 'true';
+
+    try {
+      vbtn.animate([
+        { transform: 'scale(1)' },
+        { transform: 'scale(0.96)' },
+        { transform: 'scale(1)' }
+      ], { duration: 200, easing: 'ease-out' });
+    } catch (err) { }
+
+    if (vbtn.classList.contains('shiny-btn')) {
+      if (vbtn.dataset.selected === 'true') {
+        vbtn.style.background = '#c28e20';
+        vbtn.style.color = '#ffffff';
+        vbtn.style.boxShadow = '0 0 14px #ffe047, 0 6px 20px rgba(0,0,0,0.12)';
+      } else {
+        vbtn.style.background = 'var(--controls-bg)';
+        vbtn.style.color = 'var(--main-text)';
+        vbtn.style.boxShadow = 'none';
+      }
+      const inp = vbtn.closest('.variant-row') && vbtn.closest('.variant-row').querySelector('.variant-input');
+      if (inp) inp.style.color = 'var(--main-text)';
+    } else if (vbtn.classList.contains('mythic-btn')) {
+      if (vbtn.dataset.selected === 'true') {
+        vbtn.style.background = '#3602b0';
+        vbtn.style.color = '#ffffff';
+        vbtn.style.boxShadow = '0 0 16px rgba(123,78,255,0.95), 0 8px 24px rgba(54,2,176,0.35)';
+      } else {
+        vbtn.style.background = 'var(--controls-bg)';
+        vbtn.style.color = 'var(--main-text)';
+        vbtn.style.boxShadow = 'none';
+      }
+      const inp = vbtn.closest('.variant-row') && vbtn.closest('.variant-row').querySelector('.variant-input');
+      if (inp) inp.style.color = 'var(--main-text)';
+    }
+
+    const row = vbtn.closest('.variant-row');
+    if (row) {
+      const inp = row.querySelector('.variant-input');
+      if (inp) {
+        const parsed = (function parseOneInInputForDisplay(str) {
+          if (!str && str !== 0) return null;
+          const s = String(str).trim().replace(/[,]/g, '');
+          const m = s.match(/(?:1\s*\/\s*|1\s*in\s*)(\d+)/i);
+          if (m && m[1]) return `1 in ${Math.max(1, Math.round(Number(m[1])) )}`;
+          const n = Number(s);
+          if (isFinite(n) && n > 0) return `1 in ${Math.max(1, Math.round(n))}`;
+          return null;
+        })(inp.value);
+        if (!parsed) {
+          inp.value = inp.placeholder || inp.value;
+        } else {
+          inp.value = parsed;
+        }
+      }
+    }
+
+    if (row) {
+      const inp = row.querySelector('.variant-input');
+      if (inp) {
+        const ev = new Event('input', { bubbles: true, cancelable: true });
+        inp.dispatchEvent(ev);
+      }
+    }
+    return;
+  }
+
+}, true);

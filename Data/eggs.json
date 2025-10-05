@@ -14,8 +14,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Spotted Egg",
@@ -32,8 +31,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Iceshard Egg",
@@ -51,8 +49,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Spikey Egg",
@@ -70,8 +67,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Magma Egg",
@@ -89,8 +85,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Crystal Egg",
@@ -108,8 +103,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Lunar Egg",
@@ -127,8 +121,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Void Egg",
@@ -146,8 +139,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Hell Egg",
@@ -165,8 +157,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Nightmare Egg",
@@ -185,8 +176,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Rainbow Egg",
@@ -204,8 +194,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Showman Egg",
@@ -220,8 +209,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-05-04",
-    "dateRemoved": "",
-    "index": "Minigame Paradise"
+    "dateRemoved": ""
   },
   {
     "name": "Mining Egg",
@@ -240,8 +228,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-05-04",
-    "dateRemoved": "",
-    "index": "Minigame Paradise"
+    "dateRemoved": ""
   },
   {
     "name": "Cyber Egg",
@@ -260,8 +247,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-05-04",
-    "dateRemoved": "",
-    "index": "Minigame Paradise"
+    "dateRemoved": ""
   },
   {
     "name": "Neon Egg",
@@ -280,8 +266,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-05-17",
-    "dateRemoved": "",
-    "index": "Minigame Paradise"
+    "dateRemoved": ""
   },
   {
     "name": "Chance Egg",
@@ -315,8 +300,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-08-08",
-    "dateRemoved": "",
-    "index": "Seven Seas"
+    "dateRemoved": ""
   },
   {
     "name": "Vine Egg",
@@ -338,8 +322,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-08-08",
-    "dateRemoved": "",
-    "index": "Seven Seas"
+    "dateRemoved": ""
   },
   {
     "name": "Lava Egg",
@@ -358,12 +341,11 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-08-08",
-    "dateRemoved": "",
-    "index": "Seven Seas"
+    "dateRemoved": ""
   },
   {
     "name": "Secret Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/b/bd/Secret_Egg.png",
     "pets": [
       "Round Spitty",
       "Gigantic Spitty"
@@ -392,8 +374,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-08-15",
-    "dateRemoved": "",
-    "index": "Seven Seas"
+    "dateRemoved": ""
   },
   {
     "name": "Classic Egg",
@@ -413,8 +394,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-09-19",
-    "dateRemoved": "",
-    "index": "Seven Seas"
+    "dateRemoved": ""
   },
   {
     "name": "Stellaris Egg",
@@ -619,6 +599,25 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-09-26",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Candle Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/84/Candle_Egg.png",
+    "pets": [
+      "Candled Doggy",
+      "Kitty Wick",
+      "Scented Candle",
+      "Lantern Demon",
+      "Candle Phoenix",
+      "Willow Chandelier",
+      "Maple Divinity",
+      "Aureate Koi"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-10-03",
     "dateRemoved": ""
   },
   {

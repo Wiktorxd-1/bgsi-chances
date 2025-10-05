@@ -143,11 +143,7 @@
     ]
   },
   "3": {
-    "Pets": [ {
-      "name":"Giant Classic Chicken (Secret)",
-      "baseOdds": 3380000000,
-      "icon":"Images/Pets/Giant_Classic_Chicken.webp"
-    },
+    "Pets": [
     {
       "name": "Abyssal Sea Dragon (Secret)",
       "baseOdds": 2710000000,
