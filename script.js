@@ -1139,6 +1139,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          const adjustedChance = baseChance * combinedMultiplier * variantFactor;
          const adjustedOneInNum = (adjustedChance > 0 && isFinite(1 / adjustedChance)) ? Math.round(1 / adjustedChance) : Infinity;
          const adjustedOneIn = adjustedOneInNum === Infinity ? '∞' : adjustedOneInNum;
+         const adjustedOneInDisplay = adjustedOneIn === '∞' ? '∞' : adjustedOneIn.toLocaleString();
  
          const adjustedPercentFormatted = formatAdjustedPercent(adjustedChance);
          const adjustedPercentCell = adjustedPercentFormatted === "Unknown" ? "Unknown" : `${adjustedPercentFormatted}%`;
@@ -1244,7 +1245,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
   const scaledBaseOneInDisplay = isFinite(scaledBaseOneInRaw) ? scaledBaseOneInRaw.toLocaleString() : 'Unknown';
   const tdBaseCell = createExpandableCell(pet.baseOdds ? `1 in ${scaledBaseOneInDisplay}` : 'Unknown', 'center');
 
-  const oneInLabel = adjustedOneIn === '∞' ? '∞' : `1 in ${adjustedOneIn}`;
+  const oneInLabel = adjustedOneIn === '∞' ? '∞' : `1 in ${adjustedOneInDisplay}`;
   const tdOneIn = createExpandableCell(oneInLabel, 'center');
   const tdPercent = createExpandableCell(adjustedPercentCell, 'center');
 
