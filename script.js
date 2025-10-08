@@ -474,6 +474,16 @@ async function createBountyDetailsView() {
           petsCard.style.minWidth = '0';
           petsCard.style.alignSelf = 'stretch';
           right.appendChild(petsCard);
+
+          try {
+            const existingControls = middle.querySelector('.controls');
+            const newControls = createEggSettings(combinedEggForTable, selectedCanSpawnAsRift);
+            newControls.style.marginTop = '8px';
+            newControls.style.alignSelf = 'flex-start';
+            newControls.style.width = '100%';
+            if (existingControls && existingControls.parentNode) existingControls.parentNode.replaceChild(newControls, existingControls);
+            else middle.appendChild(newControls);
+          } catch (e) {}
         });
 
         upcomingWrap.appendChild(btn);
@@ -577,6 +587,16 @@ async function createBountyDetailsView() {
   petsCard.style.minWidth = '0';
   petsCard.style.alignSelf = 'stretch';
   right.appendChild(petsCard);
+
+  try {
+    const existingControls = middle.querySelector('.controls');
+    const newControls = createEggSettings(combinedEggForTable, eggCanSpawnAsRift);
+    newControls.style.marginTop = '8px';
+    newControls.style.alignSelf = 'flex-start';
+    newControls.style.width = '100%';
+    if (existingControls && existingControls.parentNode) existingControls.parentNode.replaceChild(newControls, existingControls);
+    else middle.appendChild(newControls);
+  } catch (e) {}
 
   layout.appendChild(left);
   layout.appendChild(middle);
@@ -869,6 +889,914 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   eggList.appendChild(layout);
 }
 
+async function createEggDetailsView(egg, canSpawnAsRift) {
+  eggList.innerHTML = '';
+  const backBtn = document.createElement("button");
+  backBtn.className = "egg-back-btn";
+  backBtn.style.position = "absolute";
+  backBtn.style.left = "20px";
+  backBtn.style.top = "140px";
+  backBtn.style.background = "none";
+  backBtn.style.border = "none";
+  backBtn.style.padding = "10px";
+  backBtn.style.zIndex = "20";
+  backBtn.style.cursor = "pointer";
+  backBtn.innerHTML = `<img src="Images/Icons/back.ico" alt="Back" style="width:32px;height:32px;vertical-align:middle;">`;
+  backBtn.onclick = () => {
+    selectedEgg = null;
+    if (selectedWorld === "infinity") {
+      selectedWorld = lastNormalWorld || null;
+    }
+    const searchInput = document.getElementById('search-bar');
+    if (searchInput) searchInput.value = lastSearchValue;
+    renderEggs();
+  };
+
+  const oldDivider = document.getElementById('bounty-divider');
+  if (oldDivider && oldDivider.parentNode) oldDivider.parentNode.removeChild(oldDivider);
+
+  if (egg.name === "Bounty") {
+    await createBountyDetailsView();
+    return;
+  }
+
+  const layout = document.createElement('div');
+  layout.className = 'egg-details-layout';
+  layout.style.position = 'relative';
+  
+  const left = document.createElement('div');
+  left.className = 'egg-details-left';
+  const eggIcon = document.createElement('img');
+  eggIcon.className = 'egg-icon-big';
+  eggIcon.src = getEggImagePath(egg);
+  eggIcon.alt = egg.name;
+  left.appendChild(eggIcon);
+  const eggName = document.createElement('div');
+  eggName.className = 'egg-name';
+  eggName.textContent = egg.name;
+  left.appendChild(eggName);
+
+  if (egg.name === "Infinity Egg") {
+    await loadInfinityEggData();
+    const theme = document.body.classList.contains('theme-dark') ? 'dark' : 'purple';
+    const worlds = [
+      { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
+      { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
+      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" }
+    ];
+    const btnRow = document.createElement("div");
+    btnRow.style.display = "flex";
+    btnRow.style.flexDirection = "row";     
+    btnRow.style.flexWrap = "nowrap";        
+    btnRow.style.alignItems = "center";
+    btnRow.style.gap = "12px";
+    btnRow.style.margin = "16px 0";
+    btnRow.style.justifyContent = "center";
+    btnRow.style.width = "100%";
+    btnRow.style.overflowX = "auto";       
+    btnRow.style.padding = "6px 4px";
+
+    worlds.forEach(w => {
+      const btn = document.createElement("button");
+
+      btn.style.display = "flex";
+      btn.style.alignItems = "center";
+      btn.style.gap = "8px";
+      btn.style.padding = "7px 18px";
+      btn.style.borderRadius = "8px";
+      btn.style.border = "none";
+      btn.style.fontWeight = "bold";
+      btn.style.cursor = "pointer";
+      btn.style.fontSize = "1rem";
+
+      btn.style.color = "var(--main-text)";
+
+      const selectedBg = "rgb(66,78,166)";
+      btn.style.background = (selectedInfinityWorld === w.id) ? selectedBg : "var(--controls-bg)";
+
+      const iconImg = document.createElement("img");
+      iconImg.src = w.icon;
+      iconImg.alt = w.label + " Icon";
+      iconImg.style.width = "28px";
+      iconImg.style.height = "28px";
+      iconImg.style.objectFit = "contain";
+
+      const labelSpan = document.createElement("span");
+      labelSpan.textContent = w.label;
+
+      btn.appendChild(iconImg);
+      btn.appendChild(labelSpan);
+
+      btn.onclick = () => {
+        selectedInfinityWorld = w.id;
+        createEggDetailsView(egg, canSpawnAsRift);
+      };
+
+      btn.addEventListener('mouseenter', () => btn.style.transform = 'translateY(-1px)');
+      btn.addEventListener('mouseleave', () => btn.style.transform = 'none');
+
+      btnRow.appendChild(btn);
+    });
+    left.appendChild(btnRow);
+    left.appendChild(createEggSettings(egg, canSpawnAsRift));
+  } else if (egg.name === "Bounty") {
+    left.appendChild(createEggSettings(egg, canSpawnAsRift));
+  } else {
+    left.appendChild(createEggSettings(egg, canSpawnAsRift));
+  }
+
+  const middle = document.createElement('div');
+  middle.className = 'egg-details-middle';
+
+  let petsToShow = egg.Pets ? egg.Pets.slice() : [];
+  if (egg.name === "Infinity Egg") {
+    await loadInfinityEggData();
+    if (infinityEggData && infinityEggData[selectedInfinityWorld] && Array.isArray(infinityEggData[selectedInfinityWorld].Pets)) {
+      petsToShow = infinityEggData[selectedInfinityWorld].Pets.slice();
+    }
+  }
+
+  try {
+    const bounties = await fetchBounties();
+    const todayLabel = formatUTCDateToLabel(new Date());
+    const todays = (bounties || []).find(b => b.Time === todayLabel) || null;
+    if (todays && todays.Egg && todays.Egg === egg.name) {
+      const bountyChance = parseChanceString(todays.Chance);
+      const bountyPetObj = {
+        name: (todays.Pet || 'Unknown') + ' (Bounty)',
+        baseOdds: bountyChance || 0,
+        icon: getPetIconByName(todays.Pet)
+      };
+      petsToShow = [bountyPetObj].concat(petsToShow);
+      const existingControls = left.querySelector('.controls');
+      try {
+        const controlsReplacement = createEggSettings({ name: egg.name, Pets: petsToShow }, canSpawnAsRift);
+        if (existingControls && existingControls.parentNode) {
+          existingControls.parentNode.replaceChild(controlsReplacement, existingControls);
+        } else {
+          left.appendChild(controlsReplacement);
+        }
+      } catch (e) { }
+    }
+  } catch (e) { }
+
+  const eggForTable = { ...egg, Pets: petsToShow };
+  middle.appendChild(createEggPetInfoCard(eggForTable, canSpawnAsRift));
+
+  const right = document.createElement('div');
+  right.className = 'egg-details-right';
+
+  right.style.display = 'flex';
+  right.style.flexDirection = 'column';
+  right.style.alignItems = 'flex-start';
+  right.style.flex = '1 1 0%';
+  right.style.boxSizing = 'border-box';
+
+  layout.appendChild(left);
+  layout.appendChild(middle);
+  layout.appendChild(right);
+
+  const diag = document.createElement('div');
+  diag.id = 'layout-divider';
+  Object.assign(diag.style, {
+    position: 'absolute',
+    width: '2px',
+    background: 'var(--table-border)',
+    top: '0',
+    opacity: '0.9',
+    pointerEvents: 'none',
+    zIndex: '1'
+  });
+  layout.appendChild(diag);
+
+  [left, middle, right].forEach(col => {
+    col.style.position = 'relative';
+    col.style.zIndex = '2';
+  });
+
+  function updateDivider() {
+    if (!layout.contains(diag)) return;
+    try {
+      const layoutRect = layout.getBoundingClientRect();
+      const leftRect = left.getBoundingClientRect();
+      const middleRect = middle.getBoundingClientRect();
+      let midpoint = Math.round((leftRect.right + middleRect.left) / 2);
+      if (!isFinite(midpoint) || middleRect.left <= leftRect.right) {
+        midpoint = Math.round(leftRect.right + 24);
+      }
+      const offset = Math.max(8, midpoint - layoutRect.left);
+      diag.style.left = offset + 'px';
+      diag.style.height = Math.max(32, layout.scrollHeight) + 'px';
+    } catch (e) { }
+  }
+
+  const ro = new ResizeObserver(updateDivider);
+  ro.observe(layout);
+  ro.observe(left);
+  ro.observe(middle);
+  ro.observe(right);
+  const mo = new MutationObserver(updateDivider);
+  mo.observe(layout, { childList: true, subtree: true, attributes: true });
+  window.addEventListener('resize', updateDivider);
+  requestAnimationFrame(updateDivider);
+
+  const cleanupObserver = new MutationObserver(() => {
+    if (!document.body.contains(layout)) {
+      try { ro.disconnect(); } catch (e) {}
+      try { mo.disconnect(); } catch (e) {}
+      try { cleanupObserver.disconnect(); } catch (e) {}
+      window.removeEventListener('resize', updateDivider);
+      const existing = document.getElementById('layout-divider');
+      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+    }
+  });
+  cleanupObserver.observe(document.body, { childList: true, subtree: true });
+
+  eggList.appendChild(backBtn);
+  eggList.appendChild(layout);
+}
+
+async function createEggDetailsView(egg, canSpawnAsRift) {
+  eggList.innerHTML = '';
+  const backBtn = document.createElement("button");
+  backBtn.className = "egg-back-btn";
+  backBtn.style.position = "absolute";
+  backBtn.style.left = "20px";
+  backBtn.style.top = "140px";
+  backBtn.style.background = "none";
+  backBtn.style.border = "none";
+  backBtn.style.padding = "10px";
+  backBtn.style.zIndex = "20";
+  backBtn.style.cursor = "pointer";
+  backBtn.innerHTML = `<img src="Images/Icons/back.ico" alt="Back" style="width:32px;height:32px;vertical-align:middle;">`;
+  backBtn.onclick = () => {
+    selectedEgg = null;
+    if (selectedWorld === "infinity") {
+      selectedWorld = lastNormalWorld || null;
+    }
+    const searchInput = document.getElementById('search-bar');
+    if (searchInput) searchInput.value = lastSearchValue;
+    renderEggs();
+  };
+
+  const oldDivider = document.getElementById('bounty-divider');
+  if (oldDivider && oldDivider.parentNode) oldDivider.parentNode.removeChild(oldDivider);
+
+  if (egg.name === "Bounty") {
+    await createBountyDetailsView();
+    return;
+  }
+
+  const layout = document.createElement('div');
+  layout.className = 'egg-details-layout';
+  layout.style.position = 'relative';
+  
+  const left = document.createElement('div');
+  left.className = 'egg-details-left';
+  const eggIcon = document.createElement('img');
+  eggIcon.className = 'egg-icon-big';
+  eggIcon.src = getEggImagePath(egg);
+  eggIcon.alt = egg.name;
+  left.appendChild(eggIcon);
+  const eggName = document.createElement('div');
+  eggName.className = 'egg-name';
+  eggName.textContent = egg.name;
+  left.appendChild(eggName);
+
+  if (egg.name === "Infinity Egg") {
+    await loadInfinityEggData();
+    const theme = document.body.classList.contains('theme-dark') ? 'dark' : 'purple';
+    const worlds = [
+      { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
+      { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
+      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" }
+    ];
+    const btnRow = document.createElement("div");
+    btnRow.style.display = "flex";
+    btnRow.style.flexDirection = "row";     
+    btnRow.style.flexWrap = "nowrap";        
+    btnRow.style.alignItems = "center";
+    btnRow.style.gap = "12px";
+    btnRow.style.margin = "16px 0";
+    btnRow.style.justifyContent = "center";
+    btnRow.style.width = "100%";
+    btnRow.style.overflowX = "auto";       
+    btnRow.style.padding = "6px 4px";
+
+    worlds.forEach(w => {
+      const btn = document.createElement("button");
+
+      btn.style.display = "flex";
+      btn.style.alignItems = "center";
+      btn.style.gap = "8px";
+      btn.style.padding = "7px 18px";
+      btn.style.borderRadius = "8px";
+      btn.style.border = "none";
+      btn.style.fontWeight = "bold";
+      btn.style.cursor = "pointer";
+      btn.style.fontSize = "1rem";
+
+      btn.style.color = "var(--main-text)";
+
+      const selectedBg = "rgb(66,78,166)";
+      btn.style.background = (selectedInfinityWorld === w.id) ? selectedBg : "var(--controls-bg)";
+
+      const iconImg = document.createElement("img");
+      iconImg.src = w.icon;
+      iconImg.alt = w.label + " Icon";
+      iconImg.style.width = "28px";
+      iconImg.style.height = "28px";
+      iconImg.style.objectFit = "contain";
+
+      const labelSpan = document.createElement("span");
+      labelSpan.textContent = w.label;
+
+      btn.appendChild(iconImg);
+      btn.appendChild(labelSpan);
+
+      btn.onclick = () => {
+        selectedInfinityWorld = w.id;
+        createEggDetailsView(egg, canSpawnAsRift);
+      };
+
+      btn.addEventListener('mouseenter', () => btn.style.transform = 'translateY(-1px)');
+      btn.addEventListener('mouseleave', () => btn.style.transform = 'none');
+
+      btnRow.appendChild(btn);
+    });
+    left.appendChild(btnRow);
+    left.appendChild(createEggSettings(egg, canSpawnAsRift));
+  } else if (egg.name === "Bounty") {
+    left.appendChild(createEggSettings(egg, canSpawnAsRift));
+  } else {
+    left.appendChild(createEggSettings(egg, canSpawnAsRift));
+  }
+
+  const middle = document.createElement('div');
+  middle.className = 'egg-details-middle';
+
+  let petsToShow = egg.Pets ? egg.Pets.slice() : [];
+  if (egg.name === "Infinity Egg") {
+    await loadInfinityEggData();
+    if (infinityEggData && infinityEggData[selectedInfinityWorld] && Array.isArray(infinityEggData[selectedInfinityWorld].Pets)) {
+      petsToShow = infinityEggData[selectedInfinityWorld].Pets.slice();
+    }
+  }
+
+  try {
+    const bounties = await fetchBounties();
+    const todayLabel = formatUTCDateToLabel(new Date());
+    const todays = (bounties || []).find(b => b.Time === todayLabel) || null;
+    if (todays && todays.Egg && todays.Egg === egg.name) {
+      const bountyChance = parseChanceString(todays.Chance);
+      const bountyPetObj = {
+        name: (todays.Pet || 'Unknown') + ' (Bounty)',
+        baseOdds: bountyChance || 0,
+        icon: getPetIconByName(todays.Pet)
+      };
+      petsToShow = [bountyPetObj].concat(petsToShow);
+      const existingControls = left.querySelector('.controls');
+      try {
+        const controlsReplacement = createEggSettings({ name: egg.name, Pets: petsToShow }, canSpawnAsRift);
+        if (existingControls && existingControls.parentNode) {
+          existingControls.parentNode.replaceChild(controlsReplacement, existingControls);
+        } else {
+          left.appendChild(controlsReplacement);
+        }
+      } catch (e) { }
+    }
+  } catch (e) { }
+
+  const eggForTable = { ...egg, Pets: petsToShow };
+  middle.appendChild(createEggPetInfoCard(eggForTable, canSpawnAsRift));
+
+  const right = document.createElement('div');
+  right.className = 'egg-details-right';
+
+  right.style.display = 'flex';
+  right.style.flexDirection = 'column';
+  right.style.alignItems = 'flex-start';
+  right.style.flex = '1 1 0%';
+  right.style.boxSizing = 'border-box';
+
+  layout.appendChild(left);
+  layout.appendChild(middle);
+  layout.appendChild(right);
+
+  const diag = document.createElement('div');
+  diag.id = 'layout-divider';
+  Object.assign(diag.style, {
+    position: 'absolute',
+    width: '2px',
+    background: 'var(--table-border)',
+    top: '0',
+    opacity: '0.9',
+    pointerEvents: 'none',
+    zIndex: '1'
+  });
+  layout.appendChild(diag);
+
+  [left, middle, right].forEach(col => {
+    col.style.position = 'relative';
+    col.style.zIndex = '2';
+  });
+
+  function updateDivider() {
+    if (!layout.contains(diag)) return;
+    try {
+      const layoutRect = layout.getBoundingClientRect();
+      const leftRect = left.getBoundingClientRect();
+      const middleRect = middle.getBoundingClientRect();
+      let midpoint = Math.round((leftRect.right + middleRect.left) / 2);
+      if (!isFinite(midpoint) || middleRect.left <= leftRect.right) {
+        midpoint = Math.round(leftRect.right + 24);
+      }
+      const offset = Math.max(8, midpoint - layoutRect.left);
+      diag.style.left = offset + 'px';
+      diag.style.height = Math.max(32, layout.scrollHeight) + 'px';
+    } catch (e) { }
+  }
+
+  const ro = new ResizeObserver(updateDivider);
+  ro.observe(layout);
+  ro.observe(left);
+  ro.observe(middle);
+  ro.observe(right);
+  const mo = new MutationObserver(updateDivider);
+  mo.observe(layout, { childList: true, subtree: true, attributes: true });
+  window.addEventListener('resize', updateDivider);
+  requestAnimationFrame(updateDivider);
+
+  const cleanupObserver = new MutationObserver(() => {
+    if (!document.body.contains(layout)) {
+      try { ro.disconnect(); } catch (e) {}
+      try { mo.disconnect(); } catch (e) {}
+      try { cleanupObserver.disconnect(); } catch (e) {}
+      window.removeEventListener('resize', updateDivider);
+      const existing = document.getElementById('layout-divider');
+      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+    }
+  });
+  cleanupObserver.observe(document.body, { childList: true, subtree: true });
+
+  eggList.appendChild(backBtn);
+  eggList.appendChild(layout);
+}
+
+async function createEggDetailsView(egg, canSpawnAsRift) {
+  eggList.innerHTML = '';
+  const backBtn = document.createElement("button");
+  backBtn.className = "egg-back-btn";
+  backBtn.style.position = "absolute";
+  backBtn.style.left = "20px";
+  backBtn.style.top = "140px";
+  backBtn.style.background = "none";
+  backBtn.style.border = "none";
+  backBtn.style.padding = "10px";
+  backBtn.style.zIndex = "20";
+  backBtn.style.cursor = "pointer";
+  backBtn.innerHTML = `<img src="Images/Icons/back.ico" alt="Back" style="width:32px;height:32px;vertical-align:middle;">`;
+  backBtn.onclick = () => {
+    selectedEgg = null;
+    if (selectedWorld === "infinity") {
+      selectedWorld = lastNormalWorld || null;
+    }
+    const searchInput = document.getElementById('search-bar');
+    if (searchInput) searchInput.value = lastSearchValue;
+    renderEggs();
+  };
+
+  const oldDivider = document.getElementById('bounty-divider');
+  if (oldDivider && oldDivider.parentNode) oldDivider.parentNode.removeChild(oldDivider);
+
+  if (egg.name === "Bounty") {
+    await createBountyDetailsView();
+    return;
+  }
+
+  const layout = document.createElement('div');
+  layout.className = 'egg-details-layout';
+  layout.style.position = 'relative';
+  
+  const left = document.createElement('div');
+  left.className = 'egg-details-left';
+  const eggIcon = document.createElement('img');
+  eggIcon.className = 'egg-icon-big';
+  eggIcon.src = getEggImagePath(egg);
+  eggIcon.alt = egg.name;
+  left.appendChild(eggIcon);
+  const eggName = document.createElement('div');
+  eggName.className = 'egg-name';
+  eggName.textContent = egg.name;
+  left.appendChild(eggName);
+
+  if (egg.name === "Infinity Egg") {
+    await loadInfinityEggData();
+    const theme = document.body.classList.contains('theme-dark') ? 'dark' : 'purple';
+    const worlds = [
+      { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
+      { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
+      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" }
+    ];
+    const btnRow = document.createElement("div");
+    btnRow.style.display = "flex";
+    btnRow.style.flexDirection = "row";     
+    btnRow.style.flexWrap = "nowrap";        
+    btnRow.style.alignItems = "center";
+    btnRow.style.gap = "12px";
+    btnRow.style.margin = "16px 0";
+    btnRow.style.justifyContent = "center";
+    btnRow.style.width = "100%";
+    btnRow.style.overflowX = "auto";       
+    btnRow.style.padding = "6px 4px";
+
+    worlds.forEach(w => {
+      const btn = document.createElement("button");
+
+      btn.style.display = "flex";
+      btn.style.alignItems = "center";
+      btn.style.gap = "8px";
+      btn.style.padding = "7px 18px";
+      btn.style.borderRadius = "8px";
+      btn.style.border = "none";
+      btn.style.fontWeight = "bold";
+      btn.style.cursor = "pointer";
+      btn.style.fontSize = "1rem";
+
+      btn.style.color = "var(--main-text)";
+
+      const selectedBg = "rgb(66,78,166)";
+      btn.style.background = (selectedInfinityWorld === w.id) ? selectedBg : "var(--controls-bg)";
+
+      const iconImg = document.createElement("img");
+      iconImg.src = w.icon;
+      iconImg.alt = w.label + " Icon";
+      iconImg.style.width = "28px";
+      iconImg.style.height = "28px";
+      iconImg.style.objectFit = "contain";
+
+      const labelSpan = document.createElement("span");
+      labelSpan.textContent = w.label;
+
+      btn.appendChild(iconImg);
+      btn.appendChild(labelSpan);
+
+      btn.onclick = () => {
+        selectedInfinityWorld = w.id;
+        createEggDetailsView(egg, canSpawnAsRift);
+      };
+
+      btn.addEventListener('mouseenter', () => btn.style.transform = 'translateY(-1px)');
+      btn.addEventListener('mouseleave', () => btn.style.transform = 'none');
+
+      btnRow.appendChild(btn);
+    });
+    left.appendChild(btnRow);
+    left.appendChild(createEggSettings(egg, canSpawnAsRift));
+  } else if (egg.name === "Bounty") {
+    left.appendChild(createEggSettings(egg, canSpawnAsRift));
+  } else {
+    left.appendChild(createEggSettings(egg, canSpawnAsRift));
+  }
+
+  const middle = document.createElement('div');
+  middle.className = 'egg-details-middle';
+
+  let petsToShow = egg.Pets ? egg.Pets.slice() : [];
+  if (egg.name === "Infinity Egg") {
+    await loadInfinityEggData();
+    if (infinityEggData && infinityEggData[selectedInfinityWorld] && Array.isArray(infinityEggData[selectedInfinityWorld].Pets)) {
+      petsToShow = infinityEggData[selectedInfinityWorld].Pets.slice();
+    }
+  }
+
+  try {
+    const bounties = await fetchBounties();
+    const todayLabel = formatUTCDateToLabel(new Date());
+    const todays = (bounties || []).find(b => b.Time === todayLabel) || null;
+    if (todays && todays.Egg && todays.Egg === egg.name) {
+      const bountyChance = parseChanceString(todays.Chance);
+      const bountyPetObj = {
+        name: (todays.Pet || 'Unknown') + ' (Bounty)',
+        baseOdds: bountyChance || 0,
+        icon: getPetIconByName(todays.Pet)
+      };
+      petsToShow = [bountyPetObj].concat(petsToShow);
+      const existingControls = left.querySelector('.controls');
+      try {
+        const controlsReplacement = createEggSettings({ name: egg.name, Pets: petsToShow }, canSpawnAsRift);
+        if (existingControls && existingControls.parentNode) {
+          existingControls.parentNode.replaceChild(controlsReplacement, existingControls);
+        } else {
+          left.appendChild(controlsReplacement);
+        }
+      } catch (e) { }
+    }
+  } catch (e) { }
+
+  const eggForTable = { ...egg, Pets: petsToShow };
+  middle.appendChild(createEggPetInfoCard(eggForTable, canSpawnAsRift));
+
+  const right = document.createElement('div');
+  right.className = 'egg-details-right';
+
+  right.style.display = 'flex';
+  right.style.flexDirection = 'column';
+  right.style.alignItems = 'flex-start';
+  right.style.flex = '1 1 0%';
+  right.style.boxSizing = 'border-box';
+
+  layout.appendChild(left);
+  layout.appendChild(middle);
+  layout.appendChild(right);
+
+  const diag = document.createElement('div');
+  diag.id = 'layout-divider';
+  Object.assign(diag.style, {
+    position: 'absolute',
+    width: '2px',
+    background: 'var(--table-border)',
+    top: '0',
+    opacity: '0.9',
+    pointerEvents: 'none',
+    zIndex: '1'
+  });
+  layout.appendChild(diag);
+
+  [left, middle, right].forEach(col => {
+    col.style.position = 'relative';
+    col.style.zIndex = '2';
+  });
+
+  function updateDivider() {
+    if (!layout.contains(diag)) return;
+    try {
+      const layoutRect = layout.getBoundingClientRect();
+      const leftRect = left.getBoundingClientRect();
+      const middleRect = middle.getBoundingClientRect();
+      let midpoint = Math.round((leftRect.right + middleRect.left) / 2);
+      if (!isFinite(midpoint) || middleRect.left <= leftRect.right) {
+        midpoint = Math.round(leftRect.right + 24);
+      }
+      const offset = Math.max(8, midpoint - layoutRect.left);
+      diag.style.left = offset + 'px';
+      diag.style.height = Math.max(32, layout.scrollHeight) + 'px';
+    } catch (e) { }
+  }
+
+  const ro = new ResizeObserver(updateDivider);
+  ro.observe(layout);
+  ro.observe(left);
+  ro.observe(middle);
+  ro.observe(right);
+  const mo = new MutationObserver(updateDivider);
+  mo.observe(layout, { childList: true, subtree: true, attributes: true });
+  window.addEventListener('resize', updateDivider);
+  requestAnimationFrame(updateDivider);
+
+  const cleanupObserver = new MutationObserver(() => {
+    if (!document.body.contains(layout)) {
+      try { ro.disconnect(); } catch (e) {}
+      try { mo.disconnect(); } catch (e) {}
+      try { cleanupObserver.disconnect(); } catch (e) {}
+      window.removeEventListener('resize', updateDivider);
+      const existing = document.getElementById('layout-divider');
+      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+    }
+  });
+  cleanupObserver.observe(document.body, { childList: true, subtree: true });
+
+  eggList.appendChild(backBtn);
+  eggList.appendChild(layout);
+}
+
+async function createEggDetailsView(egg, canSpawnAsRift) {
+  eggList.innerHTML = '';
+  const backBtn = document.createElement("button");
+  backBtn.className = "egg-back-btn";
+  backBtn.style.position = "absolute";
+  backBtn.style.left = "20px";
+  backBtn.style.top = "140px";
+  backBtn.style.background = "none";
+  backBtn.style.border = "none";
+  backBtn.style.padding = "10px";
+  backBtn.style.zIndex = "20";
+  backBtn.style.cursor = "pointer";
+  backBtn.innerHTML = `<img src="Images/Icons/back.ico" alt="Back" style="width:32px;height:32px;vertical-align:middle;">`;
+  backBtn.onclick = () => {
+    selectedEgg = null;
+    if (selectedWorld === "infinity") {
+      selectedWorld = lastNormalWorld || null;
+    }
+    const searchInput = document.getElementById('search-bar');
+    if (searchInput) searchInput.value = lastSearchValue;
+    renderEggs();
+  };
+
+  const oldDivider = document.getElementById('bounty-divider');
+  if (oldDivider && oldDivider.parentNode) oldDivider.parentNode.removeChild(oldDivider);
+
+  if (egg.name === "Bounty") {
+    await createBountyDetailsView();
+    return;
+  }
+
+  const layout = document.createElement('div');
+  layout.className = 'egg-details-layout';
+  layout.style.position = 'relative';
+  
+  const left = document.createElement('div');
+  left.className = 'egg-details-left';
+  const eggIcon = document.createElement('img');
+  eggIcon.className = 'egg-icon-big';
+  eggIcon.src = getEggImagePath(egg);
+  eggIcon.alt = egg.name;
+  left.appendChild(eggIcon);
+  const eggName = document.createElement('div');
+  eggName.className = 'egg-name';
+  eggName.textContent = egg.name;
+  left.appendChild(eggName);
+
+  if (egg.name === "Infinity Egg") {
+    await loadInfinityEggData();
+    const theme = document.body.classList.contains('theme-dark') ? 'dark' : 'purple';
+    const worlds = [
+      { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
+      { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
+      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" }
+    ];
+    const btnRow = document.createElement("div");
+    btnRow.style.display = "flex";
+    btnRow.style.flexDirection = "row";     
+    btnRow.style.flexWrap = "nowrap";        
+    btnRow.style.alignItems = "center";
+    btnRow.style.gap = "12px";
+    btnRow.style.margin = "16px 0";
+    btnRow.style.justifyContent = "center";
+    btnRow.style.width = "100%";
+    btnRow.style.overflowX = "auto";       
+    btnRow.style.padding = "6px 4px";
+
+    worlds.forEach(w => {
+      const btn = document.createElement("button");
+
+      btn.style.display = "flex";
+      btn.style.alignItems = "center";
+      btn.style.gap = "8px";
+      btn.style.padding = "7px 18px";
+      btn.style.borderRadius = "8px";
+      btn.style.border = "none";
+      btn.style.fontWeight = "bold";
+      btn.style.cursor = "pointer";
+      btn.style.fontSize = "1rem";
+
+      btn.style.color = "var(--main-text)";
+
+      const selectedBg = "rgb(66,78,166)";
+      btn.style.background = (selectedInfinityWorld === w.id) ? selectedBg : "var(--controls-bg)";
+
+      const iconImg = document.createElement("img");
+      iconImg.src = w.icon;
+      iconImg.alt = w.label + " Icon";
+      iconImg.style.width = "28px";
+      iconImg.style.height = "28px";
+      iconImg.style.objectFit = "contain";
+
+      const labelSpan = document.createElement("span");
+      labelSpan.textContent = w.label;
+
+      btn.appendChild(iconImg);
+      btn.appendChild(labelSpan);
+
+      btn.onclick = () => {
+        selectedInfinityWorld = w.id;
+        createEggDetailsView(egg, canSpawnAsRift);
+      };
+
+      btn.addEventListener('mouseenter', () => btn.style.transform = 'translateY(-1px)');
+      btn.addEventListener('mouseleave', () => btn.style.transform = 'none');
+
+      btnRow.appendChild(btn);
+    });
+    left.appendChild(btnRow);
+    left.appendChild(createEggSettings(egg, canSpawnAsRift));
+  } else if (egg.name === "Bounty") {
+    left.appendChild(createEggSettings(egg, canSpawnAsRift));
+  } else {
+    left.appendChild(createEggSettings(egg, canSpawnAsRift));
+  }
+
+  const middle = document.createElement('div');
+  middle.className = 'egg-details-middle';
+
+  let petsToShow = egg.Pets ? egg.Pets.slice() : [];
+  if (egg.name === "Infinity Egg") {
+    await loadInfinityEggData();
+    if (infinityEggData && infinityEggData[selectedInfinityWorld] && Array.isArray(infinityEggData[selectedInfinityWorld].Pets)) {
+      petsToShow = infinityEggData[selectedInfinityWorld].Pets.slice();
+    }
+  }
+
+  try {
+    const bounties = await fetchBounties();
+    const todayLabel = formatUTCDateToLabel(new Date());
+    const todays = (bounties || []).find(b => b.Time === todayLabel) || null;
+    if (todays && todays.Egg && todays.Egg === egg.name) {
+      const bountyChance = parseChanceString(todays.Chance);
+      const bountyPetObj = {
+        name: (todays.Pet || 'Unknown') + ' (Bounty)',
+        baseOdds: bountyChance || 0,
+        icon: getPetIconByName(todays.Pet)
+      };
+      petsToShow = [bountyPetObj].concat(petsToShow);
+      const existingControls = left.querySelector('.controls');
+      try {
+        const controlsReplacement = createEggSettings({ name: egg.name, Pets: petsToShow }, canSpawnAsRift);
+        if (existingControls && existingControls.parentNode) {
+          existingControls.parentNode.replaceChild(controlsReplacement, existingControls);
+        } else {
+          left.appendChild(controlsReplacement);
+        }
+      } catch (e) { }
+    }
+  } catch (e) { }
+
+  const eggForTable = { ...egg, Pets: petsToShow };
+  middle.appendChild(createEggPetInfoCard(eggForTable, canSpawnAsRift));
+
+  const right = document.createElement('div');
+  right.className = 'egg-details-right';
+
+  right.style.display = 'flex';
+  right.style.flexDirection = 'column';
+  right.style.alignItems = 'flex-start';
+  right.style.flex = '1 1 0%';
+  right.style.boxSizing = 'border-box';
+
+  layout.appendChild(left);
+  layout.appendChild(middle);
+  layout.appendChild(right);
+
+  const diag = document.createElement('div');
+  diag.id = 'layout-divider';
+  Object.assign(diag.style, {
+    position: 'absolute',
+    width: '2px',
+    background: 'var(--table-border)',
+    top: '0',
+    opacity: '0.9',
+    pointerEvents: 'none',
+    zIndex: '1'
+  });
+  layout.appendChild(diag);
+
+  [left, middle, right].forEach(col => {
+    col.style.position = 'relative';
+    col.style.zIndex = '2';
+  });
+
+  function updateDivider() {
+    if (!layout.contains(diag)) return;
+    try {
+      const layoutRect = layout.getBoundingClientRect();
+      const leftRect = left.getBoundingClientRect();
+      const middleRect = middle.getBoundingClientRect();
+      let midpoint = Math.round((leftRect.right + middleRect.left) / 2);
+      if (!isFinite(midpoint) || middleRect.left <= leftRect.right) {
+        midpoint = Math.round(leftRect.right + 24);
+      }
+      const offset = Math.max(8, midpoint - layoutRect.left);
+      diag.style.left = offset + 'px';
+      diag.style.height = Math.max(32, layout.scrollHeight) + 'px';
+    } catch (e) { }
+  }
+
+  const ro = new ResizeObserver(updateDivider);
+  ro.observe(layout);
+  ro.observe(left);
+  ro.observe(middle);
+  ro.observe(right);
+  const mo = new MutationObserver(updateDivider);
+  mo.observe(layout, { childList: true, subtree: true, attributes: true });
+  window.addEventListener('resize', updateDivider);
+  requestAnimationFrame(updateDivider);
+
+  const cleanupObserver = new MutationObserver(() => {
+    if (!document.body.contains(layout)) {
+      try { ro.disconnect(); } catch (e) {}
+      try { mo.disconnect(); } catch (e) {}
+      try { cleanupObserver.disconnect(); } catch (e) {}
+      window.removeEventListener('resize', updateDivider);
+      const existing = document.getElementById('layout-divider');
+      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+    }
+  });
+  cleanupObserver.observe(document.body, { childList: true, subtree: true });
+
+  eggList.appendChild(backBtn);
+  eggList.appendChild(layout);
+}
+
 function createEggSettings(egg, canSpawnAsRift) {
   const controls = document.createElement("div");
   controls.className = "controls";
@@ -904,7 +1832,7 @@ function createEggSettings(egg, canSpawnAsRift) {
     <input type="number" class="luck" value="0" />
   `;
 
-  const hasSecret = egg.Pets && egg.Pets.some(pet => /(Secret|Infinity|Bounty)/i.test(pet.name)) || egg.name === "Infinity Egg" || egg.name === "Bounty";
+  const hasSecret = (egg.Pets && egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name))) || egg.name === "Infinity Egg";
   if (hasSecret) {
     controlsHtml += `
       <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px;width:100%;">
@@ -1124,7 +2052,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
        const effectiveLuckPercent = luckPercent + riftBonusPercent;
        petList.innerHTML = "";
        (egg.Pets || []).forEach(pet => {
-         const isSecret = /\((Secret|Infinity|Bounty)\)/i.test(pet.name) || /\bBounty\b/i.test(pet.name);
+         const isSecret = /(Secret|Infinity)/i.test(pet.name);
          const baseChance = pet.baseOdds && pet.baseOdds > 0 ? 1 / pet.baseOdds : 0;
          let combinedMultiplier = 1 + effectiveLuckPercent / 100;
          if (isSecret) combinedMultiplier *= secretTimes;
