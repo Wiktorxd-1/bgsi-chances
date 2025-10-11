@@ -650,7 +650,7 @@
       "Demonic Ghost Spirit"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-10",
     "dateRemoved": ""
