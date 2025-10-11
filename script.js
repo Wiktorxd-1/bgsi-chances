@@ -26,7 +26,7 @@ const eggs = [
   { name: "Brainrot Egg" , image: "Images/Eggs/Brainrot_Egg.webp", Pets: [ { name: "Brainrot Shark", baseOdds: 20000, icon: "Images/Pets/Brainrot_Shark.webp"}, {name: "Nert Pufferfish", baseOdds: 50000, icon: "Images/Pets/Nert_Pufferfish.webp"}, { name: "BIG ROUND (Secret)", baseOdds: 200000000, icon: "Images/Pets/BIG_ROUND.webp"}], world: "limited"},
   { name: "Classic egg", image: "Images/Eggs/Classic_Egg.webp", Pets: [ { name: "Classic Unicorn", baseOdds: 4000, icon: "Images/Pets/Classic_Unicorn.webp"}, { name: "Classic Dominus", baseOdds: 200000, icon: "Images/Pets/Classic_Dominus.webp"}, { name: "Classic Noob", baseOdds: 2000000, icon: "Images/Pets/Classic_Noob.webp"}, { name: "Classic Overlord (Secret)", baseOdds: 100000000, icon: "Images/Pets/Classic_Overlord.webp"}, { name: "1x1x1x1 (Secret)", baseOdds: 500000000, icon: "Images/Pets/1x1x1x1.webp"}, { name: "Giant Classic Chicken (Secret)", baseOdds: 2500000000, icon: "Images/Pets/Giant_Classic_Chicken.webp"}], world: "3"},
   { name: "Autumn Egg", Pets: [ { name: "Autumn Paragon", baseOdds: 5000 }, { name: "Monarch Butterfly", baseOdds: 1000000}, { name:"Crystal Acorn", baseOdds: 5000000 }, { name: "Big Leafy (Secret)", baseOdds: 100000000 }, { name: "Candycorn Shard (Secret)", baseOdds: 500000000}, { name: "Almighty Pumpkin (Secret)", baseOdds: 2000000000}], world: "limited"},
-  { name: "Developer Egg", Pets: [ { name: "Sylently's Hats", baseOdds: 100000}, { name: "Isaac Rainbow Shock", baseOdds: 1000000}, { name: "Sircfenner Plushie (Secret)", baseOdds: 500000000}, { name: "Quamatic Plushie (Secret)", baseOdds: 500000000}, { name: "Nert Plushie (Secret)", baseOdds: 500000000}, { name: "Sylently Plushie (Secret)", baseOdds: 500000000}, { name: "ObscureEntity Plushie (Secret)", baseOdds: 500000000}, { name: "Sylantly's Pet (Infinity)", baseOdds: 5000000000}], world: "limited"},
+  { name: "Developer Egg", Pets: [ { name: "Sylently's Hats", baseOdds: 100000}, { name: "Isaac Rainbow Shock", baseOdds: 1000000}, { name: "Sircfenner Plushie (Secret)", baseOdds: 500000000}, { name: "Quamatic Plushie (Secret)", baseOdds: 500000000}, { name: "Nert Plushie (Secret)", baseOdds: 500000000}, { name: "Sylently Plushie (Secret)", baseOdds: 500000000}, { name: "ObscureEntity Plushie (Secret)", baseOdds: 500000000}, { name: "Sylently's Pet (Infinity)", baseOdds: 20000000000}], world: "limited"},
   { name: "Candle Egg", Pets: [ { name: "Lantern Demon", baseOdds: 10000 }, { name: "Candle Phoenix", baseOdds: 2000000 }, { name: "Willow Chandelier", baseOdds: 10000000 }, { name: "Maple Divinity (Secret)", baseOdds: 2000000000 }, { name: "Aureate Koi (Infinity)", baseOdds: 50000000000}], world: "limited"},
   { name: "Cartoon Egg", Pets: [ { name: "Cartoon Hexarium", baseOdds: 10000}, { name: "Cartoon Hydra", baseOdds: 500000}, { name: "Cartoon Overlord", baseOdds: 2000000}, { name: "Angelic Ghost Spirit (Secret)", baseOdds: 500000000}, { name: "Demonic Ghost Spirit (Secret)", baseOdds: 500000000}], world: "limited"},
 ];
@@ -91,7 +91,7 @@ function renderEggs() {
       noResults.style.margin = '32px 0';
       noResults.style.fontSize = '1.3em';
       noResults.style.opacity = '0.7';
-      noResults.textContent = 'No eggs found that match the search';
+      noResults.textContent = 'No eggs found that match the query';
       eggList.appendChild(noResults);
       return;
     }
@@ -718,7 +718,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
       { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
       { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" }
     ];
-    const btnRow = document.createElement("div");
+  const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
     btnRow.style.flexDirection = "row";     
     btnRow.style.flexWrap = "nowrap";        
@@ -861,7 +861,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
       const offset = Math.max(8, midpoint - layoutRect.left);
       diag.style.left = offset + 'px';
       diag.style.height = Math.max(32, layout.scrollHeight) + 'px';
-    } catch (e) { }
+    } catch (e) {}
   }
 
   const ro = new ResizeObserver(updateDivider);
@@ -1088,7 +1088,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
       const offset = Math.max(8, midpoint - layoutRect.left);
       diag.style.left = offset + 'px';
       diag.style.height = Math.max(32, layout.scrollHeight) + 'px';
-    } catch (e) { }
+    } catch (e) {}
   }
 
   const ro = new ResizeObserver(updateDivider);
@@ -1315,7 +1315,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
       const offset = Math.max(8, midpoint - layoutRect.left);
       diag.style.left = offset + 'px';
       diag.style.height = Math.max(32, layout.scrollHeight) + 'px';
-    } catch (e) { }
+    } catch (e) {}
   }
 
   const ro = new ResizeObserver(updateDivider);
@@ -1542,7 +1542,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
       const offset = Math.max(8, midpoint - layoutRect.left);
       diag.style.left = offset + 'px';
       diag.style.height = Math.max(32, layout.scrollHeight) + 'px';
-    } catch (e) { }
+    } catch (e) {}
   }
 
   const ro = new ResizeObserver(updateDivider);
@@ -1769,7 +1769,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
       const offset = Math.max(8, midpoint - layoutRect.left);
       diag.style.left = offset + 'px';
       diag.style.height = Math.max(32, layout.scrollHeight) + 'px';
-    } catch (e) { }
+    } catch (e) {}
   }
 
   const ro = new ResizeObserver(updateDivider);
@@ -1812,7 +1812,11 @@ function createEggSettings(egg, canSpawnAsRift) {
           <option value="10">10x</option>
           <option value="20">20x</option>
           <option value="25">25x</option>
+          <option value="other">Other</option>
         </select>
+  <div class="multiplier-other-wrap" style="display:none;margin:6px 0 12px 0;width:100%;">
+          <input type="number" class="multiplier-other" placeholder="2" min="0" step="0.01" style="width:100%;display:block;box-sizing:border-box;margin-bottom:0;" />
+        </div>
       `;
     } else {
       controlsHtml += `
@@ -1824,7 +1828,11 @@ function createEggSettings(egg, canSpawnAsRift) {
           <option value="15">15x</option>
           <option value="20">20x</option>
           <option value="25">25x</option>
+          <option value="other">Other</option>
         </select>
+  <div class="multiplier-other-wrap" style="display:none;margin:6px 0 12px 0;width:100%;">
+          <input type="number" class="multiplier-other" placeholder="2" min="0" step="0.01" style="width:100%;display:block;box-sizing:border-box;margin-bottom:0;" />
+        </div>
       `;
     }
   }
@@ -1832,7 +1840,6 @@ function createEggSettings(egg, canSpawnAsRift) {
     <label>Luck Multiplier (%):</label>
     <input type="number" class="luck" value="0" />
   `;
-
   const hasSecret = (egg.Pets && egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name))) || egg.name === "Infinity Egg";
   if (hasSecret) {
     controlsHtml += `
@@ -1842,7 +1849,6 @@ function createEggSettings(egg, canSpawnAsRift) {
       </div>
     `;
   }
-
   controlsHtml += `
     <div style="margin-top:8px;position:relative;">
       <button type="button" class="variants-toggle" aria-expanded="false"
@@ -1874,7 +1880,6 @@ function createEggSettings(egg, canSpawnAsRift) {
        </div>
      </div>
    `;
-
   controls.innerHTML = controlsHtml;
   return controls;
 }
@@ -1931,6 +1936,8 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
        layout.querySelector('.egg-details-right .controls')
      ) : null;
     const multiplierSelect = controls ? controls.querySelector(".multiplier") : null;
+    const multiplierOtherWrap = controls ? controls.querySelector(".multiplier-other-wrap") : null;
+    const multiplierOtherInput = controls ? controls.querySelector(".multiplier-other") : null;
     const luckInput = controls ? controls.querySelector(".luck") : null;
     const secretInput = controls ? controls.querySelector(".secret-mult") : null;
     const variantsToggle = controls ? controls.querySelector('.variants-toggle') : null;
@@ -1951,29 +1958,59 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       return null;
     }
 
+    function parseRiftInput(str) {
+      if (str === null || str === undefined) return null;
+      const s = String(str).trim().toLowerCase().replace(/\s+/g, '');
+      if (s === '') return null;
+      const m = s.match(/^x?(\d+(\.\d+)?)x?$/i);
+      if (m && m[1]) return parseFloat(m[1]);
+      const n = Number(s.replace(/x/gi, ''));
+      if (isFinite(n)) return n;
+      return null;
+    }
+ 
+    const variantButtonStyles = {
+      shiny: {
+        selected: {
+          background: '#c28e20',
+          color: '#ffffff',
+          boxShadow: '0 0 14px #ffe047, 0 6px 20px rgba(0,0,0,0.12)'
+        },
+        unselected: {
+          background: 'var(--controls-bg)',
+          color: 'var(--main-text)',
+          boxShadow: 'none'
+        }
+      },
+      mythic: {
+        selected: {
+          background: '#3602b0',
+          color: '#ffffff',
+          boxShadow: '0 0 16px rgba(123,78,255,0.95), 0 8px 24px rgba(54,2,176,0.35)'
+        },
+        unselected: {
+          background: 'var(--controls-bg)',
+          color: 'var(--main-text)',
+          boxShadow: 'none'
+        }
+      }
+    };
+
     function applyVariantButtonStyles() {
       if (shinyBtn) {
         const sel = shinyBtn.dataset.selected === 'true';
         if (sel) {
-          shinyBtn.style.background = '#c28e20';
-          shinyBtn.style.color = '#ffffff';
-          shinyBtn.style.boxShadow = '0 0 14px #ffe047, 0 6px 20px rgba(0,0,0,0.12)';
+          Object.assign(shinyBtn.style, variantButtonStyles.shiny.selected);
         } else {
-          shinyBtn.style.background = 'var(--controls-bg)';
-          shinyBtn.style.color = 'var(--main-text)';
-          shinyBtn.style.boxShadow = 'none';
+          Object.assign(shinyBtn.style, variantButtonStyles.shiny.unselected);
         }
       }
       if (mythicBtn) {
         const sel = mythicBtn.dataset.selected === 'true';
         if (sel) {
-          mythicBtn.style.background = '#3602b0';
-          mythicBtn.style.color = '#ffffff';
-          mythicBtn.style.boxShadow = '0 0 16px rgba(123,78,255,0.95), 0 8px 24px rgba(54,2,176,0.35)';
+          Object.assign(mythicBtn.style, variantButtonStyles.mythic.selected);
         } else {
-          mythicBtn.style.background = 'var(--controls-bg)';
-          mythicBtn.style.color = 'var(--main-text)';
-          mythicBtn.style.boxShadow = 'none';
+          Object.assign(mythicBtn.style, variantButtonStyles.mythic.unselected);
         }
       }
     }
@@ -2005,6 +2042,22 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
     if (mythicInput) {
       mythicInput.addEventListener('input', () => { applyVariantButtonStyles(); updateChances(); });
       if (!mythicInput.value) mythicInput.value = '1 in 100';
+    }
+     applyVariantButtonStyles();
+    if (multiplierSelect) {
+      const handleMultiplierChange = () => {
+        if (multiplierSelect.value === 'other') {
+          if (multiplierOtherWrap) multiplierOtherWrap.style.display = 'flex';
+        } else {
+          if (multiplierOtherWrap) multiplierOtherWrap.style.display = 'none';
+        }
+        updateChances();
+      };
+      multiplierSelect.addEventListener('change', handleMultiplierChange);
+      try { handleMultiplierChange(); } catch (e) {}
+    }
+    if (multiplierOtherInput) {
+      multiplierOtherInput.addEventListener('input', updateChances);
     }
      applyVariantButtonStyles();
  
@@ -2046,7 +2099,15 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
      }
  
      function updateChances() {
-       const multiplierValue = multiplierSelect ? parseFloat(multiplierSelect.value) : 0;
+       let multiplierValue = 0;
+       if (multiplierSelect) {
+         if (multiplierSelect.value === 'other') {
+           const parsed = parseRiftInput(multiplierOtherInput ? multiplierOtherInput.value : '');
+           multiplierValue = (isFinite(parsed) && parsed !== null) ? Number(parsed) : 0;
+         } else {
+           multiplierValue = parseFloat(multiplierSelect.value) || 0;
+         }
+       }
        const riftBonusPercent = multiplierValue * 100;
        const luckPercent = luckInput ? (luckInput.value === "" ? 0 : parseFloat(luckInput.value)) : 0;
        const secretTimes = secretInput ? (secretInput.value === "" ? 1 : Math.max(1, parseFloat(secretInput.value))) : 1;
