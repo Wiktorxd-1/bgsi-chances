@@ -535,6 +535,22 @@
     "dateRemoved": "2025-05-03"
   },
   {
+    "name": "Spooky Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Spooky_Egg.png",
+    "pets": [
+      "Wisp Doggy",
+      "Pumpkin Kitty",
+      "Ghostarium",
+      "Fangseeker",
+      "Armageddon"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-10-10",
+    "dateRemoved": "2025-10-15"
+  },
+  {
     "name": "Duality Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/21/Duality_Egg.png",
     "pets": [
@@ -612,12 +628,31 @@
       "Candle Phoenix",
       "Willow Chandelier",
       "Maple Divinity",
+      "Fall Pyramidium",
       "Aureate Koi"
     ],
     "luckIgnored": false,
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-03",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Cartoon Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Cartoon_Egg.png",
+    "pets": [
+      "Cartoon Doggy",
+      "Cartoon Kitty",
+      "Cartoon Hexarium",
+      "Cartoon Hydra",
+      "Cartoon Overlord",
+      "Angelic Ghost Spirit",
+      "Demonic Ghost Spirit"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-10-10",
     "dateRemoved": ""
   },
   {
@@ -685,7 +720,7 @@
   },
   {
     "name": "Dreamer Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0e/Dreamer_Egg.png",
     "pets": [
       "Sleepy Fox",
       "Stellar Goat",

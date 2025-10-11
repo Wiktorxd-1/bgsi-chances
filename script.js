@@ -28,6 +28,7 @@ const eggs = [
   { name: "Autumn Egg", Pets: [ { name: "Autumn Paragon", baseOdds: 5000 }, { name: "Monarch Butterfly", baseOdds: 1000000}, { name:"Crystal Acorn", baseOdds: 5000000 }, { name: "Big Leafy (Secret)", baseOdds: 100000000 }, { name: "Candycorn Shard (Secret)", baseOdds: 500000000}, { name: "Almighty Pumpkin (Secret)", baseOdds: 2000000000}], world: "limited"},
   { name: "Developer Egg", Pets: [ { name: "Sylently's Hats", baseOdds: 100000}, { name: "Isaac Rainbow Shock", baseOdds: 1000000}, { name: "Sircfenner Plushie (Secret)", baseOdds: 500000000}, { name: "Quamatic Plushie (Secret)", baseOdds: 500000000}, { name: "Nert Plushie (Secret)", baseOdds: 500000000}, { name: "Sylently Plushie (Secret)", baseOdds: 500000000}, { name: "ObscureEntity Plushie (Secret)", baseOdds: 500000000}, { name: "Sylantly's Pet (Infinity)", baseOdds: 5000000000}], world: "limited"},
   { name: "Candle Egg", Pets: [ { name: "Lantern Demon", baseOdds: 10000 }, { name: "Candle Phoenix", baseOdds: 2000000 }, { name: "Willow Chandelier", baseOdds: 10000000 }, { name: "Maple Divinity (Secret)", baseOdds: 2000000000 }, { name: "Aureate Koi (Infinity)", baseOdds: 50000000000}], world: "limited"},
+  { name: "Cartoon Egg", Pets: [ { name: "Cartoon Hexarium", baseOdds: 10000}, { name: "Cartoon Hydra", baseOdds: 500000}, { name: "Cartoon Overlord", baseOdds: 2000000}, { name: "Angelic Ghost Spirit (Secret)", baseOdds: 500000000}, { name: "Demonic Ghost Spirit (Secret)", baseOdds: 500000000}], world: "limited"},
 ];
 
 let selectedWorld = null;
