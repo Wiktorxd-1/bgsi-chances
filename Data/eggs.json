@@ -656,7 +656,7 @@
       "Sinister Lord"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-17",
     "dateRemoved": ""
