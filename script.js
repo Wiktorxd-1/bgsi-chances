@@ -2795,6 +2795,8 @@ async function updateBountyButtonIcon() {
 }
 
 function ensureBountyButton() {
+  const path = window.location.pathname.replace(/\/+$/, "");
+  if (path.endsWith('/hatches') || path.endsWith('/hatches.html')) return null;
   const sidebar = document.querySelector('.worlds-sidebar') || document.querySelector('#sidebar') || document.querySelector('.sidebar') || document.body;
   let existing = sidebar.querySelector('.world-icon-btn.bounty');
   if (existing) return existing;
@@ -2840,9 +2842,13 @@ function ensureBountyButton() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  ensureBountyButton();
-  updateBountyButtonIcon();
-  setInterval(updateBountyButtonIcon, 5 * 60 * 1000);
+  const path = window.location.pathname.replace(/\/+$/, "");
+  const isHatches = path.endsWith('/hatches') || path.endsWith('/hatches.html');
+  if (!isHatches) {
+    ensureBountyButton();
+    updateBountyButtonIcon();
+    setInterval(updateBountyButtonIcon, 5 * 60 * 1000);
+  }
 });
 
 document.addEventListener('DOMContentLoaded', function () {
