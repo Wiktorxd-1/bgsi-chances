@@ -23,13 +23,30 @@ const eggs = [
   { name: "Secret Egg", Pets: [ { name: "Gigantic Spitty (Infinity)", baseOdds: 40000000000, icon: "Images/Pets/Gigantic_Spitty.webp"}], world: "3"},
   { name: "Lava Egg", image: "Images/Eggs/Lava_Egg.webp", Pets: [ { name: "Magma Cube", baseOdds: 4000, icon: "Images/Pets/Magma_Cube.webp"}, { name: "Night Dweller", baseOdds: 100000, icon: "Images/Pets/Night_Dweller.webp"}, { name: "Fire King", baseOdds: 3333334, icon: "Images/Pets/Fire_King.webp"}, { name: "Hellshard (Secret)", baseOdds: 1000000000, icon: "Images/Pets/Hellshard.webp"}], world: "3"},
   { name: "Atlantis Egg", image: "Images/Eggs/Atlantis_Egg.webp", Pets: [ { name: "Angler fish", baseOdds: 4000, icon: "Images/Pets/Angler_Fish.webp"}, { name: "Jellyfish", baseOdds: 200000, icon: "Images/Pets/Jellyfish.webp"}, { name: "Atlantis Guardian", baseOdds: 2000000, icon: "Images/Pets/Atlantis_Guardian.webp"}, { name: "Tidal God (Secret)", baseOdds: 250000000, icon: "Images/Pets/Tidal_God.webp"}, { name: "Abyssal Sea Dragon (Secret)", baseOdds: 2000000000, icon: "Images/Pets/Abyssal_Sea_Dragon.webp"}], world: "3"},
-  { name: "Brainrot Egg" , image: "Images/Eggs/Brainrot_Egg.webp", Pets: [ { name: "Brainrot Shark", baseOdds: 20000, icon: "Images/Pets/Brainrot_Shark.webp"}, {name: "Nert Pufferfish", baseOdds: 50000, icon: "Images/Pets/Nert_Pufferfish.webp"}, { name: "BIG ROUND (Secret)", baseOdds: 200000000, icon: "Images/Pets/BIG_ROUND.webp"}], world: "limited"},
   { name: "Classic egg", image: "Images/Eggs/Classic_Egg.webp", Pets: [ { name: "Classic Unicorn", baseOdds: 4000, icon: "Images/Pets/Classic_Unicorn.webp"}, { name: "Classic Dominus", baseOdds: 200000, icon: "Images/Pets/Classic_Dominus.webp"}, { name: "Classic Noob", baseOdds: 2000000, icon: "Images/Pets/Classic_Noob.webp"}, { name: "Classic Overlord (Secret)", baseOdds: 100000000, icon: "Images/Pets/Classic_Overlord.webp"}, { name: "1x1x1x1 (Secret)", baseOdds: 500000000, icon: "Images/Pets/1x1x1x1.webp"}, { name: "Giant Classic Chicken (Secret)", baseOdds: 2500000000, icon: "Images/Pets/Giant_Classic_Chicken.webp"}], world: "3"},
-  { name: "Autumn Egg", Pets: [ { name: "Autumn Paragon", baseOdds: 5000 }, { name: "Monarch Butterfly", baseOdds: 1000000}, { name:"Crystal Acorn", baseOdds: 5000000 }, { name: "Big Leafy (Secret)", baseOdds: 100000000 }, { name: "Candycorn Shard (Secret)", baseOdds: 500000000}, { name: "Almighty Pumpkin (Secret)", baseOdds: 2000000000}], world: "limited"},
   { name: "Developer Egg", Pets: [ { name: "Sylently's Hats", baseOdds: 100000}, { name: "Isaac Rainbow Shock", baseOdds: 1000000}, { name: "Sircfenner Plushie (Secret)", baseOdds: 500000000}, { name: "Quamatic Plushie (Secret)", baseOdds: 500000000}, { name: "Nert Plushie (Secret)", baseOdds: 500000000}, { name: "Sylently Plushie (Secret)", baseOdds: 500000000}, { name: "ObscureEntity Plushie (Secret)", baseOdds: 500000000}, { name: "Sylently's Pet (Infinity)", baseOdds: 20000000000}], world: "limited"},
-  { name: "Candle Egg", Pets: [ { name: "Lantern Demon", baseOdds: 10000 }, { name: "Candle Phoenix", baseOdds: 2000000 }, { name: "Willow Chandelier", baseOdds: 10000000 }, { name: "Maple Divinity (Secret)", baseOdds: 2000000000 }, { name: "Fall Pyramidium (Secret)", baseOdds: 10000000000 }, { name: "Aureate Koi (Infinity)", baseOdds: 50000000000}], world: "limited"},
-  { name: "Cartoon Egg", Pets: [ { name: "Cartoon Hexarium", baseOdds: 10000}, { name: "Cartoon Hydra", baseOdds: 500000}, { name: "Cartoon Overlord", baseOdds: 2000000}, { name: "Angelic Ghost Spirit (Secret)", baseOdds: 500000000}, { name: "Demonic Ghost Spirit (Secret)", baseOdds: 500000000}], world: "limited"},
+  { name: "Pumpkin Egg", Pets: [ { name: "DUMB PUMPKIN (Secret)", baseOdds: 66666667}], world: "limitedH"},
+  { name: "Costume Egg", Pets: [ { name: "Ghostlord", baseOdds: 2000}, { name: "Trickster", baseOdds: 10000}, { name: "Frankenbot (Secret)", baseOdds: 400000000}], world: "limitedH"},
+  { name: "Sinister Egg", Pets: [ { name: "Crimson Eye", baseOdds: 6667}, { name: "Equinox", baseOdds: 400000}, { name: "Witches Pot", baseOdds: 4000000}, { name: "All Seeing Shard (Secret)", baseOdds: 500000000}, { name: "Angelic Skull", baseOdds: 10000000000}, { name: "Wolf Skull (Secret)", baseOdds: 10000000000}, { name: "Guardian Skull (Secret)", baseOdds: 10000000000}, { name: "Sinister Skull (Secret)", baseOdds: 10000000000}, { name: "King Skull (Secret)", baseOdds: 10000000000}, { name: "Sinister Lord (Infinity)", baseOdds: 80000000000}], world: "limitedH"}
 ];
+
+
+const HALLOWEEN_ELIXIRS = {
+
+  I: { s: 50, l: 50, m: 25 },
+  II: { s: 100, l: 100, m: 75 },
+  III: { s: 150, l: 150, m: 100 },
+  IV: { s: 250, l: 250, m: 200 }
+};
+
+
+const HALLOWEEN_UPGRADES = {
+  halloweenLuck: [0,10,15,20,25,30],
+  secretInfinityLuck: [0,1,2,4,5]
+};
+
+
+
 
 let selectedWorld = null;
 let selectedEgg = null;
@@ -82,7 +99,12 @@ function renderEggs() {
     }
 
     if (selectedWorld) {
-      filteredEggs = filteredEggs.filter(egg => egg.world === selectedWorld);
+        if (selectedWorld === 'limited') {
+
+          filteredEggs = filteredEggs.filter(egg => egg.world === 'limited' || egg.world === 'limitedH');
+        } else {
+          filteredEggs = filteredEggs.filter(egg => egg.world === selectedWorld);
+        }
     }
 
     if (filteredEggs.length === 0) {
@@ -230,7 +252,7 @@ async function createBountyDetailsView() {
   const layout = document.createElement('div');
   layout.className = 'egg-details-layout';
   layout.style.position = 'relative';
-  
+
   const left = document.createElement('div');
   left.className = 'egg-details-left';
 
@@ -358,7 +380,7 @@ async function createBountyDetailsView() {
     function normalizeName(n) {
       return (n || '').replace(/\(.*?\)/g, '').trim().toLowerCase();
     }
-    
+
     if ((!layout.dataset.selectedBountyIndex || layout.dataset.selectedBountyIndex === '') && filteredBounties.length > 0) {
       let defaultIdx = -1;
       if (todays) {
@@ -697,7 +719,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   const layout = document.createElement('div');
   layout.className = 'egg-details-layout';
   layout.style.position = 'relative';
-  
+
   const left = document.createElement('div');
   left.className = 'egg-details-left';
   const eggIcon = document.createElement('img');
@@ -720,14 +742,14 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     ];
   const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
-    btnRow.style.flexDirection = "row";     
-    btnRow.style.flexWrap = "nowrap";        
+    btnRow.style.flexDirection = "row";
+    btnRow.style.flexWrap = "nowrap";
     btnRow.style.alignItems = "center";
     btnRow.style.gap = "12px";
     btnRow.style.margin = "16px 0";
     btnRow.style.justifyContent = "center";
     btnRow.style.width = "100%";
-    btnRow.style.overflowX = "auto";       
+    btnRow.style.overflowX = "auto";
     btnRow.style.padding = "6px 4px";
 
     worlds.forEach(w => {
@@ -924,7 +946,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   const layout = document.createElement('div');
   layout.className = 'egg-details-layout';
   layout.style.position = 'relative';
-  
+
   const left = document.createElement('div');
   left.className = 'egg-details-left';
   const eggIcon = document.createElement('img');
@@ -947,14 +969,14 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     ];
     const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
-    btnRow.style.flexDirection = "row";     
-    btnRow.style.flexWrap = "nowrap";        
+    btnRow.style.flexDirection = "row";
+    btnRow.style.flexWrap = "nowrap";
     btnRow.style.alignItems = "center";
     btnRow.style.gap = "12px";
     btnRow.style.margin = "16px 0";
     btnRow.style.justifyContent = "center";
     btnRow.style.width = "100%";
-    btnRow.style.overflowX = "auto";       
+    btnRow.style.overflowX = "auto";
     btnRow.style.padding = "6px 4px";
 
     worlds.forEach(w => {
@@ -1151,7 +1173,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   const layout = document.createElement('div');
   layout.className = 'egg-details-layout';
   layout.style.position = 'relative';
-  
+
   const left = document.createElement('div');
   left.className = 'egg-details-left';
   const eggIcon = document.createElement('img');
@@ -1174,14 +1196,14 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     ];
     const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
-    btnRow.style.flexDirection = "row";     
-    btnRow.style.flexWrap = "nowrap";        
+    btnRow.style.flexDirection = "row";
+    btnRow.style.flexWrap = "nowrap";
     btnRow.style.alignItems = "center";
     btnRow.style.gap = "12px";
     btnRow.style.margin = "16px 0";
     btnRow.style.justifyContent = "center";
     btnRow.style.width = "100%";
-    btnRow.style.overflowX = "auto";       
+    btnRow.style.overflowX = "auto";
     btnRow.style.padding = "6px 4px";
 
     worlds.forEach(w => {
@@ -1378,7 +1400,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   const layout = document.createElement('div');
   layout.className = 'egg-details-layout';
   layout.style.position = 'relative';
-  
+
   const left = document.createElement('div');
   left.className = 'egg-details-left';
   const eggIcon = document.createElement('img');
@@ -1401,14 +1423,14 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     ];
     const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
-    btnRow.style.flexDirection = "row";     
-    btnRow.style.flexWrap = "nowrap";        
+    btnRow.style.flexDirection = "row";
+    btnRow.style.flexWrap = "nowrap";
     btnRow.style.alignItems = "center";
     btnRow.style.gap = "12px";
     btnRow.style.margin = "16px 0";
     btnRow.style.justifyContent = "center";
     btnRow.style.width = "100%";
-    btnRow.style.overflowX = "auto";       
+    btnRow.style.overflowX = "auto";
     btnRow.style.padding = "6px 4px";
 
     worlds.forEach(w => {
@@ -1605,7 +1627,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   const layout = document.createElement('div');
   layout.className = 'egg-details-layout';
   layout.style.position = 'relative';
-  
+
   const left = document.createElement('div');
   left.className = 'egg-details-left';
   const eggIcon = document.createElement('img');
@@ -1628,14 +1650,14 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     ];
     const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
-    btnRow.style.flexDirection = "row";     
-    btnRow.style.flexWrap = "nowrap";        
+    btnRow.style.flexDirection = "row";
+    btnRow.style.flexWrap = "nowrap";
     btnRow.style.alignItems = "center";
     btnRow.style.gap = "12px";
     btnRow.style.margin = "16px 0";
     btnRow.style.justifyContent = "center";
     btnRow.style.width = "100%";
-    btnRow.style.overflowX = "auto";       
+    btnRow.style.overflowX = "auto";
     btnRow.style.padding = "6px 4px";
 
     worlds.forEach(w => {
@@ -1840,6 +1862,68 @@ function createEggSettings(egg, canSpawnAsRift) {
     <label>Luck Multiplier (%):</label>
     <input type="number" class="luck" value="0" />
   `;
+
+  if (egg && egg.world === 'limitedH') {
+    controlsHtml += `
+      <div style="margin-top:8px;">
+        <button type="button" class="halloween-toggle" aria-expanded="false" style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--table-border);background:var(--controls-bg);color:var(--main-text);cursor:pointer;font-family:inherit;">
+          <span style="font-weight:700;">Halloween Settings</span>
+          <span style="transition:transform 160ms ease;">▾</span>
+        </button>
+        <div class="halloween-panel" style="display:none;margin-top:8px;padding:8px;border-radius:8px;border:1px solid var(--table-border);background:var(--controls-bg);box-sizing:border-box;width:100%;">
+          <div style="display:flex;gap:8px;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <img class="halloween-elixir-img" src="Images/Icons/Placeholder.webp" alt="Elixir" style="width:36px;height:36px;object-fit:contain;border-radius:6px;margin-right:6px;" title="Halloween Elixir (placeholder)" />
+              <div style="font-weight:700;">Halloween Elixir</div>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;max-width:50%;">
+              <select class="halloween-elixir" style="flex:1;min-width:120px;">
+                <option value="none">None</option>
+                <option value="I">Elixir I</option>
+                <option value="II">Elixir II</option>
+                <option value="III">Elixir III</option>
+                <option value="IV">Elixir IV</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-top:10px;font-weight:700;">Halloween Upgrades</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px;">
+            <div style="display:flex;gap:8px;align-items:center;">
+              <label style="min-width:120px;">Halloween Luck:</label>
+              <select class="halloween-luck-level">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <label style="min-width:120px;">Secret Luck:</label>
+              <select class="halloween-secret-level">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <label style="min-width:120px;">Infinity Luck:</label>
+              <select class="halloween-infinity-level">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
   const hasSecret = (egg.Pets && egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name))) || egg.name === "Infinity Egg";
   if (hasSecret) {
     controlsHtml += `
@@ -1875,7 +1959,7 @@ function createEggSettings(egg, canSpawnAsRift) {
           <input type="text" class="variant-input mythic-input" placeholder="1 in 100" value="1 in 100"
             style="width:160px;font-family:inherit;color:var(--main-text);background:transparent;border:1px solid rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;box-sizing:border-box;" />
         </div>
- 
+
          <div style="font-size:0.82rem;color:var(--main-text);opacity:0.85;">Examples: "13" or "1 in 13"</div>
        </div>
      </div>
@@ -1913,7 +1997,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       <tbody class="pet-list"></tbody>
     `;
     card.appendChild(table);
- 
+
    Array.from(table.querySelectorAll('th')).forEach((th, i) => {
      th.style.padding = '8px 12px';
      th.style.textAlign = i === 0 ? 'left' : 'center';
@@ -1927,7 +2011,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
      textOverflow: 'ellipsis',
      verticalAlign: 'middle'
    };
- 
+
    setTimeout(() => {
      const layout = document.querySelector('.egg-details-layout');
      const controls = layout ? (
@@ -1936,6 +2020,10 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
        layout.querySelector('.egg-details-right .controls')
      ) : null;
     const multiplierSelect = controls ? controls.querySelector(".multiplier") : null;
+  const halloweenElixirSelect = controls ? controls.querySelector('.halloween-elixir') : null;
+  const halloweenLuckLevel = controls ? controls.querySelector('.halloween-luck-level') : null;
+  const halloweenSecretLevel = controls ? controls.querySelector('.halloween-secret-level') : null;
+  const halloweenInfinityLevel = controls ? controls.querySelector('.halloween-infinity-level') : null;
     const multiplierOtherWrap = controls ? controls.querySelector(".multiplier-other-wrap") : null;
     const multiplierOtherInput = controls ? controls.querySelector(".multiplier-other") : null;
     const luckInput = controls ? controls.querySelector(".luck") : null;
@@ -1947,7 +2035,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
     const shinyInput = controls ? controls.querySelector('.shiny-input') : null;
     const mythicInput = controls ? controls.querySelector('.mythic-input') : null;
      const petList = table.querySelector(".pet-list");
- 
+
     function parseOneInInput(str) {
       if (!str && str !== 0) return null;
       const s = String(str).trim().replace(/[,]/g, '');
@@ -1968,7 +2056,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       if (isFinite(n)) return n;
       return null;
     }
- 
+
     const variantButtonStyles = {
       shiny: {
         selected: {
@@ -2059,12 +2147,49 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
     if (multiplierOtherInput) {
       multiplierOtherInput.addEventListener('input', updateChances);
     }
+
+    const halloweenToggle = controls ? controls.querySelector('.halloween-toggle') : null;
+    const halloweenPanel = controls ? controls.querySelector('.halloween-panel') : null;
+    const halloweenElixirImg = controls ? controls.querySelector('.halloween-elixir-img') : null;
+    if (halloweenToggle && halloweenPanel) {
+      halloweenToggle.addEventListener('click', () => {
+        const expanded = halloweenToggle.getAttribute('aria-expanded') === 'true';
+        halloweenToggle.setAttribute('aria-expanded', (!expanded).toString());
+        halloweenPanel.style.display = expanded ? 'none' : 'block';
+        const arrow = halloweenToggle.querySelector('span');
+        if (arrow) arrow.style.transform = expanded ? '' : 'rotate(180deg)';
+      });
+    }
+    if (halloweenElixirImg) {
+
+      halloweenElixirImg.onerror = function () { this.onerror = null; this.src = 'Images/Icons/Placeholder.webp'; };
+    }
+
+    if (halloweenElixirSelect && halloweenElixirImg) {
+      halloweenElixirSelect.addEventListener('change', () => {
+        const val = halloweenElixirSelect.value;
+        if (val && val !== 'none') {
+          const candidate = `Images/Icons/Halloween_Elixir_${val}.webp`;
+          halloweenElixirImg.src = candidate;
+        } else {
+          halloweenElixirImg.src = 'Images/Icons/Placeholder.webp';
+        }
+        updateChances();
+      });
+    }
+
+    if (halloweenLuckLevel) halloweenLuckLevel.addEventListener('change', updateChances);
+    if (halloweenSecretLevel) halloweenSecretLevel.addEventListener('change', updateChances);
+    if (halloweenInfinityLevel) halloweenInfinityLevel.addEventListener('change', updateChances);
+    if (halloweenLuckLevel) halloweenLuckLevel.addEventListener('change', updateChances);
+    if (halloweenSecretLevel) halloweenSecretLevel.addEventListener('change', updateChances);
+    if (halloweenInfinityLevel) halloweenInfinityLevel.addEventListener('change', updateChances);
      applyVariantButtonStyles();
- 
+
      function normalizeName(n) {
        return (n || '').replace(/\(.*?\)/g, '').trim().toLowerCase();
      }
- 
+
      function formatAdjustedPercent(adjustedChance) {
       if (!isFinite(adjustedChance) || adjustedChance <= 0) return "Unknown";
       const percent = adjustedChance * 100;
@@ -2078,7 +2203,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       if (trimmed.length > 18) return percent.toExponential(3);
       return trimmed;
      }
- 
+
      function applySelectionGlow() {
        const selectedName = layout && layout.dataset.selectedPetName ? normalizeName(layout.dataset.selectedPetName) : null;
        let marked = false;
@@ -2097,7 +2222,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          }
        });
      }
- 
+
      function updateChances() {
        let multiplierValue = 0;
        if (multiplierSelect) {
@@ -2110,39 +2235,83 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
        }
        const riftBonusPercent = multiplierValue * 100;
        const luckPercent = luckInput ? (luckInput.value === "" ? 0 : parseFloat(luckInput.value)) : 0;
-       const secretTimes = secretInput ? (secretInput.value === "" ? 1 : Math.max(1, parseFloat(secretInput.value))) : 1;
-       const effectiveLuckPercent = luckPercent + riftBonusPercent;
+
+      let halloweenBonus = { s:0, l:0, m:0 };
+      if (halloweenElixirSelect && halloweenElixirSelect.value && halloweenElixirSelect.value !== 'none') {
+        const key = halloweenElixirSelect.value;
+        if (HALLOWEEN_ELIXIRS[key]) halloweenBonus = Object.assign({}, HALLOWEEN_ELIXIRS[key]);
+      }
+
+      let halloweenLuckAdd = 0;
+      let halloweenSecretAdd = 0;
+      let halloweenInfinityAdd = 0;
+      if (halloweenLuckLevel && Number(halloweenLuckLevel.value) > 0) {
+        const lvl = Number(halloweenLuckLevel.value);
+        halloweenLuckAdd = HALLOWEEN_UPGRADES.halloweenLuck[lvl] || 0;
+      }
+      if (halloweenSecretLevel && Number(halloweenSecretLevel.value) > 0) {
+        const lvl = Number(halloweenSecretLevel.value);
+        halloweenSecretAdd = HALLOWEEN_UPGRADES.secretInfinityLuck[lvl] || 0;
+      }
+      if (halloweenInfinityLevel && Number(halloweenInfinityLevel.value) > 0) {
+        const lvl = Number(halloweenInfinityLevel.value);
+        halloweenInfinityAdd = HALLOWEEN_UPGRADES.secretInfinityLuck[lvl] || 0;
+      }
+      const totalLuckPercent = luckPercent + (halloweenBonus.l || 0) + halloweenLuckAdd;
+  const secretTimes = secretInput ? (secretInput.value === "" ? 1 : Math.max(1, parseFloat(secretInput.value))) : 1;
+
+  const extraSecretPercent = halloweenSecretAdd || 0;
+  const effectiveLuckPercent = totalLuckPercent + riftBonusPercent;
        petList.innerHTML = "";
        (egg.Pets || []).forEach(pet => {
          const isSecret = /(Secret|Infinity)/i.test(pet.name);
          const baseChance = pet.baseOdds && pet.baseOdds > 0 ? 1 / pet.baseOdds : 0;
-         let combinedMultiplier = 1 + effectiveLuckPercent / 100;
-         if (isSecret) combinedMultiplier *= secretTimes;
+
+         let effectiveForPet = effectiveLuckPercent;
+         if (/Infinity/i.test(pet.name) && halloweenInfinityAdd) {
+           effectiveForPet += halloweenInfinityAdd;
+         }
+        let combinedMultiplier = 1 + effectiveForPet / 100;
+        if (isSecret) {
+
+
+          const secretMultiplierFromUpgrades = 1 + (extraSecretPercent / 100);
+          combinedMultiplier = combinedMultiplier * secretMultiplierFromUpgrades * secretTimes;
+        }
          let variantFactor = 1;
          const shinyOdds = parseOneInInput(shinyInput ? shinyInput.value : null) || 40;
          const mythicOdds = parseOneInInput(mythicInput ? mythicInput.value : null) || 100;
          const shinySelected = shinyBtn && shinyBtn.dataset.selected === 'true';
          const mythicSelected = mythicBtn && mythicBtn.dataset.selected === 'true';
-         if (shinySelected) variantFactor *= (1 / shinyOdds);
-         if (mythicSelected) variantFactor *= (1 / mythicOdds);
- 
+
+         let shinyExtraPercent = halloweenBonus.s || 0;
+         let mythicExtraPercent = halloweenBonus.m || 0;
+
+         if (shinySelected) {
+           variantFactor *= (1 / shinyOdds);
+
+         }
+         if (mythicSelected) {
+           variantFactor *= (1 / mythicOdds);
+         }
+
          const adjustedChance = baseChance * combinedMultiplier * variantFactor;
          const adjustedOneInNum = (adjustedChance > 0 && isFinite(1 / adjustedChance)) ? Math.round(1 / adjustedChance) : Infinity;
          const adjustedOneIn = adjustedOneInNum === Infinity ? '∞' : adjustedOneInNum;
          const adjustedOneInDisplay = adjustedOneIn === '∞' ? '∞' : adjustedOneIn.toLocaleString();
- 
+
          const adjustedPercentFormatted = formatAdjustedPercent(adjustedChance);
          const adjustedPercentCell = adjustedPercentFormatted === "Unknown" ? "Unknown" : `${adjustedPercentFormatted}%`;
- 
+
          const petIconPath = pet.icon || getPetIconByName(pet.name) || "Images/Pets/Doggy.webp";
- 
+
          const row = document.createElement("tr");
          row.dataset.petName = pet.name;
- 
+
          const tdPet = document.createElement("td");
          tdPet.className = "pet-name";
          tdPet.style.position = 'relative';
- 
+
          const img = document.createElement('img');
          img.src = petIconPath;
          const prefixParts = [];
@@ -2170,12 +2339,12 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          img.style.marginRight = '8px';
          img.style.boxShadow = '0 6px 20px rgba(0,0,0,0.12)';
          img.style.transition = 'box-shadow 200ms ease';
- 
+
          const textNode = document.createTextNode(' ' + pet.name);
- 
+
          tdPet.appendChild(img);
          tdPet.appendChild(textNode);
- 
+
          function createExpandableCell(text, align = 'center') {
           const td = document.createElement('td');
           Object.assign(td.style, cellBaseStyle);
@@ -2195,7 +2364,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
           placeholder.style.overflow = 'hidden';
           placeholder.style.height = '1em';
           placeholder.style.lineHeight = '1em';
- 
+
           const btn = document.createElement('button');
           btn.type = 'button';
           btn.textContent = 'Show';
@@ -2209,7 +2378,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
           btn.style.border = '1px solid var(--table-border)';
           btn.style.background = 'var(--controls-bg)';
           btn.style.color = 'var(--main-text)';
- 
+
           btn.addEventListener('click', (ev) => {
             ev.stopPropagation();
             placeholder.textContent = s;
@@ -2220,12 +2389,12 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
             placeholder.style.textAlign = 'center';
             try { btn.remove(); } catch (e) { btn.style.display = 'none'; }
           });
- 
+
           td.appendChild(placeholder);
           td.appendChild(btn);
           return td;
         }
- 
+
   const FIXED_SHINY_MULT = 40;
   const FIXED_MYTHIC_MULT = 100;
   const shinySelectedForBase = shinyBtn && shinyBtn.dataset.selected === 'true';
@@ -2246,11 +2415,11 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
 
   petList.appendChild(row);
 });
- 
+
        applySelectionGlow();
- 
+
        setupPetStatsHover();
- 
+
        requestAnimationFrame(() => {
          try {
            const tableW = table.scrollWidth || table.getBoundingClientRect().width;
@@ -2270,7 +2439,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          } catch (e) { }
        });
      }
- 
+
      updateChances();
      if (multiplierSelect) multiplierSelect.addEventListener("change", updateChances);
      if (luckInput) {
@@ -2279,13 +2448,13 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
        luckInput.addEventListener("input", updateChances);
      }
      if (secretInput) secretInput.addEventListener("input", updateChances);
- 
+
      if (layout) {
        const mo = new MutationObserver(() => applySelectionGlow());
        mo.observe(layout, { attributes: true, attributeFilter: ['data-selected-bounty-index', 'data-selected-pet-name'] });
      }
    }, 0);
- 
+
    return card;
  }
 
@@ -2416,7 +2585,7 @@ function setupPetStatsHover() {
     coins: 'Images/Icons/Coins.webp',
     tickets: 'Images/Icons/Tickets.webp',
     festival_coins: 'Images/Icons/Festival_Coins.webp',
-    pearls: 'Images/Icons/Pearls.webp' 
+    pearls: 'Images/Icons/Pearls.webp'
   };
 
   function getStatIcon(stat) {
@@ -3075,3 +3244,6 @@ document.addEventListener('click', function (e) {
   }
 
 }, true);
+
+
+

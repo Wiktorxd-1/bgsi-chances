@@ -548,7 +548,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-10",
-    "dateRemoved": "2025-10-15"
+    "dateRemoved": "2025-10-16"
   },
   {
     "name": "Duality Egg",
@@ -598,6 +598,70 @@
     "dateRemoved": "2025-04-30"
   },
   {
+    "name": "Jester Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Jester_Egg.png",
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-10-17",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Pumpkin Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/b/b2/Pumpkin_Egg.png",
+    "pets": [
+      "Pumpkin Doggy",
+      "Pumpkin Bunny",
+      "Pumpkin Golem",
+      "DUMB PUMPKIN"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-10-17",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Costume Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f8/Costume_Egg.png",
+    "pets": [
+      "Pirate Doggy",
+      "Booger Boi",
+      "Ghostlord",
+      "Trickster",
+      "Frankenbot"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-10-17",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Sinister Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/e8/Sinister_Egg.png",
+    "pets": [
+      "Light Vessel",
+      "Dark Vessel",
+      "Pure Vessel",
+      "Crimson Eye",
+      "Equinox",
+      "Witches Pot",
+      "All Seeing Shard",
+      "Angelic Skull",
+      "King Skull",
+      "Sinister Skull",
+      "Wolf Skull",
+      "Guardian Skull",
+      "Sinister Lord"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-10-17",
+    "dateRemoved": ""
+  },
+  {
     "name": "Autumn Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Autumn_Egg.png",
     "pets": [
@@ -615,7 +679,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-09-26",
-    "dateRemoved": ""
+    "dateRemoved": "2025-10-17"
   },
   {
     "name": "Candle Egg",
@@ -635,7 +699,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-03",
-    "dateRemoved": ""
+    "dateRemoved": "2025-10-17"
   },
   {
     "name": "Cartoon Egg",
@@ -650,10 +714,10 @@
       "Demonic Ghost Spirit"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-10",
-    "dateRemoved": ""
+    "dateRemoved": "2025-10-17"
   },
   {
     "name": "Developer Egg",
