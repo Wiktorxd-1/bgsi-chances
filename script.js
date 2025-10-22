@@ -218,6 +218,7 @@ async function createBountyDetailsView() {
   const bounties = await fetchBounties();
   const todayLabel = formatUTCDateToLabel(new Date());
   const todays = (bounties || []).find(b => b.Time === todayLabel) || (bounties && bounties[0]) || null;
+  let applyBountyFunc = null;
 
   const searchBarRow = document.getElementById('search-bar-row');
   if (searchBarRow) searchBarRow.classList.add('hide-search-bar-row');
@@ -391,6 +392,62 @@ async function createBountyDetailsView() {
       layout.dataset.selectedPetName = filteredBounties[defaultIdx] ? filteredBounties[defaultIdx].Pet : '';
     }
 
+      applyBountyFunc = (b, index) => {
+        currentBounty = b;
+        const layoutEl = document.querySelector('.egg-details-layout');
+        if (layoutEl) {
+          layoutEl.dataset.selectedBountyIndex = index || '';
+          layoutEl.dataset.selectedPetName = b.Pet || '';
+          updateUpcomingGlow();
+        }
+
+        petImg.src = getPetIconByName(b.Pet);
+        petImg.alt = b.Pet;
+        nameEl.textContent = b.Pet;
+        chanceEl.textContent = `Chance (base): ${b.Chance || 'Unknown'}`;
+
+        const targetEggName = b.Egg || eggText;
+        eggImg.src = getEggImagePath(targetEggName);
+        eggImg.alt = targetEggName;
+        eggNameUnder.textContent = targetEggName;
+    try { eggEl.innerHTML = `Egg: <strong>${targetEggName}</strong>`; } catch (e) {}
+
+        const newBountyBaseOdds = parseChanceString(b.Chance);
+        const newBountyPetObj = { name: b.Pet + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b.Pet) };
+
+        const selectedEggObj = eggs.find(e => e.name === targetEggName) || (window.eggsJson || []).find(e => e.name === targetEggName) || null;
+        const selectedPetsList = selectedEggObj && Array.isArray(selectedEggObj.Pets) ? selectedEggObj.Pets.slice() : [];
+
+        combinedEggForTable.name = targetEggName;
+        combinedEggForTable.Pets = [];
+        if (newBountyBaseOdds) combinedEggForTable.Pets.push(newBountyPetObj);
+        combinedEggForTable.Pets = combinedEggForTable.Pets.concat(selectedPetsList);
+
+        const selectedJsonEgg = (window.eggsJson || []).find(e => e.name === targetEggName) || null;
+        const selectedCanSpawnAsRift = !!(selectedJsonEgg && selectedJsonEgg.canSpawnAsRift);
+
+        if (petsCard && petsCard.parentNode) petsCard.parentNode.removeChild(petsCard);
+        petsCard = createEggPetInfoCard(combinedEggForTable, selectedCanSpawnAsRift);
+        petsCard.style.marginTop = '18px';
+        petsCard.style.boxSizing = 'border-box';
+        petsCard.style.overflow = 'visible';
+        petsCard.style.display = 'block';
+        petsCard.style.width = '100%';
+        petsCard.style.minWidth = '0';
+        petsCard.style.alignSelf = 'stretch';
+        right.appendChild(petsCard);
+
+        try {
+          const existingControls = middle.querySelector('.controls');
+          const newControls = createEggSettings(combinedEggForTable, selectedCanSpawnAsRift);
+          newControls.style.marginTop = '8px';
+          newControls.style.alignSelf = 'flex-start';
+          newControls.style.width = '100%';
+          if (existingControls && existingControls.parentNode) existingControls.parentNode.replaceChild(newControls, existingControls);
+          else middle.appendChild(newControls);
+        } catch (e) {}
+      };
+
     function updateUpcomingGlow() {
       const selectedIndex = String(layout.dataset.selectedBountyIndex || '');
       upcomingWrap.querySelectorAll('.bounty-upcoming-btn').forEach(btn => {
@@ -455,58 +512,62 @@ async function createBountyDetailsView() {
         btn.appendChild(textWrap);
 
         btn.addEventListener('click', () => {
-          currentBounty = b;
-          const layoutEl = document.querySelector('.egg-details-layout');
-          if (layoutEl) {
-            layoutEl.dataset.selectedBountyIndex = btn.dataset.bountyIndex || '';
-            layoutEl.dataset.selectedPetName = b.Pet || '';
-            updateUpcomingGlow();
+          if (typeof applyBountyFunc === 'function') {
+            applyBountyFunc(b, btn.dataset.bountyIndex);
+          } else {
+            currentBounty = b;
+            const layoutEl = document.querySelector('.egg-details-layout');
+            if (layoutEl) {
+              layoutEl.dataset.selectedBountyIndex = btn.dataset.bountyIndex || '';
+              layoutEl.dataset.selectedPetName = b.Pet || '';
+              updateUpcomingGlow();
+            }
+
+            petImg.src = getPetIconByName(b.Pet);
+            petImg.alt = b.Pet;
+            nameEl.textContent = b.Pet;
+            chanceEl.textContent = `Chance (base): ${b.Chance || 'Unknown'}`;
+
+            const targetEggName = b.Egg || eggText;
+            eggImg.src = getEggImagePath(targetEggName);
+            eggImg.alt = targetEggName;
+            eggNameUnder.textContent = targetEggName;
+
+            const newBountyBaseOdds = parseChanceString(b.Chance);
+            const newBountyPetObj = { name: b.Pet + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b.Pet) };
+
+            const selectedEggObj = eggs.find(e => e.name === targetEggName) || (window.eggsJson || []).find(e => e.name === targetEggName) || null;
+            const selectedPetsList = selectedEggObj && Array.isArray(selectedEggObj.Pets) ? selectedEggObj.Pets.slice() : [];
+
+            combinedEggForTable.name = targetEggName;
+            combinedEggForTable.Pets = [];
+            if (newBountyBaseOdds) combinedEggForTable.Pets.push(newBountyPetObj);
+            combinedEggForTable.Pets = combinedEggForTable.Pets.concat(selectedPetsList);
+
+            const selectedJsonEgg = (window.eggsJson || []).find(e => e.name === targetEggName) || null;
+            const selectedCanSpawnAsRift = !!(selectedJsonEgg && selectedJsonEgg.canSpawnAsRift);
+
+            if (petsCard && petsCard.parentNode) petsCard.parentNode.removeChild(petsCard);
+            petsCard = createEggPetInfoCard(combinedEggForTable, selectedCanSpawnAsRift);
+            petsCard.style.marginTop = '18px';
+            petsCard.style.boxSizing = 'border-box';
+            petsCard.style.overflow = 'visible';
+            petsCard.style.display = 'block';
+            petsCard.style.width = '100%';
+            petsCard.style.minWidth = '0';
+            petsCard.style.alignSelf = 'stretch';
+            right.appendChild(petsCard);
+
+            try {
+              const existingControls = middle.querySelector('.controls');
+              const newControls = createEggSettings(combinedEggForTable, selectedCanSpawnAsRift);
+              newControls.style.marginTop = '8px';
+              newControls.style.alignSelf = 'flex-start';
+              newControls.style.width = '100%';
+              if (existingControls && existingControls.parentNode) existingControls.parentNode.replaceChild(newControls, existingControls);
+              else middle.appendChild(newControls);
+            } catch (e) {}
           }
-
-          petImg.src = getPetIconByName(b.Pet);
-          petImg.alt = b.Pet;
-          nameEl.textContent = b.Pet;
-          chanceEl.textContent = `Chance (base): ${b.Chance || 'Unknown'}`;
-
-          const targetEggName = b.Egg || eggText;
-          eggImg.src = getEggImagePath(targetEggName);
-          eggImg.alt = targetEggName;
-          eggNameUnder.textContent = targetEggName;
-
-          const newBountyBaseOdds = parseChanceString(b.Chance);
-          const newBountyPetObj = { name: b.Pet + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b.Pet) };
-
-          const selectedEggObj = eggs.find(e => e.name === targetEggName) || (window.eggsJson || []).find(e => e.name === targetEggName) || null;
-          const selectedPetsList = selectedEggObj && Array.isArray(selectedEggObj.Pets) ? selectedEggObj.Pets.slice() : [];
-
-          combinedEggForTable.name = targetEggName;
-          combinedEggForTable.Pets = [];
-          if (newBountyBaseOdds) combinedEggForTable.Pets.push(newBountyPetObj);
-          combinedEggForTable.Pets = combinedEggForTable.Pets.concat(selectedPetsList);
-
-          const selectedJsonEgg = (window.eggsJson || []).find(e => e.name === targetEggName) || null;
-          const selectedCanSpawnAsRift = !!(selectedJsonEgg && selectedJsonEgg.canSpawnAsRift);
-
-          if (petsCard && petsCard.parentNode) petsCard.parentNode.removeChild(petsCard);
-          petsCard = createEggPetInfoCard(combinedEggForTable, selectedCanSpawnAsRift);
-          petsCard.style.marginTop = '18px';
-          petsCard.style.boxSizing = 'border-box';
-          petsCard.style.overflow = 'visible';
-          petsCard.style.display = 'block';
-          petsCard.style.width = '100%';
-          petsCard.style.minWidth = '0';
-          petsCard.style.alignSelf = 'stretch';
-          right.appendChild(petsCard);
-
-          try {
-            const existingControls = middle.querySelector('.controls');
-            const newControls = createEggSettings(combinedEggForTable, selectedCanSpawnAsRift);
-            newControls.style.marginTop = '8px';
-            newControls.style.alignSelf = 'flex-start';
-            newControls.style.width = '100%';
-            if (existingControls && existingControls.parentNode) existingControls.parentNode.replaceChild(newControls, existingControls);
-            else middle.appendChild(newControls);
-          } catch (e) {}
         });
 
         upcomingWrap.appendChild(btn);
@@ -554,6 +615,13 @@ async function createBountyDetailsView() {
   }
 
   renderUpcomingPage();
+
+  try {
+    const selIdx = layout.dataset.selectedBountyIndex || '';
+    if (selIdx !== '' && filteredBounties[Number(selIdx)]) {
+      if (typeof applyBountyFunc === 'function') applyBountyFunc(filteredBounties[Number(selIdx)], selIdx);
+    }
+  } catch (e) {}
   infoWrap.appendChild(upcomingWrap);
   left.appendChild(infoWrap);
 
