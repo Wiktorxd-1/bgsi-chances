@@ -2033,6 +2033,59 @@ function createEggSettings(egg, canSpawnAsRift) {
      </div>
    `;
   controls.innerHTML = controlsHtml;
+  try {
+    const STORAGE_KEY = 'luck_settings';
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') || {}; } catch (e) { saved = {}; }
+
+    const luckEl = controls.querySelector('.luck');
+    const secretEl = controls.querySelector('.secret-mult');
+    const shinyBtn = controls.querySelector('.shiny-btn');
+    const mythicBtn = controls.querySelector('.mythic-btn');
+    const shinyInput = controls.querySelector('.shiny-input');
+    const mythicInput = controls.querySelector('.mythic-input');
+
+    function readSettingsFromDOM() {
+      return {
+        luck: luckEl ? (luckEl.value === '' ? 0 : Number(luckEl.value)) : 0,
+        secretMult: secretEl ? (secretEl.value === '' ? 1 : Number(secretEl.value)) : 1,
+        variants: {
+          shiny: {
+            selected: !!(shinyBtn && shinyBtn.dataset && shinyBtn.dataset.selected === 'true'),
+            odds: shinyInput ? String(shinyInput.value || '') : ''
+          },
+          mythic: {
+            selected: !!(mythicBtn && mythicBtn.dataset && mythicBtn.dataset.selected === 'true'),
+            odds: mythicInput ? String(mythicInput.value || '') : ''
+          }
+        }
+      };
+    }
+
+    function saveSettings() {
+      try {
+        const toSave = readSettingsFromDOM();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+      } catch (e) {}
+    }
+
+
+    if (typeof saved === 'object') {
+      if (luckEl && typeof saved.luck !== 'undefined') luckEl.value = saved.luck;
+      if (secretEl && typeof saved.secretMult !== 'undefined') secretEl.value = saved.secretMult;
+      if (shinyInput && saved.variants && saved.variants.shiny && typeof saved.variants.shiny.odds !== 'undefined') shinyInput.value = saved.variants.shiny.odds;
+      if (mythicInput && saved.variants && saved.variants.mythic && typeof saved.variants.mythic.odds !== 'undefined') mythicInput.value = saved.variants.mythic.odds;
+      if (shinyBtn && saved.variants && saved.variants.shiny && saved.variants.shiny.selected) shinyBtn.dataset.selected = 'true';
+      if (mythicBtn && saved.variants && saved.variants.mythic && saved.variants.mythic.selected) mythicBtn.dataset.selected = 'true';
+    }
+
+    if (luckEl) luckEl.addEventListener('input', saveSettings);
+    if (secretEl) secretEl.addEventListener('input', saveSettings);
+    if (shinyInput) shinyInput.addEventListener('input', saveSettings);
+    if (mythicInput) mythicInput.addEventListener('input', saveSettings);
+    if (shinyBtn) shinyBtn.addEventListener('click', () => { setTimeout(saveSettings, 0); });
+    if (mythicBtn) mythicBtn.addEventListener('click', () => { setTimeout(saveSettings, 0); });
+  } catch (e) {}
   return controls;
 }
 
