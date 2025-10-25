@@ -2642,16 +2642,15 @@
   {
     "name": "Abyssal Sea Dragon",
     "rarity": "secret",
-    "chance": 5e-8,
     "bubbles": 6250,
     "gems": 125,
     "currency": 660,
     "currencyVariant": "pearls",
     "hasMythic": false,
     "hatchable": true,
-    "obtainedFrom": "Atlantis Egg",
-    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/Atlantis_Egg.png",
-    "obtainedFromInfo": "",
+    "obtainedFrom": "Old Sailor",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/33/Old_Sailor_Icon.png",
+    "obtainedFromInfo": "500 Quests",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/0e/Abyssal_Sea_Dragon.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/b/b4/Shiny_Abyssal_Sea_Dragon.png"
@@ -3259,6 +3258,28 @@
     "dateRemoved": ""
   },
   {
+    "name": "Pumpkin Pyramidium",
+    "rarity": "secret",
+    "chance": 0.005,
+    "bubbles": 6500,
+    "gems": 135,
+    "currency": 200,
+    "currencyVariant": "candycorn",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Spooky Darts",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/84/Pumpkin_Pyramidium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/46/Shiny_Pumpkin_Pyramidium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Mythic_Pumpkin_Pyramidium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8b/Shiny_Mythic_Pumpkin_Pyramidium.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": ""
+  },
+  {
     "name": "Cthulhu",
     "rarity": "secret",
     "bubbles": 5750,
@@ -3664,6 +3685,26 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Shiny_Voodoo_Plushie.png"
     ],
     "dateAdded": "2025-10-17",
+    "dateRemoved": "2025-10-24"
+  },
+  {
+    "name": "Haunted Spirit",
+    "rarity": "secret",
+    "chance": 100,
+    "bubbles": 6750,
+    "gems": 115,
+    "currency": 175,
+    "currencyVariant": "candycorn",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Halloween Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Candycorn.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d7/Haunted_Spirit.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Shiny_Haunted_Spirit.png"
+    ],
+    "dateAdded": "2025-10-24",
     "dateRemoved": ""
   },
   {
@@ -4081,6 +4122,214 @@
     ],
     "dateAdded": "2025-09-12",
     "dateRemoved": ""
+  },
+  {
+    "name": "Ghost Kitty",
+    "rarity": "rare",
+    "chance": 90,
+    "bubbles": 44,
+    "gems": 0,
+    "currency": 2,
+    "currencyVariant": "candycorn",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Season 9 Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Season_9_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/6a/Ghost_Kitty.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e1/Shiny_Ghost_Kitty.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-11-14"
+  },
+  {
+    "name": "Ghost Deer",
+    "rarity": "epic",
+    "chance": 10,
+    "bubbles": 220,
+    "gems": 0,
+    "currency": 6,
+    "currencyVariant": "candycorn",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Season 9 Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Season_9_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8e/Ghost_Deer.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/af/Shiny_Ghost_Deer.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-11-14"
+  },
+  {
+    "name": "Ghost Phoenix",
+    "rarity": "legendary",
+    "chance": 0.5,
+    "bubbles": 1800,
+    "gems": 40,
+    "currency": 25,
+    "currencyVariant": "candycorn",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Season 9 Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Season_9_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/Ghost_Phoenix.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1c/Shiny_Ghost_Phoenix.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9c/Mythic_Ghost_Phoenix.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c9/Shiny_Mythic_Ghost_Phoenix.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-11-14"
+  },
+  {
+    "name": "Poltergeist",
+    "rarity": "legendary",
+    "chance": 0.005,
+    "bubbles": 5500,
+    "gems": 100,
+    "currency": 90,
+    "currencyVariant": "candycorn",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Season 9 Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Season_9_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/bb/Poltergeist.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Shiny_Poltergeist.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Mythic_Poltergeist.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c9/Shiny_Mythic_Poltergeist.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-11-14"
+  },
+  {
+    "name": "Ghost Wisps",
+    "rarity": "secret",
+    "chance": 0.0025,
+    "bubbles": 7250,
+    "gems": 135,
+    "currency": 300,
+    "currencyVariant": "candycorn",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Season 9 Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Season_9_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a6/Ghost_Wisps.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/52/Shiny_Ghost_Wisps.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/46/Mythic_Ghost_Wisps.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b0/Shiny_Mythic_Ghost_Wisps.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-11-14"
+  },
+  {
+    "name": "Evo",
+    "rarity": "legendary",
+    "bubbles": 2900,
+    "gems": 35,
+    "currency": 45,
+    "currencyVariant": "candycorn",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Season 9 Bubble Pass",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
+    "obtainedFromInfo": "Free Pass",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/13/Evo.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/0b/Shiny_Evo.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-11-14"
+  },
+  {
+    "name": "Nightmare",
+    "rarity": "legendary",
+    "bubbles": 3350,
+    "gems": 45,
+    "currency": 75,
+    "currencyVariant": "candycorn",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Season 9 Bubble Pass",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
+    "obtainedFromInfo": "Free Pass",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9b/Nightmare.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/69/Shiny_Nightmare.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-11-14"
+  },
+  {
+    "name": "Classic Pumpkin",
+    "rarity": "legendary",
+    "chance": 0.2,
+    "bubbles": 5750,
+    "gems": 135,
+    "currency": 450,
+    "currencyVariant": "candycorn",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Season 9 Infinite Track",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Infinite_Track_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/87/Classic_Pumpkin.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8d/Shiny_Classic_Pumpkin.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d6/Mythic_Classic_Pumpkin.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e9/Shiny_Mythic_Classic_Pumpkin.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-11-14"
+  },
+  {
+    "name": "Ghosdeeri",
+    "rarity": "secret",
+    "chance": 0.01,
+    "bubbles": 7000,
+    "gems": 135,
+    "currency": 275,
+    "currencyVariant": "candycorn",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Season 9 Infinite Track",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Infinite_Track_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/48/Ghosdeeri.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/44/Shiny_Ghosdeeri.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/98/Mythic_Ghosdeeri.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/48/Shiny_Mythic_Ghosdeeri.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-11-14"
+  },
+  {
+    "name": "OG Sinister Lord",
+    "rarity": "secret",
+    "chance": 0.002,
+    "bubbles": 8250,
+    "gems": 140,
+    "currency": 350,
+    "currencyVariant": "candycorn",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Season 9 Infinite Track",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Infinite_Track_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/bd/OG_Sinister_Lord.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Shiny_OG_Sinister_Lord.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-11-14"
   },
   {
     "name": "Leaf Doggy",
@@ -6097,6 +6346,198 @@
     ],
     "dateAdded": "2025-04-26",
     "dateRemoved": "2025-04-30"
+  },
+  {
+    "name": "Mutant Kitty",
+    "rarity": "common",
+    "chance": 65,
+    "bubbles": 25,
+    "gems": 0,
+    "currency": 6,
+    "currencyVariant": "candycorn",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Mutant Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Mutant_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/fd/Mutant_Kitty.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Mutant Bunny",
+    "rarity": "rare",
+    "chance": 30,
+    "bubbles": 100,
+    "gems": 0,
+    "currency": 8,
+    "currencyVariant": "candycorn",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Mutant Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Mutant_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b7/Mutant_Bunny.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/20/Shiny_Mutant_Bunny.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Mutant Dragon",
+    "rarity": "epic",
+    "chance": 3,
+    "bubbles": 180,
+    "gems": 0,
+    "currency": 12,
+    "currencyVariant": "candycorn",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Mutant Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Mutant_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/dd/Mutant_Dragon.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1f/Shiny_Mutant_Dragon.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": ""
+  },
+  {
+    "name": "King Eye",
+    "rarity": "legendary",
+    "chance": 0.015,
+    "bubbles": 1800,
+    "gems": 35,
+    "currency": 30,
+    "currencyVariant": "candycorn",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Mutant Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Mutant_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/20/King_Eye.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/96/Shiny_King_Eye.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d9/Mythic_King_Eye.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d4/Shiny_Mythic_King_Eye.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Evil Marshmallow",
+    "rarity": "legendary",
+    "chance": 0.000015,
+    "bubbles": 4300,
+    "gems": 95,
+    "currency": 50,
+    "currencyVariant": "candycorn",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Mutant Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Mutant_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/49/Evil_Marshmallow.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/23/Shiny_Evil_Marshmallow.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/94/Mythic_Evil_Marshmallow.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b2/Shiny_Mythic_Evil_Marshmallow.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Trick O' Treat",
+    "rarity": "legendary",
+    "chance": 0.00001,
+    "bubbles": 5200,
+    "gems": 100,
+    "currency": 90,
+    "currencyVariant": "candycorn",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Mutant Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Mutant_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Trick_O%27_Treat.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Shiny_Trick_O%27_Treat.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/02/Mythic_Trick_O%27_Treat.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Shiny_Mythic_Trick_O%27_Treat.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Sinister Shard",
+    "rarity": "secret",
+    "chance": 1e-7,
+    "bubbles": 7250,
+    "gems": 135,
+    "currency": 275,
+    "currencyVariant": "candycorn",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Mutant Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Mutant_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e0/Sinister_Shard.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/6b/Shiny_Sinister_Shard.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/48/Mythic_Sinister_Shard.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/7c/Shiny_Mythic_Sinister_Shard.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Angelic Spirit",
+    "rarity": "secret",
+    "chance": 1e-8,
+    "bubbles": 8000,
+    "gems": 135,
+    "currency": 325,
+    "currencyVariant": "candycorn",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Mutant Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Mutant_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/77/Angelic_Spirit.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f5/Shiny_Angelic_Spirit.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Mythic_Angelic_Spirit.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c5/Shiny_Mythic_Angelic_Spirit.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Radiance",
+    "rarity": "infinity",
+    "chance": 1e-9,
+    "bubbles": 12500,
+    "gems": 150,
+    "currency": 750,
+    "currencyVariant": "candycorn",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Mutant Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Mutant_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/71/Radiance.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8d/Shiny_Radiance.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/fe/Mythic_Radiance.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Shiny_Mythic_Radiance.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": ""
   },
   {
     "name": "Light Vessel",
@@ -11685,6 +12126,26 @@
     "dateRemoved": "2025-07-19"
   },
   {
+    "name": "OG Radiance",
+    "rarity": "secret",
+    "chance": 2e-9,
+    "bubbles": 6750,
+    "gems": 135,
+    "currency": 250,
+    "currencyVariant": "candycorn",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Secret Bounty",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/OG_Radiance.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/61/Shiny_OG_Radiance.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": ""
+  },
+  {
     "name": "Ultimate Clover",
     "rarity": "secret",
     "chance": 5e-7,
@@ -12167,6 +12628,44 @@
     ],
     "dateAdded": "2025-05-10",
     "dateRemoved": "2025-05-25"
+  },
+  {
+    "name": "The Dusekkar",
+    "rarity": "secret",
+    "bubbles": 5750,
+    "gems": 95,
+    "currency": 200,
+    "currencyVariant": "candycorn",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "Dusekkar Bundle",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/15/The_Dusekkar.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/34/Shiny_The_Dusekkar.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-10-31"
+  },
+  {
+    "name": "Lucid Potion",
+    "rarity": "secret",
+    "bubbles": 3500,
+    "gems": 45,
+    "currency": 75,
+    "currencyVariant": "candycorn",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "Lucid Bundle",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/72/Lucid_Potion.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4b/Shiny_Lucid_Potion.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-10-31"
   },
   {
     "name": "Neon Robot",
@@ -12653,6 +13152,48 @@
     ],
     "dateAdded": "2025-07-06",
     "dateRemoved": "2025-07-19"
+  },
+  {
+    "name": "Tainter Spirit",
+    "rarity": "legendary",
+    "bubbles": 1350,
+    "gems": 28,
+    "currency": 7.5,
+    "currencyVariant": "candycorn",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8d/Tainter_Spirit.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f7/Shiny_Tainter_Spirit.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b3/Mythic_Tainter_Spirit.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/02/Shiny_Mythic_Tainter_Spirit.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-10-31"
+  },
+  {
+    "name": "Witch Rigby",
+    "rarity": "legendary",
+    "bubbles": 1750,
+    "gems": 35,
+    "currency": 10,
+    "currencyVariant": "candycorn",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Witch_Rigby.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Shiny_Witch_Rigby.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/eb/Mythic_Witch_Rigby.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1d/Shiny_Mythic_Witch_Rigby.png"
+    ],
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-10-31"
   },
   {
     "name": "Voodoo Dowodle",

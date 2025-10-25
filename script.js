@@ -27,7 +27,8 @@ const eggs = [
   { name: "Developer Egg", Pets: [ { name: "Sylently's Hats", baseOdds: 100000}, { name: "Isaac Rainbow Shock", baseOdds: 1000000}, { name: "Sircfenner Plushie (Secret)", baseOdds: 500000000}, { name: "Quamatic Plushie (Secret)", baseOdds: 500000000}, { name: "Nert Plushie (Secret)", baseOdds: 500000000}, { name: "Sylently Plushie (Secret)", baseOdds: 500000000}, { name: "ObscureEntity Plushie (Secret)", baseOdds: 500000000}, { name: "Sylently's Pet (Infinity)", baseOdds: 20000000000}], world: "limited"},
   { name: "Pumpkin Egg", Pets: [ { name: "DUMB PUMPKIN (Secret)", baseOdds: 66666667}], world: "limitedH"},
   { name: "Costume Egg", Pets: [ { name: "Ghostlord", baseOdds: 2000}, { name: "Trickster", baseOdds: 10000}, { name: "Frankenbot (Secret)", baseOdds: 400000000}], world: "limitedH"},
-  { name: "Sinister Egg", Pets: [ { name: "Crimson Eye", baseOdds: 6667}, { name: "Equinox", baseOdds: 400000}, { name: "Witches Pot", baseOdds: 4000000}, { name: "All Seeing Shard (Secret)", baseOdds: 500000000}, { name: "Angelic Skull (Secret)", baseOdds: 10000000000}, { name: "Wolf Skull (Secret)", baseOdds: 10000000000}, { name: "Guardian Skull (Secret)", baseOdds: 10000000000}, { name: "Sinister Skull (Secret)", baseOdds: 10000000000}, { name: "King Skull (Secret)", baseOdds: 10000000000}, { name: "Sinister Lord (Infinity)", baseOdds: 80000000000}], world: "limitedH"}
+  { name: "Sinister Egg", Pets: [ { name: "Crimson Eye", baseOdds: 6667}, { name: "Equinox", baseOdds: 400000}, { name: "Witches Pot", baseOdds: 4000000}, { name: "All Seeing Shard (Secret)", baseOdds: 500000000}, { name: "Angelic Skull (Secret)", baseOdds: 10000000000}, { name: "Wolf Skull (Secret)", baseOdds: 10000000000}, { name: "Guardian Skull (Secret)", baseOdds: 10000000000}, { name: "Sinister Skull (Secret)", baseOdds: 10000000000}, { name: "King Skull (Secret)", baseOdds: 10000000000}, { name: "Sinister Lord (Infinity)", baseOdds: 80000000000}], world: "limitedH"},
+  { name: "Mutant Egg", Pets: [ { name: "King Eye", baseOdds: 6667}, { name: "Evil Marshmallow", baseOdds: 6666667}, { name: "Trick O' Treat", baseOdds: 200000}, { name: "Sinister Shard (Secret)", baseOdds: 1000000000}, { name: "Angelic Spirit (Secret)", baseOdds: 10000000000}, { name: "Radiance (Infinity)", baseOdds: 100000000000}], world: "limitedH"}
 ];
 
 
@@ -41,8 +42,8 @@ const HALLOWEEN_ELIXIRS = {
 
 
 const HALLOWEEN_UPGRADES = {
-  halloweenLuck: [0,10,15,20,25,30],
-  secretInfinityLuck: [0,1,2,4,5]
+  halloweenLuck: [0,10,15,20,25,30,35,40,50],
+  secretInfinityLuck: [0,1,2,4,5,6,8,10]
 };
 
 
@@ -1965,6 +1966,7 @@ function createEggSettings(egg, canSpawnAsRift) {
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
+                <option value="6">6</option>
               </select>
             </div>
             <div style="display:flex;gap:8px;align-items:center;">
@@ -1975,6 +1977,7 @@ function createEggSettings(egg, canSpawnAsRift) {
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
+                <option value="5">5</option>
               </select>
             </div>
             <div style="display:flex;gap:8px;align-items:center;">
@@ -1985,6 +1988,13 @@ function createEggSettings(egg, canSpawnAsRift) {
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
+              </select>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <label style="min-width:120px;">Halloween Infinity Elixir:</label>
+              <select class="halloween-infinity-elixir">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
               </select>
             </div>
           </div>
@@ -2040,6 +2050,7 @@ function createEggSettings(egg, canSpawnAsRift) {
 
     const luckEl = controls.querySelector('.luck');
     const secretEl = controls.querySelector('.secret-mult');
+  const halloweenInfinityElixirEl = controls.querySelector('.halloween-infinity-elixir');
     const shinyBtn = controls.querySelector('.shiny-btn');
     const mythicBtn = controls.querySelector('.mythic-btn');
     const shinyInput = controls.querySelector('.shiny-input');
@@ -2059,6 +2070,8 @@ function createEggSettings(egg, canSpawnAsRift) {
             odds: mythicInput ? String(mythicInput.value || '') : ''
           }
         }
+        ,
+        halloweenInfinityElixir: !!(halloweenInfinityElixirEl && String(halloweenInfinityElixirEl.value || '').toLowerCase() === 'yes')
       };
     }
 
@@ -2077,12 +2090,14 @@ function createEggSettings(egg, canSpawnAsRift) {
       if (mythicInput && saved.variants && saved.variants.mythic && typeof saved.variants.mythic.odds !== 'undefined') mythicInput.value = saved.variants.mythic.odds;
       if (shinyBtn && saved.variants && saved.variants.shiny && saved.variants.shiny.selected) shinyBtn.dataset.selected = 'true';
       if (mythicBtn && saved.variants && saved.variants.mythic && saved.variants.mythic.selected) mythicBtn.dataset.selected = 'true';
+      if (halloweenInfinityElixirEl && typeof saved.halloweenInfinityElixir !== 'undefined') halloweenInfinityElixirEl.value = saved.halloweenInfinityElixir ? 'Yes' : 'No';
     }
 
     if (luckEl) luckEl.addEventListener('input', saveSettings);
     if (secretEl) secretEl.addEventListener('input', saveSettings);
     if (shinyInput) shinyInput.addEventListener('input', saveSettings);
     if (mythicInput) mythicInput.addEventListener('input', saveSettings);
+  if (halloweenInfinityElixirEl) halloweenInfinityElixirEl.addEventListener('change', saveSettings);
     if (shinyBtn) shinyBtn.addEventListener('click', () => { setTimeout(saveSettings, 0); });
     if (mythicBtn) mythicBtn.addEventListener('click', () => { setTimeout(saveSettings, 0); });
   } catch (e) {}
@@ -2145,6 +2160,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
   const halloweenLuckLevel = controls ? controls.querySelector('.halloween-luck-level') : null;
   const halloweenSecretLevel = controls ? controls.querySelector('.halloween-secret-level') : null;
   const halloweenInfinityLevel = controls ? controls.querySelector('.halloween-infinity-level') : null;
+  const halloweenInfinityElixirEl = controls ? controls.querySelector('.halloween-infinity-elixir') : null;
     const multiplierOtherWrap = controls ? controls.querySelector(".multiplier-other-wrap") : null;
     const multiplierOtherInput = controls ? controls.querySelector(".multiplier-other") : null;
     const luckInput = controls ? controls.querySelector(".luck") : null;
@@ -2299,12 +2315,14 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       });
     }
 
-    if (halloweenLuckLevel) halloweenLuckLevel.addEventListener('change', updateChances);
-    if (halloweenSecretLevel) halloweenSecretLevel.addEventListener('change', updateChances);
-    if (halloweenInfinityLevel) halloweenInfinityLevel.addEventListener('change', updateChances);
-    if (halloweenLuckLevel) halloweenLuckLevel.addEventListener('change', updateChances);
-    if (halloweenSecretLevel) halloweenSecretLevel.addEventListener('change', updateChances);
-    if (halloweenInfinityLevel) halloweenInfinityLevel.addEventListener('change', updateChances);
+  if (halloweenLuckLevel) halloweenLuckLevel.addEventListener('change', updateChances);
+  if (halloweenSecretLevel) halloweenSecretLevel.addEventListener('change', updateChances);
+  if (halloweenInfinityLevel) halloweenInfinityLevel.addEventListener('change', updateChances);
+  // Ensure toggling the Halloween Infinity Elixir (No/Yes) immediately recomputes chances
+  if (halloweenInfinityElixirEl) halloweenInfinityElixirEl.addEventListener('change', updateChances);
+  if (halloweenLuckLevel) halloweenLuckLevel.addEventListener('change', updateChances);
+  if (halloweenSecretLevel) halloweenSecretLevel.addEventListener('change', updateChances);
+  if (halloweenInfinityLevel) halloweenInfinityLevel.addEventListener('change', updateChances);
      applyVariantButtonStyles();
 
      function normalizeName(n) {
@@ -2378,6 +2396,17 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         const lvl = Number(halloweenInfinityLevel.value);
         halloweenInfinityAdd = HALLOWEEN_UPGRADES.secretInfinityLuck[lvl] || 0;
       }
+      // If the user enabled the Halloween Infinity Elixir 1.5x option, scale the
+      // elixir-provided bonuses (but not the upgrade levels).
+      const elixirMultiplier = (halloweenInfinityElixirEl && String(halloweenInfinityElixirEl.value || '').toLowerCase() === 'yes') ? 1.5 : 1;
+      if (elixirMultiplier !== 1) {
+        halloweenBonus = {
+          s: (halloweenBonus.s || 0) * elixirMultiplier,
+          l: (halloweenBonus.l || 0) * elixirMultiplier,
+          m: (halloweenBonus.m || 0) * elixirMultiplier
+        };
+      }
+
       const totalLuckPercent = luckPercent + (halloweenBonus.l || 0) + halloweenLuckAdd;
   const secretTimes = secretInput ? (secretInput.value === "" ? 1 : Math.max(1, parseFloat(secretInput.value))) : 1;
 

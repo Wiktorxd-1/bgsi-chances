@@ -366,8 +366,7 @@
       "Angler Fish",
       "Jellyfish",
       "Atlantis Guardian",
-      "Tidal God",
-      "Abyssal Sea Dragon"
+      "Tidal God"
     ],
     "luckIgnored": false,
     "infinityEgg": "Seven Seas",
@@ -411,6 +410,22 @@
     "secretBountyRotation": false,
     "dateAdded": "2025-09-12",
     "dateRemoved": ""
+  },
+  {
+    "name": "Season 9 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Season_9_Egg.png",
+    "pets": [
+      "Ghost Kitty",
+      "Ghost Deer",
+      "Ghost Phoenix",
+      "Poltergeist",
+      "Ghost Wisps"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-10-24",
+    "dateRemoved": "2025-11-14"
   },
   {
     "name": "Season 8 Egg",
@@ -656,9 +671,29 @@
       "Sinister Lord"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-17",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Mutant Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Mutant_Egg.png",
+    "pets": [
+      "Mutant Kitty",
+      "Mutant Bunny",
+      "Mutant Dragon",
+      "King Eye",
+      "Evil Marshmallow",
+      "Trick O' Treat",
+      "Sinister Shard",
+      "Angelic Spirit",
+      "Radiance"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-10-24",
     "dateRemoved": ""
   },
   {
