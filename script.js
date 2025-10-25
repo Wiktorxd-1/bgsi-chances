@@ -1991,6 +1991,7 @@ function createEggSettings(egg, canSpawnAsRift) {
               </select>
             </div>
             <div style="display:flex;gap:8px;align-items:center;">
+              <img src="Images/Icons/Halloween_Infinity_Elixir.webp" alt="Halloween Infinity Elixir" style="width:20px;height:20px;margin-right:8px;object-fit:contain;" />
               <label style="min-width:120px;">Halloween Infinity Elixir:</label>
               <select class="halloween-infinity-elixir">
                 <option value="No">No</option>
