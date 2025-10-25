@@ -691,7 +691,7 @@
       "Radiance"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-24",
     "dateRemoved": ""
