@@ -1934,6 +1934,10 @@ function createEggSettings(egg, canSpawnAsRift) {
 
   if (egg && egg.world === 'limitedH') {
     controlsHtml += `
+      <div style="margin-top:8px;display:flex;gap:8px;align-items:center;">
+        <img src="Images/pets/OG_Radiance.webp" alt="OG Radiance" style="width:28px;height:28px;object-fit:contain;border-radius:6px;margin-right:6px;" />
+        <button type="button" class="og-radiance-btn" data-selected="false" style="border-radius:999px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);min-width:86px;">OG Radiance</button>
+      </div>
       <div style="margin-top:8px;">
         <button type="button" class="halloween-toggle" aria-expanded="false" style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--table-border);background:var(--controls-bg);color:var(--main-text);cursor:pointer;font-family:inherit;">
           <span style="font-weight:700;">Halloween Settings</span>
@@ -1967,6 +1971,8 @@ function createEggSettings(egg, canSpawnAsRift) {
                 <option value="4">4</option>
                 <option value="5">5</option>
                 <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
               </select>
             </div>
             <div style="display:flex;gap:8px;align-items:center;">
@@ -1978,6 +1984,9 @@ function createEggSettings(egg, canSpawnAsRift) {
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                
               </select>
             </div>
             <div style="display:flex;gap:8px;align-items:center;">
@@ -1988,6 +1997,9 @@ function createEggSettings(egg, canSpawnAsRift) {
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
               </select>
             </div>
             <div style="display:flex;gap:8px;align-items:center;">
@@ -2162,6 +2174,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
   const halloweenSecretLevel = controls ? controls.querySelector('.halloween-secret-level') : null;
   const halloweenInfinityLevel = controls ? controls.querySelector('.halloween-infinity-level') : null;
   const halloweenInfinityElixirEl = controls ? controls.querySelector('.halloween-infinity-elixir') : null;
+  const ogRadianceBtn = controls ? controls.querySelector('.og-radiance-btn') : null;
     const multiplierOtherWrap = controls ? controls.querySelector(".multiplier-other-wrap") : null;
     const multiplierOtherInput = controls ? controls.querySelector(".multiplier-other") : null;
     const luckInput = controls ? controls.querySelector(".luck") : null;
@@ -2261,6 +2274,27 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         updateChances();
       });
     }
+
+    function applyOgRadianceStyle() {
+      if (!ogRadianceBtn) return;
+      const sel = ogRadianceBtn.dataset.selected === 'true';
+      if (sel) {
+        Object.assign(ogRadianceBtn.style, { background: '#ffff61', color: '#000000', boxShadow: '0 0 14px rgba(255,255,97,0.9)' });
+      } else {
+        Object.assign(ogRadianceBtn.style, { background: 'var(--controls-bg)', color: 'var(--main-text)', boxShadow: 'none' });
+      }
+    }
+    if (ogRadianceBtn) {
+      ogRadianceBtn.type = 'button';
+      if (typeof ogRadianceBtn.dataset.selected === 'undefined') ogRadianceBtn.dataset.selected = 'false';
+      ogRadianceBtn.style.cursor = 'pointer';
+      ogRadianceBtn.addEventListener('click', () => {
+        ogRadianceBtn.dataset.selected = ogRadianceBtn.dataset.selected === 'true' ? 'false' : 'true';
+        applyOgRadianceStyle();
+        updateChances();
+      });
+      applyOgRadianceStyle();
+    }
     if (shinyInput) {
       shinyInput.addEventListener('input', () => { applyVariantButtonStyles(); updateChances(); });
       if (!shinyInput.value) shinyInput.value = '1 in 40';
@@ -2319,7 +2353,6 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
   if (halloweenLuckLevel) halloweenLuckLevel.addEventListener('change', updateChances);
   if (halloweenSecretLevel) halloweenSecretLevel.addEventListener('change', updateChances);
   if (halloweenInfinityLevel) halloweenInfinityLevel.addEventListener('change', updateChances);
-  // Ensure toggling the Halloween Infinity Elixir (No/Yes) immediately recomputes chances
   if (halloweenInfinityElixirEl) halloweenInfinityElixirEl.addEventListener('change', updateChances);
   if (halloweenLuckLevel) halloweenLuckLevel.addEventListener('change', updateChances);
   if (halloweenSecretLevel) halloweenSecretLevel.addEventListener('change', updateChances);
@@ -2397,8 +2430,6 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         const lvl = Number(halloweenInfinityLevel.value);
         halloweenInfinityAdd = HALLOWEEN_UPGRADES.secretInfinityLuck[lvl] || 0;
       }
-      // If the user enabled the Halloween Infinity Elixir 1.5x option, scale the
-      // elixir-provided bonuses (but not the upgrade levels).
       const elixirMultiplier = (halloweenInfinityElixirEl && String(halloweenInfinityElixirEl.value || '').toLowerCase() === 'yes') ? 1.5 : 1;
       if (elixirMultiplier !== 1) {
         halloweenBonus = {
@@ -2414,7 +2445,12 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
   const extraSecretPercent = halloweenSecretAdd || 0;
   const effectiveLuckPercent = totalLuckPercent + riftBonusPercent;
        petList.innerHTML = "";
-       (egg.Pets || []).forEach(pet => {
+
+       const petsToIterate = (egg.Pets || []).slice();
+       if (ogRadianceBtn && ogRadianceBtn.dataset.selected === 'true') {
+         petsToIterate.push({ name: 'OG Radiance (Secret)', icon: 'Images/pets/OG_Radiance.webp', baseOdds: 50000000000 });
+       }
+       petsToIterate.forEach(pet => {
          const isSecret = /(Secret|Infinity)/i.test(pet.name);
          const baseChance = pet.baseOdds && pet.baseOdds > 0 ? 1 / pet.baseOdds : 0;
 
