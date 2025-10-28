@@ -707,10 +707,60 @@
     let isInitialLoading = false;
     let hasLoadedOnce = false;
 
+    function parseTimestamp(ts) {
+      if (!ts && ts !== 0) return null;
+      if (ts instanceof Date) return isNaN(ts) ? null : ts;
+      if (typeof ts === 'number') {
+        if (!isFinite(ts)) return null;
+        if (ts < 1e12) return new Date(ts * 1000);
+        return new Date(ts);
+      }
+      let str = String(ts).trim();
+      if (!str) return null;
+      if (/^\d+$/.test(str)) {
+        const num = Number(str);
+        if (!isFinite(num)) return null;
+        return num < 1e12 ? new Date(num * 1000) : new Date(num);
+      }
+      if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}/.test(str)) {
+        str = str.replace(' ', 'T');
+      }
+      if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(str)) {
+        str += ':00';
+      }
+      let normalized = str;
+      if (!/[zZ]|[+-]\d{2}:?\d{2}$/.test(normalized)) {
+        normalized += 'Z';
+      }
+      let date = new Date(normalized);
+      if (!isNaN(date)) return date;
+      const trimmed = normalized.replace(/(\.\d{3})\d+(Z|[+-]\d{2}:?\d{2})$/, '$1$2').replace(/(\.\d{3})\d+$/, '$1');
+      date = new Date(trimmed);
+      if (!isNaN(date)) return date;
+      const manual = normalized.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d+))?(?:Z)?$/);
+      if (manual) {
+        const ms = manual[7] ? manual[7].slice(0, 3).padEnd(3, '0') : '000';
+        return new Date(Date.UTC(
+          Number(manual[1]),
+          Number(manual[2]) - 1,
+          Number(manual[3]),
+          Number(manual[4]),
+          Number(manual[5]),
+          Number(manual[6]),
+          Number(ms)
+        ));
+      }
+      return null;
+    }
+    function timestampToMs(ts) {
+      const d = parseTimestamp(ts);
+      return d ? d.getTime() : 0;
+    }
     function getTimeAgo(ts) {
-      if (!ts) return '';
+      const target = parseTimestamp(ts);
+      if (!target) return '';
       const now = Date.now();
-      const diff = Math.floor((now - new Date(ts).getTime()) / 1000);
+      const diff = Math.floor((now - target.getTime()) / 1000);
       if (diff < 60) return `${diff}s ago`;
       const min = Math.floor(diff / 60);
       if (min < 60) return `${min}m ago`;
@@ -720,9 +770,10 @@
       return `${d}d ago`;
     }
     function getFullTimeAgo(ts) {
-      if (!ts) return '';
+      const target = parseTimestamp(ts);
+      if (!target) return '';
       const now = Date.now();
-      let diff = Math.floor((now - new Date(ts).getTime()) / 1000);
+      let diff = Math.floor((now - target.getTime()) / 1000);
       const months = Math.floor(diff / (30 * 24 * 60 * 60));
       diff -= months * 30 * 24 * 60 * 60;
       const days = Math.floor(diff / (24 * 60 * 60));
@@ -801,7 +852,7 @@
     function renderBatch(hatches) {
       grid.classList.remove('fading');
       grid.innerHTML = '';
-      const sorted = [...hatches].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  const sorted = [...hatches].sort((a, b) => timestampToMs(b.timestamp) - timestampToMs(a.timestamp));
       for (const hatch of sorted) {
         grid.appendChild(createHatchCard(hatch));
       }
@@ -811,7 +862,7 @@
     }
     function appendHatches(newHatches) {
       if (!Array.isArray(newHatches) || newHatches.length === 0) return;
-      const sortedNew = [...newHatches].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  const sortedNew = [...newHatches].sort((a, b) => timestampToMs(b.timestamp) - timestampToMs(a.timestamp));
       for (const hatch of sortedNew) {
         grid.appendChild(createHatchCard(hatch));
       }
@@ -819,7 +870,7 @@
     }
     function prependHatches(newHatches) {
       if (!Array.isArray(newHatches) || newHatches.length === 0) return;
-      const sortedNew = [...newHatches].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  const sortedNew = [...newHatches].sort((a, b) => timestampToMs(b.timestamp) - timestampToMs(a.timestamp));
       // Save scroll position relative to the top of the grid
       const gridRect = grid.getBoundingClientRect();
       const scrollTop = window.scrollY || window.pageYOffset;
@@ -832,7 +883,7 @@
       }
       allHatches = sortedNew.concat(allHatches);
       filteredHatches = allHatches;
-      const allSorted = [...filteredHatches].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  const allSorted = [...filteredHatches].sort((a, b) => timestampToMs(b.timestamp) - timestampToMs(a.timestamp));
       lastLoadedId = allSorted[allSorted.length - 1]?.id || lastLoadedId;
 
       // Restore scroll position so user doesn't get moved down
@@ -923,7 +974,7 @@
         let data = await res.json();
         if (!Array.isArray(data)) data = [];
         data = data.slice();
-        if (data.length > 1 && new Date(data[0].timestamp) < new Date(data[data.length - 1].timestamp)) {
+  if (data.length > 1 && timestampToMs(data[0].timestamp) < timestampToMs(data[data.length - 1].timestamp)) {
           data = data.reverse();
         }
         const existingIds = new Set(allHatches.map(h => h.id));
@@ -1086,7 +1137,7 @@
         let data = await res.json();
         if (!Array.isArray(data)) data = [];
         data = data.slice();
-        if (data.length > 1 && new Date(data[0].timestamp) < new Date(data[data.length - 1].timestamp)) {
+  if (data.length > 1 && timestampToMs(data[0].timestamp) < timestampToMs(data[data.length - 1].timestamp)) {
           data = data.reverse();
         }
         const existingIds = new Set(allHatches.map(h => h.id));
@@ -1204,7 +1255,7 @@
         allHatches = allHatches.concat(newHatches);
         filteredHatches = allHatches;
         appendHatches(newHatches);
-        const allSorted = [...filteredHatches].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  const allSorted = [...filteredHatches].sort((a, b) => timestampToMs(b.timestamp) - timestampToMs(a.timestamp));
         lastLoadedId = allSorted[allSorted.length - 1]?.id || lastLoadedId;
         // Fade out the bottom loading message
         loadingEl.style.transition = "opacity 2s";

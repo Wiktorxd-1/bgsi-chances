@@ -1935,7 +1935,7 @@ function createEggSettings(egg, canSpawnAsRift) {
   if (egg && egg.world === 'limitedH') {
     controlsHtml += `
       <div style="margin-top:8px;display:flex;gap:8px;align-items:center;">
-        <img src="Images/pets/OG_Radiance.webp" alt="OG Radiance" style="width:28px;height:28px;object-fit:contain;border-radius:6px;margin-right:6px;" />
+        <img src="Images/Pets/OG_Radiance.webp" alt="OG Radiance" style="width:28px;height:28px;object-fit:contain;border-radius:6px;margin-right:6px;" />
         <button type="button" class="og-radiance-btn" data-selected="false" style="border-radius:999px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);min-width:86px;">OG Radiance</button>
       </div>
       <div style="margin-top:8px;">
