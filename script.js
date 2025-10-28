@@ -2448,7 +2448,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
 
        const petsToIterate = (egg.Pets || []).slice();
        if (ogRadianceBtn && ogRadianceBtn.dataset.selected === 'true') {
-         petsToIterate.push({ name: 'OG Radiance (Secret)', icon: 'Images/pets/OG_Radiance.webp', baseOdds: 50000000000 });
+         petsToIterate.push({ name: 'OG Radiance (Secret)', icon: 'Images/Pets/OG_Radiance.webp', baseOdds: 50000000000 });
        }
        petsToIterate.forEach(pet => {
          const isSecret = /(Secret|Infinity)/i.test(pet.name);
