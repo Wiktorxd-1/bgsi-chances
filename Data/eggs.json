@@ -628,7 +628,8 @@
       "Pumpkin Doggy",
       "Pumpkin Bunny",
       "Pumpkin Golem",
-      "DUMB PUMPKIN"
+      "DUMB PUMPKIN",
+      "DUMB SINISTER LORD"
     ],
     "luckIgnored": false,
     "canSpawnAsRift": false,
@@ -685,15 +686,36 @@
       "Mutant Dragon",
       "King Eye",
       "Evil Marshmallow",
-      "Trick O' Treat",
+      "Trick O Treat",
       "Sinister Shard",
       "Angelic Spirit",
       "Radiance"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-24",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Puppet Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2b/Puppet_Egg.png",
+    "pets": [
+      "Old Dolly",
+      "Joy",
+      "Sorrow",
+      "Ragdoll",
+      "Dual Act",
+      "Mother Doll",
+      "Harlequin",
+      "Moonlord",
+      "OG Luminance",
+      "The Puppeteer"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-10-31",
     "dateRemoved": ""
   },
   {
