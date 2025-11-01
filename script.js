@@ -299,47 +299,12 @@ async function createBountyDetailsView() {
   nameEl.textContent = petNameVal;
   infoWrap.appendChild(nameEl);
 
-  // Determine chance: prefer API value, fallback to local Data/pets.json when missing
-  let chanceText = (currentBounty && currentBounty.Chance) ? currentBounty.Chance : null;
-  let bountyBaseOdds = 0;
-  if (chanceText) {
-    // API provided a chance string/value — keep as-is and parse into odds
-    bountyBaseOdds = parseChanceString(chanceText);
-  } else {
-    // Try to find the pet in the local pets.json and derive chance from there
-    try {
-      const pets = window.petsJson || await fetchPetsData();
-      const petNameSearch = (currentBounty && currentBounty.Pet ? currentBounty.Pet : petNameVal) || '';
-      const normalized = petNameSearch.replace(/\s*\(.*\)\s*$/,'').toLowerCase().trim();
-      let found = null;
-      if (Array.isArray(pets)) {
-        found = pets.find(p => p && p.name && p.name.toLowerCase() === normalized) || pets.find(p => p && p.name && p.name.toLowerCase().includes(normalized));
-      }
-      if (found && typeof found.chance !== 'undefined' && found.chance !== null) {
-        const ch = Number(found.chance);
-        if (!isNaN(ch) && ch > 0) {
-          // Interpret the local chance: if > 1 assume it's a percent (e.g. 65), otherwise treat as probability (e.g. 0.000001 or 2e-8)
-          let prob = null;
-          if (ch > 1) {
-            prob = ch / 100;
-            chanceText = `${ch}% (from local)`;
-          } else {
-            prob = ch;
-            const odds = prob > 0 ? Math.round(1 / prob) : 0;
-            chanceText = odds ? `1/${odds.toLocaleString()} (from local)` : String(prob);
-          }
-          bountyBaseOdds = prob > 0 ? Math.round(1 / prob) : 0;
-        }
-      }
-    } catch (e) {
-      // ignore — we'll show Unknown below
-    }
-  }
+  const chanceText = (currentBounty && currentBounty.Chance) ? currentBounty.Chance : 'Unknown';
   const chanceEl = document.createElement('div');
   chanceEl.style.color = 'var(--main-text)';
   chanceEl.style.marginTop = '6px';
   chanceEl.style.fontWeight = '700';
-  chanceEl.textContent = `Chance (base): ${chanceText || 'Unknown'}`;
+  chanceEl.textContent = `Chance (base): ${chanceText}`;
   infoWrap.appendChild(chanceEl);
 
   const eggText = (currentBounty && currentBounty.Egg) ? currentBounty.Egg : 'Unknown Egg';
@@ -699,10 +664,7 @@ async function createBountyDetailsView() {
   const eggObj = eggs.find(e => e.name === eggText) || (window.eggsJson || []).find(e => e.name === eggText) || null;
   const petsList = eggObj && Array.isArray(eggObj.Pets) ? eggObj.Pets.slice() : [];
 
-  // Ensure bountyBaseOdds is defined (it may have been set from local lookup above)
-  if (!bountyBaseOdds) {
-    bountyBaseOdds = parseChanceString(chanceText || '');
-  }
+  const bountyBaseOdds = parseChanceString(chanceText);
   const bountyPetObj = { name: (currentBounty && currentBounty.Pet ? currentBounty.Pet : petNameVal) + ' (Bounty)', baseOdds: bountyBaseOdds || 0, icon: getPetIconByName(currentBounty ? currentBounty.Pet : petNameVal) };
 
   const combinedEggForTable = { name: eggText, Pets: [] };
