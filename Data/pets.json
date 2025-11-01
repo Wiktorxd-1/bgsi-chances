@@ -3310,7 +3310,7 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Dark Wheel Spin",
-    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Dark_Wheel_Spin.png",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/b/b2/Dark_Wheel_Spin_Icon.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/23/Whimsical_Fairy.png",
@@ -3758,7 +3758,7 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Dark Shop",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/53/Shiny_Nightmare_Jester.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Shadow_Jester.png",
@@ -6588,9 +6588,14 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Puppet Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2b/Puppet_Egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/7a/Dual_Act.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1d/Shiny_Dual_Act.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/69/Mythic_Dual_Act.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/ed/Shiny_Mythic_Dual_Act.png"
+    ],
     "dateAdded": "2025-10-31",
     "dateRemoved": ""
   },
@@ -12331,7 +12336,7 @@
   {
     "name": "Super Hacker Prism",
     "rarity": "secret",
-    "chance": 0,
+    "chance": 2e-7,
     "bubbles": 7000,
     "gems": 125,
     "currency": 225,
@@ -12353,7 +12358,7 @@
   {
     "name": "Maid Nert Plushie",
     "rarity": "secret",
-    "chance": 0,
+    "chance": 1e-7,
     "bubbles": 6750,
     "gems": 130,
     "currency": 125,
