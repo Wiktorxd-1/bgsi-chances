@@ -629,13 +629,14 @@
       "Pumpkin Bunny",
       "Pumpkin Golem",
       "DUMB PUMPKIN",
-      "DUMB SINISTER LORD"
+      "DUMB SINISTER LORD",
+      "Spookivus"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-17",
-    "dateRemoved": ""
+    "dateRemoved": "2025-11-07"
   },
   {
     "name": "Costume Egg",
@@ -645,13 +646,14 @@
       "Booger Boi",
       "Ghostlord",
       "Trickster",
-      "Frankenbot"
+      "Frankenbot",
+      "Spookivus"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-17",
-    "dateRemoved": ""
+    "dateRemoved": "2025-11-07"
   },
   {
     "name": "Sinister Egg",
@@ -669,13 +671,14 @@
       "Sinister Skull",
       "Wolf Skull",
       "Guardian Skull",
-      "Sinister Lord"
+      "Sinister Lord",
+      "Spookivus"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-17",
-    "dateRemoved": ""
+    "dateRemoved": "2025-11-07"
   },
   {
     "name": "Mutant Egg",
@@ -689,13 +692,14 @@
       "Trick O Treat",
       "Sinister Shard",
       "Angelic Spirit",
-      "Radiance"
+      "Radiance",
+      "Spookivus"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-24",
-    "dateRemoved": ""
+    "dateRemoved": "2025-11-07"
   },
   {
     "name": "Puppet Egg",
@@ -710,13 +714,14 @@
       "Harlequin",
       "Moonlord",
       "OG Luminance",
-      "The Puppeteer"
+      "The Puppeteer",
+      "Spookivus"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-31",
-    "dateRemoved": ""
+    "dateRemoved": "2025-11-07"
   },
   {
     "name": "Autumn Egg",
