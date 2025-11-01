@@ -632,7 +632,7 @@
       "DUMB SINISTER LORD"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-17",
     "dateRemoved": ""
@@ -648,7 +648,7 @@
       "Frankenbot"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-17",
     "dateRemoved": ""
@@ -672,7 +672,7 @@
       "Sinister Lord"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-17",
     "dateRemoved": ""
@@ -692,7 +692,7 @@
       "Radiance"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-24",
     "dateRemoved": ""
@@ -713,7 +713,7 @@
       "The Puppeteer"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-31",
     "dateRemoved": ""
