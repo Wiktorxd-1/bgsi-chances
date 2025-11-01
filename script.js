@@ -414,7 +414,18 @@ async function createBountyDetailsView() {
         eggNameUnder.textContent = targetEggName;
     try { eggEl.innerHTML = `Egg: <strong>${targetEggName}</strong>`; } catch (e) {}
 
-        const newBountyBaseOdds = parseChanceString(b.Chance);
+        let newBountyBaseOdds = parseChanceString(b.Chance);
+        // overrides for known bounties
+        const _bountyOverrides = {
+          'King Leviathan': 5000000000,
+          'Harmonic Harp': 500000000,
+          'Axolotl Army': 100000000
+        };
+        const _petKey = (b && b.Pet) ? b.Pet : '';
+        if (_bountyOverrides[_petKey]) {
+          newBountyBaseOdds = _bountyOverrides[_petKey];
+          try { chanceEl.textContent = `Chance (base): 1/${newBountyBaseOdds.toLocaleString()}`; } catch (e) {}
+        }
         const newBountyPetObj = { name: b.Pet + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b.Pet) };
 
         const selectedEggObj = eggs.find(e => e.name === targetEggName) || (window.eggsJson || []).find(e => e.name === targetEggName) || null;
@@ -535,7 +546,18 @@ async function createBountyDetailsView() {
             eggImg.alt = targetEggName;
             eggNameUnder.textContent = targetEggName;
 
-            const newBountyBaseOdds = parseChanceString(b.Chance);
+            let newBountyBaseOdds = parseChanceString(b.Chance);
+            // overrides for known bounties
+            const _bountyOverrides2 = {
+              'King Leviathan': 5000000000,
+              'Harmonic Harp': 500000000,
+              'Axolotl Army': 100000000
+            };
+            const _petKey2 = (b && b.Pet) ? b.Pet : '';
+            if (_bountyOverrides2[_petKey2]) {
+              newBountyBaseOdds = _bountyOverrides2[_petKey2];
+              try { chanceEl.textContent = `Chance (base): 1/${newBountyBaseOdds.toLocaleString()} (override)`; } catch (e) {}
+            }
             const newBountyPetObj = { name: b.Pet + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b.Pet) };
 
             const selectedEggObj = eggs.find(e => e.name === targetEggName) || (window.eggsJson || []).find(e => e.name === targetEggName) || null;
@@ -664,7 +686,17 @@ async function createBountyDetailsView() {
   const eggObj = eggs.find(e => e.name === eggText) || (window.eggsJson || []).find(e => e.name === eggText) || null;
   const petsList = eggObj && Array.isArray(eggObj.Pets) ? eggObj.Pets.slice() : [];
 
-  const bountyBaseOdds = parseChanceString(chanceText);
+  let bountyBaseOdds = parseChanceString(chanceText);
+  const BOUNTY_OVERRIDES = {
+    'King Leviathan': 5000000000,
+    'Harmonic Harp': 500000000,
+    'Axolotl Army': 100000000
+  };
+  const bountyNameKey = (currentBounty && currentBounty.Pet) ? currentBounty.Pet : petNameVal;
+  if (BOUNTY_OVERRIDES[bountyNameKey]) {
+    bountyBaseOdds = BOUNTY_OVERRIDES[bountyNameKey];
+    try { chanceEl.textContent = `Chance (base): 1/${bountyBaseOdds.toLocaleString()}`; } catch (e) {}
+  }
   const bountyPetObj = { name: (currentBounty && currentBounty.Pet ? currentBounty.Pet : petNameVal) + ' (Bounty)', baseOdds: bountyBaseOdds || 0, icon: getPetIconByName(currentBounty ? currentBounty.Pet : petNameVal) };
 
   const combinedEggForTable = { name: eggText, Pets: [] };
