@@ -3131,9 +3131,7 @@ window.addEventListener('error', function (e) {
   const el = e.target;
   if (!el || el.tagName !== 'IMG') return;
   const src = (el.getAttribute && el.getAttribute('src')) || '';
-  const lower = src.toLowerCase();
-  if (lower.includes('images/eggs/')) return;
-  if (/https?:\/\//i.test(src) || src.includes('Images/Eggs/') || src.includes('Images/eggs/') || src.includes('wikia') || src.includes('static.wikia')) {
+  if (src.includes('Images/Eggs/') || src.includes('Images/eggs/')) {
     el.onerror = null;
     el.src = 'Images/eggs/Placeholder_egg.webp';
   }
