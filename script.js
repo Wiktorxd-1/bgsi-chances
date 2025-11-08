@@ -5,47 +5,30 @@
 }
 
 const eggs = [
-  { name: "Common Egg", image: "Images/Eggs/Common_Egg.webp", Pets: [ { name: "King Doggy (Secret)", baseOdds: 100000000, icon: "Images/Pets/King_Doggy.webp" } ], world: "1" },
-  { name: "Spikey Egg", image: "Images/Eggs/Spikey_Egg.webp", Pets: [ { name: "Emerald Golem", baseOdds: 200, icon: "Images/Pets/Emerald_Golem.webp" } ], world: "1" },
-  { name: "Magma Egg", image: "Images/Eggs/Magma_Egg.webp", Pets: [ { name: "Inferno Dragon", baseOdds: 400, icon: "Images/Pets/Inferno_Dragon.webp" } ], world: "1" },
-  { name: "Crystal Egg", image: "Images/Eggs/Crystal_Egg.webp", Pets: [ { name: "Unicorn", baseOdds: 400, icon: "Images/Pets/Unicorn.webp" }, { name: "Flying Pig", baseOdds: 1000, icon: "Images/Pets/Flying_Pig.webp" } ], world: "1" },
-  { name: "Lunar Egg", image: "Images/Eggs/Lunar_Egg.webp", Pets: [ { name: "Lunar Serpent", baseOdds: 400, icon: "Images/Pets/Lunar_Serpent.webp" }, { name: "Electra", baseOdds: 1000, icon: "Images/Pets/Electra.webp" } ], world: "1" },
-  { name: "Void Egg", image: "Images/Eggs/Void_Egg.webp", Pets: [ { name: "Dark Phoenix", baseOdds: 2000, icon: "Images/Pets/Dark_Phoenix.webp" }, { name: "Neon Elemntal", baseOdds: 5000, icon: "Images/Pets/Neon_Elemental.webp" }, { name: "NULLVoid", baseOdds: 1000000, icon: "Images/Pets/NULLVoid.webp" } ], world: "1" },
-  { name: "Hell Egg", image: "Images/Eggs/Hell_Egg.webp", Pets: [ { name: "Inferno Cube", baseOdds: 4000, icon: "Images/Pets/Inferno_Cube.webp" }, { name: "Virus", baseOdds: 50000, icon: "Images/Pets/Virus.webp" } ], world: "1" },
-  { name: "Nightmare Egg", image: "Images/Eggs/Nightmare_Egg.webp", Pets: [ { name: "Green Hydra", baseOdds: 25000, icon: "Images/Pets/Green_Hydra.webp" }, { name: "Demonic Hydra", baseOdds: 100000, icon: "Images/Pets/Demonic_Hydra.webp" }, { name: "The Overlord (Secret)", baseOdds: 50000000, icon: "Images/Pets/The_Overlord.webp" } ], world: "1" },
-  { name: "Rainbow Egg", image: "Images/Eggs/Rainbow_Egg.webp", Pets: [ { name: "Hexarium", baseOdds: 100000, icon: "Images/Pets/Hexarium.webp" }, { name: "Rainbow Shock", baseOdds: 200000, icon: "Images/Pets/Rainbow_Shock.webp" } ], world: "1" },
-  { name: "Mining Egg", image: "Images/Eggs/Mining_Egg.webp", Pets: [ { name: "Crystal Unicorn", baseOdds: 200, icon: "Images/Pets/Crystal_Unicorn.webp" }, { name: "Stone Gargoyle", baseOdds: 20000, icon: "Images/Pets/Stone_Gargoyle.webp" }, { name: "Giant Cave Mole (Secret)", baseOdds: 500000000, icon: "Images/Pets/Giant_Cave_Mole.webp" } ], world: "2" },
-  { name: "Cyber Egg", image: "Images/Eggs/Cyber_Egg.webp", Pets: [ { name: "Cyborg Phoenix", baseOdds: 2500, icon: "Images/Pets/Cyborg_Phoenix.webp" }, { name: "Space Invader", baseOdds: 50000, icon: "Images/Pets/Space_Invader.webp" }, { name: "Bionic Shard", baseOdds: 666667, icon: "Images/Pets/Bionic_Shard.webp" }, { name: "Mech Robot (Secret)", baseOdds: 66666667, icon: "Images/Pets/Mech_Robot.webp" } ], world: "2" },
-  { name: "Neon Egg", image: "Images/Eggs/Neon_Egg.webp", Pets: [ { name: "Neon Wyvern", baseOdds: 3334, icon: "Images/Pets/Neon_Wyvern.webp" }, { name: "Neon Wire Eye", baseOdds: 66667, icon: "Images/Pets/Neon_Wire_Eye.webp" }, { name: "Equalizer", baseOdds: 833334, icon: "Images/Pets/Equalizer.webp" }, { name: "Hyperwave Kitty (Secret)", baseOdds: 125000000, icon: "Images/Pets/Hyperwave_Kitty.webp" } ], world: "2" },
-  { name: "Chance Egg", image: "Images/Eggs/Chance_Egg.webp", Pets: [ { name: "Ring Master", baseOdds: 100000, icon: "Images/Pets/Ring_Master.webp" }, { name: "Royal Guardian", baseOdds: 200000000, icon: "Images/Pets/Royal_Guardian.webp" } ], world: "2" },
-  { name: "Icy Egg", image: "Images/Eggs/Icy_Egg.webp", Pets: [ { name: "Marshmallow", baseOdds: 200, icon: "Images/Pets/Marshmallow.webp"}, { name: "Minty Serpent", baseOdds: 66667, icon: "Images/Pets/Minty_Serpent.webp"}, { name: "Ice Winged Hydra", baseOdds: 333334, icon: "Images/Pets/Ice_Winged_Hydra.webp"}, { name: "Giant Pearl (Secret)", baseOdds: 125000000, icon: "Images/Pets/Giant_Pearl.webp"}], world: "3"},
-  { name: "Vine Egg", image: "Images/Eggs/Vine_Egg.webp", Pets: [ { name: "Thorn Dragon", baseOdds: 4000, icon: "Images/Pets/Thorn_Dragon.webp"}, { name: "Flower Pot", baseOdds: 100000, icon: "Images/Pets/Flower_Pot.webp"}, { name: "Lovely Lotus", baseOdds: 1000000, icon: "Images/Pets/Lovely_Lotus.webp"}, { name: "Fire Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Fire_Champion.webp"}, { name: "Dark Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Dark_Champion.webp"}, { name: "Earth Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Earth_Champion.webp"}, { name: "Sky Champion (Secret)", baseOdds: 500000000, icon: "Images/Pets/Sky_Champion.webp"}], world: "3"},
-  { name: "Secret Egg", Pets: [ { name: "Gigantic Spitty (Infinity)", baseOdds: 40000000000, icon: "Images/Pets/Gigantic_Spitty.webp"}], world: "3"},
-  { name: "Lava Egg", image: "Images/Eggs/Lava_Egg.webp", Pets: [ { name: "Magma Cube", baseOdds: 4000, icon: "Images/Pets/Magma_Cube.webp"}, { name: "Night Dweller", baseOdds: 100000, icon: "Images/Pets/Night_Dweller.webp"}, { name: "Fire King", baseOdds: 3333334, icon: "Images/Pets/Fire_King.webp"}, { name: "Hellshard (Secret)", baseOdds: 1000000000, icon: "Images/Pets/Hellshard.webp"}], world: "3"},
-  { name: "Atlantis Egg", image: "Images/Eggs/Atlantis_Egg.webp", Pets: [ { name: "Angler fish", baseOdds: 4000, icon: "Images/Pets/Angler_Fish.webp"}, { name: "Jellyfish", baseOdds: 200000, icon: "Images/Pets/Jellyfish.webp"}, { name: "Atlantis Guardian", baseOdds: 2000000, icon: "Images/Pets/Atlantis_Guardian.webp"}, { name: "Tidal God (Secret)", baseOdds: 250000000, icon: "Images/Pets/Tidal_God.webp"}, { name: "Abyssal Sea Dragon (Secret)", baseOdds: 2000000000, icon: "Images/Pets/Abyssal_Sea_Dragon.webp"}], world: "3"},
-  { name: "Classic egg", image: "Images/Eggs/Classic_Egg.webp", Pets: [ { name: "Classic Unicorn", baseOdds: 4000, icon: "Images/Pets/Classic_Unicorn.webp"}, { name: "Classic Dominus", baseOdds: 200000, icon: "Images/Pets/Classic_Dominus.webp"}, { name: "Classic Noob", baseOdds: 2000000, icon: "Images/Pets/Classic_Noob.webp"}, { name: "Classic Overlord (Secret)", baseOdds: 100000000, icon: "Images/Pets/Classic_Overlord.webp"}, { name: "1x1x1x1 (Secret)", baseOdds: 500000000, icon: "Images/Pets/1x1x1x1.webp"}, { name: "Giant Classic Chicken (Secret)", baseOdds: 2500000000, icon: "Images/Pets/Giant_Classic_Chicken.webp"}], world: "3"},
-  { name: "Developer Egg", Pets: [ { name: "Sylently's Hats", baseOdds: 100000}, { name: "Isaac Rainbow Shock", baseOdds: 1000000}, { name: "Sircfenner Plushie (Secret)", baseOdds: 500000000}, { name: "Quamatic Plushie (Secret)", baseOdds: 500000000}, { name: "Nert Plushie (Secret)", baseOdds: 500000000}, { name: "Sylently Plushie (Secret)", baseOdds: 500000000}, { name: "ObscureEntity Plushie (Secret)", baseOdds: 500000000}, { name: "Sylently's Pet (Infinity)", baseOdds: 20000000000}], world: "limited"},
-  { name: "Pumpkin Egg", Pets: [ { name: "DUMB PUMPKIN (Secret)", baseOdds: 66666667}, { name: "DUMB SINISTER LORD (Secret)", baseOdds: 10000000000 }, { name: "Spookivus (Secret)", baseOdds: 5000000000, icon: "Images/Pets/Spookivus.webp" } ], world: "limitedH"},
-  { name: "Costume Egg", Pets: [ { name: "Ghostlord", baseOdds: 2000}, { name: "Trickster", baseOdds: 10000}, { name: "Frankenbot (Secret)", baseOdds: 400000000}, { name: "Spookivus (Secret)", baseOdds: 5000000000, icon: "Images/Pets/Spookivus.webp" }], world: "limitedH"},
-  { name: "Sinister Egg", Pets: [ { name: "Crimson Eye", baseOdds: 6667}, { name: "Equinox", baseOdds: 400000}, { name: "Witches Pot", baseOdds: 4000000}, { name: "All Seeing Shard (Secret)", baseOdds: 500000000}, { name: "Angelic Skull (Secret)", baseOdds: 10000000000}, { name: "Wolf Skull (Secret)", baseOdds: 10000000000}, { name: "Guardian Skull (Secret)", baseOdds: 10000000000}, { name: "Sinister Skull (Secret)", baseOdds: 10000000000}, { name: "King Skull (Secret)", baseOdds: 10000000000}, { name: "Sinister Lord (Infinity)", baseOdds: 80000000000}, { name: "Spookivus (Secret)", baseOdds: 5000000000, icon: "Images/Pets/Spookivus.webp" }], world: "limitedH"},
-  { name: "Mutant Egg", Pets: [ { name: "King Eye", baseOdds: 6667}, { name: "Evil Marshmallow", baseOdds: 6666667}, { name: "Trick O' Treat", baseOdds: 10000000}, { name: "Sinister Shard (Secret)", baseOdds: 1000000000}, { name: "Angelic Spirit (Secret)", baseOdds: 10000000000}, { name: "Radiance (Infinity)", baseOdds: 100000000000}, { name: "Spookivus (Secret)", baseOdds: 5000000000, icon: "Images/Pets/Spookivus.webp" }], world: "limitedH"},
-  { name: "Puppet Egg", Pets: [ { name: "Ragdoll", baseOdds: 6667}, { name: "Dual Act", baseOdds: 10000000}, { name: "Mother Doll", baseOdds: 5000000}, { name: "Harlequin (Secret)", baseOdds: 1000000000}, { name: "Moonlord (Secret)", baseOdds: 2000000000}, { name: "OG Luminance (Secret)", baseOdds: 10000000000}, { name: "The Puppeteer (Infinity)", baseOdds: 50000000000}, { name: "Spookivus (Secret)", baseOdds: 5000000000, icon: "Images/Pets/Spookivus.webp" } ], world: "limitedH"}
+{ name: "Common Egg", Pets: [ { name: "King Doggy (Secret)", baseOdds: 100000000 } ], world: "1" },
+{ name: "Spikey Egg", Pets: [ { name: "Emerald Golem", baseOdds: 200 } ], world: "1" },
+{ name: "Magma Egg", Pets: [ { name: "Inferno Dragon", baseOdds: 400 } ], world: "1" },
+{ name: "Crystal Egg", Pets: [ { name: "Unicorn", baseOdds: 400 }, { name: "Flying Pig", baseOdds: 1000 } ], world: "1" },
+{ name: "Lunar Egg", Pets: [ { name: "Lunar Serpent", baseOdds: 400 }, { name: "Electra", baseOdds: 1000 } ], world: "1" },
+{ name: "Void Egg", Pets: [ { name: "Dark Phoenix", baseOdds: 2000 }, { name: "Neon Elemental", baseOdds: 5000 }, { name: "NULLVoid", baseOdds: 1000000 } ], world: "1" },
+{ name: "Hell Egg", Pets: [ { name: "Inferno Cube", baseOdds: 4000 }, { name: "Virus", baseOdds: 50000 } ], world: "1" },
+{ name: "Nightmare Egg", Pets: [ { name: "Green Hydra", baseOdds: 25000 }, { name: "Demonic Hydra", baseOdds: 100000 }, { name: "The Overlord (Secret)", baseOdds: 50000000 } ], world: "1" },
+{ name: "Rainbow Egg", Pets: [ { name: "Hexarium", baseOdds: 100000 }, { name: "Rainbow Shock", baseOdds: 200000 } ], world: "1" },
+{ name: "Mining Egg", Pets: [ { name: "Crystal Unicorn", baseOdds: 200 }, { name: "Stone Gargoyle", baseOdds: 20000 }, { name: "Giant Cave Mole (Secret)", baseOdds: 500000000 } ], world: "2" },
+{ name: "Cyber Egg", Pets: [ { name: "Cyborg Phoenix", baseOdds: 2500 }, { name: "Space Invader", baseOdds: 50000 }, { name: "Bionic Shard", baseOdds: 666667 }, { name: "Mech Robot (Secret)", baseOdds: 66666667 } ], world: "2" },
+{ name: "Neon Egg", Pets: [ { name: "Neon Wyvern", baseOdds: 3333 }, { name: "Neon Wire Eye", baseOdds: 66667 }, { name: "Equalizer", baseOdds: 833333 }, { name: "Hyperwave Kitty (Secret)", baseOdds: 125000000 } ], world: "2" },
+{ name: "Chance Egg", Pets: [ { name: "Ring Master", baseOdds: 100000 }, { name: "Royal Guardian (Secret)", baseOdds: 200000000 } ], world: "1" },
+{ name: "Icy Egg", Pets: [ { name: "Marshmallow", baseOdds: 2000 }, { name: "Minty Serpent", baseOdds: 66667 }, { name: "Ice Winged Hydra", baseOdds: 833333 }, { name: "Giant Pearl (Secret)", baseOdds: 125000000 } ], world: "3" },
+{ name: "Vine Egg", Pets: [ { name: "Thorn Dragon", baseOdds: 4000 }, { name: "Flower Pot", baseOdds: 100000 }, { name: "Lovely Lotus", baseOdds: 1000000 }, { name: "Earth Champion (Secret)", baseOdds: 500000000 }, { name: "Dark Champion (Secret)", baseOdds: 500000000 }, { name: "Fire Champion (Secret)", baseOdds: 500000000 }, { name: "Sky Champion (Secret)", baseOdds: 500000000 } ], world: "3" },
+{ name: "Lava Egg", Pets: [ { name: "Magma Cube", baseOdds: 4000 }, { name: "Night Dweller", baseOdds: 100000 }, { name: "Fire King", baseOdds: 1333333 }, { name: "Hellshard (Secret)", baseOdds: 1000000000 } ], world: "3" },
+{ name: "Secret Egg", Pets: [ { name: "Gigantic Spitty (Infinity)", baseOdds: 40000000000 } ], world: "1" },
+{ name: "Atlantis Egg", Pets: [ { name: "Angler Fish", baseOdds: 4000 }, { name: "Jellyfish", baseOdds: 200000 }, { name: "Atlantis Guardian", baseOdds: 2000000 }, { name: "Tidal God (Secret)", baseOdds: 250000000 } ], world: "3" },
+{ name: "Classic Egg", Pets: [ { name: "Classic Unicorn", baseOdds: 4000 }, { name: "Classic Dominus", baseOdds: 200000 }, { name: "Classic Noob", baseOdds: 2000000 }, { name: "Classic Overlord (Secret)", baseOdds: 100000000 }, { name: "1x1x1x1 (Secret)", baseOdds: 500000000 } ], world: "3" },
+{ name: "Developer Egg", Pets: [ { name: "Sylently's Hats", baseOdds: 100000 }, { name: "Isaac Rainbow Shock", baseOdds: 1000000 }, { name: "Nert Plushie (Secret)", baseOdds: 500000000 }, { name: "ObscureEntity Plushie (Secret)", baseOdds: 500000000 }, { name: "Quamatic Plushie (Secret)", baseOdds: 500000000 }, { name: "Sircfenner Plushie (Secret)", baseOdds: 500000000 }, { name: "Sylently Plushie (Secret)", baseOdds: 500000000 }, { name: "FutureWebsiteOwner Plushie (Secret)", baseOdds: 500000000 }, { name: "Sylently's Pet (Infinity)", baseOdds: 20000000000 } ], world: "1" },
+{ name: "Super Silly Egg", Pets: [ { name: "Silly Unicorn", baseOdds: 50000 }, { name: "Silly Hydra", baseOdds: 1000000 }, { name: "Silly King Doggy (Secret)", baseOdds: 100000000 }, { name: "Super Silly Doggy (Secret)", baseOdds: 1000000000 }, { name: "Silly Leviathan (Infinity)", baseOdds: 200000000000 } ], world: "limited" },
+{ name: "OG Egg", Pets: [ { name: "OG Element Hydra", baseOdds: 5000 }, { name: "OG Cursed Scorpio", baseOdds: 50000 }, { name: "OG Galaxium", baseOdds: 2000000 }, { name: "OG Sakuralord", baseOdds: 25000000 }, { name: "OG The Overlord (Secret)", baseOdds: 80000000 }, { name: "OG Prisma Cube (Secret)", baseOdds: 250000000 }, { name: "OG Lucid Leaf (Secret)", baseOdds: 500000000 }, { name: "OG Dragonfruit (Secret)", baseOdds: 2500000000 }, { name: "OG Chocolate Sundae Champion (Secret)", baseOdds: 4000000000 }, { name: "OG Mint Sundae Champion (Secret)", baseOdds: 4000000000 }, { name: "OG Strawberry Sundae Champion (Secret)", baseOdds: 4000000000 }, { name: "OG Vanilla Sundae Champion (Secret)", baseOdds: 4000000000 }, { name: "OG Plasma Wolflord (Secret)", baseOdds: 5000000000 }, { name: "OG Shard (Secret)", baseOdds: 10000000000 }, { name: "OG Giant Robot (Infinity)", baseOdds: 100000000000 } ], world: "limited" },
 ];
 
-
-const HALLOWEEN_ELIXIRS = {
-
-  I: { s: 50, l: 50, m: 25 },
-  II: { s: 100, l: 100, m: 75 },
-  III: { s: 150, l: 150, m: 100 },
-  IV: { s: 250, l: 250, m: 200 }
-};
-
-
-const HALLOWEEN_UPGRADES = {
-  halloweenLuck: [0,10,15,20,25,30,35,40,50],
-  secretInfinityLuck: [0,1,2,4,5,6,8,10]
-};
 
 
 
@@ -415,7 +398,6 @@ async function createBountyDetailsView() {
     try { eggEl.innerHTML = `Egg: <strong>${targetEggName}</strong>`; } catch (e) {}
 
         let newBountyBaseOdds = parseChanceString(b.Chance);
-        // overrides for known bounties
         const _bountyOverrides = {
           'King Leviathan': 5000000000,
           'Harmonic Harp': 500000000,
@@ -547,7 +529,7 @@ async function createBountyDetailsView() {
             eggNameUnder.textContent = targetEggName;
 
             let newBountyBaseOdds = parseChanceString(b.Chance);
-            // overrides for known bounties
+
             const _bountyOverrides2 = {
               'King Leviathan': 5000000000,
               'Harmonic Harp': 500000000,
@@ -1971,81 +1953,6 @@ function createEggSettings(egg, canSpawnAsRift) {
         <img src="Images/Pets/OG_Radiance.webp" alt="OG Radiance" style="width:28px;height:28px;object-fit:contain;border-radius:6px;margin-right:6px;" />
         <button type="button" class="og-radiance-btn" data-selected="false" style="border-radius:999px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);min-width:86px;">OG Radiance</button>
       </div>
-      <div style="margin-top:8px;">
-        <button type="button" class="halloween-toggle" aria-expanded="false" style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--table-border);background:var(--controls-bg);color:var(--main-text);cursor:pointer;font-family:inherit;">
-          <span style="font-weight:700;">Halloween Settings</span>
-          <span style="transition:transform 160ms ease;">▾</span>
-        </button>
-        <div class="halloween-panel" style="display:none;margin-top:8px;padding:8px;border-radius:8px;border:1px solid var(--table-border);background:var(--controls-bg);box-sizing:border-box;width:100%;">
-          <div style="display:flex;gap:8px;align-items:center;justify-content:space-between;">
-            <div style="display:flex;align-items:center;gap:8px;">
-              <img class="halloween-elixir-img" src="Images/Icons/Placeholder.webp" alt="Elixir" style="width:36px;height:36px;object-fit:contain;border-radius:6px;margin-right:6px;" title="Halloween Elixir (placeholder)" />
-              <div style="font-weight:700;">Halloween Elixir</div>
-            </div>
-            <div style="display:flex;gap:8px;align-items:center;max-width:50%;">
-              <select class="halloween-elixir" style="flex:1;min-width:120px;">
-                <option value="none">None</option>
-                <option value="I">Elixir I</option>
-                <option value="II">Elixir II</option>
-                <option value="III">Elixir III</option>
-                <option value="IV">Elixir IV</option>
-              </select>
-            </div>
-          </div>
-          <div style="margin-top:10px;font-weight:700;">Halloween Upgrades</div>
-          <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px;">
-            <div style="display:flex;gap:8px;align-items:center;">
-              <label style="min-width:120px;">Halloween Luck:</label>
-              <select class="halloween-luck-level">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-              </select>
-            </div>
-            <div style="display:flex;gap:8px;align-items:center;">
-              <label style="min-width:120px;">Secret Luck:</label>
-              <select class="halloween-secret-level">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                
-              </select>
-            </div>
-            <div style="display:flex;gap:8px;align-items:center;">
-              <label style="min-width:120px;">Infinity Luck:</label>
-              <select class="halloween-infinity-level">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-              </select>
-            </div>
-            <div style="display:flex;gap:8px;align-items:center;">
-              <img src="Images/Icons/Halloween_Infinity_Elixir.webp" alt="Halloween Infinity Elixir" style="width:20px;height:20px;margin-right:8px;object-fit:contain;" />
-              <label style="min-width:120px;">Halloween Infinity Elixir:</label>
-              <select class="halloween-infinity-elixir">
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
     `;
   }
   const hasSecret = (egg.Pets && egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name))) || egg.name === "Infinity Egg";
@@ -2096,7 +2003,6 @@ function createEggSettings(egg, canSpawnAsRift) {
 
     const luckEl = controls.querySelector('.luck');
     const secretEl = controls.querySelector('.secret-mult');
-  const halloweenInfinityElixirEl = controls.querySelector('.halloween-infinity-elixir');
     const shinyBtn = controls.querySelector('.shiny-btn');
     const mythicBtn = controls.querySelector('.mythic-btn');
     const shinyInput = controls.querySelector('.shiny-input');
@@ -2114,10 +2020,8 @@ function createEggSettings(egg, canSpawnAsRift) {
           mythic: {
             selected: !!(mythicBtn && mythicBtn.dataset && mythicBtn.dataset.selected === 'true'),
             odds: mythicInput ? String(mythicInput.value || '') : ''
-          }
-        }
-        ,
-        halloweenInfinityElixir: !!(halloweenInfinityElixirEl && String(halloweenInfinityElixirEl.value || '').toLowerCase() === 'yes')
+    }
+    }
       };
     }
 
@@ -2132,18 +2036,16 @@ function createEggSettings(egg, canSpawnAsRift) {
     if (typeof saved === 'object') {
       if (luckEl && typeof saved.luck !== 'undefined') luckEl.value = saved.luck;
       if (secretEl && typeof saved.secretMult !== 'undefined') secretEl.value = saved.secretMult;
-      if (shinyInput && saved.variants && saved.variants.shiny && typeof saved.variants.shiny.odds !== 'undefined') shinyInput.value = saved.variants.shiny.odds;
-      if (mythicInput && saved.variants && saved.variants.mythic && typeof saved.variants.mythic.odds !== 'undefined') mythicInput.value = saved.variants.mythic.odds;
-      if (shinyBtn && saved.variants && saved.variants.shiny && saved.variants.shiny.selected) shinyBtn.dataset.selected = 'true';
-      if (mythicBtn && saved.variants && saved.variants.mythic && saved.variants.mythic.selected) mythicBtn.dataset.selected = 'true';
-      if (halloweenInfinityElixirEl && typeof saved.halloweenInfinityElixir !== 'undefined') halloweenInfinityElixirEl.value = saved.halloweenInfinityElixir ? 'Yes' : 'No';
+  if (shinyInput && saved.variants && saved.variants.shiny && typeof saved.variants.shiny.odds !== 'undefined') shinyInput.value = saved.variants.shiny.odds;
+  if (mythicInput && saved.variants && saved.variants.mythic && typeof saved.variants.mythic.odds !== 'undefined') mythicInput.value = saved.variants.mythic.odds;
+  if (shinyBtn && saved.variants && saved.variants.shiny && saved.variants.shiny.selected) shinyBtn.dataset.selected = 'true';
+  if (mythicBtn && saved.variants && saved.variants.mythic && saved.variants.mythic.selected) mythicBtn.dataset.selected = 'true';
     }
 
     if (luckEl) luckEl.addEventListener('input', saveSettings);
     if (secretEl) secretEl.addEventListener('input', saveSettings);
     if (shinyInput) shinyInput.addEventListener('input', saveSettings);
     if (mythicInput) mythicInput.addEventListener('input', saveSettings);
-  if (halloweenInfinityElixirEl) halloweenInfinityElixirEl.addEventListener('change', saveSettings);
     if (shinyBtn) shinyBtn.addEventListener('click', () => { setTimeout(saveSettings, 0); });
     if (mythicBtn) mythicBtn.addEventListener('click', () => { setTimeout(saveSettings, 0); });
   } catch (e) {}
@@ -2202,11 +2104,6 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
        layout.querySelector('.egg-details-right .controls')
      ) : null;
     const multiplierSelect = controls ? controls.querySelector(".multiplier") : null;
-  const halloweenElixirSelect = controls ? controls.querySelector('.halloween-elixir') : null;
-  const halloweenLuckLevel = controls ? controls.querySelector('.halloween-luck-level') : null;
-  const halloweenSecretLevel = controls ? controls.querySelector('.halloween-secret-level') : null;
-  const halloweenInfinityLevel = controls ? controls.querySelector('.halloween-infinity-level') : null;
-  const halloweenInfinityElixirEl = controls ? controls.querySelector('.halloween-infinity-elixir') : null;
   const ogRadianceBtn = controls ? controls.querySelector('.og-radiance-btn') : null;
     const multiplierOtherWrap = controls ? controls.querySelector(".multiplier-other-wrap") : null;
     const multiplierOtherInput = controls ? controls.querySelector(".multiplier-other") : null;
@@ -2353,43 +2250,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       multiplierOtherInput.addEventListener('input', updateChances);
     }
 
-    const halloweenToggle = controls ? controls.querySelector('.halloween-toggle') : null;
-    const halloweenPanel = controls ? controls.querySelector('.halloween-panel') : null;
-    const halloweenElixirImg = controls ? controls.querySelector('.halloween-elixir-img') : null;
-    if (halloweenToggle && halloweenPanel) {
-      halloweenToggle.addEventListener('click', () => {
-        const expanded = halloweenToggle.getAttribute('aria-expanded') === 'true';
-        halloweenToggle.setAttribute('aria-expanded', (!expanded).toString());
-        halloweenPanel.style.display = expanded ? 'none' : 'block';
-        const arrow = halloweenToggle.querySelector('span');
-        if (arrow) arrow.style.transform = expanded ? '' : 'rotate(180deg)';
-      });
-    }
-    if (halloweenElixirImg) {
-
-      halloweenElixirImg.onerror = function () { this.onerror = null; this.src = 'Images/Icons/Placeholder.webp'; };
-    }
-
-    if (halloweenElixirSelect && halloweenElixirImg) {
-      halloweenElixirSelect.addEventListener('change', () => {
-        const val = halloweenElixirSelect.value;
-        if (val && val !== 'none') {
-          const candidate = `Images/Icons/Halloween_Elixir_${val}.webp`;
-          halloweenElixirImg.src = candidate;
-        } else {
-          halloweenElixirImg.src = 'Images/Icons/Placeholder.webp';
-        }
-        updateChances();
-      });
-    }
-
-  if (halloweenLuckLevel) halloweenLuckLevel.addEventListener('change', updateChances);
-  if (halloweenSecretLevel) halloweenSecretLevel.addEventListener('change', updateChances);
-  if (halloweenInfinityLevel) halloweenInfinityLevel.addEventListener('change', updateChances);
-  if (halloweenInfinityElixirEl) halloweenInfinityElixirEl.addEventListener('change', updateChances);
-  if (halloweenLuckLevel) halloweenLuckLevel.addEventListener('change', updateChances);
-  if (halloweenSecretLevel) halloweenSecretLevel.addEventListener('change', updateChances);
-  if (halloweenInfinityLevel) halloweenInfinityLevel.addEventListener('change', updateChances);
+    
      applyVariantButtonStyles();
 
      function normalizeName(n) {
@@ -2442,41 +2303,10 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
        const riftBonusPercent = multiplierValue * 100;
        const luckPercent = luckInput ? (luckInput.value === "" ? 0 : parseFloat(luckInput.value)) : 0;
 
-      let halloweenBonus = { s:0, l:0, m:0 };
-      if (halloweenElixirSelect && halloweenElixirSelect.value && halloweenElixirSelect.value !== 'none') {
-        const key = halloweenElixirSelect.value;
-        if (HALLOWEEN_ELIXIRS[key]) halloweenBonus = Object.assign({}, HALLOWEEN_ELIXIRS[key]);
-      }
-
-      let halloweenLuckAdd = 0;
-      let halloweenSecretAdd = 0;
-      let halloweenInfinityAdd = 0;
-      if (halloweenLuckLevel && Number(halloweenLuckLevel.value) > 0) {
-        const lvl = Number(halloweenLuckLevel.value);
-        halloweenLuckAdd = HALLOWEEN_UPGRADES.halloweenLuck[lvl] || 0;
-      }
-      if (halloweenSecretLevel && Number(halloweenSecretLevel.value) > 0) {
-        const lvl = Number(halloweenSecretLevel.value);
-        halloweenSecretAdd = HALLOWEEN_UPGRADES.secretInfinityLuck[lvl] || 0;
-      }
-      if (halloweenInfinityLevel && Number(halloweenInfinityLevel.value) > 0) {
-        const lvl = Number(halloweenInfinityLevel.value);
-        halloweenInfinityAdd = HALLOWEEN_UPGRADES.secretInfinityLuck[lvl] || 0;
-      }
-      const elixirMultiplier = (halloweenInfinityElixirEl && String(halloweenInfinityElixirEl.value || '').toLowerCase() === 'yes') ? 1.5 : 1;
-      if (elixirMultiplier !== 1) {
-        halloweenBonus = {
-          s: (halloweenBonus.s || 0) * elixirMultiplier,
-          l: (halloweenBonus.l || 0) * elixirMultiplier,
-          m: (halloweenBonus.m || 0) * elixirMultiplier
-        };
-      }
-
-      const totalLuckPercent = luckPercent + (halloweenBonus.l || 0) + halloweenLuckAdd;
-  const secretTimes = secretInput ? (secretInput.value === "" ? 1 : Math.max(1, parseFloat(secretInput.value))) : 1;
-
-  const extraSecretPercent = halloweenSecretAdd || 0;
-  const effectiveLuckPercent = totalLuckPercent + riftBonusPercent;
+      const totalLuckPercent = luckPercent;
+      const secretTimes = secretInput ? (secretInput.value === "" ? 1 : Math.max(1, parseFloat(secretInput.value))) : 1;
+      const extraSecretPercent = 0;
+      const effectiveLuckPercent = totalLuckPercent + riftBonusPercent;
        petList.innerHTML = "";
 
        const petsToIterate = (egg.Pets || []).slice();
@@ -2488,9 +2318,6 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          const baseChance = pet.baseOdds && pet.baseOdds > 0 ? 1 / pet.baseOdds : 0;
 
          let effectiveForPet = effectiveLuckPercent;
-         if (/Infinity/i.test(pet.name) && halloweenInfinityAdd) {
-           effectiveForPet += halloweenInfinityAdd;
-         }
         let combinedMultiplier = 1 + effectiveForPet / 100;
         if (isSecret) {
 
@@ -2504,8 +2331,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          const shinySelected = shinyBtn && shinyBtn.dataset.selected === 'true';
          const mythicSelected = mythicBtn && mythicBtn.dataset.selected === 'true';
 
-         let shinyExtraPercent = halloweenBonus.s || 0;
-         let mythicExtraPercent = halloweenBonus.m || 0;
+         
 
          if (shinySelected) {
            variantFactor *= (1 / shinyOdds);
@@ -3301,15 +3127,23 @@ function getPetIconByName(petName) {
   const candidate = `Images/Pets/${formatNameToPath(baseName)}.webp`;
   return candidate;
 }
+window.addEventListener('error', function (e) {
+  const el = e.target;
+  if (!el || el.tagName !== 'IMG') return;
+  const src = (el.getAttribute && el.getAttribute('src')) || '';
+  if (src.includes('Images/Eggs/') || src.includes('Images/eggs/')) {
+    el.onerror = null;
+    el.src = 'Images/eggs/Placeholder_egg.webp';
+  }
+}, true);
+
 function getEggImagePath(eggOrName) {
-  if (!eggOrName) return "Images/Eggs/Placeholder_Egg.webp";
+  if (!eggOrName) return 'Images/eggs/Placeholder_egg.webp';
   if (typeof eggOrName === 'string') {
-    const candidate = `Images/Eggs/${formatNameToPath(eggOrName)}.webp`;
-    return candidate;
+    return `Images/eggs/${formatNameToPath(eggOrName)}.webp`;
   }
   if (eggOrName.image) return eggOrName.image;
-  const candidate = `Images/Eggs/${formatNameToPath(eggOrName.name)}.webp`;
-  return candidate;
+  return `Images/eggs/${formatNameToPath(eggOrName.name)}.webp`;
 }
 
 let __lastBountiesJson = null;

@@ -613,13 +613,69 @@
     "dateRemoved": "2025-04-30"
   },
   {
+    "name": "67 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/fb/67_Egg.png",
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-11-07",
+    "dateRemoved": "2025-11-21"
+  },
+  {
+    "name": "Super Silly Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "pets": [
+      "Silly Golem",
+      "Silly Dragon",
+      "Silly Angel",
+      "Silly Unicorn",
+      "Silly Hydra",
+      "Silly King Doggy",
+      "Super Silly Doggy",
+      "Silly Leviathan"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": true,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-11-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "OG Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/35/OG_Egg.png",
+    "pets": [
+      "OG Cupcake",
+      "OG Unicorn",
+      "OG Element Hydra",
+      "OG Cursed Scorpio",
+      "OG Galaxium",
+      "OG Sakuralord",
+      "OG The Overlord",
+      "OG Prisma Cube",
+      "OG Lucid Leaf",
+      "OG Dragonfruit",
+      "OG Chocolate Sundae Champion",
+      "OG Mint Sundae Champion",
+      "OG Strawberry Sundae Champion",
+      "OG Vanilla Sundae Champion",
+      "OG Plasma Wolflord",
+      "OG Shard",
+      "OG Giant Robot"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-11-07",
+    "dateRemoved": "2025-11-21"
+  },
+  {
     "name": "Jester Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Jester_Egg.png",
     "luckIgnored": false,
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-10-17",
-    "dateRemoved": ""
+    "dateRemoved": "2025-11-07"
   },
   {
     "name": "Pumpkin Egg",
@@ -795,6 +851,7 @@
       "Quamatic Plushie",
       "Sircfenner Plushie",
       "Sylently Plushie",
+      "FutureWebsiteOwner Plushie",
       "Sylently's Pet"
     ],
     "luckIgnored": false,
@@ -1283,5 +1340,24 @@
     "secretBountyRotation": false,
     "dateAdded": "2025-07-06",
     "dateRemoved": "2025-07-19"
+  },
+  {
+    "name": "OGRobux Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/57/OGRobux_Egg.png",
+    "pets": [
+      "OG Candy Winged Hydra",
+      "OG Enraged Phoenix",
+      "OG Dowodle",
+      "OG Beta TV",
+      "OG Electra Hydra",
+      "OG Dark Serpent",
+      "OG Toxic Elemental",
+      "OG Christmas Elemental"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-11-07",
+    "dateRemoved": "2025-11-21"
   }
 ]
