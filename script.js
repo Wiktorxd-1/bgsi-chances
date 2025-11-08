@@ -3127,18 +3127,9 @@ function getPetIconByName(petName) {
   const candidate = `Images/Pets/${formatNameToPath(baseName)}.webp`;
   return candidate;
 }
-window.addEventListener('error', function (e) {
-  const el = e.target;
-  if (!el || el.tagName !== 'IMG') return;
-  const src = (el.getAttribute && el.getAttribute('src')) || '';
-  if (src.includes('Images/Eggs/') || src.includes('Images/eggs/')) {
-    el.onerror = null;
-    el.src = 'Images/eggs/Placeholder_egg.webp';
-  }
-}, true);
 
 function getEggImagePath(eggOrName) {
-  if (!eggOrName) return 'Images/eggs/Placeholder_egg.webp';
+  if (!eggOrName) return '';
   if (typeof eggOrName === 'string') {
     return `Images/eggs/${formatNameToPath(eggOrName)}.webp`;
   }
