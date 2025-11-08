@@ -3045,7 +3045,7 @@ function setTheme(theme) {
 
 eggs.unshift({
   name: "Infinity Egg",
-  image: "Images/Eggs/Infinity_Egg.webp",
+  image: "Images/eggs/Infinity_Egg.webp",
   Pets: [
     { name: "Placeholder", baseOdds: 1, icon: "Images/Pets/Placeholder.webp" }
   ],
