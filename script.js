@@ -2791,12 +2791,17 @@ function setupPetStatsHover() {
 }
 
 async function fetchBounties() {
+  const TIMEOUT_MS = 3000;
   try {
-    const res = await fetch('https://bgsiapi.fytg.me/bounties');
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), TIMEOUT_MS);
+    const res = await fetch('https://bgsiapi.fytg.me/bounties', { signal: controller.signal });
+    clearTimeout(id);
     if (!res.ok) return [];
     const data = await res.json();
     return Array.isArray(data) ? data : [];
   } catch (e) {
+    if (e && e.name === 'AbortError') console.warn('fetchBounties: request aborted after timeout');
     return [];
   }
 }
