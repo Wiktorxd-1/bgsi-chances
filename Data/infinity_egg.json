@@ -144,11 +144,6 @@
   },
   "3": {
     "Pets": [
-    {
-      "name": "Abyssal Sea Dragon (Secret)",
-      "baseOdds": 2710000000,
-      "icon": "Images/Pets/Abyssal_Sea_Dragon.webp"
-    },
   {
     "name": "Hellshard (Secret)",
     "baseOdds": 1350000000,
@@ -188,11 +183,6 @@
     "name": "Giant Pearl (Secret)",
     "baseOdds": 167490000,
     "icon": "Images/Pets/Giant_Pearl.webp"
-  },
-  {
-    "name": "Eternity (Secret)",
-    "baseOdds": 167490000,
-    "icon": "Images/Pets/Eternity.webp"
   },
   {
     "name": "Classic Overlord (Secret)",
