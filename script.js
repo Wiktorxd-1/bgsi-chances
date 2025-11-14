@@ -2603,6 +2603,126 @@ async function fetchPetsData() {
   }
 })();
 
+function _normalizeQueryEgg(raw) {
+  if (!raw) return null;
+  try {
+    if (raw.indexOf('=') !== -1) {
+      const params = new URLSearchParams(raw);
+      const v = params.get('egg') || params.get('q') || params.get('e') || null;
+      if (v) return decodeURIComponent(String(v)).replace(/_/g, ' ').trim();
+    }
+  } catch (e) {}
+  let s = raw;
+  if (s.startsWith('?')) s = s.substring(1);
+  s = s.split('&')[0];
+  if (!s) return null;
+  return decodeURIComponent(s).replace(/_/g, ' ').trim();
+}
+
+function _mapInfinityFieldToWorld(infName) {
+  if (!infName) return null;
+  const s = infName.toLowerCase();
+  if (s.includes('overworld')) return '1';
+  if (s.includes('minigame')) return '2';
+  if (s.includes('seven seas') || s.includes('seas')) return '3';
+  if (s.includes('limited')) return 'limited';
+  return null;
+}
+
+function setSEOMetaForEgg(egg) {
+  if (!egg) return;
+  try {
+    const title = `${egg.name} - Luck Calculator`;
+    document.title = title;
+    const desc = `${egg.name} has ${Array.isArray(egg.pets || egg.Pets) ? (egg.pets || egg.Pets).length : (egg.Pets ? egg.Pets.length : 0)} pet(s). Luck calculator here!`;
+    const ogTitle = document.querySelector('meta[property="og:title"]') || document.getElementById('meta-og-title');
+    const ogDesc = document.querySelector('meta[property="og:description"]') || document.getElementById('meta-og-desc');
+    const ogImage = document.getElementById('meta-og-image') || document.querySelector('meta[property="og:image"]');
+    const metaDesc = document.getElementById('meta-description') || document.querySelector('meta[name="description"]');
+    if (ogTitle) ogTitle.content = title;
+    if (ogDesc) ogDesc.content = desc;
+    if (metaDesc) metaDesc.content = desc;
+
+    let imageUrl = (egg.image || egg.imageUrl || egg.imageurl) || `Images/eggs/${formatNameToPath(egg.name)}.webp`;
+    if (ogImage) ogImage.content = imageUrl;
+
+    const twTitle = document.querySelector('meta[name="twitter:title"]');
+    const twDesc = document.querySelector('meta[name="twitter:description"]');
+    const twImage = document.querySelector('meta[name="twitter:image"]');
+    if (twTitle) twTitle.content = title;
+    if (twDesc) twDesc.content = desc;
+    if (twImage) twImage.content = imageUrl;
+    const seoEl = document.getElementById('seo-egg-data');
+    if (seoEl) {
+      const petsList = (egg.pets || egg.Pets || []).map(p => typeof p === 'string' ? p : (p.name || '')).filter(Boolean);
+      const petsText = petsList.join(', ');
+      seoEl.innerText = `${egg.name} has ${petsList.length} pet(s): ${petsText}. Luck calculator here!`;
+    }
+    let jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": egg.name,
+      "itemListElement": []
+    };
+    const items = (egg.pets || egg.Pets || []).map((p, i) => {
+      const nm = typeof p === 'string' ? p : (p.name || '');
+      return { "@type": "ListItem", "position": i+1, "name": nm };
+    });
+    jsonLd.itemListElement = items;
+
+    let existing = document.getElementById('seo-jsonld');
+    if (!existing) {
+      existing = document.createElement('script');
+      existing.type = 'application/ld+json';
+      existing.id = 'seo-jsonld';
+      document.head.appendChild(existing);
+    }
+    existing.textContent = JSON.stringify(jsonLd);
+  } catch (e) {
+    console.warn('setSEOMetaForEgg error', e);
+  }
+}
+
+async function openEggFromQuery() {
+  try {
+    const raw = window.location.search || '';
+    const eggName = _normalizeQueryEgg(raw);
+    if (!eggName) return;
+    const eggsData = window.eggsJson || await fetchEggsData();
+    if (!eggsData || !eggsData.length) return;
+    const match = eggsData.find(e => e.name && e.name.toLowerCase() === eggName.toLowerCase()) ||
+                  eggsData.find(e => e.name && e.name.toLowerCase().replace(/[^a-z0-9]/g,'') === eggName.toLowerCase().replace(/[^a-z0-9]/g,''));
+    if (!match) return;
+
+
+    const world = _mapInfinityFieldToWorld(match.infinityEgg || match.world || match.location) || '1';
+    selectedWorld = world;
+    selectedEgg = match.name;
+    setSEOMetaForEgg(match);
+
+    renderEggs();
+    setTimeout(() => {
+      try {
+        const canSpawnAsRift = !!match.canSpawnAsRift;
+        const petsFromJson = match.pets || match.Pets || [];
+        const Pets = (Array.isArray(petsFromJson) ? petsFromJson : []).map(p => {
+          if (!p) return null;
+          if (typeof p === 'string') return { name: p, baseOdds: 0, icon: getPetIconByName(p) };
+          return p;
+        }).filter(Boolean);
+        const eggForView = { ...match, Pets };
+        animateEggDetails(() => createEggDetailsView(eggForView, canSpawnAsRift));
+      } catch (e) {}
+    }, 250);
+  } catch (e) {
+    console.warn('openEggFromQuery error', e);
+  }
+}
+
+window.addEventListener('load', () => {
+  setTimeout(openEggFromQuery, 300);
+});
+
 function searchEggsAndPets() {
   const searchTerm = document.getElementById('search-bar').value.toLowerCase();
   eggList.innerHTML = '';
