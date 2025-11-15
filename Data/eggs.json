@@ -412,6 +412,22 @@
     "dateRemoved": ""
   },
   {
+    "name": "Season OG Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/61/Season_OG_Egg.png",
+    "pets": [
+      "OG Pastel Angel",
+      "OG Pastel Dragon",
+      "OG Abyss",
+      "OG Shadow Hunter",
+      "OG Cardinal Bunny"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-11-14",
+    "dateRemoved": "2025-12-12"
+  },
+  {
     "name": "Season 9 Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Season_9_Egg.png",
     "pets": [
@@ -622,23 +638,34 @@
     "dateRemoved": "2025-11-21"
   },
   {
-    "name": "Super Silly Egg",
+    "name": "Super OG Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "pets": [
-      "Silly Golem",
-      "Silly Dragon",
-      "Silly Angel",
-      "Silly Unicorn",
-      "Silly Hydra",
-      "Silly King Doggy",
-      "Super Silly Doggy",
-      "Silly Leviathan"
+      "OG Vine Doggy",
+      "OG Vine Kitty",
+      "OG Unicore",
+      "OG Fruity Shock",
+      "OG Pastel Hexarium",
+      "OG Axolotl Plushie",
+      "OG BGS Plaque",
+      "OG Crystal Teddy",
+      "OG Hellfire",
+      "OG Archangel",
+      "OG Koi",
+      "OG Duality",
+      "OG Air Basilisk",
+      "OG Electric Basilisk",
+      "OG Fire Basilisk",
+      "OG Ice Basilisk",
+      "OG Godly Gem",
+      "OG King Kitty",
+      "OG Dementor"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
-    "dateAdded": "2025-11-07",
-    "dateRemoved": ""
+    "dateAdded": "2025-11-14",
+    "dateRemoved": "2025-11-28"
   },
   {
     "name": "OG Egg",
@@ -666,7 +693,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-11-07",
-    "dateRemoved": "2025-11-21"
+    "dateRemoved": "2025-11-28"
   },
   {
     "name": "Jester Egg",
@@ -1359,5 +1386,44 @@
     "secretBountyRotation": false,
     "dateAdded": "2025-11-07",
     "dateRemoved": "2025-11-21"
+  },
+  {
+    "name": "Super Silly Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "pets": [
+      "Silly Golem",
+      "Silly Dragon",
+      "Silly Angel",
+      "Silly Unicorn",
+      "Silly Hydra",
+      "Silly King Doggy",
+      "Super Silly Doggy",
+      "Silly Leviathan"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-11-07",
+    "dateRemoved": "2025-11-08"
+  },
+  {
+    "name": "Food Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "pets": [
+      "Ketchup",
+      "Mustard",
+      "Apple Rabbit",
+      "HotHoundDog",
+      "Lemonade Master",
+      "Hot Dog Doggy",
+      "Eternal Burger",
+      "Drippy Slice",
+      "Giant Gummy Worm"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-11-14",
+    "dateRemoved": "2025-11-15"
   }
 ]
