@@ -3320,6 +3320,26 @@
     "dateRemoved": "2025-11-07"
   },
   {
+    "name": "OG Demoncore",
+    "rarity": "secret",
+    "chance": 0.01,
+    "bubbles": 7000,
+    "gems": 135,
+    "currency": 4500,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "OG Wheel Spin",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/41/OG_Wheel_Spin_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/ba/OG_Demoncore.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/45/Shiny_OG_Demoncore.png"
+    ],
+    "dateAdded": "2025-11-14",
+    "dateRemoved": "2025-11-28"
+  },
+  {
     "name": "Cthulhu",
     "rarity": "secret",
     "bubbles": 5750,
@@ -6715,26 +6735,6 @@
     "dateRemoved": "2025-04-30"
   },
   {
-    "name": "OG Demoncore",
-    "rarity": "secret",
-    "chance": 0.01,
-    "bubbles": 7000,
-    "gems": 135,
-    "currency": 4500,
-    "currencyVariant": "coins",
-    "hasMythic": false,
-    "hatchable": true,
-    "obtainedFrom": "OG Wheel Spin",
-    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/41/OG_Wheel_Spin_Icon.png",
-    "obtainedFromInfo": "",
-    "image": [
-      "https://static.wikia.nocookie.net/bgs-infinity/images/b/ba/OG_Demoncore.png",
-      "https://static.wikia.nocookie.net/bgs-infinity/images/4/45/Shiny_OG_Demoncore.png"
-    ],
-    "dateAdded": "2025-11-07",
-    "dateRemoved": "2025-11-28"
-  },
-  {
     "name": "OG Vine Doggy",
     "rarity": "common",
     "chance": 64,
@@ -6745,7 +6745,7 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/7/71/OG_Vine_Doggy.png",
@@ -6765,7 +6765,7 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/OG_Vine_Kitty.png",
@@ -6785,7 +6785,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/e4/OG_Unicore.png",
@@ -6807,7 +6807,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/e7/OG_Fruity_Shock.png",
@@ -6829,7 +6829,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/9d/OG_Pastel_Hexarium.png",
@@ -6851,7 +6851,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/5/54/OG_Axolotl_Plushie.png",
@@ -6873,7 +6873,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/db/OG_BGS_Plaque.png",
@@ -6895,7 +6895,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/4/46/OG_Crystal_Teddy.png",
@@ -6917,7 +6917,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/f/f9/OG_Hellfire.png",
@@ -6939,7 +6939,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/1/16/OG_Archangel.png",
@@ -6961,7 +6961,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/a/ac/OG_Koi.png",
@@ -6983,7 +6983,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/OG_Duality.png",
@@ -7005,7 +7005,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/4/4a/OG_Air_Basilisk.png",
@@ -7027,7 +7027,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/cf/OG_Electric_Basilisk.png",
@@ -7049,7 +7049,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/OG_Fire_Basilisk.png",
@@ -7071,7 +7071,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/f/f2/OG_Ice_Basilisk.png",
@@ -7093,7 +7093,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/OG_Godly_Gem.png",
@@ -7115,7 +7115,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/cb/OG_King_Kitty.png",
@@ -7137,7 +7137,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Super OG Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/3e/OG_Dementor.png",
@@ -16617,6 +16617,28 @@
     "dateRemoved": "2025-04-12"
   },
   {
+    "name": "Giant NULLvoid",
+    "rarity": "secret",
+    "chance": 0.005,
+    "bubbles": 7000,
+    "gems": 135,
+    "currency": 4500,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Admin Mystery Box",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4a/Admin_Mystery_Box.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Giant_NULLvoid.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/30/Shiny_Giant_NULLvoid.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/5a/Mythic_Giant_NULLvoid.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/36/Shiny_Mythic_Giant_NULLvoid.png"
+    ],
+    "dateAdded": "2025-11-14",
+    "dateRemoved": ""
+  },
+  {
     "name": "Ketchup",
     "rarity": "common",
     "chance": 65,
@@ -16627,7 +16649,7 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Food Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Ketchup.png",
@@ -16647,7 +16669,7 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Food Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/35/Mustard.png",
@@ -16667,7 +16689,7 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Food Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/7/70/Apple_Rabbit.png",
@@ -16687,7 +16709,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Food Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/e7/HotHoundDog.png",
@@ -16709,7 +16731,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Food Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/d3/Lemonade_Master.png",
@@ -16731,7 +16753,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Food Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/e7/Hot_Dog_Doggy.png",
@@ -16753,7 +16775,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Food Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/8/8e/Eternal_Burger.png",
@@ -16775,7 +16797,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Food Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/6/61/Drippy_Slice.png",
@@ -16797,7 +16819,7 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Food Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/1/1a/Giant_Gummy_Worm.png",
