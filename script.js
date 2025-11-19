@@ -1,6 +1,41 @@
 ﻿async function fetchEggsData() {
-  const response = await fetch('Data/eggs.json');
-  const eggsJson = await response.json();
+  // Load eggs JSON and rifts list (plain names, one per line).
+  const resp = await fetch('Data/eggs.json');
+  const eggsJson = await resp.json();
+
+  // Default: no rifts list found -> treat all eggs as non-rift (so rift=false).
+  // The file `Data/rifts.txt` should contain one egg name per line. Any egg
+  // NOT present in that file will get `rift: true` added at runtime.
+  let riftSet = new Set();
+  try {
+    const r = await fetch('Data/rifts.txt');
+    if (r && r.ok) {
+      const txt = await r.text();
+      riftSet = new Set(txt.split(/\r?\n/).map(l => l.trim()).filter(Boolean));
+    }
+  } catch (e) {
+    // ignore - keep riftSet empty
+  }
+
+  // Annotate each egg object with a `rift` boolean based on the rifts list.
+  // If the egg name is NOT in the file, set `rift: true`. If it is present,
+  // set `rift: false`. This deliberately avoids using any existing rift
+  // information inside `eggs.json` so the file `rifts.txt` is authoritative.
+  if (Array.isArray(eggsJson)) {
+    for (const egg of eggsJson) {
+      try {
+        // `rift` is true when the egg name is NOT present in rifts.txt.
+        // Also override `canSpawnAsRift` so existing code that reads that
+        // field will use the rifts list as authoritative (per user request).
+        const isRift = !riftSet.has(egg.name);
+        egg.rift = isRift;
+        egg.canSpawnAsRift = isRift;
+      } catch (e) {
+        // ignore malformed entries
+      }
+    }
+  }
+
   return eggsJson;
 }
 
