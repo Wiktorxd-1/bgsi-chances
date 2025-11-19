@@ -1420,8 +1420,8 @@
       "Drippy Slice",
       "Giant Gummy Worm"
     ],
-    "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "luckIgnored": false, 
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-11-14",
     "dateRemoved": ""
