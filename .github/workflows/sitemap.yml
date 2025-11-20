@@ -1,0 +1,74 @@
+name: Generate xml sitemap
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  sitemap_job:
+    runs-on: ubuntu-latest
+    name: Generate a sitemap
+
+    steps:
+    - name: Checkout the repo
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Generate per-egg pages
+      run: |
+        node --version
+        echo "Running generator to create per-egg pages"
+        node ./script.js --generate-pages
+
+    - name: List per-egg pages created (first 120)
+      run: |
+        find . -maxdepth 2 -type f -name index.html | sort | sed -n '1,120p'
+
+    - name: Generate the sitemap
+      id: sitemap
+      uses: cicirello/generate-sitemap@v1
+      with:
+        base-url-path: https://wiktorxd-1.github.io/bgsi-chances/
+        path-to-root: .
+        drop-html-extension: true
+        sitemap-format: xml
+        include-html: true
+
+    - name: Output stats
+      run: |
+        echo "sitemap-path = ${{ steps.sitemap.outputs.sitemap-path }}"
+        echo "url-count = ${{ steps.sitemap.outputs.url-count }}"
+        echo "excluded-count = ${{ steps.sitemap.outputs.excluded-count }}"
+
+    - name: Debug - list site files and generated egg pages
+      run: |
+        echo "Root files (top 20):"
+        ls -la | head -n 20
+        echo "Find generated egg pages (looking for index.html under a slug):"
+        find . -maxdepth 2 -type f -name index.html | sort | sed -n '1,120p'
+        echo "Check if Common_Egg/index.html exists:"
+        if [ -f './Common_Egg/index.html' ]; then
+          echo 'Common_Egg page present'
+        else
+          echo 'Common_Egg page NOT present'
+        fi
+
+    - name: Debug - print generated sitemap
+      run: |
+        sitemap_path="${{ steps.sitemap.outputs.sitemap-path }}"
+        echo "sitemap_path: ${sitemap_path}"
+        if [ -f "${sitemap_path}" ]; then
+          echo "sitemap exists at path, printing first 120 lines:"
+          head -n 120 "${sitemap_path}" || true
+        elif [ -f "./sitemap.xml" ]; then
+          echo "sitemap present at ./sitemap.xml, printing first 120 lines:"
+          head -n 120 ./sitemap.xml || true
+        else
+          echo "No sitemap file found at '${sitemap_path}' or './sitemap.xml'"
+        fi
