@@ -1,44 +1,4 @@
-﻿async function fetchEggsData() {
-  // Load eggs JSON and rifts list (plain names, one per line).
-  const resp = await fetch('Data/eggs.json');
-  const eggsJson = await resp.json();
-
-  // Default: no rifts list found -> treat all eggs as non-rift (so rift=false).
-  // The file `Data/rifts.txt` should contain one egg name per line. Any egg
-  // NOT present in that file will get `rift: true` added at runtime.
-  let riftSet = new Set();
-  try {
-    const r = await fetch('Data/rifts.txt');
-    if (r && r.ok) {
-      const txt = await r.text();
-      riftSet = new Set(txt.split(/\r?\n/).map(l => l.trim()).filter(Boolean));
-    }
-  } catch (e) {
-    // ignore - keep riftSet empty
-  }
-
-  // Annotate each egg object with a `rift` boolean based on the rifts list.
-  // If the egg name is NOT in the file, set `rift: true`. If it is present,
-  // set `rift: false`. This deliberately avoids using any existing rift
-  // information inside `eggs.json` so the file `rifts.txt` is authoritative.
-  if (Array.isArray(eggsJson)) {
-    for (const egg of eggsJson) {
-      try {
-        // `rift` is true when the egg name is NOT present in rifts.txt.
-        // Also override `canSpawnAsRift` so existing code that reads that
-        // field will use the rifts list as authoritative (per user request).
-        const isRift = !riftSet.has(egg.name);
-        egg.rift = isRift;
-        egg.canSpawnAsRift = isRift;
-      } catch (e) {
-        // ignore malformed entries
-      }
-    }
-  }
-
-  return eggsJson;
-}
-
+﻿
 const eggs = [
 { name: "Common Egg", Pets: [ { name: "King Doggy (Secret)", baseOdds: 100000000 } ], world: "1" },
 { name: "Spikey Egg", Pets: [ { name: "Emerald Golem", baseOdds: 200 } ], world: "1" },
@@ -144,6 +104,38 @@ function renderEggs() {
     });
   });
 }
+
+async function fetchEggsData() {
+
+  const resp = await fetch('Data/eggs.json');
+  const eggsJson = await resp.json();
+
+  let riftSet = new Set();
+  try {
+    const r = await fetch('Data/rifts.txt');
+    if (r && r.ok) {
+      const txt = await r.text();
+      riftSet = new Set(txt.split(/\r?\n/).map(l => l.trim()).filter(Boolean));
+    }
+  } catch (e) {
+
+  }
+
+  if (Array.isArray(eggsJson)) {
+    for (const egg of eggsJson) {
+      try {
+
+        const isRift = !riftSet.has(egg.name);
+        egg.rift = isRift;
+        egg.canSpawnAsRift = isRift;
+      } catch (e) {
+      }
+    }
+  }
+
+  return eggsJson;
+}
+
 
 function selectWorld(world) {
   const eggList = document.getElementById("egg-list");
@@ -2622,9 +2614,45 @@ async function fetchPetsData() {
 }
 
 
-(async function() {
+if (typeof window !== 'undefined') (async function() {
   window.eggsJson = await fetchEggsData();
   await fetchPetsData();
+
+  (function tryOpenEggFromLocation() {
+    function slugToName(slug) {
+      if (!slug) return '';
+      try { slug = decodeURIComponent(slug); } catch (e) {}
+      return slug.replace(/_/g, ' ').replace(/-/g, ' ').trim();
+    }
+
+    const params = new URLSearchParams(location.search || '');
+    let eggSlug = null;
+    if (params.has('egg')) eggSlug = params.get('egg');
+    if (!eggSlug && location.search && location.search.length > 1) {
+      const raw = location.search.substring(1);
+      if (!raw.includes('=')) {
+        eggSlug = raw.split('&')[0];
+      }
+    }
+    if (!eggSlug && location.hash) eggSlug = location.hash.replace(/^#\/?/, '');
+    if (!eggSlug) {
+      const segs = (location.pathname || '').split('/').filter(Boolean);
+      if (segs.length > 0) {
+        const last = segs[segs.length - 1];
+        if (last && !/index\.(html?)$/i.test(last)) eggSlug = last;
+      }
+    }
+
+    if (eggSlug) {
+      const candidate = slugToName(eggSlug);
+      const found = (eggs || []).find(e => e && e.name && e.name.toLowerCase() === candidate.toLowerCase())
+                 || (window.eggsJson || []).find(e => e && e.name && e.name.toLowerCase() === candidate.toLowerCase());
+      if (found) {
+        selectedEgg = found.name;
+      }
+    }
+  })();
+
   renderEggs();
   setupPetStatsHover();
   const warningIcon = document.getElementById('search-warning-icon');
@@ -2638,6 +2666,7 @@ async function fetchPetsData() {
     });
   }
 })();
+
 
 function searchEggsAndPets() {
   const searchTerm = document.getElementById('search-bar').value.toLowerCase();

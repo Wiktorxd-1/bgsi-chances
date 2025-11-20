@@ -1,0 +1,27 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Generate Sitemap
+        uses: cicirello/generate-sitemap@v1.10.4
+        with:
+          base-url: 'https://wiktorxd-1.github.io/bgsi-chances/'
+          include-glob: '**/*.html'
+          output-file: 'sitemap.xml'
+
+      - name: Commit sitemap
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add sitemap.xml
+          git commit -m "Update sitemap" || echo "No changes"
+          git push
