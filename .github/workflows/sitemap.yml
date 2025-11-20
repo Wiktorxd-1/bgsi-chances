@@ -1,28 +1,26 @@
-name: Generate xml sitemap
+name: Generate Sitemap
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  sitemap_job:
+  build:
     runs-on: ubuntu-latest
-    name: Generate a sitemap
-
     steps:
-    - name: Checkout the repo
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0 
+      - uses: actions/checkout@v3
 
-    - name: Generate the sitemap
-      id: sitemap
-      uses: cicirello/generate-sitemap@v1
-      with:
-        base-url-path: https://wiktorxd-1.github.io/bgsi-chances/
+      - name: Generate sitemap
+        uses: cicirello/generate-sitemap@v1
+        with:
+          base-url-path: https://wiktorxd-1.github.io/bgsi-chances/
+          include-html: true
+          verbose: true
 
-    - name: Output stats
-      run: |
-        echo "sitemap-path = ${{ steps.sitemap.outputs.sitemap-path }}"
-        echo "url-count = ${{ steps.sitemap.outputs.url-count }}"
-        echo "excluded-count = ${{ steps.sitemap.outputs.excluded-count }}"
+      - name: Commit and push sitemap
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add sitemap.xml
+          git commit -m "Update sitemap" || exit 0
+          git push
