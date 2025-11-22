@@ -1,5 +1,4 @@
-﻿
-const eggs = [
+﻿const eggs = [
 { name: "Common Egg", Pets: [ { name: "King Doggy (Secret)", baseOdds: 100000000 } ], world: "1" },
 { name: "Spikey Egg", Pets: [ { name: "Emerald Golem", baseOdds: 200 } ], world: "1" },
 { name: "Magma Egg", Pets: [ { name: "Inferno Dragon", baseOdds: 400 } ], world: "1" },
@@ -18,15 +17,13 @@ const eggs = [
 { name: "Lava Egg", Pets: [ { name: "Magma Cube", baseOdds: 4000 }, { name: "Night Dweller", baseOdds: 100000 }, { name: "Fire King", baseOdds: 1333333 }, { name: "Hellshard (Secret)", baseOdds: 1000000000 } ], world: "3" },
 { name: "Secret Egg", Pets: [ { name: "Gigantic Spitty (Infinity)", baseOdds: 40000000000 } ], world: "1" },
 { name: "Atlantis Egg", Pets: [ { name: "Angler Fish", baseOdds: 4000 }, { name: "Jellyfish", baseOdds: 200000 }, { name: "Atlantis Guardian", baseOdds: 2000000 }, { name: "Tidal God (Secret)", baseOdds: 250000000 } ], world: "3" },
-{ name: "Classic Egg", Pets: [ { name: "Classic Unicorn", baseOdds: 4000 }, { name: "Classic Dominus", baseOdds: 200000 }, { name: "Classic Noob", baseOdds: 2000000 }, { name: "Classic Overlord (Secret)", baseOdds: 100000000 }, { name: "1x1x1x1 (Secret)", baseOdds: 500000000 } ], world: "3" },
+{ name: "Classic Egg", Pets: [ { name: "Classic Unicorn", baseOdds: 4000 }, { name: "Classic Dominus", baseOdds: 200000 }, { name: "Classic Noob", baseOdds: 2000000 }, { name: "Classic Overlord (Secret)", baseOdds: 100000000 } ], world: "3" },
 { name: "Developer Egg", Pets: [ { name: "Sylently's Hats", baseOdds: 100000 }, { name: "Isaac Rainbow Shock", baseOdds: 1000000 }, { name: "Nert Plushie (Secret)", baseOdds: 500000000 }, { name: "ObscureEntity Plushie (Secret)", baseOdds: 500000000 }, { name: "Quamatic Plushie (Secret)", baseOdds: 500000000 }, { name: "Sircfenner Plushie (Secret)", baseOdds: 500000000 }, { name: "Sylently Plushie (Secret)", baseOdds: 500000000 }, { name: "FutureWebsiteOwner Plushie (Secret)", baseOdds: 500000000 }, { name: "Sylently's Pet (Infinity)", baseOdds: 20000000000 } ], world: "1" },
 { name: "OG Egg", Pets: [ { name: "OG Element Hydra", baseOdds: 5000 }, { name: "OG Cursed Scorpio", baseOdds: 50000 }, { name: "OG Galaxium", baseOdds: 2000000 }, { name: "OG Sakuralord", baseOdds: 25000000 }, { name: "OG The Overlord (Secret)", baseOdds: 80000000 }, { name: "OG Prisma Cube (Secret)", baseOdds: 250000000 }, { name: "OG Lucid Leaf (Secret)", baseOdds: 500000000 }, { name: "OG Dragonfruit (Secret)", baseOdds: 2500000000 }, { name: "OG Chocolate Sundae Champion (Secret)", baseOdds: 4000000000 }, { name: "OG Mint Sundae Champion (Secret)", baseOdds: 4000000000 }, { name: "OG Strawberry Sundae Champion (Secret)", baseOdds: 4000000000 }, { name: "OG Vanilla Sundae Champion (Secret)", baseOdds: 4000000000 }, { name: "OG Plasma Wolflord (Secret)", baseOdds: 5000000000 }, { name: "OG Shard (Secret)", baseOdds: 10000000000 }, { name: "OG Giant Robot (Infinity)", baseOdds: 100000000000 } ], world: "limited" },
-{ name: "Super OG Egg", image: "Images/eggs/Placeholder.webp" , Pets: [ { name: "OG Unicore", baseOdds: 5000 }, { name: "OG Fruity Shock", baseOdds: 50000 }, { name: "OG Pastel Hexarium", baseOdds: 1000000 }, { name: "OG Axolotl Plushie", baseOdds: 20000000 }, { name: "OG BGS Plaque (Secret)", baseOdds: 250000000 }, { name: "OG Crystal Teddy (Secret)", baseOdds: 500000000 }, { name: "OG Hellfire (Secret)", baseOdds: 1000000000 }, { name: "OG Archangel (Secret)", baseOdds: 2000000000 }, { name: "OG Koi (Secret)", baseOdds: 5000000000 }, { name: "OG Duality (Secret)", baseOdds: 10000000000 }, { name: "OG Air Basilisk (Secret)", baseOdds: 20000000000 }, { name: "OG Electric Basilisk (Secret)", baseOdds: 20000000000 }, { name: "OG Fire Basilisk (Secret)", baseOdds: 20000000000 }, { name: "OG Ice Basilisk (Secret)", baseOdds: 20000000000 }, { name: "OG Godly Gem (Secret)", baseOdds: 25000000000 }, { name: "OG King Kitty (Infinity)", baseOdds: 100000000000 }, { name: "OG Dementor (Infinity)", baseOdds: 500000000000 } ], world: "limited" },
-{ name: "Food Egg", image: "Images/eggs/Placeholder.webp" , Pets: [ { name: "HotHoundDog", baseOdds: 50000 }, { name: "Lemonade Master", baseOdds: 1000000 }, { name: "Hot Dog Doggy (Secret)", baseOdds: 100000000 }, { name: "Eternal Burger (Secret)", baseOdds: 1000000000 }, { name: "Drippy Slice (Secret)", baseOdds: 2000000000 }, { name: "Giant Gummy Worm (Infinity)", baseOdds: 200000000000 } ], world: "limited" },
+{ name: "Super OG Egg", image: "Images/eggs/Placeholder_Egg.webp", Pets: [ { name: "OG Unicore", baseOdds: 5000 }, { name: "OG Fruity Shock", baseOdds: 50000 }, { name: "OG Pastel Hexarium", baseOdds: 1000000 }, { name: "OG Axolotl Plushie", baseOdds: 20000000 }, { name: "OG BGS Plaque (Secret)", baseOdds: 250000000 }, { name: "OG Crystal Teddy (Secret)", baseOdds: 500000000 }, { name: "OG Hellfire (Secret)", baseOdds: 1000000000 }, { name: "OG Godly Shamrock (Secret)", baseOdds: 1000000000 }, { name: "OG Archangel (Secret)", baseOdds: 2000000000 }, { name: "OG OwOlord (Secret)", baseOdds: 2000000000 }, { name: "OG Koi (Secret)", baseOdds: 5000000000 }, { name: "OG Love Thief (Secret)", baseOdds: 5000000000 }, { name: "OG Duality (Secret)", baseOdds: 10000000000 }, { name: "OG Air Basilisk (Secret)", baseOdds: 20000000000 }, { name: "OG Electric Basilisk (Secret)", baseOdds: 20000000000 }, { name: "OG Fire Basilisk (Secret)", baseOdds: 20000000000 }, { name: "OG Ice Basilisk (Secret)", baseOdds: 20000000000 }, { name: "OG Godly Gem (Secret)", baseOdds: 25000000000 }, { name: "OG King Kitty (Infinity)", baseOdds: 100000000000 }, { name: "OG Dementor (Infinity)", baseOdds: 500000000000 } ], world: "limited" },
+{ name: "Food Egg", image: "Images/eggs/Placeholder_Egg.webp", Pets: [ { name: "HotHoundDog", baseOdds: 50000 }, { name: "Lemonade Master", baseOdds: 1000000 }, { name: "Butter Dawg (Secret)", baseOdds: 100000000 }, { name: "Eternal Burger (Secret)", baseOdds: 1000000000 }, { name: "Drippy Slice (Secret)", baseOdds: 2000000000 }, { name: "Watermelon Round (Secret)", baseOdds: 1000000000 }, { name: "Giant Gummy Worm (Infinity)", baseOdds: 200000000000 } ], world: "limited" },
+{ name: "Corn Egg", Pets: [ { name: "Wheat Angel", baseOdds: 5000 }, { name: "Corn Dragon", baseOdds: 50000 }, { name: "Aureate Sunflower", baseOdds: 1000000 }, { name: "Pumpkin Pie (Secret)", baseOdds: 250000000 }, { name: "Giant Fall Turkey (Secret)", baseOdds: 2000000000 }, { name: "The Cornucopia (Secret)", baseOdds: 10000000000 } ], world: "limited" }
 ];
-
-
-
 
 
 let selectedWorld = null;
@@ -427,9 +424,9 @@ async function createBountyDetailsView() {
 
         let newBountyBaseOdds = parseChanceString(b.Chance);
         const _bountyOverrides = {
-          'King Leviathan': 5000000000,
-          'Harmonic Harp': 500000000,
-          'Axolotl Army': 100000000
+          'OG Lucky Pyramidium': 1250000000,
+          'OG Hellshard': 400000000,
+          'OG Overlord Plushie': 100000000
         };
         const _petKey = (b && b.Pet) ? b.Pet : '';
         if (_bountyOverrides[_petKey]) {

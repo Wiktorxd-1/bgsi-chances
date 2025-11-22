@@ -2826,7 +2826,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/b/b4/Shiny_Mythic_1x1x1x1.png"
     ],
     "dateAdded": "2025-09-19",
-    "dateRemoved": ""
+    "dateRemoved": "2025-11-21"
   },
   {
     "name": "Giant Classic Chicken",
@@ -2977,7 +2977,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/06/Shiny_Mythic_Pixel_Hydra.png"
     ],
     "dateAdded": "2025-06-30",
-    "dateRemoved": ""
+    "dateRemoved": "2025-11-14"
   },
   {
     "name": "Kitsune",
@@ -3338,6 +3338,26 @@
     ],
     "dateAdded": "2025-11-14",
     "dateRemoved": "2025-11-28"
+  },
+  {
+    "name": "Fairylight Kitsune",
+    "rarity": "secret",
+    "chance": 0.01,
+    "bubbles": 7000,
+    "gems": 135,
+    "currency": 4500,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Thanksgiving Wheel Spin",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/e/ec/Thanksgiving_Wheel_Spin_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/98/Fairylight_Kitsune.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/bd/Shiny_Fairylight_Kitsune.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
   },
   {
     "name": "Cthulhu",
@@ -3766,26 +3786,6 @@
     "dateRemoved": "2025-10-17"
   },
   {
-    "name": "OG The Keeper",
-    "rarity": "secret",
-    "chance": 100,
-    "bubbles": 7500,
-    "gems": 135,
-    "currency": 4250,
-    "currencyVariant": "coins",
-    "hasMythic": false,
-    "hatchable": true,
-    "obtainedFrom": "OG Event Shop",
-    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/OG_The_Keeper.png",
-    "obtainedFromInfo": "",
-    "image": [
-      "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/OG_The_Keeper.png",
-      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4c/Shiny_OG_The_Keeper.png"
-    ],
-    "dateAdded": "2025-11-07",
-    "dateRemoved": "2025-11-28"
-  },
-  {
     "name": "Voodoo Plushie",
     "rarity": "secret",
     "chance": 100,
@@ -3864,6 +3864,66 @@
     ],
     "dateAdded": "2025-08-29",
     "dateRemoved": "2025-09-19"
+  },
+  {
+    "name": "OG Eternal Heart",
+    "rarity": "secret",
+    "chance": 100,
+    "bubbles": 7500,
+    "gems": 135,
+    "currency": 4250,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "OG Event Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/a/aa/OG_Eternal_Heart.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/aa/OG_Eternal_Heart.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9d/Shiny_OG_Eternal_Heart.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": "2025-11-28"
+  },
+  {
+    "name": "OG The Keeper",
+    "rarity": "secret",
+    "chance": 100,
+    "bubbles": 7500,
+    "gems": 135,
+    "currency": 4250,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "OG Event Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/a/aa/OG_Eternal_Heart.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/OG_The_Keeper.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4c/Shiny_OG_The_Keeper.png"
+    ],
+    "dateAdded": "2025-11-07",
+    "dateRemoved": "2025-11-21"
+  },
+  {
+    "name": "Harvest Dogcat",
+    "rarity": "secret",
+    "chance": 100,
+    "bubbles": 7500,
+    "gems": 135,
+    "currency": 4250,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Thanksgiving Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f7/Harvest_Dogcat.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f7/Harvest_Dogcat.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9f/Shiny_Harvest_Dogcat.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
   },
   {
     "name": "BGS Box",
@@ -4403,7 +4463,7 @@
   {
     "name": "OG Gem Overlord",
     "rarity": "legendary",
-    "chance": 0,
+    "chance": 0.1,
     "bubbles": 5500,
     "gems": 135,
     "currency": 3500,
@@ -4425,7 +4485,7 @@
   {
     "name": "OG Angelic Ghost Spirit",
     "rarity": "secret",
-    "chance": 0,
+    "chance": 0.02,
     "bubbles": 7750,
     "gems": 135,
     "currency": 4500,
@@ -4447,7 +4507,7 @@
   {
     "name": "OG Demonic Ghost Spirit",
     "rarity": "secret",
-    "chance": 0,
+    "chance": 0.02,
     "bubbles": 7750,
     "gems": 135,
     "currency": 4500,
@@ -4469,7 +4529,7 @@
   {
     "name": "OG Radiant One",
     "rarity": "secret",
-    "chance": 0,
+    "chance": 0.002,
     "bubbles": 8400,
     "gems": 140,
     "currency": 5200,
@@ -4491,7 +4551,7 @@
   {
     "name": "The Infinity Gem",
     "rarity": "infinity",
-    "chance": 0,
+    "chance": 0.0001,
     "bubbles": 16500,
     "gems": 250,
     "currency": 10000,
@@ -6735,6 +6795,198 @@
     "dateRemoved": "2025-04-30"
   },
   {
+    "name": "Harvest Doggy",
+    "rarity": "common",
+    "chance": 65,
+    "bubbles": 8,
+    "gems": 0,
+    "currency": 6,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Corn Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Corn_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/3b/Harvest_Doggy.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Shiny_Harvest_Doggy.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Pumpkin Boi",
+    "rarity": "rare",
+    "chance": 30,
+    "bubbles": 14,
+    "gems": 0,
+    "currency": 8,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Corn Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Corn_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Pumpkin_Boi.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Shiny_Pumpkin_Boi.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Scarecrow",
+    "rarity": "epic",
+    "chance": 5,
+    "bubbles": 14,
+    "gems": 0,
+    "currency": 8,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Corn Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Corn_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Scarecrow.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/7e/Shiny_Scarecrow.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Wheat Angel",
+    "rarity": "legendary",
+    "chance": 0.02,
+    "bubbles": 1950,
+    "gems": 35,
+    "currency": 500,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Corn Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Corn_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/53/Wheat_Angel.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/17/Shiny_Wheat_Angel.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/81/Mythic_Wheat_Angel.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Shiny_Mythic_Wheat_Angel.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Corn Dragon",
+    "rarity": "legendary",
+    "chance": 0.002,
+    "bubbles": 4500,
+    "gems": 95,
+    "currency": 1350,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Corn Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Corn_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a4/Corn_Dragon.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/fe/Shiny_Corn_Dragon.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Mythic_Corn_Dragon.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Shiny_Mythic_Corn_Dragon.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Aureate Sunflower",
+    "rarity": "legendary",
+    "chance": 0.0001,
+    "bubbles": 6100,
+    "gems": 115,
+    "currency": 3300,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Corn Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Corn_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/6d/Aureate_Sunflower.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4f/Shiny_Aureate_Sunflower.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c8/Mythic_Aureate_Sunflower.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/89/Shiny_Mythic_Aureate_Sunflower.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Pumpkin Pie",
+    "rarity": "secret",
+    "chance": 4e-7,
+    "bubbles": 7600,
+    "gems": 130,
+    "currency": 4300,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Corn Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Corn_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Pumpkin_Pie.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b8/Shiny_Pumpkin_Pie.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Mythic_Pumpkin_Pie.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c3/Shiny_Mythic_Pumpkin_Pie.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Giant Fall Turkey",
+    "rarity": "secret",
+    "chance": 5e-8,
+    "bubbles": 8000,
+    "gems": 140,
+    "currency": 4650,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Corn Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Corn_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e5/Giant_Fall_Turkey.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Shiny_Giant_Fall_Turkey.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b3/Mythic_Giant_Fall_Turkey.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e9/Shiny_Mythic_Giant_Fall_Turkey.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
+  },
+  {
+    "name": "The Cornucopia",
+    "rarity": "secret",
+    "chance": 1e-8,
+    "bubbles": 9000,
+    "gems": 165,
+    "currency": 6200,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Corn Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Corn_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b7/The_Cornucopia.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Shiny_The_Cornucopia.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/52/Mythic_The_Cornucopia.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f2/Shiny_Mythic_The_Cornucopia.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
+  },
+  {
     "name": "OG Vine Doggy",
     "rarity": "common",
     "chance": 64,
@@ -6929,6 +7181,28 @@
     "dateRemoved": "2025-11-28"
   },
   {
+    "name": "OG Godly Shamrock",
+    "rarity": "secret",
+    "chance": 1e-7,
+    "bubbles": 7750,
+    "gems": 135,
+    "currency": 4350,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Super OG Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/OG_Godly_Shamrock.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/3e/Shiny_OG_Godly_Shamrock.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1f/Mythic_OG_Godly_Shamrock.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4e/Shiny_Mythic_OG_Godly_Shamrock.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": "2025-11-28"
+  },
+  {
     "name": "OG Archangel",
     "rarity": "secret",
     "chance": 5e-8,
@@ -6951,6 +7225,28 @@
     "dateRemoved": "2025-11-28"
   },
   {
+    "name": "OG OwOlord",
+    "rarity": "secret",
+    "chance": 5e-8,
+    "bubbles": 7900,
+    "gems": 140,
+    "currency": 4500,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Super OG Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4a/OG_OwOlord.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Shiny_OG_OwOlord.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/0a/Mythic_OG_OwOlord.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/0e/Shiny_Mythic_OG_OwOlord.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": "2025-11-28"
+  },
+  {
     "name": "OG Koi",
     "rarity": "secret",
     "chance": 2e-8,
@@ -6970,6 +7266,28 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Shiny_Mythic_OG_Koi.png"
     ],
     "dateAdded": "2025-11-14",
+    "dateRemoved": "2025-11-28"
+  },
+  {
+    "name": "OG Love Thief",
+    "rarity": "secret",
+    "chance": 2e-8,
+    "bubbles": 8200,
+    "gems": 145,
+    "currency": 5000,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Super OG Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/de/OG_Love_Thief.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/17/Shiny_OG_Love_Thief.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/59/Mythic_OG_Love_Thief.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8d/Shiny_Mythic_OG_Love_Thief.png"
+    ],
+    "dateAdded": "2025-11-21",
     "dateRemoved": "2025-11-28"
   },
   {
@@ -7539,6 +7857,26 @@
     ],
     "dateAdded": "2025-11-07",
     "dateRemoved": "2025-11-28"
+  },
+  {
+    "name": "Prismidium",
+    "rarity": "secret",
+    "chance": 0.005,
+    "bubbles": 5400,
+    "gems": 110,
+    "currency": 4000,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Thanksgiving Mystery Box",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Thanksgiving_Mystery_Box.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4f/Prismidium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/82/Shiny_Prismidium.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
   },
   {
     "name": "Old Dolly",
@@ -13845,6 +14183,72 @@
     "dateRemoved": "2025-07-19"
   },
   {
+    "name": "OG Overlord Plushie",
+    "rarity": "secret",
+    "chance": 0.000001,
+    "bubbles": 7300,
+    "gems": 120,
+    "currency": 4250,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Secret Bounty",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/12/OG_Overlord_Plushie.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/12/Shiny_OG_Overlord_Plushie.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/99/Mythic_OG_Overlord_Plushie.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/Shiny_Mythic_OG_Overlord_Plushie.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": "2025-12-19"
+  },
+  {
+    "name": "OG Hellshard",
+    "rarity": "secret",
+    "chance": 2.5e-7,
+    "bubbles": 7750,
+    "gems": 135,
+    "currency": 4750,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Secret Bounty",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/96/OG_Hellshard.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d4/Shiny_OG_Hellshard.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Mythic_OG_Hellshard.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/68/Shiny_Mythic_OG_Hellshard.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": "2025-12-19"
+  },
+  {
+    "name": "OG Lucky Pyramidium",
+    "rarity": "secret",
+    "chance": 8e-8,
+    "bubbles": 8600,
+    "gems": 150,
+    "currency": 6000,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Secret Bounty",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/OG_Lucky_Pyramidium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c5/Shiny_OG_Lucky_Pyramidium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/5e/Mythic_OG_Lucky_Pyramidium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a9/Shiny_Mythic_OG_Lucky_Pyramidium.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": "2025-12-19"
+  },
+  {
     "name": "OG Radiance",
     "rarity": "infinity",
     "chance": 2e-9,
@@ -14491,6 +14895,63 @@
     "dateRemoved": "2025-11-14"
   },
   {
+    "name": "OG Wolflord",
+    "rarity": "secret",
+    "bubbles": 3500,
+    "gems": 45,
+    "currency": 1750,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "Level Up Pack",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/bc/OG_Wolflord.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Shiny_OG_Wolflord.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": "2025-11-28"
+  },
+  {
+    "name": "OG Soul Heart",
+    "rarity": "secret",
+    "bubbles": 8000,
+    "gems": 140,
+    "currency": 5500,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "Soul Heart Bundle",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b7/OG_Soul_Heart.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/eb/Shiny_OG_Soul_Heart.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": "2025-11-28"
+  },
+  {
+    "name": "Mega Mech",
+    "rarity": "secret",
+    "bubbles": 6500,
+    "gems": 120,
+    "currency": 4750,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "Mega Mech Bundle",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/44/Mega_Mech.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/ba/Shiny_Mega_Mech.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": "2025-11-28"
+  },
+  {
     "name": "OG Immortal One",
     "rarity": "secret",
     "bubbles": 8000,
@@ -14989,7 +15450,7 @@
   },
   {
     "name": "67 GOD",
-    "rarity": "legendary",
+    "rarity": "secret",
     "chance": 86,
     "bubbles": 6767,
     "gems": 67,
@@ -15328,6 +15789,48 @@
     ],
     "dateAdded": "2025-07-06",
     "dateRemoved": "2025-07-19"
+  },
+  {
+    "name": "JellOwOlord",
+    "rarity": "legendary",
+    "bubbles": 1350,
+    "gems": 28,
+    "currency": 500,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e5/JellOwOlord.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1e/Shiny_JellOwOlord.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/fa/Mythic_JellOwOlord.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/83/Shiny_Mythic_JellOwOlord.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": "2025-11-28"
+  },
+  {
+    "name": "OG Pufferfish",
+    "rarity": "legendary",
+    "bubbles": 1750,
+    "gems": 35,
+    "currency": 700,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/56/OG_Pufferfish.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b1/Shiny_OG_Pufferfish.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/20/Mythic_OG_Pufferfish.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Shiny_Mythic_OG_Pufferfish.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": "2025-11-28"
   },
   {
     "name": "Guardian Elemental",
@@ -16656,7 +17159,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/cb/Shiny_Ketchup.png"
     ],
     "dateAdded": "2025-11-14",
-    "dateRemoved": "2025-11-15"
+    "dateRemoved": ""
   },
   {
     "name": "Mustard",
@@ -16676,7 +17179,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/98/Shiny_Mustard.png"
     ],
     "dateAdded": "2025-11-14",
-    "dateRemoved": "2025-11-15"
+    "dateRemoved": ""
   },
   {
     "name": "Apple Rabbit",
@@ -16696,7 +17199,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/06/Shiny_Apple_Rabbit.png"
     ],
     "dateAdded": "2025-11-14",
-    "dateRemoved": "2025-11-15"
+    "dateRemoved": ""
   },
   {
     "name": "HotHoundDog",
@@ -16718,7 +17221,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Shiny_Mythic_HotHoundDog.png"
     ],
     "dateAdded": "2025-11-14",
-    "dateRemoved": "2025-11-15"
+    "dateRemoved": ""
   },
   {
     "name": "Lemonade Master",
@@ -16740,7 +17243,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Shiny_Mythic_Lemonade_Master.png"
     ],
     "dateAdded": "2025-11-14",
-    "dateRemoved": "2025-11-15"
+    "dateRemoved": ""
   },
   {
     "name": "Hot Dog Doggy",
@@ -16762,7 +17265,29 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/8/8b/Shiny_Mythic_Hot_Dog_Doggy.png"
     ],
     "dateAdded": "2025-11-14",
-    "dateRemoved": "2025-11-15"
+    "dateRemoved": "2025-11-21"
+  },
+  {
+    "name": "Butter Dawg",
+    "rarity": "secret",
+    "chance": 0.000001,
+    "bubbles": 6250,
+    "gems": 125,
+    "currency": 3750,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Food Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e8/Butter_Dawg.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Shiny_Butter_Dawg.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/5b/Mythic_Butter_Dawg.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Shiny_Mythic_Butter_Dawg.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
   },
   {
     "name": "Eternal Burger",
@@ -16784,7 +17309,29 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/Shiny_Mythic_Eternal_Burger.png"
     ],
     "dateAdded": "2025-11-14",
-    "dateRemoved": "2025-11-15"
+    "dateRemoved": ""
+  },
+  {
+    "name": "Watermelon Round",
+    "rarity": "secret",
+    "chance": 1e-7,
+    "bubbles": 7000,
+    "gems": 140,
+    "currency": 4500,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Food Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/37/Watermelon_Round.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1a/Shiny_Watermelon_Round.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/3e/Mythic_Watermelon_Round.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Shiny_Mythic_Watermelon_Round.png"
+    ],
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
   },
   {
     "name": "Drippy Slice",
@@ -16806,7 +17353,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/Shiny_Mythic_Drippy_Slice.png"
     ],
     "dateAdded": "2025-11-14",
-    "dateRemoved": "2025-11-15"
+    "dateRemoved": ""
   },
   {
     "name": "Giant Gummy Worm",
@@ -16828,7 +17375,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Shiny_Mythic_Giant_Gummy_Worm.png"
     ],
     "dateAdded": "2025-11-14",
-    "dateRemoved": "2025-11-15"
+    "dateRemoved": ""
   },
   {
     "name": "Silly Golem",
@@ -17034,6 +17581,28 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/c5/Shiny_VIP_Rumblecon_Doggy.png"
     ],
     "dateAdded": "2025-10-31",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Infinity Wisp",
+    "rarity": "infinity",
+    "chance": 0.01,
+    "bubbles": 20000,
+    "gems": 250,
+    "currency": 10000,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Prismatic Egg",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/28/Infinity_Wisp.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a6/Shiny_Infinity_Wisp.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/af/Mythic_Infinity_Wisp.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/ab/Shiny_Mythic_Infinity_Wisp.png"
+    ],
+    "dateAdded": "2025-11-21",
     "dateRemoved": ""
   }
 ]

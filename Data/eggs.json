@@ -385,8 +385,7 @@
       "Classic Unicorn",
       "Classic Dominus",
       "Classic Noob",
-      "Classic Overlord",
-      "1x1x1x1"
+      "Classic Overlord"
     ],
     "luckIgnored": false,
     "infinityEgg": "Seven Seas",
@@ -638,6 +637,26 @@
     "dateRemoved": "2025-11-21"
   },
   {
+    "name": "Corn Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Corn_Egg.png",
+    "pets": [
+      "Harvest Doggy",
+      "Pumpkin Boi",
+      "Scarecrow",
+      "Wheat Angel",
+      "Corn Dragon",
+      "Aureate Sunflower",
+      "Pumpkin Pie",
+      "Giant Fall Turkey",
+      "The Cornucopia"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-11-21",
+    "dateRemoved": ""
+  },
+  {
     "name": "Super OG Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "pets": [
@@ -650,8 +669,11 @@
       "OG BGS Plaque",
       "OG Crystal Teddy",
       "OG Hellfire",
+      "OG Godly Shamrock",
       "OG Archangel",
+      "OG OwOlord",
       "OG Koi",
+      "OG Love Thief",
       "OG Duality",
       "OG Air Basilisk",
       "OG Electric Basilisk",
@@ -1415,15 +1437,25 @@
       "Apple Rabbit",
       "HotHoundDog",
       "Lemonade Master",
-      "Hot Dog Doggy",
+      "Butter Dawg",
       "Eternal Burger",
       "Drippy Slice",
+      "Watermelon Round",
       "Giant Gummy Worm"
     ],
-    "luckIgnored": false, 
-    "canSpawnAsRift": true,
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-11-14",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Prismatic Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-11-21",
     "dateRemoved": ""
   }
 ]
