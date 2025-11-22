@@ -21,7 +21,7 @@
 { name: "Developer Egg", Pets: [ { name: "Sylently's Hats", baseOdds: 100000 }, { name: "Isaac Rainbow Shock", baseOdds: 1000000 }, { name: "Nert Plushie (Secret)", baseOdds: 500000000 }, { name: "ObscureEntity Plushie (Secret)", baseOdds: 500000000 }, { name: "Quamatic Plushie (Secret)", baseOdds: 500000000 }, { name: "Sircfenner Plushie (Secret)", baseOdds: 500000000 }, { name: "Sylently Plushie (Secret)", baseOdds: 500000000 }, { name: "FutureWebsiteOwner Plushie (Secret)", baseOdds: 500000000 }, { name: "Sylently's Pet (Infinity)", baseOdds: 20000000000 } ], world: "1" },
 { name: "OG Egg", Pets: [ { name: "OG Element Hydra", baseOdds: 5000 }, { name: "OG Cursed Scorpio", baseOdds: 50000 }, { name: "OG Galaxium", baseOdds: 2000000 }, { name: "OG Sakuralord", baseOdds: 25000000 }, { name: "OG The Overlord (Secret)", baseOdds: 80000000 }, { name: "OG Prisma Cube (Secret)", baseOdds: 250000000 }, { name: "OG Lucid Leaf (Secret)", baseOdds: 500000000 }, { name: "OG Dragonfruit (Secret)", baseOdds: 2500000000 }, { name: "OG Chocolate Sundae Champion (Secret)", baseOdds: 4000000000 }, { name: "OG Mint Sundae Champion (Secret)", baseOdds: 4000000000 }, { name: "OG Strawberry Sundae Champion (Secret)", baseOdds: 4000000000 }, { name: "OG Vanilla Sundae Champion (Secret)", baseOdds: 4000000000 }, { name: "OG Plasma Wolflord (Secret)", baseOdds: 5000000000 }, { name: "OG Shard (Secret)", baseOdds: 10000000000 }, { name: "OG Giant Robot (Infinity)", baseOdds: 100000000000 } ], world: "limited" },
 { name: "Super OG Egg", image: "Images/eggs/Placeholder_Egg.webp", Pets: [ { name: "OG Unicore", baseOdds: 5000 }, { name: "OG Fruity Shock", baseOdds: 50000 }, { name: "OG Pastel Hexarium", baseOdds: 1000000 }, { name: "OG Axolotl Plushie", baseOdds: 20000000 }, { name: "OG BGS Plaque (Secret)", baseOdds: 250000000 }, { name: "OG Crystal Teddy (Secret)", baseOdds: 500000000 }, { name: "OG Hellfire (Secret)", baseOdds: 1000000000 }, { name: "OG Godly Shamrock (Secret)", baseOdds: 1000000000 }, { name: "OG Archangel (Secret)", baseOdds: 2000000000 }, { name: "OG OwOlord (Secret)", baseOdds: 2000000000 }, { name: "OG Koi (Secret)", baseOdds: 5000000000 }, { name: "OG Love Thief (Secret)", baseOdds: 5000000000 }, { name: "OG Duality (Secret)", baseOdds: 10000000000 }, { name: "OG Air Basilisk (Secret)", baseOdds: 20000000000 }, { name: "OG Electric Basilisk (Secret)", baseOdds: 20000000000 }, { name: "OG Fire Basilisk (Secret)", baseOdds: 20000000000 }, { name: "OG Ice Basilisk (Secret)", baseOdds: 20000000000 }, { name: "OG Godly Gem (Secret)", baseOdds: 25000000000 }, { name: "OG King Kitty (Infinity)", baseOdds: 100000000000 }, { name: "OG Dementor (Infinity)", baseOdds: 500000000000 } ], world: "limited" },
-{ name: "Food Egg", image: "Images/eggs/Placeholder_Egg.webp", Pets: [ { name: "HotHoundDog", baseOdds: 50000 }, { name: "Lemonade Master", baseOdds: 1000000 }, { name: "Butter Dawg (Secret)", baseOdds: 100000000 }, { name: "Eternal Burger (Secret)", baseOdds: 1000000000 }, { name: "Drippy Slice (Secret)", baseOdds: 2000000000 }, { name: "Watermelon Round (Secret)", baseOdds: 1000000000 }, { name: "Giant Gummy Worm (Infinity)", baseOdds: 200000000000 } ], world: "limited" },
+{ name: "Food Egg", image: "Images/eggs/Placeholder.webp", Pets: [ { name: "HotHoundDog", baseOdds: 50000 }, { name: "Lemonade Master", baseOdds: 1000000 }, { name: "Butter Dawg (Secret)", baseOdds: 100000000 }, { name: "Eternal Burger (Secret)", baseOdds: 1000000000 }, { name: "Drippy Slice (Secret)", baseOdds: 2000000000 }, { name: "Watermelon Round (Secret)", baseOdds: 1000000000 }, { name: "Giant Gummy Worm (Infinity)", baseOdds: 200000000000 } ], world: "limited" },
 { name: "Corn Egg", Pets: [ { name: "Wheat Angel", baseOdds: 5000 }, { name: "Corn Dragon", baseOdds: 50000 }, { name: "Aureate Sunflower", baseOdds: 1000000 }, { name: "Pumpkin Pie (Secret)", baseOdds: 250000000 }, { name: "Giant Fall Turkey (Secret)", baseOdds: 2000000000 }, { name: "The Cornucopia (Secret)", baseOdds: 10000000000 } ], world: "limited" }
 ];
 
@@ -229,6 +229,11 @@ async function createBountyDetailsView() {
   const todayLabel = formatUTCDateToLabel(new Date());
   const todays = (bounties || []).find(b => b.Time === todayLabel) || (bounties && bounties[0]) || null;
   let applyBountyFunc = null;
+  const BOUNTY_OVERRIDES = {
+    'OG Lucky Pyramidium': 1250000000,
+    'OG Hellshard': 400000000,
+    'OG Overlord Plushie': 100000000
+  };
 
   const searchBarRow = document.getElementById('search-bar-row');
   if (searchBarRow) searchBarRow.classList.add('hide-search-bar-row');
@@ -423,14 +428,9 @@ async function createBountyDetailsView() {
     try { eggEl.innerHTML = `Egg: <strong>${targetEggName}</strong>`; } catch (e) {}
 
         let newBountyBaseOdds = parseChanceString(b.Chance);
-        const _bountyOverrides = {
-          'OG Lucky Pyramidium': 1250000000,
-          'OG Hellshard': 400000000,
-          'OG Overlord Plushie': 100000000
-        };
         const _petKey = (b && b.Pet) ? b.Pet : '';
-        if (_bountyOverrides[_petKey]) {
-          newBountyBaseOdds = _bountyOverrides[_petKey];
+        if (BOUNTY_OVERRIDES[_petKey]) {
+          newBountyBaseOdds = BOUNTY_OVERRIDES[_petKey];
           try { chanceEl.textContent = `Chance (base): 1/${newBountyBaseOdds.toLocaleString()}`; } catch (e) {}
         }
         const newBountyPetObj = { name: b.Pet + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b.Pet) };
@@ -554,15 +554,9 @@ async function createBountyDetailsView() {
             eggNameUnder.textContent = targetEggName;
 
             let newBountyBaseOdds = parseChanceString(b.Chance);
-
-            const _bountyOverrides2 = {
-              'King Leviathan': 5000000000,
-              'Harmonic Harp': 500000000,
-              'Axolotl Army': 100000000
-            };
             const _petKey2 = (b && b.Pet) ? b.Pet : '';
-            if (_bountyOverrides2[_petKey2]) {
-              newBountyBaseOdds = _bountyOverrides2[_petKey2];
+            if (BOUNTY_OVERRIDES[_petKey2]) {
+              newBountyBaseOdds = BOUNTY_OVERRIDES[_petKey2];
               try { chanceEl.textContent = `Chance (base): 1/${newBountyBaseOdds.toLocaleString()} (override)`; } catch (e) {}
             }
             const newBountyPetObj = { name: b.Pet + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b.Pet) };
@@ -694,11 +688,6 @@ async function createBountyDetailsView() {
   const petsList = eggObj && Array.isArray(eggObj.Pets) ? eggObj.Pets.slice() : [];
 
   let bountyBaseOdds = parseChanceString(chanceText);
-  const BOUNTY_OVERRIDES = {
-    'King Leviathan': 5000000000,
-    'Harmonic Harp': 500000000,
-    'Axolotl Army': 100000000
-  };
   const bountyNameKey = (currentBounty && currentBounty.Pet) ? currentBounty.Pet : petNameVal;
   if (BOUNTY_OVERRIDES[bountyNameKey]) {
     bountyBaseOdds = BOUNTY_OVERRIDES[bountyNameKey];
