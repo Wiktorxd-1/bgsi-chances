@@ -3354,7 +3354,9 @@ async function applyEggEmbedMetaFromParam() {
         el.setAttribute(attr, key);
         document.head.appendChild(el);
       }
-      el.content = value;
+
+      try { el.content = value; } catch (e) {}
+      try { el.setAttribute('content', value); } catch (e) {}
     } catch (e) {}
   }
 
@@ -3364,22 +3366,27 @@ async function applyEggEmbedMetaFromParam() {
 
   let img = '';
   try { img = getEggImagePath(findEgg) || ''; } catch (e) { img = ''; }
-  try {
-    if (img && !/^https?:\/\//i.test(img)) {
-      const base = (window.location && window.location.origin) ? window.location.origin.replace(/\/+$/, '') : '';
-      img = base + '/' + img.replace(/^\/+/, '');
-    }
-  } catch (e) { }
   if (img) {
-    upsertMeta('property', 'og:image', img);
-    upsertMeta('name', 'twitter:image', img);
+    try {
+      const abs = (img.startsWith('http://') || img.startsWith('https://')) ? img : (window.location.origin.replace(/\/$/, '') + '/' + img.replace(/^\/*/, ''));
+      upsertMeta('property', 'og:image', abs);
+      upsertMeta('name', 'twitter:image', abs);
+    } catch (e) {
+      upsertMeta('property', 'og:image', img);
+      upsertMeta('name', 'twitter:image', img);
+    }
   }
+  upsertMeta('name', 'twitter:card', 'summary_large_image');
+  upsertMeta('name', 'twitter:title', title);
+  upsertMeta('name', 'twitter:description', desc);
+  upsertMeta('property', 'og:url', window.location.href);
   upsertMeta('name', 'twitter:card', 'summary_large_image');
 
   try {
     let link = document.querySelector('link[rel="canonical"]');
     if (!link) { link = document.createElement('link'); link.rel = 'canonical'; document.head.appendChild(link); }
-    link.href = window.location.origin + window.location.pathname + (window.location.search || '');
+    // use full href including hash/search
+    try { link.href = window.location.href; } catch (e) { link.href = window.location.origin + window.location.pathname + (window.location.search || ''); }
   } catch (e) {}
 }
 
