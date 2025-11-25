@@ -3364,7 +3364,16 @@ async function applyEggEmbedMetaFromParam() {
 
   let img = '';
   try { img = getEggImagePath(findEgg) || ''; } catch (e) { img = ''; }
-  if (img) upsertMeta('property', 'og:image', img);
+  try {
+    if (img && !/^https?:\/\//i.test(img)) {
+      const base = (window.location && window.location.origin) ? window.location.origin.replace(/\/+$/, '') : '';
+      img = base + '/' + img.replace(/^\/+/, '');
+    }
+  } catch (e) { }
+  if (img) {
+    upsertMeta('property', 'og:image', img);
+    upsertMeta('name', 'twitter:image', img);
+  }
   upsertMeta('name', 'twitter:card', 'summary_large_image');
 
   try {
