@@ -333,15 +333,7 @@ async function createBountyDetailsView() {
   timerEl.style.marginTop = '8px';
   timerEl.style.fontWeight = '600';
   timerEl.id = 'bounty-timer';
-  const updateTimer = () => {
-    const secs = secondsUntilNextUTCDate();
-    const h = Math.floor(secs / 3600);
-    const m = Math.floor((secs % 3600) / 60);
-    const s = secs % 60;
-    timerEl.textContent = `Next update in: ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-  };
-  updateTimer();
-  const timerInterval = setInterval(updateTimer, 1000);
+  timerEl.textContent = '';
   infoWrap.appendChild(timerEl);
 
   const hr = document.createElement('hr');
@@ -385,8 +377,73 @@ async function createBountyDetailsView() {
     return d && d.getTime() >= todayUTC.getTime();
   });
 
+  let timerInterval = null;
+  function updateTimer() {
+    try {
+      const selectedIdxRaw = layout.dataset.selectedBountyIndex;
+      const selectedIdx = Number(selectedIdxRaw || '');
+      let prefix = 'Next update in: ';
+
+      let secs = secondsUntilNextUTCDate();
+
+      if (!Number.isNaN(selectedIdx) && selectedIdxRaw !== '' && filteredBounties && filteredBounties.length > selectedIdx) {
+        const b = filteredBounties[selectedIdx];
+
+        if (!b || !b.Time) {
+          timerEl.textContent = 'Time until this bounty: Loading...';
+          return;
+        }
+        const target = parseApiDateToUTC(b.Time);
+        if (!target) {
+          timerEl.textContent = 'Time until this bounty: Loading...';
+          return;
+        }
+        const now = Date.now();
+        const diff = Math.max(0, Math.floor((target.getTime() - now) / 1000));
+        secs = diff;
+        const today = new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate(), 0,0,0));
+        if (target.getTime() >= today.getTime()) {
+          const isToday = (target.getTime() === today.getTime());
+          if (isToday) {
+            secs = secondsUntilNextUTCDate();
+            prefix = 'Next update in: ';
+          } else {
+            prefix = 'Time until this bounty: ';
+          }
+        }
+      }
+
+      if (!isFinite(secs) || secs < 0) {
+        timerEl.textContent = 'Time until this bounty: Loading...';
+        return;
+      }
+      const days = Math.floor(secs / 86400);
+      const hours = Math.floor((secs % 86400) / 3600);
+      const minutes = Math.floor((secs % 3600) / 60);
+      const seconds = secs % 60;
+      const p = n => String(n).padStart(2, '0');
+      if (days > 0) {
+        timerEl.textContent = `${prefix}${days}d ${p(hours)}:${p(minutes)}:${p(seconds)}`;
+      } else {
+        timerEl.textContent = `${prefix}${p(hours)}:${p(minutes)}:${p(seconds)}`;
+      }
+    } catch (e) {
+      try { timerEl.textContent = 'Time until this bounty: Loading...'; } catch (e) {}
+    }
+  }
+  updateTimer();
+  timerInterval = setInterval(updateTimer, 1000);
+
   let upcomingPage = 0;
   const pageSize = 5;
+  const PLACEHOLDER_EGG_IMAGE = 'Images/eggs/Placeholder.webp';
+
+  function safeVal(v) {
+    if (v === null || v === undefined) return null;
+    const s = String(v).trim();
+    if (s === '' || s === '?' ) return null;
+    return s;
+  }
 
   function renderUpcomingPage() {
     upcomingWrap.innerHTML = '';
@@ -407,33 +464,36 @@ async function createBountyDetailsView() {
       layout.dataset.selectedPetName = filteredBounties[defaultIdx] ? filteredBounties[defaultIdx].Pet : '';
     }
 
+
       applyBountyFunc = (b, index) => {
         currentBounty = b;
         const layoutEl = document.querySelector('.egg-details-layout');
         if (layoutEl) {
           layoutEl.dataset.selectedBountyIndex = index || '';
-          layoutEl.dataset.selectedPetName = b.Pet || '';
+          layoutEl.dataset.selectedPetName = safeVal(b && b.Pet) || '';
           updateUpcomingGlow();
         }
 
-        petImg.src = getPetIconByName(b.Pet);
-        petImg.alt = b.Pet;
-        nameEl.textContent = b.Pet;
-        chanceEl.textContent = `Chance (base): ${b.Chance || 'Unknown'}`;
+        const petNameSafe = safeVal(b && b.Pet) || 'Unknown';
+        petImg.src = getPetIconByName(petNameSafe) || 'Images/pets/Doggy.webp';
+        petImg.alt = petNameSafe;
+        nameEl.textContent = petNameSafe;
+        chanceEl.textContent = `Chance (base): ${safeVal(b && b.Chance) || 'Unknown'}`;
 
-        const targetEggName = b.Egg || eggText;
-        eggImg.src = getEggImagePath(targetEggName);
+        const targetEggRaw = safeVal(b && b.Egg);
+        const targetEggName = targetEggRaw || 'Unknown Egg';
+        eggImg.src = targetEggRaw ? getEggImagePath(targetEggName) : PLACEHOLDER_EGG_IMAGE;
         eggImg.alt = targetEggName;
         eggNameUnder.textContent = targetEggName;
     try { eggEl.innerHTML = `Egg: <strong>${targetEggName}</strong>`; } catch (e) {}
 
-        let newBountyBaseOdds = parseChanceString(b.Chance);
+        let newBountyBaseOdds = parseChanceString(b && b.Chance);
         const _petKey = (b && b.Pet) ? b.Pet : '';
         if (BOUNTY_OVERRIDES[_petKey]) {
           newBountyBaseOdds = BOUNTY_OVERRIDES[_petKey];
           try { chanceEl.textContent = `Chance (base): 1/${newBountyBaseOdds.toLocaleString()}`; } catch (e) {}
         }
-        const newBountyPetObj = { name: b.Pet + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b.Pet) };
+        const newBountyPetObj = { name: (safeVal(b && b.Pet) || 'Unknown') + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b && b.Pet) };
 
         const selectedEggObj = eggs.find(e => e.name === targetEggName) || (window.eggsJson || []).find(e => e.name === targetEggName) || null;
         const selectedPetsList = selectedEggObj && Array.isArray(selectedEggObj.Pets) ? selectedEggObj.Pets.slice() : [];
@@ -501,8 +561,9 @@ async function createBountyDetailsView() {
         btn.style.font = 'inherit';
 
         const icon = document.createElement('img');
-        icon.src = getPetIconByName(b.Pet);
-        icon.alt = b.Pet;
+        const petSafe = safeVal(b && b.Pet) || 'Unknown';
+        icon.src = getPetIconByName(petSafe) || PLACEHOLDER_EGG_IMAGE;
+        icon.alt = petSafe;
         icon.style.width = '36px';
         icon.style.height = '36px';
         icon.style.objectFit = 'contain';
@@ -510,7 +571,7 @@ async function createBountyDetailsView() {
         icon.style.border = '1px solid transparent';
         const globalIndex = String(filteredBounties.indexOf(b));
         btn.dataset.bountyIndex = globalIndex;
-        btn.dataset.petName = b.Pet || '';
+        btn.dataset.petName = petSafe || '';
         btn.style.boxShadow = 'none';
 
         const textWrap = document.createElement('div');
@@ -518,11 +579,11 @@ async function createBountyDetailsView() {
         textWrap.style.flexDirection = 'column';
         textWrap.style.alignItems = 'flex-start';
         const petSpan = document.createElement('div');
-        petSpan.textContent = b.Pet;
+        petSpan.textContent = safeVal(b && b.Pet) || 'Unknown';
         petSpan.style.fontWeight = '600';
         petSpan.style.fontSize = '0.95rem';
         const dateSpan = document.createElement('div');
-        dateSpan.textContent = formatShortLabel(b.Time);
+        dateSpan.textContent = (b && b.Time) ? formatShortLabel(b.Time) : 'Unknown';
         dateSpan.style.opacity = '0.85';
         dateSpan.style.fontSize = '0.85rem';
         textWrap.appendChild(petSpan);
@@ -539,27 +600,31 @@ async function createBountyDetailsView() {
             const layoutEl = document.querySelector('.egg-details-layout');
             if (layoutEl) {
               layoutEl.dataset.selectedBountyIndex = btn.dataset.bountyIndex || '';
-              layoutEl.dataset.selectedPetName = b.Pet || '';
+              layoutEl.dataset.selectedPetName = safeVal(b && b.Pet) || '';
               updateUpcomingGlow();
             }
+            // show loading immediately while the timer recalculates
+            try { timerEl.textContent = 'Time until this bounty: Loading...'; } catch (e) {}
 
-            petImg.src = getPetIconByName(b.Pet);
-            petImg.alt = b.Pet;
-            nameEl.textContent = b.Pet;
-            chanceEl.textContent = `Chance (base): ${b.Chance || 'Unknown'}`;
+            const petNameSafe = safeVal(b && b.Pet) || 'Unknown';
+            petImg.src = getPetIconByName(petNameSafe) || 'Images/pets/Doggy.webp';
+            petImg.alt = petNameSafe;
+            nameEl.textContent = petNameSafe;
+            chanceEl.textContent = `Chance (base): ${safeVal(b && b.Chance) || 'Unknown'}`;
 
-            const targetEggName = b.Egg || eggText;
-            eggImg.src = getEggImagePath(targetEggName);
+            const targetEggRaw = safeVal(b && b.Egg);
+            const targetEggName = targetEggRaw || eggText || 'Unknown Egg';
+            eggImg.src = targetEggRaw ? getEggImagePath(targetEggName) : PLACEHOLDER_EGG_IMAGE;
             eggImg.alt = targetEggName;
             eggNameUnder.textContent = targetEggName;
 
-            let newBountyBaseOdds = parseChanceString(b.Chance);
+            let newBountyBaseOdds = parseChanceString(b && b.Chance);
             const _petKey2 = (b && b.Pet) ? b.Pet : '';
             if (BOUNTY_OVERRIDES[_petKey2]) {
               newBountyBaseOdds = BOUNTY_OVERRIDES[_petKey2];
               try { chanceEl.textContent = `Chance (base): 1/${newBountyBaseOdds.toLocaleString()} (override)`; } catch (e) {}
             }
-            const newBountyPetObj = { name: b.Pet + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b.Pet) };
+            const newBountyPetObj = { name: (safeVal(b && b.Pet) || 'Unknown') + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b && b.Pet) };
 
             const selectedEggObj = eggs.find(e => e.name === targetEggName) || (window.eggsJson || []).find(e => e.name === targetEggName) || null;
             const selectedPetsList = selectedEggObj && Array.isArray(selectedEggObj.Pets) ? selectedEggObj.Pets.slice() : [];
@@ -3238,6 +3303,78 @@ function startBountyWatcher() {
 }
 
 startBountyWatcher();
+
+
+async function applyEggEmbedMetaFromParam() {
+  if (typeof window === 'undefined' || !document || !window.location) return;
+
+  let raw = null;
+  const s = window.location.search || '';
+  if (s) {
+    const qs = s.replace(/^\?/, '');
+    if (qs.includes('=')) {
+      const params = new URLSearchParams(qs);
+      raw = params.get('egg') || Array.from(params.keys())[0];
+    } else {
+      raw = qs;
+    }
+  }
+
+  if (!raw) {
+    try {
+      const seg = window.location.pathname.split('/').filter(Boolean).pop();
+      if (seg && !seg.includes('.') && seg.toLowerCase() !== 'index') raw = seg;
+    } catch (e) { raw = null; }
+  }
+  if (!raw) return;
+
+  try { raw = decodeURIComponent(raw).replace(/_/g, ' ').trim(); } catch (e) { raw = raw.replace(/_/g, ' ').trim(); }
+
+  let eggsJson = null;
+  try {
+    eggsJson = await fetchEggsData();
+  } catch (e) { eggsJson = null; }
+  if (!Array.isArray(eggsJson) || eggsJson.length === 0) return;
+
+  const findEgg = eggsJson.find(e => e.name === raw) || eggsJson.find(e => e.name && e.name.toLowerCase() === raw.toLowerCase()) || eggsJson.find(e => e.name && e.name.toLowerCase().includes(raw.toLowerCase()));
+  if (!findEgg) return;
+
+  const petCount = Array.isArray(findEgg.Pets) ? findEgg.Pets.length : 0;
+  const title = `${findEgg.name} - BGSI Calculator`;
+  const desc = `${findEgg.name} has ${petCount} pets. This website will let you calculate the chances for the pets!`;
+
+  try { document.title = title; } catch (e) {}
+
+  function upsertMeta(attr, key, value) {
+    try {
+      const sel = `meta[${attr}="${key}"]`;
+      let el = document.querySelector(sel);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.content = value;
+    } catch (e) {}
+  }
+
+  upsertMeta('name', 'description', desc);
+  upsertMeta('property', 'og:title', title);
+  upsertMeta('property', 'og:description', desc);
+
+  let img = '';
+  try { img = getEggImagePath(findEgg) || ''; } catch (e) { img = ''; }
+  if (img) upsertMeta('property', 'og:image', img);
+  upsertMeta('name', 'twitter:card', 'summary_large_image');
+
+  try {
+    let link = document.querySelector('link[rel="canonical"]');
+    if (!link) { link = document.createElement('link'); link.rel = 'canonical'; document.head.appendChild(link); }
+    link.href = window.location.origin + window.location.pathname + (window.location.search || '');
+  } catch (e) {}
+}
+
+document.addEventListener('DOMContentLoaded', function () { applyEggEmbedMetaFromParam().catch(()=>{}); });
 
 document.addEventListener('click', function (e) {
   const toggle = e.target.closest('.variants-toggle');

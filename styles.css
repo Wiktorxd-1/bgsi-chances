@@ -614,7 +614,7 @@ td.pet-name span {
 }
 .menu-icon img {
   object-fit: contain;
-  transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1);
+  transition: opacity 0.34s cubic-bezier(0.4,0,0.2,1);
   opacity: 1;
 }
 .menu-icon img[src$="menu.ico"] {
@@ -631,20 +631,26 @@ td.pet-name span {
 .sidebar {
   position: fixed;
   top: 0;
-  right: -300px;
+  right: 0;
+  left: auto;
   width: 300px;
   height: 100%;
   background-color: var(--sidebar-bg);
   color: var(--main-text);
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-  transition: right 0.3s ease;
-  z-index: 999;
+  transform: translateX(110%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 340ms cubic-bezier(.25,.8,.25,1), opacity 260ms ease;
+  z-index: 14000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .sidebar.open {
-  right: 0; 
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 .sidebar-header {
   display: flex;
@@ -918,20 +924,26 @@ td.pet-name span {
   th, td {
     padding: 5px;
   }
+  /* Sidebar: use transform+opacity for smooth GPU-accelerated animations.
+     Avoid toggling `display` so transitions can run when closing. */
   .sidebar {
-    display: none;
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 100%;
-    height: 100%; 
+    height: 100%;
     box-shadow: none;
     padding: 1rem;
-    transition: right 0.3s ease;
+    transform: translateX(110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 340ms cubic-bezier(.25,.8,.25,1), opacity 260ms ease;
+    will-change: transform, opacity;
   }
   .sidebar.open {
-    display: block;
-    right: 0;
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
   }
   .sidebar-header {
     display: flex;
@@ -991,7 +1003,7 @@ td.pet-name span {
   position: fixed;
   top: 18px;
   right: 18px;
-  z-index: 1201;
+  z-index: 15010;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1024,25 +1036,26 @@ td.pet-name span {
   padding: 0;
 }
 .sidebar {
-  right: -320px;
+
+  transform: translateX(110%);
   opacity: 0;
   pointer-events: none;
-  transition: right 0.3s, opacity 0.3s;
+  transition: transform 340ms cubic-bezier(.25,.8,.25,1), opacity 260ms ease;
 }
 .sidebar.open {
-  right: 0;
+  transform: translateX(0);
   opacity: 1;
   pointer-events: auto;
 }
 @media (max-width: 768px) {
   .sidebar {
-    right: -100vw;
+    transform: translateX(100%);
     width: 100vw;
     opacity: 0;
     pointer-events: none;
   }
   .sidebar.open {
-    right: 0;
+    transform: translateX(0);
     opacity: 1;
     pointer-events: auto;
   }
