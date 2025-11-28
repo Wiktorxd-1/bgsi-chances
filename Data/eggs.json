@@ -637,6 +637,27 @@
     "dateRemoved": "2025-11-21"
   },
   {
+    "name": "Winter Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/1e/Winter_Egg.png",
+    "pets": [
+      "Arctic Fox",
+      "King Polar Bear",
+      "Flakey",
+      "Snowball",
+      "Frigid Star",
+      "Snowman",
+      "OG Morning Star",
+      "Flake Spirit",
+      "OG Soulflake",
+      "Kuuhenki"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-11-28",
+    "dateRemoved": "2025-12-05"
+  },
+  {
     "name": "Corn Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Corn_Egg.png",
     "pets": [
@@ -654,7 +675,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-11-21",
-    "dateRemoved": ""
+    "dateRemoved": "2025-11-28"
   },
   {
     "name": "Super OG Egg",
@@ -1447,11 +1468,31 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-11-14",
-    "dateRemoved": ""
+    "dateRemoved": "2025-11-28"
+  },
+  {
+    "name": "Super Aura Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "pets": [
+      "Man Face Bunny",
+      "Man Face Golem",
+      "Man Face Dragon",
+      "Man Face Cube",
+      "Man Face Shock",
+      "Man Face Lord",
+      "Man Face Dogcat",
+      "Giant Emerald Golem",
+      "Man Face Leviathan"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-11-28",
+    "dateRemoved": "2025-12-05"
   },
   {
     "name": "Prismatic Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a6/Prismatic_Egg.png",
     "luckIgnored": true,
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
