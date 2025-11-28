@@ -25,6 +25,23 @@
 { name: "Corn Egg", Pets: [ { name: "Wheat Angel", baseOdds: 5000 }, { name: "Corn Dragon", baseOdds: 50000 }, { name: "Aureate Sunflower", baseOdds: 1000000 }, { name: "Pumpkin Pie (Secret)", baseOdds: 250000000 }, { name: "Giant Fall Turkey (Secret)", baseOdds: 2000000000 }, { name: "The Cornucopia (Secret)", baseOdds: 10000000000 } ], world: "limited" }
 ];
 
+const BOUNTY_OVERRIDES = {
+  'OG Lucky Pyramidium': 1250000000,
+  'OG Hellshard': 400000000,
+  'OG Overlord Plushie': 100000000
+};
+
+function getBountyOverrideByName(petName) {
+  if (!petName) return null;
+  const normalized = String(petName).replace(/\(.*?\)/g, '').trim().toLowerCase();
+  for (const key of Object.keys(BOUNTY_OVERRIDES || {})) {
+    if (!key) continue;
+    const kNorm = String(key).replace(/\(.*?\)/g, '').trim().toLowerCase();
+    if (kNorm === normalized) return BOUNTY_OVERRIDES[key];
+  }
+  return null;
+}
+
 
 let selectedWorld = null;
 let selectedEgg = null;
@@ -33,6 +50,9 @@ const eggList = document.getElementById("egg-list");
 let lastNormalWorld = null;
 
 function renderEggs() {
+  if (window && window._openBountyOnLoad) {
+    return;
+  }
   animateEggList(() => {
     eggList.innerHTML = '';
     const eggsJson = window.eggsJson || [];
@@ -229,11 +249,6 @@ async function createBountyDetailsView() {
   const todayLabel = formatUTCDateToLabel(new Date());
   const todays = (bounties || []).find(b => b.Time === todayLabel) || (bounties && bounties[0]) || null;
   let applyBountyFunc = null;
-  const BOUNTY_OVERRIDES = {
-    'OG Lucky Pyramidium': 1250000000,
-    'OG Hellshard': 400000000,
-    'OG Overlord Plushie': 100000000
-  };
 
   const searchBarRow = document.getElementById('search-bar-row');
   if (searchBarRow) searchBarRow.classList.add('hide-search-bar-row');
@@ -333,7 +348,16 @@ async function createBountyDetailsView() {
   timerEl.style.marginTop = '8px';
   timerEl.style.fontWeight = '600';
   timerEl.id = 'bounty-timer';
-  timerEl.textContent = '';
+  // label on first line, value on second line
+  const timerLabelEl = document.createElement('div');
+  timerLabelEl.style.fontWeight = '700';
+  timerLabelEl.style.marginBottom = '4px';
+  timerLabelEl.textContent = '';
+  const timerValueEl = document.createElement('div');
+  timerValueEl.style.whiteSpace = 'pre';
+  timerValueEl.textContent = '';
+  timerEl.appendChild(timerLabelEl);
+  timerEl.appendChild(timerValueEl);
   infoWrap.appendChild(timerEl);
 
   const hr = document.createElement('hr');
@@ -382,7 +406,7 @@ async function createBountyDetailsView() {
     try {
       const selectedIdxRaw = layout.dataset.selectedBountyIndex;
       const selectedIdx = Number(selectedIdxRaw || '');
-      let prefix = 'Next update in: ';
+      let prefix = 'Next bounty in: ';
 
       let secs = secondsUntilNextUTCDate();
 
@@ -390,12 +414,14 @@ async function createBountyDetailsView() {
         const b = filteredBounties[selectedIdx];
 
         if (!b || !b.Time) {
-          timerEl.textContent = 'Time until this bounty: Loading...';
+          try { timerLabelEl.textContent = 'Time until this bounty:'; } catch (e) {}
+          try { timerValueEl.textContent = 'Loading...'; } catch (e) {}
           return;
         }
         const target = parseApiDateToUTC(b.Time);
         if (!target) {
-          timerEl.textContent = 'Time until this bounty: Loading...';
+          try { timerLabelEl.textContent = 'Time until this bounty:'; } catch (e) {}
+          try { timerValueEl.textContent = 'Loading...'; } catch (e) {}
           return;
         }
         const now = Date.now();
@@ -406,7 +432,7 @@ async function createBountyDetailsView() {
           const isToday = (target.getTime() === today.getTime());
           if (isToday) {
             secs = secondsUntilNextUTCDate();
-            prefix = 'Next update in: ';
+            prefix = 'Next bounty in: ';
           } else {
             prefix = 'Time until this bounty: ';
           }
@@ -414,7 +440,8 @@ async function createBountyDetailsView() {
       }
 
       if (!isFinite(secs) || secs < 0) {
-        timerEl.textContent = 'Time until this bounty: Loading...';
+        try { timerLabelEl.textContent = 'Time until this bounty:'; } catch (e) {}
+        try { timerValueEl.textContent = 'Loading...'; } catch (e) {}
         return;
       }
       const days = Math.floor(secs / 86400);
@@ -422,13 +449,17 @@ async function createBountyDetailsView() {
       const minutes = Math.floor((secs % 3600) / 60);
       const seconds = secs % 60;
       const p = n => String(n).padStart(2, '0');
-      if (days > 0) {
-        timerEl.textContent = `${prefix}${days}d ${p(hours)}:${p(minutes)}:${p(seconds)}`;
-      } else {
-        timerEl.textContent = `${prefix}${p(hours)}:${p(minutes)}:${p(seconds)}`;
-      }
+      try { timerLabelEl.textContent = prefix.trim(); } catch (e) {}
+      try {
+        if (days > 0) {
+          timerValueEl.textContent = `${days}d ${p(hours)}:${p(minutes)}:${p(seconds)}`;
+        } else {
+          timerValueEl.textContent = `${p(hours)}:${p(minutes)}:${p(seconds)}`;
+        }
+      } catch (e) {}
     } catch (e) {
-      try { timerEl.textContent = 'Time until this bounty: Loading...'; } catch (e) {}
+      try { timerLabelEl.textContent = 'Time until this bounty:'; } catch (e) {}
+      try { timerValueEl.textContent = 'Loading...'; } catch (e) {}
     }
   }
   updateTimer();
@@ -467,6 +498,8 @@ async function createBountyDetailsView() {
 
       applyBountyFunc = (b, index) => {
         currentBounty = b;
+        try { timerLabelEl.textContent = 'Time until this bounty:'; } catch (e) {}
+        try { timerValueEl.textContent = 'Loading...'; } catch (e) {}
         const layoutEl = document.querySelector('.egg-details-layout');
         if (layoutEl) {
           layoutEl.dataset.selectedBountyIndex = index || '';
@@ -488,11 +521,13 @@ async function createBountyDetailsView() {
     try { eggEl.innerHTML = `Egg: <strong>${targetEggName}</strong>`; } catch (e) {}
 
         let newBountyBaseOdds = parseChanceString(b && b.Chance);
-        const _petKey = (b && b.Pet) ? b.Pet : '';
-        if (BOUNTY_OVERRIDES[_petKey]) {
-          newBountyBaseOdds = BOUNTY_OVERRIDES[_petKey];
-          try { chanceEl.textContent = `Chance (base): 1/${newBountyBaseOdds.toLocaleString()}`; } catch (e) {}
-        }
+        try {
+          const override = getBountyOverrideByName(b && b.Pet);
+          if (override) {
+            newBountyBaseOdds = override;
+            try { chanceEl.textContent = `Chance (base): 1/${newBountyBaseOdds.toLocaleString()}`; } catch (e) {}
+          }
+        } catch (e) {}
         const newBountyPetObj = { name: (safeVal(b && b.Pet) || 'Unknown') + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b && b.Pet) };
 
         const selectedEggObj = eggs.find(e => e.name === targetEggName) || (window.eggsJson || []).find(e => e.name === targetEggName) || null;
@@ -502,6 +537,7 @@ async function createBountyDetailsView() {
         combinedEggForTable.Pets = [];
         if (newBountyBaseOdds) combinedEggForTable.Pets.push(newBountyPetObj);
         combinedEggForTable.Pets = combinedEggForTable.Pets.concat(selectedPetsList);
+        combinedEggForTable.secretBountyRotation = true;
 
         const selectedJsonEgg = (window.eggsJson || []).find(e => e.name === targetEggName) || null;
         const selectedCanSpawnAsRift = !!(selectedJsonEgg && selectedJsonEgg.canSpawnAsRift);
@@ -603,8 +639,8 @@ async function createBountyDetailsView() {
               layoutEl.dataset.selectedPetName = safeVal(b && b.Pet) || '';
               updateUpcomingGlow();
             }
-            // show loading immediately while the timer recalculates
-            try { timerEl.textContent = 'Time until this bounty: Loading...'; } catch (e) {}
+            try { timerLabelEl.textContent = 'Time until this bounty:'; } catch (e) {}
+            try { timerValueEl.textContent = 'Loading...'; } catch (e) {}
 
             const petNameSafe = safeVal(b && b.Pet) || 'Unknown';
             petImg.src = getPetIconByName(petNameSafe) || 'Images/pets/Doggy.webp';
@@ -619,11 +655,13 @@ async function createBountyDetailsView() {
             eggNameUnder.textContent = targetEggName;
 
             let newBountyBaseOdds = parseChanceString(b && b.Chance);
-            const _petKey2 = (b && b.Pet) ? b.Pet : '';
-            if (BOUNTY_OVERRIDES[_petKey2]) {
-              newBountyBaseOdds = BOUNTY_OVERRIDES[_petKey2];
-              try { chanceEl.textContent = `Chance (base): 1/${newBountyBaseOdds.toLocaleString()} (override)`; } catch (e) {}
-            }
+            try {
+              const override = getBountyOverrideByName(b && b.Pet);
+              if (override) {
+                newBountyBaseOdds = override;
+                try { chanceEl.textContent = `Chance (base): 1/${newBountyBaseOdds.toLocaleString()} (override)`; } catch (e) {}
+              }
+            } catch (e) {}
             const newBountyPetObj = { name: (safeVal(b && b.Pet) || 'Unknown') + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b && b.Pet) };
 
             const selectedEggObj = eggs.find(e => e.name === targetEggName) || (window.eggsJson || []).find(e => e.name === targetEggName) || null;
@@ -633,6 +671,7 @@ async function createBountyDetailsView() {
             combinedEggForTable.Pets = [];
             if (newBountyBaseOdds) combinedEggForTable.Pets.push(newBountyPetObj);
             combinedEggForTable.Pets = combinedEggForTable.Pets.concat(selectedPetsList);
+            combinedEggForTable.secretBountyRotation = true;
 
             const selectedJsonEgg = (window.eggsJson || []).find(e => e.name === targetEggName) || null;
             const selectedCanSpawnAsRift = !!(selectedJsonEgg && selectedJsonEgg.canSpawnAsRift);
@@ -742,7 +781,7 @@ async function createBountyDetailsView() {
 
   middle.appendChild(eggIconWrap);
 
-  const fakeEggForControls = { name: 'Bounty', Pets: [], world: 'bounty' };
+  const fakeEggForControls = { name: 'Bounty', Pets: [], world: 'bounty', secretBountyRotation: true };
   const controlsEl = createEggSettings(fakeEggForControls, eggCanSpawnAsRift);
   controlsEl.style.marginTop = '8px';
   controlsEl.style.alignSelf = 'flex-start';
@@ -754,13 +793,16 @@ async function createBountyDetailsView() {
 
   let bountyBaseOdds = parseChanceString(chanceText);
   const bountyNameKey = (currentBounty && currentBounty.Pet) ? currentBounty.Pet : petNameVal;
-  if (BOUNTY_OVERRIDES[bountyNameKey]) {
-    bountyBaseOdds = BOUNTY_OVERRIDES[bountyNameKey];
-    try { chanceEl.textContent = `Chance (base): 1/${bountyBaseOdds.toLocaleString()}`; } catch (e) {}
-  }
+  try {
+    const override = getBountyOverrideByName(bountyNameKey);
+    if (override) {
+      bountyBaseOdds = override;
+      try { chanceEl.textContent = `Chance (base): 1/${bountyBaseOdds.toLocaleString()}`; } catch (e) {}
+    }
+  } catch (e) {}
   const bountyPetObj = { name: (currentBounty && currentBounty.Pet ? currentBounty.Pet : petNameVal) + ' (Bounty)', baseOdds: bountyBaseOdds || 0, icon: getPetIconByName(currentBounty ? currentBounty.Pet : petNameVal) };
 
-  const combinedEggForTable = { name: eggText, Pets: [] };
+  const combinedEggForTable = { name: eggText, Pets: [], secretBountyRotation: true };
   if (bountyBaseOdds) combinedEggForTable.Pets.push(bountyPetObj);
   combinedEggForTable.Pets = combinedEggForTable.Pets.concat(petsList);
 
@@ -980,7 +1022,11 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     const todayLabel = formatUTCDateToLabel(new Date());
     const todays = (bounties || []).find(b => b.Time === todayLabel) || null;
     if (todays && todays.Egg && todays.Egg === egg.name) {
-      const bountyChance = parseChanceString(todays.Chance);
+      let bountyChance = parseChanceString(todays.Chance);
+      try {
+        const override = getBountyOverrideByName(todays && todays.Pet);
+        if (override) bountyChance = override;
+      } catch (e) {}
       const bountyPetObj = {
         name: (todays.Pet || 'Unknown') + ' (Bounty)',
         baseOdds: bountyChance || 0,
@@ -1000,6 +1046,22 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   } catch (e) { }
 
   const eggForTable = { ...egg, Pets: petsToShow };
+  try {
+    const bounties = await fetchBounties().catch(() => null);
+    if (Array.isArray(bounties) && bounties.length) {
+      const match = bounties.find(b => (b && b.Egg || '').trim().toLowerCase() === (egg.name || '').trim().toLowerCase());
+      if (match) {
+        let bountyBaseOdds = parseChanceString(match && match.Chance);
+        try {
+          const override = getBountyOverrideByName(match && match.Pet);
+          if (override) bountyBaseOdds = override;
+        } catch (e) {}
+        const bountyPetObj = { name: (match && match.Pet ? match.Pet : 'Unknown') + ' (Bounty)', baseOdds: bountyBaseOdds || 0, icon: getPetIconByName(match ? match.Pet : '') };
+        eggForTable.Pets = [bountyPetObj].concat(eggForTable.Pets || []);
+        eggForTable.secretBountyRotation = true;
+      }
+    }
+  } catch (e) {}
   middle.appendChild(createEggPetInfoCard(eggForTable, canSpawnAsRift));
 
   const right = document.createElement('div');
@@ -1207,7 +1269,8 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     const todayLabel = formatUTCDateToLabel(new Date());
     const todays = (bounties || []).find(b => b.Time === todayLabel) || null;
     if (todays && todays.Egg && todays.Egg === egg.name) {
-      const bountyChance = parseChanceString(todays.Chance);
+      let bountyChance = parseChanceString(todays.Chance);
+      try { const override = getBountyOverrideByName(todays && todays.Pet); if (override) bountyChance = override; } catch (e) {}
       const bountyPetObj = {
         name: (todays.Pet || 'Unknown') + ' (Bounty)',
         baseOdds: bountyChance || 0,
@@ -1227,6 +1290,20 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   } catch (e) { }
 
   const eggForTable = { ...egg, Pets: petsToShow };
+  try {
+    const bounties = await fetchBounties().catch(() => null);
+    if (Array.isArray(bounties) && bounties.length) {
+      const match = bounties.find(b => (b && b.Egg || '').trim().toLowerCase() === (egg.name || '').trim().toLowerCase());
+      if (match) {
+        let bountyBaseOdds = parseChanceString(match && match.Chance);
+        const bountyKey = (match && match.Pet) ? match.Pet : null;
+        try { const override = getBountyOverrideByName(bountyKey); if (override) bountyBaseOdds = override; } catch (e) {}
+        const bountyPetObj = { name: (match && match.Pet ? match.Pet : 'Unknown') + ' (Bounty)', baseOdds: bountyBaseOdds || 0, icon: getPetIconByName(match ? match.Pet : '') };
+        eggForTable.Pets = [bountyPetObj].concat(eggForTable.Pets || []);
+        eggForTable.secretBountyRotation = true;
+      }
+    }
+  } catch (e) {}
   middle.appendChild(createEggPetInfoCard(eggForTable, canSpawnAsRift));
 
   const right = document.createElement('div');
@@ -1434,7 +1511,8 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     const todayLabel = formatUTCDateToLabel(new Date());
     const todays = (bounties || []).find(b => b.Time === todayLabel) || null;
     if (todays && todays.Egg && todays.Egg === egg.name) {
-      const bountyChance = parseChanceString(todays.Chance);
+      let bountyChance = parseChanceString(todays.Chance);
+      try { const override = getBountyOverrideByName(todays && todays.Pet); if (override) bountyChance = override; } catch (e) {}
       const bountyPetObj = {
         name: (todays.Pet || 'Unknown') + ' (Bounty)',
         baseOdds: bountyChance || 0,
@@ -1454,6 +1532,20 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   } catch (e) { }
 
   const eggForTable = { ...egg, Pets: petsToShow };
+  try {
+    const bounties = await fetchBounties().catch(() => null);
+    if (Array.isArray(bounties) && bounties.length) {
+      const match = bounties.find(b => (b && b.Egg || '').trim().toLowerCase() === (egg.name || '').trim().toLowerCase());
+      if (match) {
+        let bountyBaseOdds = parseChanceString(match && match.Chance);
+        const bountyKey = (match && match.Pet) ? match.Pet : null;
+        try { const override = getBountyOverrideByName(bountyKey); if (override) bountyBaseOdds = override; } catch (e) {}
+        const bountyPetObj = { name: (match && match.Pet ? match.Pet : 'Unknown') + ' (Bounty)', baseOdds: bountyBaseOdds || 0, icon: getPetIconByName(match ? match.Pet : '') };
+        eggForTable.Pets = [bountyPetObj].concat(eggForTable.Pets || []);
+        eggForTable.secretBountyRotation = true;
+      }
+    }
+  } catch (e) {}
   middle.appendChild(createEggPetInfoCard(eggForTable, canSpawnAsRift));
 
   const right = document.createElement('div');
@@ -1661,7 +1753,8 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     const todayLabel = formatUTCDateToLabel(new Date());
     const todays = (bounties || []).find(b => b.Time === todayLabel) || null;
     if (todays && todays.Egg && todays.Egg === egg.name) {
-      const bountyChance = parseChanceString(todays.Chance);
+      let bountyChance = parseChanceString(todays.Chance);
+      try { const override = getBountyOverrideByName(todays && todays.Pet); if (override) bountyChance = override; } catch (e) {}
       const bountyPetObj = {
         name: (todays.Pet || 'Unknown') + ' (Bounty)',
         baseOdds: bountyChance || 0,
@@ -1681,6 +1774,20 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   } catch (e) { }
 
   const eggForTable = { ...egg, Pets: petsToShow };
+  try {
+    const bounties = await fetchBounties().catch(() => null);
+    if (Array.isArray(bounties) && bounties.length) {
+      const match = bounties.find(b => (b && b.Egg || '').trim().toLowerCase() === (egg.name || '').trim().toLowerCase());
+      if (match) {
+        let bountyBaseOdds = parseChanceString(match && match.Chance);
+        const bountyKey = (match && match.Pet) ? match.Pet : null;
+        try { const override = getBountyOverrideByName(bountyKey); if (override) bountyBaseOdds = override; } catch (e) {}
+        const bountyPetObj = { name: (match && match.Pet ? match.Pet : 'Unknown') + ' (Bounty)', baseOdds: bountyBaseOdds || 0, icon: getPetIconByName(match ? match.Pet : '') };
+        eggForTable.Pets = [bountyPetObj].concat(eggForTable.Pets || []);
+        eggForTable.secretBountyRotation = true;
+      }
+    }
+  } catch (e) {}
   middle.appendChild(createEggPetInfoCard(eggForTable, canSpawnAsRift));
 
   const right = document.createElement('div');
@@ -1888,7 +1995,8 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     const todayLabel = formatUTCDateToLabel(new Date());
     const todays = (bounties || []).find(b => b.Time === todayLabel) || null;
     if (todays && todays.Egg && todays.Egg === egg.name) {
-      const bountyChance = parseChanceString(todays.Chance);
+      let bountyChance = parseChanceString(todays.Chance);
+      try { const override = getBountyOverrideByName(todays && todays.Pet); if (override) bountyChance = override; } catch (e) {}
       const bountyPetObj = {
         name: (todays.Pet || 'Unknown') + ' (Bounty)',
         baseOdds: bountyChance || 0,
@@ -2035,7 +2143,10 @@ function createEggSettings(egg, canSpawnAsRift) {
     `;
   }
   const hasSecret = (egg.Pets && egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name))) || egg.name === "Infinity Egg";
-  if (hasSecret) {
+
+  const hasSecretForced = !!egg.secretBountyRotation;
+  const hasSecretFinal = hasSecret || hasSecretForced;
+  if (hasSecretFinal) {
     controlsHtml += `
       <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px;width:100%;">
         <label style="margin-bottom:0;">Secret Multiplier (x):</label>
@@ -3330,6 +3441,19 @@ async function applyEggEmbedMetaFromParam() {
 
   try { raw = decodeURIComponent(raw).replace(/_/g, ' ').trim(); } catch (e) { raw = raw.replace(/_/g, ' ').trim(); }
 
+  const rawLower = (raw || '').toString().trim().toLowerCase();
+  if (rawLower === 'bounty') {
+    try {
+
+      if (typeof window !== 'undefined') window._openBountyOnLoad = true;
+      if (typeof createBountyDetailsView === 'function') {
+        Promise.resolve().then(() => { createBountyDetailsView().catch(()=>{}); });
+      }
+      setTimeout(() => { try { if (typeof window !== 'undefined') window._openBountyOnLoad = false; } catch (e) {} }, 1200);
+    } catch (e) {}
+    return;
+  }
+
   let eggsJson = null;
   try {
     eggsJson = await fetchEggsData();
@@ -3385,7 +3509,6 @@ async function applyEggEmbedMetaFromParam() {
   try {
     let link = document.querySelector('link[rel="canonical"]');
     if (!link) { link = document.createElement('link'); link.rel = 'canonical'; document.head.appendChild(link); }
-    // use full href including hash/search
     try { link.href = window.location.href; } catch (e) { link.href = window.location.origin + window.location.pathname + (window.location.search || ''); }
   } catch (e) {}
 }
