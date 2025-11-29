@@ -2140,7 +2140,7 @@ function createEggSettings(egg, canSpawnAsRift) {
       </div>
     `;
   }
-  const hasSecret = (egg.Pets && egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name))) || egg.name === "Infinity Egg";
+  const hasSecret = (egg.Pets && egg.Pets.some(pet => /(Secret|Infinity|Bounty)/i.test(pet.name))) || egg.name === "Infinity Egg";
 
   const hasSecretForced = !!egg.secretBountyRotation;
   const hasSecretFinal = hasSecret || hasSecretForced;
