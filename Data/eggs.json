@@ -637,6 +637,68 @@
     "dateRemoved": "2025-11-21"
   },
   {
+    "name": "Gingerbread Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/19/Gingerbread_Egg.png",
+    "pets": [
+      "Gingerbread Doggy",
+      "Gingerbread Kitty",
+      "Gingerbread Bunny",
+      "Gingerbread Shard"
+    ],
+    "luckIgnored": false,
+    "infinityEgg": "Christmas Event 2025",
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-12-05",
+    "dateRemoved": "2026-01-09",
+    "index": "Christmas Event 2025"
+  },
+  {
+    "name": "Candycane Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/9/95/Candycane_Egg.png",
+    "pets": [
+      "Candycane Kitty",
+      "Candycane Bunny",
+      "Candycane Dragon",
+      "Royal Candy Cane",
+      "Demonic Peppermint",
+      "Peppermint Heart",
+      "Velvet Wolflord"
+    ],
+    "luckIgnored": false,
+    "infinityEgg": "Christmas Event 2025",
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-12-05",
+    "dateRemoved": "2026-01-09",
+    "index": "Christmas Event 2025"
+  },
+  {
+    "name": "Yuletide Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0d/Yuletide_Egg.png",
+    "pets": [
+      "Little Ornament",
+      "Gumdrop",
+      "Peppermint Boi",
+      "Mistletoe Fiend",
+      "Jingle Orb",
+      "Illuminated Fawn",
+      "Santa's Hat",
+      "Holy Bell",
+      "Holy Candle",
+      "Archangel",
+      "Frosted Dogcat",
+      "Morning Star"
+    ],
+    "luckIgnored": false,
+    "infinityEgg": "Christmas Event 2025",
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-12-05",
+    "dateRemoved": "2026-01-09",
+    "index": "Christmas Event 2025"
+  },
+  {
     "name": "Winter Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/1e/Winter_Egg.png",
     "pets": [
@@ -921,7 +983,6 @@
       "Quamatic Plushie",
       "Sircfenner Plushie",
       "Sylently Plushie",
-      "FutureWebsiteOwner Plushie",
       "Sylently's Pet"
     ],
     "luckIgnored": false,
@@ -1447,7 +1508,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-11-07",
-    "dateRemoved": "2025-11-08"
+    "dateRemoved": "2025-11-14"
   },
   {
     "name": "Food Egg",
@@ -1489,6 +1550,26 @@
     "secretBountyRotation": false,
     "dateAdded": "2025-11-28",
     "dateRemoved": "2025-12-05"
+  },
+  {
+    "name": "Rumblecon Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "pets": [
+      "Rumblecon Kitty",
+      "Rumblecon Bunny",
+      "Rumblecon Dragon",
+      "MVP Rumblecon Doggy",
+      "Rumblecon Ticket Vendor",
+      "The Golden Ticket",
+      "Rumblecon Trophy",
+      "Rumblecon Halftime Show",
+      "RUMBLECON GOD"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-12-05",
+    "dateRemoved": "2025-12-12"
   },
   {
     "name": "Prismatic Egg",

@@ -19,8 +19,10 @@
 { name: "Atlantis Egg", Pets: [ { name: "Angler Fish", baseOdds: 4000 }, { name: "Jellyfish", baseOdds: 200000 }, { name: "Atlantis Guardian", baseOdds: 2000000 }, { name: "Tidal God (Secret)", baseOdds: 250000000 } ], world: "3" },
 { name: "Classic Egg", Pets: [ { name: "Classic Unicorn", baseOdds: 4000 }, { name: "Classic Dominus", baseOdds: 200000 }, { name: "Classic Noob", baseOdds: 2000000 }, { name: "Classic Overlord (Secret)", baseOdds: 100000000 } ], world: "3" },
 { name: "Developer Egg", Pets: [ { name: "Sylently's Hats", baseOdds: 100000 }, { name: "Isaac Rainbow Shock", baseOdds: 1000000 }, { name: "Nert Plushie (Secret)", baseOdds: 500000000 }, { name: "ObscureEntity Plushie (Secret)", baseOdds: 500000000 }, { name: "Quamatic Plushie (Secret)", baseOdds: 500000000 }, { name: "Sircfenner Plushie (Secret)", baseOdds: 500000000 }, { name: "Sylently Plushie (Secret)", baseOdds: 500000000 }, { name: "FutureWebsiteOwner Plushie (Secret)", baseOdds: 500000000 }, { name: "Sylently's Pet (Infinity)", baseOdds: 20000000000 } ], world: "1" },
-{ name: "Winter Egg", Pets: [ { name: "Snowball", baseOdds: 5000 }, { name: "Frigid Star", baseOdds: 50000 }, { name: "Snowman", baseOdds: 1000000},  { name: "OG Morning Star (Secret)", baseOdds: 200000000 }, { name: "Flake Spirit (Secret)", baseOdds: 2000000000}, { name: "OG Soulflake (Secret)", baseOdds: 4000000000}, { name: "Kuuhenki (Secret)", baseOdds: 10000000000} ], world: "limited"},
-{ name: "Super Aura Egg", image: "Images/eggs/Placeholder_egg.webp", Pets: [ { name: "Man Face Cube", baseOdds: 100000 }, { name: "Man Face Shock", baseOdds: 1000000}, { name: "Man Face Lord (Secret)", baseOdds: 100000000}, { name: "Man Face Dogcat (Secret)", baseOdds: 500000000 }, { name: "Giant Emerald Golem (Secret)", baseOdds: 1000000000}, { name: "Man Face Leviathan (Infinity)", baseOdds: 200000000000} ], world: "limited" }
+{ name: "Gingerbread Egg", Pets: [ { name: "Gingerbread Shard (Secret)", baseOdds: 100000000 } ], world: "limited1" },
+{ name: "Candycane Egg", Pets: [ { name: "Royal Candy Cane", baseOdds: 10000 }, { name: "Demonic Peppermint", baseOdds: 40000 }, { name: "Peppermint Heart (Secret)", baseOdds: 200000000 }, { name: "Velvet Wolflord (Secret)", baseOdds: 1000000000 } ], world: "limited1" },
+{ name: "Yuletide Egg", Pets: [ { name: "Mistletoe Fiend", baseOdds: 10000 }, { name: "Jingle Orb", baseOdds: 100000 }, { name: "Illuminated Fawn", baseOdds: 2000000 }, { name: "Santa's Hat (Secret)", baseOdds: 400000000 }, { name: "Holy Bell (Secret)", baseOdds: 1000000000 }, { name: "Holy Candle (Secret)", baseOdds: 2000000000 }, { name: "Archangel (Secret)", baseOdds: 5000000000 }, { name: "Frosted Dogcat (Secret)", baseOdds: 10000000000 }, { name: "Morning Star (Infinity)", baseOdds: 80000000000 } ], world: "limited1" },
+{ name: "Rumblecon Egg", image: "Images/eggs/Placeholder.webp", Pets: [ { name: "MVP Rumblecon Doggy", baseOdds: 100000 }, { name: "Rumblecon Ticket Vendor", baseOdds: 1000000 }, { name: "The Golden Ticket (Secret)", baseOdds: 100000000 }, { name: "Rumblecon Trophy (Secret)", baseOdds: 500000000 }, { name: "Rumblecon Halftime Show (Secret)", baseOdds: 1000000000 }, { name: "RUMBLECON GOD (Infinity)", baseOdds: 200000000000 } ], world: "limited" }
 ];
 
 const BOUNTY_OVERRIDES = {
@@ -39,6 +41,34 @@ function getBountyOverrideByName(petName) {
   }
   return null;
 } 
+
+
+const FESTIVE_POTION_MAP = {
+  'I': { luck: 50, shiny: 50, mythic: 25 },
+  'II': { luck: 125, shiny: 75, mythic: 50 },
+  'III': { luck: 150, shiny: 100, mythic: 75 },
+  'IV': { luck: 300, shiny: 200, mythic: 150 }
+};
+
+
+const MASTERY_MAP = {
+  0: { luck: 0, secretLuck: 0, infinityLuck: 0 },
+  1: { luck: 5, secretLuck: 0, infinityLuck: 0 },
+  2: { luck: 10, secretLuck: 0, infinityLuck: 0 },
+  3: { luck: 15, secretLuck: 0, infinityLuck: 0 },
+  4: { luck: 20, secretLuck: 0, infinityLuck: 0 },
+  5: { luck: 25, secretLuck: 0, infinityLuck: 0 },
+  6: { luck: 30, secretLuck: 0, infinityLuck: 0 },
+  7: { luck: 30, secretLuck: 1, infinityLuck: 0 },
+  8: { luck: 30, secretLuck: 2, infinityLuck: 0 },
+  9: { luck: 30, secretLuck: 3, infinityLuck: 0 },
+ 10: { luck: 30, secretLuck: 4, infinityLuck: 0 },
+ 11: { luck: 30, secretLuck: 5, infinityLuck: 0 },
+ 12: { luck: 30, secretLuck: 5, infinityLuck: 1 },
+ 13: { luck: 30, secretLuck: 5, infinityLuck: 2 },
+ 14: { luck: 30, secretLuck: 5, infinityLuck: 3 }
+};
+
 
 
 let selectedWorld = null;
@@ -97,7 +127,7 @@ function renderEggs() {
     if (selectedWorld) {
         if (selectedWorld === 'limited') {
 
-          filteredEggs = filteredEggs.filter(egg => egg.world === 'limited' || egg.world === 'limitedH');
+          filteredEggs = filteredEggs.filter(egg => egg.world === 'limited' || egg.world === 'limitedH' || egg.world === 'limited1');
         } else {
           filteredEggs = filteredEggs.filter(egg => egg.world === selectedWorld);
         }
@@ -119,6 +149,8 @@ function renderEggs() {
     });
   });
 }
+
+ 
 
 async function fetchEggsData() {
 
@@ -346,7 +378,7 @@ async function createBountyDetailsView() {
   timerEl.style.marginTop = '8px';
   timerEl.style.fontWeight = '600';
   timerEl.id = 'bounty-timer';
-  // label on first line, value on second line
+  
   const timerLabelEl = document.createElement('div');
   timerLabelEl.style.fontWeight = '700';
   timerLabelEl.style.marginBottom = '4px';
@@ -2127,7 +2159,7 @@ function createEggSettings(egg, canSpawnAsRift) {
       `;
     }
   }
-  controlsHtml += `
+    controlsHtml += `
     <label>Luck Multiplier (%):</label>
     <input type="number" class="luck" value="0" />
   `;
@@ -2183,6 +2215,65 @@ function createEggSettings(egg, canSpawnAsRift) {
        </div>
      </div>
    `;
+  
+  const isChristmasEgg = !!(egg && egg.world && egg.world.toLowerCase() === 'limited1');
+  if (isChristmasEgg) {
+    controlsHtml += `
+      <details class="christmas-settings" open style="margin-top:12px;border-radius:8px;border:1px solid var(--table-border);padding:10px;background:var(--controls-bg);">
+        <summary style="font-weight:700;cursor:pointer;margin-bottom:8px;">Christmas settings</summary>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px;">
+          <label style="min-width:110px;">Festive Potion:</label>
+          <select class="festive-select" style="display:none;min-width:160px;">
+            <option value="none">None</option>
+            <option value="I">I</option>
+            <option value="II">II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+          </select>
+          <div style="position:relative;display:inline-block;">
+            <button class="festive-dropdown-btn" type="button" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;color:var(--main-text);">
+              <img class="festive-icon" src="Images/Icons/Festive_Potion_NONE.webp" alt="Festive Potion Icon" onerror="this.src='Images/Icons/Placeholder.webp'" style="width:20px;height:20px;object-fit:contain;border-radius:6px;" />
+              <span class="festive-label">None</span>
+              <span style="margin-left:8px;opacity:0.7;">▾</span>
+            </button>
+            <div class="festive-panel" style="display:none;position:absolute;left:0;top:calc(100% + 6px);z-index:40;border-radius:8px;padding:8px;min-width:180px;background:var(--controls-bg);border:1px solid var(--table-border);box-shadow:0 8px 30px rgba(0,0,0,0.12);">
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                    <button type="button" class="festive-option" data-val="none" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;">
+                  <img src="Images/Icons/Festive_Potion_NONE.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
+                  <span>None</span>
+                </button>
+                <button type="button" class="festive-option" data-val="I" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;">
+                  <img src="Images/Icons/Festive_Potion_I.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
+                  <span>I</span>
+                </button>
+                <button type="button" class="festive-option" data-val="II" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;">
+                  <img src="Images/Icons/Festive_Potion_II.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
+                  <span>II</span>
+                </button>
+                <button type="button" class="festive-option" data-val="III" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;">
+                  <img src="Images/Icons/Festive_Potion_III.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
+                  <span>III</span>
+                </button>
+                <button type="button" class="festive-option" data-val="IV" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;">
+                  <img src="Images/Icons/Festive_Potion_IV.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
+                  <span>IV</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="festive-infinity-btn" data-selected="false" title="Infinity Festive Elixir" style="border-radius:999px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);min-width:110px;display:flex;align-items:center;gap:8px;">
+            <img class="festive-inf-icon" src="Images/Icons/Festive_Infinity_Elixir.webp" width="20" height="20" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
+            <span>Infinity Festive Elixir</span>
+          </button>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
+          <label style="min-width:110px;">Christmas Mastery:</label>
+          <input type="number" class="christmas-mastery" value="0" min="0" max="14" step="1" style="width:80px;" />
+        </div>
+        
+      </details>
+    `;
+  }
   controls.innerHTML = controlsHtml;
   try {
     const STORAGE_KEY = 'luck_settings';
@@ -2200,14 +2291,23 @@ function createEggSettings(egg, canSpawnAsRift) {
       return {
         luck: luckEl ? (luckEl.value === '' ? 0 : Number(luckEl.value)) : 0,
         secretMult: secretEl ? (secretEl.value === '' ? 1 : Number(secretEl.value)) : 1,
+        festive: {
+          selected: (controls.querySelector('.festive-select') ? (controls.querySelector('.festive-select').value || 'none') : 'none'),
+          infinity: (controls.querySelector('.festive-infinity-btn') ? (controls.querySelector('.festive-infinity-btn').dataset.selected === 'true') : false)
+        },
+        mastery: {
+          level: (controls.querySelector('.christmas-mastery') ? Number(controls.querySelector('.christmas-mastery').value || 0) : 0)
+        },
         variants: {
           shiny: {
             selected: !!(shinyBtn && shinyBtn.dataset && shinyBtn.dataset.selected === 'true'),
-            odds: shinyInput ? String(shinyInput.value || '') : ''
+            odds: shinyInput ? String(shinyInput.value || '') : '',
+            userModified: shinyInput ? (shinyInput.dataset.userModified === 'true') : false
           },
           mythic: {
             selected: !!(mythicBtn && mythicBtn.dataset && mythicBtn.dataset.selected === 'true'),
-            odds: mythicInput ? String(mythicInput.value || '') : ''
+            odds: mythicInput ? String(mythicInput.value || '') : '',
+            userModified: mythicInput ? (mythicInput.dataset.userModified === 'true') : false
     }
     }
       };
@@ -2216,6 +2316,10 @@ function createEggSettings(egg, canSpawnAsRift) {
     function saveSettings() {
       try {
         const toSave = readSettingsFromDOM();
+        
+        if (toSave.mastery && typeof toSave.mastery.level !== 'undefined') {
+          let v = parseInt(toSave.mastery.level || 0) || 0; if (v < 0) v = 0; if (v > 14) v = 14; toSave.mastery.level = v;
+        }
         localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
       } catch (e) {}
     }
@@ -2224,8 +2328,36 @@ function createEggSettings(egg, canSpawnAsRift) {
     if (typeof saved === 'object') {
       if (luckEl && typeof saved.luck !== 'undefined') luckEl.value = saved.luck;
       if (secretEl && typeof saved.secretMult !== 'undefined') secretEl.value = saved.secretMult;
-  if (shinyInput && saved.variants && saved.variants.shiny && typeof saved.variants.shiny.odds !== 'undefined') shinyInput.value = saved.variants.shiny.odds;
-  if (mythicInput && saved.variants && saved.variants.mythic && typeof saved.variants.mythic.odds !== 'undefined') mythicInput.value = saved.variants.mythic.odds;
+      if (controls.querySelector('.festive-select') && saved.festive && typeof saved.festive.selected !== 'undefined') {
+        const sel = saved.festive.selected || 'none';
+        controls.querySelector('.festive-select').value = sel;
+        const icon = controls.querySelector('.festive-icon');
+        if (icon) { icon.onerror = () => icon.src = 'Images/Icons/Placeholder.webp'; icon.src = `Images/Icons/${sel === 'none' ? 'Festive_Potion_NONE' : `Festive_Potion_${sel}`}.webp`; }
+        const dropBtn = controls.querySelector('.festive-dropdown-btn');
+        if (dropBtn) {
+          const label = dropBtn.querySelector('.festive-label'); if (label) label.textContent = sel === 'none' ? 'None' : sel;
+        }
+        
+        const panelOptions = controls.querySelectorAll('.festive-option');
+        if (panelOptions && panelOptions.forEach) {
+          panelOptions.forEach(o => { if (o.dataset && o.dataset.val) { if (o.dataset.val === sel) o.style.background = 'rgba(255,255,255,0.04)'; else o.style.background = 'transparent'; } });
+        }
+      }
+      if (controls.querySelector('.festive-infinity-btn') && saved.festive && typeof saved.festive.infinity !== 'undefined') {
+        const b = controls.querySelector('.festive-infinity-btn');
+        b.dataset.selected = saved.festive.infinity ? 'true' : 'false';
+        if (b.dataset.selected === 'true') { b.style.background = '#2596be'; b.style.color = '#ffffff'; } else { b.style.background = 'var(--controls-bg)'; b.style.color = 'var(--main-text)'; }
+      }
+      if (controls.querySelector('.christmas-mastery') && saved.mastery && typeof saved.mastery.level !== 'undefined') controls.querySelector('.christmas-mastery').value = saved.mastery.level;
+      
+  if (shinyInput && saved.variants && saved.variants.shiny && typeof saved.variants.shiny.odds !== 'undefined') {
+    shinyInput.value = saved.variants.shiny.odds;
+    shinyInput.dataset.userModified = saved.variants.shiny.userModified === true || String(saved.variants.shiny.userModified) === 'true' ? 'true' : 'false';
+  }
+  if (mythicInput && saved.variants && saved.variants.mythic && typeof saved.variants.mythic.odds !== 'undefined') {
+    mythicInput.value = saved.variants.mythic.odds;
+    mythicInput.dataset.userModified = saved.variants.mythic.userModified === true || String(saved.variants.mythic.userModified) === 'true' ? 'true' : 'false';
+  }
   if (shinyBtn && saved.variants && saved.variants.shiny && saved.variants.shiny.selected) shinyBtn.dataset.selected = 'true';
   if (mythicBtn && saved.variants && saved.variants.mythic && saved.variants.mythic.selected) mythicBtn.dataset.selected = 'true';
     }
@@ -2236,6 +2368,78 @@ function createEggSettings(egg, canSpawnAsRift) {
     if (mythicInput) mythicInput.addEventListener('input', saveSettings);
     if (shinyBtn) shinyBtn.addEventListener('click', () => { setTimeout(saveSettings, 0); });
     if (mythicBtn) mythicBtn.addEventListener('click', () => { setTimeout(saveSettings, 0); });
+    const festiveSelectEl = controls.querySelector('.festive-select');
+    const festiveDropdownBtn = controls.querySelector('.festive-dropdown-btn');
+    const festivePanel = controls.querySelector('.festive-panel');
+    const festiveOptions = controls.querySelectorAll('.festive-option');
+    const festiveInfinityBtnEl = controls.querySelector('.festive-infinity-btn');
+    const masteryInputEl = controls.querySelector('.christmas-mastery');
+    if (festiveSelectEl) festiveSelectEl.addEventListener('change', () => { 
+      const icon = controls.querySelector('.festive-icon');
+      const v = festiveSelectEl.value || 'none';
+      const fileName = v === 'none' ? 'Festive_Potion_NONE' : `Festive_Potion_${v}`;
+      if (icon) { icon.onerror = () => icon.src = 'Images/Icons/Placeholder.webp'; icon.src = `Images/Icons/${fileName}.webp`; }
+      saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
+      
+      if (festiveDropdownBtn) {
+        const label = festiveDropdownBtn.querySelector('.festive-label');
+        if (label) label.textContent = v === 'none' ? 'None' : v;
+      }
+      
+      festiveOptions.forEach(o => { if (o.dataset && o.dataset.val) { if (o.dataset.val === v) o.style.background = 'rgba(255,255,255,0.04)'; else o.style.background = 'transparent'; } });
+    });
+    if (festiveInfinityBtnEl) {
+      festiveInfinityBtnEl.addEventListener('click', () => {
+        const sel = festiveInfinityBtnEl.dataset.selected === 'true' ? 'false' : 'true';
+        festiveInfinityBtnEl.dataset.selected = sel;
+        if (sel === 'true') { festiveInfinityBtnEl.style.background = '#2596be'; festiveInfinityBtnEl.style.color = '#ffffff'; }
+        else { festiveInfinityBtnEl.style.background = 'var(--controls-bg)'; festiveInfinityBtnEl.style.color = 'var(--main-text)'; }
+          saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
+      });
+    }
+
+    
+    if (festiveDropdownBtn && festivePanel) {
+      festiveDropdownBtn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        const open = festivePanel.style.display === 'block';
+        
+        document.querySelectorAll('.festive-panel').forEach(p => p.style.display = 'none');
+        festivePanel.style.display = open ? 'none' : 'block';
+      });
+      
+      document.addEventListener('click', () => { if (festivePanel) festivePanel.style.display = 'none'; });
+    }
+    if (festiveOptions && festiveOptions.forEach) {
+      festiveOptions.forEach(opt => {
+        opt.addEventListener('click', (ev) => {
+          ev.stopPropagation();
+          const v = opt.dataset.val || 'none';
+          if (festiveSelectEl) {
+            festiveSelectEl.value = v;
+            festiveSelectEl.dispatchEvent(new Event('change'));
+          }
+          if (festivePanel) festivePanel.style.display = 'none';
+        });
+      });
+    }
+    if (masteryInputEl) {
+      masteryInputEl.addEventListener('input', () => {
+        let v = parseInt(masteryInputEl.value || '0') || 0;
+        if (v < 0) v = 0;
+        if (v > 14) v = 14;
+        masteryInputEl.value = v;
+        const info = MASTERY_MAP[v] || MASTERY_MAP[0];
+        
+        saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
+        if (window && window._BGSI_DEBUG) console.debug('masteryInput changed', v);
+      });
+      masteryInputEl.addEventListener('change', () => { if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged')); });
+      const vInit = Math.max(0, Math.min(14, parseInt(masteryInputEl.value || '0') || 0));
+      const infoInit = MASTERY_MAP[vInit] || MASTERY_MAP[0];
+      
+    }
+
   } catch (e) {}
   return controls;
 }
@@ -2415,11 +2619,13 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
     }
     if (shinyInput) {
       shinyInput.addEventListener('input', () => { applyVariantButtonStyles(); updateChances(); });
-      if (!shinyInput.value) shinyInput.value = '1 in 40';
+      shinyInput.addEventListener('input', () => { shinyInput.dataset.userModified = 'true'; saveSettings(); });
+      if (!shinyInput.value) { shinyInput.value = '1 in 40'; shinyInput.dataset.userModified = 'false'; }
     }
     if (mythicInput) {
       mythicInput.addEventListener('input', () => { applyVariantButtonStyles(); updateChances(); });
-      if (!mythicInput.value) mythicInput.value = '1 in 100';
+      mythicInput.addEventListener('input', () => { mythicInput.dataset.userModified = 'true'; saveSettings(); });
+      if (!mythicInput.value) { mythicInput.value = '1 in 100'; mythicInput.dataset.userModified = 'false'; }
     }
      applyVariantButtonStyles();
     if (multiplierSelect) {
@@ -2489,12 +2695,54 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          }
        }
        const riftBonusPercent = multiplierValue * 100;
-       const luckPercent = luckInput ? (luckInput.value === "" ? 0 : parseFloat(luckInput.value)) : 0;
+      const luckPercent = luckInput ? (luckInput.value === "" ? 0 : parseFloat(luckInput.value)) : 0;
 
-      const totalLuckPercent = luckPercent;
+      
+      const festiveSelectEl = (controls ? controls.querySelector('.festive-select') : null) || document.querySelector('.festive-select');
+      const festiveInfinityBtnEl = (controls ? controls.querySelector('.festive-infinity-btn') : null) || document.querySelector('.festive-infinity-btn');
+      const masteryInputEl = (controls ? controls.querySelector('.christmas-mastery') : null) || document.querySelector('.christmas-mastery');
+      
+      const masteryModeEl = null;
+      const festiveSelected = festiveSelectEl ? (festiveSelectEl.value || 'none') : 'none';
+      const festiveInfinity = festiveInfinityBtnEl ? (festiveInfinityBtnEl.dataset.selected === 'true') : false;
+      const festiveIsSelected = (festiveSelected && FESTIVE_POTION_MAP[festiveSelected]);
+      let totalLuckPercent = luckPercent;
+      
+      if (festiveIsSelected) {
+        const fest = FESTIVE_POTION_MAP[festiveSelected];
+        const mult = festiveInfinity ? 1.5 : 1;
+        totalLuckPercent += Math.round(fest.luck * mult);
+      }
+      
+      let masteryLevel = masteryInputEl ? (parseInt(masteryInputEl.value || '0') || 0) : 0;
+      if (!masteryInputEl) {
+        try {
+          const saved = JSON.parse(localStorage.getItem('luck_settings') || '{}') || {};
+          if (saved && saved.mastery && typeof saved.mastery.level !== 'undefined') masteryLevel = parseInt(saved.mastery.level || 0) || 0;
+        } catch (e) {}
+      }
+      if (masteryLevel < 0) masteryLevel = 0; if (masteryLevel > 14) masteryLevel = 14;
+      const masteryInfo = MASTERY_MAP[masteryLevel] || MASTERY_MAP[0];
+      let masteryAdded = masteryInfo && masteryInfo.luck ? masteryInfo.luck : 0;
+      let masterySecretPercent = masteryInfo && masteryInfo.secretLuck ? masteryInfo.secretLuck : 0;
+      let masteryInfinityPercent = masteryInfo && masteryInfo.infinityLuck ? masteryInfo.infinityLuck : 0;
+      
+      const totalLuckBefore = totalLuckPercent;
+      if (masteryAdded) {
+        totalLuckPercent += masteryAdded;
+        if (window && window._BGSI_DEBUG) console.debug('mastery applied: +'+ masteryAdded, ' totalLuck:', totalLuckBefore, '->', totalLuckPercent);
+      }
+      try {
+      } catch (e) {}
       const secretTimes = secretInput ? (secretInput.value === "" ? 1 : Math.max(1, parseFloat(secretInput.value))) : 1;
       const extraSecretPercent = 0;
       const effectiveLuckPercent = totalLuckPercent + riftBonusPercent;
+      if (window && window._BGSI_DEBUG) {
+        try { console.debug('updateChances: controls element', controls); } catch (e) {}
+        try {
+          console.debug('updateChances:', { luckPercent, totalLuckPercent, riftBonusPercent, effectiveLuckPercent, masterLevel: masteryLevel, masteryAdded, masterySecretPercent, masteryInfinityPercent, festiveSelected, festiveIsSelected, festiveInfinity });
+        } catch (e) { console.debug('updateChances: debug logging failed', e); }
+      }
        petList.innerHTML = "";
 
        const petsToIterate = (egg.Pets || []).slice();
@@ -2502,20 +2750,37 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          petsToIterate.push({ name: 'OG Radiance (Secret)', icon: 'Images/Pets/OG_Radiance.webp', baseOdds: 50000000000 });
        }
        petsToIterate.forEach(pet => {
-         const isSecret = /(Secret|Infinity)/i.test(pet.name);
+         const isInfinity = /Infinity/i.test(pet.name);
+         const isSecretName = /Secret/i.test(pet.name);
+         const isSecret = isSecretName || isInfinity;
          const baseChance = pet.baseOdds && pet.baseOdds > 0 ? 1 / pet.baseOdds : 0;
 
          let effectiveForPet = effectiveLuckPercent;
         let combinedMultiplier = 1 + effectiveForPet / 100;
+        
         if (isSecret) {
-
-
           const secretMultiplierFromUpgrades = 1 + (extraSecretPercent / 100);
-          combinedMultiplier = combinedMultiplier * secretMultiplierFromUpgrades * secretTimes;
+          const masterySecretMul = 1 + (masterySecretPercent / 100);
+          combinedMultiplier = combinedMultiplier * secretMultiplierFromUpgrades * masterySecretMul * secretTimes;
+        }
+        if (isInfinity) {
+          const masteryInfMul = 1 + (masteryInfinityPercent / 100);
+          combinedMultiplier = combinedMultiplier * masteryInfMul;
         }
          let variantFactor = 1;
-         const shinyOdds = parseOneInInput(shinyInput ? shinyInput.value : null) || 40;
-         const mythicOdds = parseOneInInput(mythicInput ? mythicInput.value : null) || 100;
+        let shinyOdds = parseOneInInput(shinyInput ? shinyInput.value : null) || 40;
+        let mythicOdds = parseOneInInput(mythicInput ? mythicInput.value : null) || 100;
+        if (festiveSelected && FESTIVE_POTION_MAP[festiveSelected]) {
+        
+          const elixirDivisor = festiveInfinity ? 2 : 1;
+          if (elixirDivisor > 1) {
+            shinyOdds = Math.max(1, Math.round(shinyOdds / elixirDivisor));
+            mythicOdds = Math.max(1, Math.round(mythicOdds / elixirDivisor));
+          }
+          
+          if (shinyInput && shinyInput.dataset.userModified !== 'true') { shinyInput.value = `1 in ${shinyOdds}`; if (shinyInput.dataset.userModified !== 'false') { shinyInput.dataset.userModified = 'false'; saveSettings(); } }
+          if (mythicInput && mythicInput.dataset.userModified !== 'true') { mythicInput.value = `1 in ${mythicOdds}`; if (mythicInput.dataset.userModified !== 'false') { mythicInput.dataset.userModified = 'false'; saveSettings(); } }
+        }
          const shinySelected = shinyBtn && shinyBtn.dataset.selected === 'true';
          const mythicSelected = mythicBtn && mythicBtn.dataset.selected === 'true';
 
@@ -2683,6 +2948,14 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
      }
      if (secretInput) secretInput.addEventListener("input", updateChances);
 
+    
+    if (controls) {
+      controls.addEventListener('luckSettingsChanged', updateChances);
+    }
+    
+    document.addEventListener('luckSettingsChanged', updateChances);
+    
+
      if (layout) {
        const mo = new MutationObserver(() => applySelectionGlow());
        mo.observe(layout, { attributes: true, attributeFilter: ['data-selected-bounty-index', 'data-selected-pet-name'] });
@@ -2741,6 +3014,7 @@ async function fetchPetsData() {
       if (cv === 'tickets') rawBase.tickets = Number(item.currency) || 0;
       else if (cv === 'pearls') rawBase.pearls = Number(item.currency) || 0;
       else if (cv === 'festival_coins' || cv === 'festival') rawBase.festival_coins = Number(item.currency) || 0;
+      else if (cv === 'snowflakes') rawBase.snowflakes = Number(item.currency) || 0;
       else rawBase.coins = Number(item.currency) || 0;
     }
 
@@ -2856,7 +3130,8 @@ function setupPetStatsHover() {
     coins: 'Images/Icons/Coins.webp',
     tickets: 'Images/Icons/Tickets.webp',
     festival_coins: 'Images/Icons/Festival_Coins.webp',
-    pearls: 'Images/Icons/Pearls.webp'
+    pearls: 'Images/Icons/Pearls.webp',
+    snowflakes: 'Images/Icons/Snowflakes.webp'
   };
 
   function getStatIcon(stat) {
@@ -2866,11 +3141,12 @@ function setupPetStatsHover() {
     if (stat === 'tickets') return statIcons.tickets;
     if (stat === 'festival_coins') return statIcons.festival_coins;
     if (stat === 'pearls') return statIcons.pearls;
+    if (stat === 'snowflakes') return statIcons.snowflakes;
     return '';
   }
 
   function buildStatsRows(stats) {
-    const statOrder = ['bubbles', 'gems', 'coins', 'tickets', 'festival_coins', 'pearls'];
+    const statOrder = ['bubbles', 'gems', 'coins', 'tickets', 'festival_coins', 'pearls', 'snowflakes'];
     const formatStatValue = (v) => {
       if (v === undefined || v === null) return '';
       if (typeof v === 'number' && isFinite(v)) {
