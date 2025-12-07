@@ -2146,11 +2146,13 @@ function createEggSettings(egg, canSpawnAsRift) {
         <label>Rift:</label>
         <select class="multiplier">
           <option value="0">No</option>
-          <option value="5">5x</option>
-          <option value="10">10x</option>
-          <option value="15">15x</option>
-          <option value="20">20x</option>
-          <option value="25">25x</option>
+          <option value="5">x5</option>
+          <option value="10">x10</option>
+          <option value="15">x15</option>
+          <option value="20">x20</option>
+          <option value="25">x25</option>
+          <option value="100000">x100K</option>
+          <option value="1000000">x1M</option>
           <option value="other">Other</option>
         </select>
   <div class="multiplier-other-wrap" style="display:none;margin:6px 0 12px 0;width:100%;">
