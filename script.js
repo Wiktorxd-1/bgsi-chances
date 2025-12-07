@@ -973,7 +973,8 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     const worlds = [
       { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
       { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
-      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" }
+      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" },
+      { id: "c2025", label: "Christmas 2025", icon: "Images/Icons/Christmas_Icon.webp" }
     ];
   const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
@@ -1220,7 +1221,8 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     const worlds = [
       { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
       { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
-      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" }
+      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" },
+      { id: "c2025", label: "Christmas 2025", icon: "Images/Icons/Christmas_Icon.webp" }
     ];
     const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
@@ -1462,7 +1464,8 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     const worlds = [
       { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
       { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
-      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" }
+      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" },
+      { id: "c2025", label: "Christmas 2025", icon: "Images/Icons/Christmas_Icon.webp" }
     ];
     const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
@@ -1704,7 +1707,8 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     const worlds = [
       { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
       { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
-      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" }
+      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" },
+      { id: "c2025", label: "Christmas 2025", icon: "Images/Icons/Christmas_Icon.webp" }
     ];
     const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
@@ -1946,7 +1950,8 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
     const worlds = [
       { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
       { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
-      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" }
+      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" },
+      { id: "c2025", label: "Christmas 2025", icon: "Images/Icons/Christmas_Icon.webp" }
     ];
     const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
