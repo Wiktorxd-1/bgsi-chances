@@ -1044,7 +1044,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   if (egg.name === "Infinity Egg") {
     await loadInfinityEggData();
     if (infinityEggData && infinityEggData[selectedInfinityWorld] && Array.isArray(infinityEggData[selectedInfinityWorld].Pets)) {
-      petsToShow = infinityEggData[selectedInfinityWorld].Pets.slice();
+      petsToShow = infinityEggData[selectedInfinityWorld].Pets.filter(p => p && p.name && isFinite(Number(p.baseOdds)) && Number(p.baseOdds) > 0).slice();
     }
   }
 
@@ -2802,7 +2802,10 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          }
 
          const adjustedChance = baseChance * combinedMultiplier * variantFactor;
-         const adjustedOneInNum = (adjustedChance > 0 && isFinite(1 / adjustedChance)) ? Math.round(1 / adjustedChance) : Infinity;
+         let adjustedOneInNum;
+         if (!isFinite(adjustedChance) || adjustedChance <= 0) adjustedOneInNum = Infinity;
+         else if (adjustedChance >= 1) adjustedOneInNum = 1;
+         else adjustedOneInNum = Math.max(1, Math.round(1 / adjustedChance));
          const adjustedOneIn = adjustedOneInNum === Infinity ? '∞' : adjustedOneInNum;
          const adjustedOneInDisplay = adjustedOneIn === '∞' ? '∞' : adjustedOneIn.toLocaleString();
 
@@ -2906,8 +2909,8 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
   const shinySelectedForBase = shinyBtn && shinyBtn.dataset.selected === 'true';
   const mythicSelectedForBase = mythicBtn && mythicBtn.dataset.selected === 'true';
   const variantMultiplierForBase = (shinySelectedForBase ? FIXED_SHINY_MULT : 1) * (mythicSelectedForBase ? FIXED_MYTHIC_MULT : 1);
-  const scaledBaseOneInRaw = pet.baseOdds ? Number(pet.baseOdds) * variantMultiplierForBase : NaN;
-  const scaledBaseOneInDisplay = isFinite(scaledBaseOneInRaw) ? scaledBaseOneInRaw.toLocaleString() : 'Unknown';
+  const scaledBaseOneInRaw = pet.baseOdds && isFinite(Number(pet.baseOdds)) && Number(pet.baseOdds) > 0 ? Number(pet.baseOdds) * variantMultiplierForBase : NaN;
+  const scaledBaseOneInDisplay = isFinite(scaledBaseOneInRaw) && scaledBaseOneInRaw > 0 ? scaledBaseOneInRaw.toLocaleString() : 'Unknown';
   const tdBaseCell = createExpandableCell(pet.baseOdds ? `1 in ${scaledBaseOneInDisplay}` : 'Unknown', 'center');
 
   const oneInLabel = adjustedOneIn === '∞' ? '∞' : `1 in ${adjustedOneInDisplay}`;

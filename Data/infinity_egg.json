@@ -270,7 +270,7 @@
   "c2025": {
     "Pets": [
       { "name": "Royal Candy Cane", "baseOdds": 472, "icon": "Images/Pets/Royal_Candy_Cane.webp" },
-      { "name": "Mistle Toe Fiend", "baseOdds": 472, "icon": "Images/Pets/Mistle_Toe_Fiend.webp" },
+      { "name": "Mistletoe Fiend", "baseOdds": 472, "icon": "Images/Pets/Mistletoe_Fiend.webp" },
       { "name": "Demonic Peppermint", "baseOdds": 1885, "icon": "Images/Pets/Demonic_Peppermint.webp" },
       { "name": "Jingle Orb", "baseOdds": 4711, "icon": "Images/Pets/Jingle_Orb.webp" },
       { "name": "Illuminated Fawn", "baseOdds": 94201, "icon": "Images/Pets/Illuminated_Fawn.webp" },
