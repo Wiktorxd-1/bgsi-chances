@@ -70,6 +70,17 @@ const MASTERY_MAP = {
 };
 
 
+const MILESTONE_MAP = {
+  none: { luck: 0, secretLuck: 0, icon: 'Images/Icons/Milestones_Unranked.webp', name: 'None' },
+  bronze: { luck: 10, secretLuck: 0, icon: 'Images/Icons/Milestones_Bronze.webp', name: 'Bronze I' },
+  silver: { luck: 25, secretLuck: 0, icon: 'Images/Icons/Milestones_Silver.webp', name: 'Silver I' },
+  gold: { luck: 50, secretLuck: 0, icon: 'Images/Icons/Milestones_Gold.webp', name: 'Gold I' },
+  platinum: { luck: 75, secretLuck: 1, icon: 'Images/Icons/Milestones_Platinum.webp', name: 'Platinum I' },
+  super: { luck: 150, secretLuck: 3, icon: 'Images/Icons/Milestones_Super.webp', name: 'Super I' },
+  ultimate: { luck: 200, secretLuck: 5, icon: 'Images/Icons/Milestones_Ultimate.webp', name: 'Ultimate I' }
+};
+
+
 
 let selectedWorld = null;
 let selectedEgg = null;
@@ -337,8 +348,9 @@ async function createBountyDetailsView() {
   petIconWrap.style.marginBottom = '8px';
   const petImg = document.createElement('img');
   let currentBounty = todays;
-  const petNameVal = (currentBounty && currentBounty.Pet) ? currentBounty.Pet : 'Doggy';
+  const petNameVal = safeVal(currentBounty && currentBounty.Pet) || 'Unknown';
   petImg.src = getPetIconByName(petNameVal) || 'Images/pets/Doggy.webp';
+  petImg.onerror = () => { petImg.src = 'Images/Pets/Doggy.webp'; };
   petImg.alt = petNameVal;
   petImg.style.width = '150px';
   petImg.style.height = '150px';
@@ -365,7 +377,7 @@ async function createBountyDetailsView() {
   chanceEl.textContent = `Chance (base): ${chanceText}`;
   infoWrap.appendChild(chanceEl);
 
-  const eggText = (currentBounty && currentBounty.Egg) ? currentBounty.Egg : 'Unknown Egg';
+  const eggText = safeVal(currentBounty && currentBounty.Egg) || 'Unknown Egg';
   const eggEl = document.createElement('div');
   eggEl.style.marginTop = '6px';
   eggEl.innerHTML = `Egg: <strong>${eggText}</strong>`;
@@ -629,6 +641,7 @@ async function createBountyDetailsView() {
         const icon = document.createElement('img');
         const petSafe = safeVal(b && b.Pet) || 'Unknown';
         icon.src = getPetIconByName(petSafe) || PLACEHOLDER_EGG_IMAGE;
+        icon.onerror = () => { icon.src = PLACEHOLDER_EGG_IMAGE; };
         icon.alt = petSafe;
         icon.style.width = '36px';
         icon.style.height = '36px';
@@ -792,7 +805,8 @@ async function createBountyDetailsView() {
   eggIconWrap.style.marginTop = '8px';
   eggIconWrap.style.marginLeft = '8px';
   const eggImg = document.createElement('img');
-  eggImg.src = getEggImagePath(eggText);
+  eggImg.src = safeVal(currentBounty && currentBounty.Egg) ? getEggImagePath(eggText) : PLACEHOLDER_EGG_IMAGE;
+  eggImg.onerror = () => { eggImg.src = PLACEHOLDER_EGG_IMAGE; };
   eggImg.alt = eggText;
   eggImg.style.width = '160px';
   eggImg.style.height = '160px';
@@ -960,6 +974,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   const eggIcon = document.createElement('img');
   eggIcon.className = 'egg-icon-big';
   eggIcon.src = getEggImagePath(egg);
+  eggIcon.onerror = () => { eggIcon.src = 'Images/eggs/Placeholder.webp'; };
   eggIcon.alt = egg.name;
   left.appendChild(eggIcon);
   const eggName = document.createElement('div');
@@ -1208,6 +1223,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   const eggIcon = document.createElement('img');
   eggIcon.className = 'egg-icon-big';
   eggIcon.src = getEggImagePath(egg);
+  eggIcon.onerror = () => { eggIcon.src = 'Images/eggs/Placeholder.webp'; };
   eggIcon.alt = egg.name;
   left.appendChild(eggIcon);
   const eggName = document.createElement('div');
@@ -1451,6 +1467,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   const eggIcon = document.createElement('img');
   eggIcon.className = 'egg-icon-big';
   eggIcon.src = getEggImagePath(egg);
+  eggIcon.onerror = () => { eggIcon.src = 'Images/eggs/Placeholder.webp'; };
   eggIcon.alt = egg.name;
   left.appendChild(eggIcon);
   const eggName = document.createElement('div');
@@ -2134,7 +2151,7 @@ function createEggSettings(egg, canSpawnAsRift) {
     if (egg.name === "Brainrot Egg") {
       controlsHtml += `
         <label>Rift:</label>
-        <select class="multiplier">
+        <select class="multiplier skinned-input">
           <option value="2">2x</option>
           <option value="5" selected>5x</option>
           <option value="10">10x</option>
@@ -2143,13 +2160,13 @@ function createEggSettings(egg, canSpawnAsRift) {
           <option value="other">Other</option>
         </select>
   <div class="multiplier-other-wrap" style="display:none;margin:6px 0 12px 0;width:100%;">
-          <input type="number" class="multiplier-other" placeholder="2" min="0" step="0.01" style="width:100%;display:block;box-sizing:border-box;margin-bottom:0;" />
+          <input type="number" class="multiplier-other skinned-input" placeholder="2" min="0" step="0.01" style="width:100%;display:block;box-sizing:border-box;margin-bottom:0;" />
         </div>
       `;
     } else {
       controlsHtml += `
         <label>Rift:</label>
-        <select class="multiplier">
+        <select class="multiplier skinned-input">
           <option value="0">No</option>
           <option value="5">x5</option>
           <option value="10">x10</option>
@@ -2161,14 +2178,14 @@ function createEggSettings(egg, canSpawnAsRift) {
           <option value="other">Other</option>
         </select>
   <div class="multiplier-other-wrap" style="display:none;margin:6px 0 12px 0;width:100%;">
-          <input type="number" class="multiplier-other" placeholder="2" min="0" step="0.01" style="width:100%;display:block;box-sizing:border-box;margin-bottom:0;" />
+          <input type="number" class="multiplier-other skinned-input" placeholder="2" min="0" step="0.01" style="width:100%;display:block;box-sizing:border-box;margin-bottom:0;" />
         </div>
       `;
     }
   }
     controlsHtml += `
     <label>Luck Multiplier (%):</label>
-    <input type="number" class="luck" value="0" />
+    <input type="number" class="luck skinned-input" value="0" />
   `;
 
   if (egg && egg.world === 'limitedH') {
@@ -2187,7 +2204,7 @@ function createEggSettings(egg, canSpawnAsRift) {
     controlsHtml += `
       <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px;width:100%;">
         <label style="margin-bottom:0;">Secret Multiplier (x):</label>
-        <input type="number" class="secret-mult" value="1" min="1" step="0.01" style="width:70px;margin-bottom:0;" />
+          <input type="number" class="secret-mult skinned-input" value="1" min="1" step="0.01" style="width:70px;margin-bottom:0;" />
       </div>
     `;
   }
@@ -2205,8 +2222,8 @@ function createEggSettings(egg, canSpawnAsRift) {
             style="border-radius:999px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);min-width:72px;">
             Shiny
           </button>
-          <input type="text" class="variant-input shiny-input" placeholder="1 in 40" value="1 in 40"
-            style="width:160px;font-family:inherit;color:var(--main-text);background:transparent;border:1px solid rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;box-sizing:border-box;" />
+          <input type="text" class="variant-input shiny-input skinned-input" placeholder="1 in 40" value="1 in 40"
+            style="width:160px;font-family:inherit;color:var(--main-text);border:1px solid rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;box-sizing:border-box;" />
         </div>
 
         <div class="variant-row" style="display:flex;align-items:center;gap:10px;flex-wrap:nowrap;">
@@ -2214,8 +2231,8 @@ function createEggSettings(egg, canSpawnAsRift) {
             style="border-radius:999px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);min-width:72px;">
             Mythic
           </button>
-          <input type="text" class="variant-input mythic-input" placeholder="1 in 100" value="1 in 100"
-            style="width:160px;font-family:inherit;color:var(--main-text);background:transparent;border:1px solid rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;box-sizing:border-box;" />
+          <input type="text" class="variant-input mythic-input skinned-input" placeholder="1 in 100" value="1 in 100"
+            style="width:160px;font-family:inherit;color:var(--main-text);border:1px solid rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;box-sizing:border-box;" />
         </div>
 
          <div style="font-size:0.82rem;color:var(--main-text);opacity:0.85;">Examples: "13" or "1 in 13"</div>
@@ -2275,7 +2292,37 @@ function createEggSettings(egg, canSpawnAsRift) {
         </div>
         <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
           <label style="min-width:110px;">Christmas Mastery:</label>
-          <input type="number" class="christmas-mastery" value="0" min="0" max="14" step="1" style="width:80px;" />
+          <input type="number" class="christmas-mastery skinned-input" value="0" min="0" max="14" step="1" style="width:80px;" />
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
+          <label style="min-width:110px;">Milestone:</label>
+          <select class="christmas-milestone" style="display:none;min-width:160px;">
+            <option value="none">None</option>
+            <option value="bronze">Bronze I</option>
+            <option value="silver">Silver I</option>
+            <option value="gold">Gold I</option>
+            <option value="platinum">Platinum I</option>
+            <option value="super">Super I</option>
+            <option value="ultimate">Ultimate I</option>
+          </select>
+          <div style="position:relative;display:inline-block;">
+            <button class="milestone-dropdown-btn" type="button" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;color:var(--main-text);">
+              <img class="christmas-milestone-icon" src="Images/Icons/Milestones_Unranked.webp" alt="Milestone Icon" style="width:20px;height:20px;object-fit:contain;border-radius:6px;" onerror="this.src='Images/Icons/Placeholder.webp'" />
+              <span class="milestone-label">None</span>
+              <span style="margin-left:8px;opacity:0.7;">▾</span>
+            </button>
+            <div class="milestone-panel" style="display:none;position:absolute;left:0;top:calc(100% + 6px);z-index:40;border-radius:8px;padding:8px;min-width:180px;background:var(--controls-bg);border:1px solid var(--table-border);box-shadow:0 8px 30px rgba(0,0,0,0.12);">
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <button type="button" class="milestone-option" data-val="none" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Unranked.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>None</span></button>
+                <button type="button" class="milestone-option" data-val="bronze" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Bronze.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Bronze I</span></button>
+                <button type="button" class="milestone-option" data-val="silver" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Silver.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Silver I</span></button>
+                <button type="button" class="milestone-option" data-val="gold" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Gold.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Gold I</span></button>
+                <button type="button" class="milestone-option" data-val="platinum" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Platinum.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Platinum I</span></button>
+                <button type="button" class="milestone-option" data-val="super" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Super.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Super I</span></button>
+                <button type="button" class="milestone-option" data-val="ultimate" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Ultimate.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Ultimate I</span></button>
+              </div>
+            </div>
+          </div>
         </div>
         
       </details>
@@ -2304,6 +2351,8 @@ function createEggSettings(egg, canSpawnAsRift) {
         },
         mastery: {
           level: (controls.querySelector('.christmas-mastery') ? Number(controls.querySelector('.christmas-mastery').value || 0) : 0)
+        ,
+          milestone: controls.querySelector('.christmas-milestone') ? (controls.querySelector('.christmas-milestone').value || 'none') : 'none'
         },
         variants: {
           shiny: {
@@ -2355,7 +2404,18 @@ function createEggSettings(egg, canSpawnAsRift) {
         b.dataset.selected = saved.festive.infinity ? 'true' : 'false';
         if (b.dataset.selected === 'true') { b.style.background = '#2596be'; b.style.color = '#ffffff'; } else { b.style.background = 'var(--controls-bg)'; b.style.color = 'var(--main-text)'; }
       }
-      if (controls.querySelector('.christmas-mastery') && saved.mastery && typeof saved.mastery.level !== 'undefined') controls.querySelector('.christmas-mastery').value = saved.mastery.level;
+        if (controls.querySelector('.christmas-mastery') && saved.mastery && typeof saved.mastery.level !== 'undefined') controls.querySelector('.christmas-mastery').value = saved.mastery.level;
+      if (controls.querySelector('.christmas-milestone') && saved.mastery && typeof saved.mastery.milestone !== 'undefined') {
+        const v = saved.mastery.milestone || 'none';
+        controls.querySelector('.christmas-milestone').value = v;
+        const iconEl = controls.querySelector('.christmas-milestone-icon');
+        if (iconEl) iconEl.src = MILESTONE_MAP[v] && MILESTONE_MAP[v].icon ? MILESTONE_MAP[v].icon : 'Images/Icons/Placeholder.webp';
+        const milestoneBtn = controls.querySelector('.milestone-dropdown-btn');
+        if (milestoneBtn) {
+          const label = milestoneBtn.querySelector('.milestone-label');
+          if (label) label.textContent = (MILESTONE_MAP[v] && MILESTONE_MAP[v].name) ? MILESTONE_MAP[v].name : 'None';
+        }
+      }
       
   if (shinyInput && saved.variants && saved.variants.shiny && typeof saved.variants.shiny.odds !== 'undefined') {
     shinyInput.value = saved.variants.shiny.odds;
@@ -2428,6 +2488,45 @@ function createEggSettings(egg, canSpawnAsRift) {
           }
           if (festivePanel) festivePanel.style.display = 'none';
         });
+      });
+    }
+    const milestoneSelectEl = controls.querySelector('.christmas-milestone');
+    const milestoneDropdownBtn = controls.querySelector('.milestone-dropdown-btn');
+    const milestonePanel = controls.querySelector('.milestone-panel');
+    const milestoneOptions = controls.querySelectorAll('.milestone-option');
+    const milestoneIconEl = controls.querySelector('.christmas-milestone-icon');
+    if (milestoneDropdownBtn && milestonePanel && milestoneOptions && milestoneOptions.forEach) {
+      milestoneDropdownBtn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        const open = milestonePanel.style.display === 'block';
+        document.querySelectorAll('.milestone-panel').forEach(p => p.style.display = 'none');
+        milestonePanel.style.display = open ? 'none' : 'block';
+      });
+      document.addEventListener('click', () => { if (milestonePanel) milestonePanel.style.display = 'none'; });
+      milestoneOptions.forEach(opt => {
+        opt.addEventListener('click', (ev) => {
+          ev.stopPropagation();
+          const v = opt.dataset.val || 'none';
+          if (milestoneSelectEl) {
+            milestoneSelectEl.value = v;
+            milestoneSelectEl.dispatchEvent(new Event('change'));
+          }
+          if (milestonePanel) milestonePanel.style.display = 'none';
+        });
+      });
+    }
+    if (milestoneSelectEl) {
+      milestoneSelectEl.addEventListener('change', () => {
+        const v = milestoneSelectEl.value || 'none';
+        if (milestoneIconEl) {
+          milestoneIconEl.onerror = () => milestoneIconEl.src = 'Images/Icons/Placeholder.webp';
+          milestoneIconEl.src = (MILESTONE_MAP[v] && MILESTONE_MAP[v].icon) ? MILESTONE_MAP[v].icon : 'Images/Icons/Placeholder.webp';
+        }
+        if (milestoneDropdownBtn) {
+          const label = milestoneDropdownBtn.querySelector('.milestone-label');
+          if (label) label.textContent = (MILESTONE_MAP[v] && MILESTONE_MAP[v].name) ? MILESTONE_MAP[v].name : 'None';
+        }
+        saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
       });
     }
     if (masteryInputEl) {
@@ -2733,11 +2832,25 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       let masteryAdded = masteryInfo && masteryInfo.luck ? masteryInfo.luck : 0;
       let masterySecretPercent = masteryInfo && masteryInfo.secretLuck ? masteryInfo.secretLuck : 0;
       let masteryInfinityPercent = masteryInfo && masteryInfo.infinityLuck ? masteryInfo.infinityLuck : 0;
+      const milestoneElForCalc = (controls ? controls.querySelector('.christmas-milestone') : null) || document.querySelector('.christmas-milestone');
+      const milestoneSelForCalc = milestoneElForCalc ? (milestoneElForCalc.value || 'none') : 'none';
+      const milestoneInfoForCalc = MILESTONE_MAP[milestoneSelForCalc] || MILESTONE_MAP['none'];
+      const isChristmasEgg = egg && egg.world && String(egg.world).toLowerCase() === 'limited1';
       
       const totalLuckBefore = totalLuckPercent;
       if (masteryAdded) {
         totalLuckPercent += masteryAdded;
         if (window && window._BGSI_DEBUG) console.debug('mastery applied: +'+ masteryAdded, ' totalLuck:', totalLuckBefore, '->', totalLuckPercent);
+      }
+      if (isChristmasEgg && milestoneInfoForCalc && milestoneInfoForCalc.luck) {
+        const beforeM = totalLuckPercent;
+        totalLuckPercent += milestoneInfoForCalc.luck;
+        if (window && window._BGSI_DEBUG) console.debug('milestone applied: +'+ milestoneInfoForCalc.luck, ' totalLuck:', beforeM, '->', totalLuckPercent);
+      }
+      if (isChristmasEgg && milestoneInfoForCalc && milestoneInfoForCalc.secretLuck) {
+        masterySecretPercent += milestoneInfoForCalc.secretLuck;
+
+        masteryInfinityPercent += milestoneInfoForCalc.secretLuck;
       }
       try {
       } catch (e) {}

@@ -363,14 +363,56 @@ p {
     display: block;
     margin-bottom: 4px;
 }
+/* Apply skin broadly to textual/number inputs and selects so they're not plain chrome inputs. */
 .controls select,
-.controls input {
+.controls input,
+input[type="text"],
+input[type="number"],
+input[type="search"],
+textarea,
+select {
     padding: 0.4rem;
     border-radius: 6px;
     border: 1px solid #ccc;
     min-width: 80px;
     display: block;
     margin-bottom: 10px;
+}
+
+/* Skinned inputs - give all non-button inputs a button-like appearance */
+input.skinned-input,
+select.skinned-input,
+textarea.skinned-input,
+.egg-search-bar.skinned-input,
+.controls input.skinned-input,
+.controls select.skinned-input {
+  background: var(--controls-bg);
+  border: 1px solid var(--table-border);
+  color: var(--main-text);
+  padding: 8px 12px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  outline: none;
+  font-family: inherit;
+  transition: box-shadow 0.12s ease, transform 0.12s ease;
+  display: inline-flex;
+  align-items: center;
+}
+.controls input.skinned-input[disabled],
+.controls select.skinned-input[disabled] {
+  opacity: 0.6;
+}
+.controls input.skinned-input:focus,
+.controls select.skinned-input:focus,
+.egg-search-bar.skinned-input:focus {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.22), 0 0 0 2px rgba(255,255,255,0.02);
+  border-color: var(--table-border);
+}
+/* Remove default browser inner spinner for number inputs on some browsers, but keep functionality */
+input[type=number].skinned-input::-webkit-outer-spin-button,
+input[type=number].skinned-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 table {
     background-color: var(--table-bg);
@@ -1062,4 +1104,9 @@ td.pet-name span {
 }
 body.theme-purple {
   --container-bg: #32004d;
+}
+
+/* Global minor adjustments for placeholder color */
+input::placeholder, textarea::placeholder {
+  color: rgba(255,255,255,0.75);
 }
