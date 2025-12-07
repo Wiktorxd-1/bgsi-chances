@@ -2849,14 +2849,10 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          img.style.boxShadow = '0 6px 20px rgba(0,0,0,0.12)';
          img.style.transition = 'box-shadow 200ms ease';
 
-         const nameSpan = document.createElement('span');
-         const cleanName = (pet.name || '').replace(/\s+/g, ' ').trim();
-         nameSpan.textContent = cleanName;
-         nameSpan.style.display = 'inline-block';
-         nameSpan.style.verticalAlign = 'middle';
+         const textNode = document.createTextNode(' ' + pet.name);
 
          tdPet.appendChild(img);
-         tdPet.appendChild(nameSpan);
+         tdPet.appendChild(textNode);
 
          function createExpandableCell(text, align = 'center') {
           const td = document.createElement('td');
