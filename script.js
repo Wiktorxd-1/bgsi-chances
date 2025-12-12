@@ -21,9 +21,9 @@
 { name: "Developer Egg", Pets: [ { name: "Sylently's Hats", baseOdds: 100000 }, { name: "Isaac Rainbow Shock", baseOdds: 1000000 }, { name: "Nert Plushie (Secret)", baseOdds: 500000000 }, { name: "ObscureEntity Plushie (Secret)", baseOdds: 500000000 }, { name: "Quamatic Plushie (Secret)", baseOdds: 500000000 }, { name: "Sircfenner Plushie (Secret)", baseOdds: 500000000 }, { name: "Sylently Plushie (Secret)", baseOdds: 500000000 }, { name: "FutureWebsiteOwner Plushie (Secret)", baseOdds: 500000000 }, { name: "Sylently's Pet (Infinity)", baseOdds: 20000000000 } ], world: "1" },
 { name: "Gingerbread Egg", Pets: [ { name: "Gingerbread Shard (Secret)", baseOdds: 100000000 } ], world: "limited1" },
 { name: "Candycane Egg", Pets: [ { name: "Royal Candy Cane", baseOdds: 10000 }, { name: "Demonic Peppermint", baseOdds: 40000 }, { name: "Peppermint Heart (Secret)", baseOdds: 200000000 }, { name: "Velvet Wolflord (Secret)", baseOdds: 1000000000 } ], world: "limited1" },
-{ name: "Yuletide Egg", Pets: [ { name: "Mistletoe Fiend", baseOdds: 10000 }, { name: "Jingle Orb", baseOdds: 100000 }, { name: "Illuminated Fawn", baseOdds: 2000000 }, { name: "Santa's Hat (Secret)", baseOdds: 400000000 }, { name: "Holy Bell (Secret)", baseOdds: 1000000000 }, { name: "Holy Candle (Secret)", baseOdds: 2000000000 }, { name: "Archangel (Secret)", baseOdds: 5000000000 }, { name: "Frosted Dogcat (Secret)", baseOdds: 10000000000 }, { name: "Morning Star (Infinity)", baseOdds: 80000000000 } ], world: "limited1" },
+{ name: "Yuletide Egg", Pets: [ { name: "Mistletoe Fiend", baseOdds: 10000 }, { name: "Jingle Orb", baseOdds: 100000 }, { name: "Illuminated Fawn", baseOdds: 2000000 }, { name: "Santa's Hat (Secret)", baseOdds: 400000000 }, { name: "Holy Bell (Secret)", baseOdds: 1000000000 }, { name: "Holy Candle (Secret)", baseOdds: 2000000000 }, { name: "Archangel (Secret)", baseOdds: 5000000000 }, { name: "Frosted Dogcat (Secret)", baseOdds: 10000000000 }, { name: "Morning Star (Infinity)", baseOdds: 80000000000 } ], world: "limited" },
 { name: "Northpole Egg", Pets: [ { name: "Guardian Cookie", baseOdds: 10000}, { name: "Winter Phantom", baseOdds: 100000}, { name: "Macaron King", baseOdds: 2500000}, { name: "Big Flakey (Secret)", baseOdds: 400000000}, { name: "Joy Candle (Secret)", baseOdds: 500000000}, { name: "Peace Candle (Secret)", baseOdds: 500000000 }, { name: "Love Candle (Secret)", baseOdds: 500000000}, { name: "Hope Candle (Secret)", baseOdds: 500000000}, { name: "Iridescent Catcher (Secret)", baseOdds: 500000000}, { name: "Christmas Robot (Infinity)", baseOdds: 200000000000}], world: "limited1" },
-{ name: "Aurora Egg", Pets: [ { name: "Auroa Dragon", baseOdds: 10000}, { name: "Lunar Fairy", baseOdds: 100000}, { name: "Aurora Borealis", baseOdds: 5000000}, { name: "Borealis Elk (Secret)", baseOdds: 4000000000}, { name: "Northern Star (Secret)", baseOdds: 10000000000}, { name: "Soulflake (Secret)", baseOdds: 25000000000}, { name: "The Leviathan (Infinity)", baseOdds: 75000000000} ], world: "limited1" },
+{ name: "Aurora Egg", Pets: [ { name: "Auroa Dragon", baseOdds: 10000}, { name: "Lunar Fairy", baseOdds: 100000}, { name: "Aurora Borealis", baseOdds: 5000000}, { name: "Borealis Elk (Secret)", baseOdds: 4000000000}, { name: "Northern Star (Secret)", baseOdds: 10000000000}, { name: "Soulflake (Secret)", baseOdds: 25000000000}, { name: "The Leviathan (Infinity)", baseOdds: 750000000000} ], world: "limited1" },
 ];
 
 const BOUNTY_OVERRIDES = {
@@ -80,6 +80,24 @@ const MILESTONE_MAP = {
   super: { luck: 150, secretLuck: 3, icon: 'Images/Icons/Milestones_Super.webp', name: 'Super I' },
   ultimate: { luck: 200, secretLuck: 5, icon: 'Images/Icons/Milestones_Ultimate.webp', name: 'Ultimate I' }
 };
+
+// Helper used by multiple locations to determine if an egg should show Christmas-only settings
+function isChristmasEggFn(egg) {
+  if (!egg) return false;
+  const world = (egg.world || '').toString().toLowerCase();
+  const name = (egg.name || '').toString().toLowerCase();
+  const idx = (egg.index || '').toString().toLowerCase();
+  // Treat limited1 worlds as christmas events
+  if (world === 'limited1') return true;
+  // Index containing 'christmas' or past event names
+  if (idx && idx.indexOf('christmas') !== -1) return true;
+  // Any obvious Christmas-themed names
+  const christmasKeywords = ['yuletide','gingerbread','candycane','northpole','christmas','festive','yule','frosted','holiday'];
+  for (const k of christmasKeywords) { if (name && name.indexOf(k) !== -1) return true; }
+  // For 'limited' world, only treat as christmas if name or index references christmas
+  if (world === 'limited' && (idx.indexOf('christmas') !== -1 || christmasKeywords.some(k => name.indexOf(k) !== -1))) return true;
+  return false;
+}
 
 
 
@@ -2241,7 +2259,7 @@ function createEggSettings(egg, canSpawnAsRift) {
      </div>
    `;
   
-  const isChristmasEgg = !!(egg && egg.world && egg.world.toLowerCase() === 'limited1');
+  const isChristmasEgg = isChristmasEggFn(egg);
   if (isChristmasEgg) {
     controlsHtml += `
       <details class="christmas-settings" open style="margin-top:12px;border-radius:8px;border:1px solid var(--table-border);padding:10px;background:var(--controls-bg);">
@@ -2478,12 +2496,15 @@ function createEggSettings(egg, canSpawnAsRift) {
       festiveDropdownBtn.addEventListener('click', (ev) => {
         ev.stopPropagation();
         const open = festivePanel.style.display === 'block';
-        
-        document.querySelectorAll('.festive-panel').forEach(p => p.style.display = 'none');
+        // close others and reset z-index
+        document.querySelectorAll('.festive-panel').forEach(p => { p.style.display = 'none'; p.style.zIndex = '40'; p.classList.remove('open'); });
+        // toggle this panel and set higher z-index so it sits above pet info
         festivePanel.style.display = open ? 'none' : 'block';
+        if (!open) { festivePanel.style.zIndex = '20010'; festivePanel.classList.add('open'); }
+        else { festivePanel.style.zIndex = '40'; festivePanel.classList.remove('open'); }
       });
       
-      document.addEventListener('click', () => { if (festivePanel) festivePanel.style.display = 'none'; });
+      document.addEventListener('click', () => { if (festivePanel) { festivePanel.style.display = 'none'; festivePanel.style.zIndex = '40'; festivePanel.classList.remove('open'); } });
     }
     if (festiveOptions && festiveOptions.forEach) {
       festiveOptions.forEach(opt => {
@@ -2494,7 +2515,7 @@ function createEggSettings(egg, canSpawnAsRift) {
             festiveSelectEl.value = v;
             festiveSelectEl.dispatchEvent(new Event('change'));
           }
-          if (festivePanel) festivePanel.style.display = 'none';
+          if (festivePanel) { festivePanel.style.display = 'none'; festivePanel.style.zIndex = '40'; festivePanel.classList.remove('open'); }
         });
       });
     }
@@ -2506,11 +2527,14 @@ function createEggSettings(egg, canSpawnAsRift) {
     if (milestoneDropdownBtn && milestonePanel && milestoneOptions && milestoneOptions.forEach) {
       milestoneDropdownBtn.addEventListener('click', (ev) => {
         ev.stopPropagation();
-        const open = milestonePanel.style.display === 'block';
-        document.querySelectorAll('.milestone-panel').forEach(p => p.style.display = 'none');
+        const open = milestonePanel.style.display === 'block';        // close any other panels and reset their z-index
+        document.querySelectorAll('.milestone-panel').forEach(p => { p.style.display = 'none'; p.style.zIndex = '40'; p.classList.remove('open'); });
+  
         milestonePanel.style.display = open ? 'none' : 'block';
+        if (!open) { milestonePanel.style.zIndex = '20010'; milestonePanel.classList.add('open'); }
+        else { milestonePanel.style.zIndex = '40'; milestonePanel.classList.remove('open'); }
       });
-      document.addEventListener('click', () => { if (milestonePanel) milestonePanel.style.display = 'none'; });
+      document.addEventListener('click', () => { if (milestonePanel) { milestonePanel.style.display = 'none'; milestonePanel.style.zIndex = '40'; milestonePanel.classList.remove('open'); } });
       milestoneOptions.forEach(opt => {
         opt.addEventListener('click', (ev) => {
           ev.stopPropagation();
@@ -2519,7 +2543,7 @@ function createEggSettings(egg, canSpawnAsRift) {
             milestoneSelectEl.value = v;
             milestoneSelectEl.dispatchEvent(new Event('change'));
           }
-          if (milestonePanel) milestonePanel.style.display = 'none';
+          if (milestonePanel) { milestonePanel.style.display = 'none'; milestonePanel.style.zIndex = '40'; milestonePanel.classList.remove('open'); }
         });
       });
     }
@@ -2851,7 +2875,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       const milestoneElForCalc = (controls ? controls.querySelector('.christmas-milestone') : null) || document.querySelector('.christmas-milestone');
       const milestoneSelForCalc = milestoneElForCalc ? (milestoneElForCalc.value || 'none') : 'none';
       const milestoneInfoForCalc = MILESTONE_MAP[milestoneSelForCalc] || MILESTONE_MAP['none'];
-      const isChristmasEgg = egg && egg.world && String(egg.world).toLowerCase() === 'limited1';
+      const isChristmasEgg = isChristmasEggFn(egg);
       
       const totalLuckBefore = totalLuckPercent;
       if (masteryAdded) {

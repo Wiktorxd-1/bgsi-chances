@@ -6910,9 +6910,12 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Aurora Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Aurora_Egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/59/Starry_Bunny.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9d/Shiny_Starry_Bunny.png"
+    ],
     "dateAdded": "2025-12-12",
     "dateRemoved": "2026-01-09"
   },
@@ -6927,9 +6930,12 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Aurora Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Aurora_Egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/7f/Starry_Angel.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/ca/Shiny_Starry_Angel.png"
+    ],
     "dateAdded": "2025-12-12",
     "dateRemoved": "2026-01-09"
   },
@@ -6944,9 +6950,12 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Aurora Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Aurora_Egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/36/Snowglobe.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4b/Shiny_Snowglobe.png"
+    ],
     "dateAdded": "2025-12-12",
     "dateRemoved": "2026-01-09"
   },
@@ -6961,9 +6970,14 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Aurora Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Aurora_Egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/de/Aurora_Dragon.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/ef/Shiny_Aurora_Dragon.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/30/Mythic_Aurora_Dragon.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/68/Shiny_Mythic_Aurora_Dragon.png"
+    ],
     "dateAdded": "2025-12-12",
     "dateRemoved": "2026-01-09"
   },
@@ -6978,9 +6992,102 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Aurora Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Aurora_Egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/0e/Lunar_Fairy.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Shiny_Lunar_Fairy.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1a/Mythic_Lunar_Fairy.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Shiny_Mythic_Lunar_Fairy.png"
+    ],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Aurora Borealis",
+    "rarity": "legendary",
+    "chance": 0.00002,
+    "bubbles": 6400,
+    "gems": 115,
+    "currency": 45,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Aurora Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Aurora_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Aurora_Borealis.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Shiny_Aurora_Borealis.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Mythic_Aurora_Borealis.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/74/Shiny_Mythic_Aurora_Borealis.png"
+    ],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Borealis Elk",
+    "rarity": "secret",
+    "chance": 2.5e-8,
+    "bubbles": 8500,
+    "gems": 150,
+    "currency": 200,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Aurora Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Aurora_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/ac/Borealis_Elk.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/0e/Shiny_Borealis_Elk.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Mythic_Borealis_Elk.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/ca/Shiny_Mythic_Borealis_Elk.png"
+    ],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Northern Star",
+    "rarity": "secret",
+    "chance": 1e-8,
+    "bubbles": 9300,
+    "gems": 165,
+    "currency": 290,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Aurora Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Aurora_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/48/Northern_Star.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/5e/Shiny_Northern_Star.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/fa/Mythic_Northern_Star.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/42/Shiny_Mythic_Northern_Star.png"
+    ],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Soulflake",
+    "rarity": "secret",
+    "chance": 4e-9,
+    "bubbles": 9800,
+    "gems": 180,
+    "currency": 330,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Aurora Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Aurora_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/ea/Soulflake.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/49/Shiny_Soulflake.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Mythic_Soulflake.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e3/Shiny_Mythic_Soulflake.png"
+    ],
     "dateAdded": "2025-12-12",
     "dateRemoved": "2026-01-09"
   },
@@ -7017,9 +7124,12 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Northpole Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/fb/Cookie_Doggy.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/94/Shiny_Cookie_Doggy.png"
+    ],
     "dateAdded": "2025-12-12",
     "dateRemoved": "2026-01-09"
   },
@@ -7034,9 +7144,12 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Northpole Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/Milk_Kitty.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/81/Shiny_Milk_Kitty.png"
+    ],
     "dateAdded": "2025-12-12",
     "dateRemoved": "2026-01-09"
   },
@@ -7051,9 +7164,12 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Northpole Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/94/Festive_Flyer.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/eb/Shiny_Festive_Flyer.png"
+    ],
     "dateAdded": "2025-12-12",
     "dateRemoved": "2026-01-09"
   },
@@ -7068,9 +7184,14 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Northpole Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/06/Guardian_Cookie.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d7/Shiny_Guardian_Cookie.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Mythic_Guardian_Cookie.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/83/Shiny_Mythic_Guardian_Cookie.png"
+    ],
     "dateAdded": "2025-12-12",
     "dateRemoved": "2026-01-09"
   },
@@ -7085,9 +7206,190 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Northpole Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a4/Winter_Phantom.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/11/Shiny_Winter_Phantom.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/fc/Mythic_Winter_Phantom.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b0/Shiny_Mythic_Winter_Phantom.png"
+    ],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Macaron King",
+    "rarity": "legendary",
+    "chance": 0.00004,
+    "bubbles": 6400,
+    "gems": 115,
+    "currency": 45,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Northpole Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2b/Macaron_King.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Shiny_Macaron_King.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/17/Mythic_Macaron_King.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Shiny_Mythic_Macaron_King.png"
+    ],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Big Flakey",
+    "rarity": "secret",
+    "chance": 2.5e-7,
+    "bubbles": 7900,
+    "gems": 130,
+    "currency": 160,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Northpole Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Big_Flakey.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/0f/Shiny_Big_Flakey.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8e/Mythic_Big_Flakey.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/db/Shiny_Mythic_Big_Flakey.png"
+    ],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Hope Candle",
+    "rarity": "secret",
+    "chance": 2e-8,
+    "bubbles": 8600,
+    "gems": 145,
+    "currency": 200,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Northpole Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Hope_Candle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e9/Shiny_Hope_Candle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Mythic_Hope_Candle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Shiny_Mythic_Hope_Candle.png"
+    ],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Love Candle",
+    "rarity": "secret",
+    "chance": 2e-8,
+    "bubbles": 8600,
+    "gems": 145,
+    "currency": 200,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Northpole Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/aa/Love_Candle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/16/Shiny_Love_Candle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9a/Mythic_Love_Candle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/94/Shiny_Mythic_Love_Candle.png"
+    ],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Peace Candle",
+    "rarity": "secret",
+    "chance": 2e-8,
+    "bubbles": 8600,
+    "gems": 145,
+    "currency": 200,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Northpole Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Peace_Candle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Shiny_Peace_Candle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/84/Mythic_Peace_Candle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Shiny_Mythic_Peace_Candle.png"
+    ],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Joy Candle",
+    "rarity": "secret",
+    "chance": 2e-8,
+    "bubbles": 8600,
+    "gems": 145,
+    "currency": 200,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Northpole Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c5/Joy_Candle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/60/Shiny_Joy_Candle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Mythic_Joy_Candle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a5/Shiny_Mythic_Joy_Candle.png"
+    ],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Iridescent Catcher",
+    "rarity": "secret",
+    "chance": 2e-8,
+    "bubbles": 8900,
+    "gems": 150,
+    "currency": 240,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Northpole Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/52/Iridescent_Catcher.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/5a/Shiny_Iridescent_Catcher.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/20/Mythic_Iridescent_Catcher.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/37/Shiny_Mythic_Iridescent_Catcher.png"
+    ],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Christmas Robot",
+    "rarity": "infinity",
+    "chance": 5e-10,
+    "bubbles": 14000,
+    "gems": 175,
+    "currency": 520,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Northpole Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/ef/Christmas_Robot.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/02/Shiny_Christmas_Robot.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/16/Mythic_Christmas_Robot.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/81/Shiny_Mythic_Christmas_Robot.png"
+    ],
     "dateAdded": "2025-12-12",
     "dateRemoved": "2026-01-09"
   },
