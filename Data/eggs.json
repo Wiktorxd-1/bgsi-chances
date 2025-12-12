@@ -351,6 +351,7 @@
       "Gigantic Spitty"
     ],
     "luckIgnored": false,
+    "infinityEgg": "The Overworld",
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-08-08",
@@ -647,8 +648,8 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
-    "canSpawnAsRift": false,
-    "secretBountyRotation": false,
+    "canSpawnAsRift": true,
+    "secretBountyRotation": true,
     "dateAdded": "2025-12-05",
     "dateRemoved": "2026-01-09",
     "index": "Christmas Event 2025"
@@ -667,8 +668,8 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
-    "canSpawnAsRift": false,
-    "secretBountyRotation": false,
+    "canSpawnAsRift": true,
+    "secretBountyRotation": true,
     "dateAdded": "2025-12-05",
     "dateRemoved": "2026-01-09",
     "index": "Christmas Event 2025"
@@ -692,11 +693,48 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
-    "canSpawnAsRift": false,
-    "secretBountyRotation": false,
+    "canSpawnAsRift": true,
+    "secretBountyRotation": true,
     "dateAdded": "2025-12-05",
     "dateRemoved": "2026-01-09",
     "index": "Christmas Event 2025"
+  },
+  {
+    "name": "Northpole Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
+    "pets": [
+      "Cookie Doggy",
+      "Milk Kitty",
+      "Festive Flyer",
+      "Guardian Cookie",
+      "Winter Phantom",
+      "legend3"
+    ],
+    "luckIgnored": false,
+    "infinityEgg": "Christmas Event 2025",
+    "canSpawnAsRift": true,
+    "secretBountyRotation": true,
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Aurora Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Aurora_Egg.png",
+    "pets": [
+      "Starry Bunny",
+      "Starry Angel",
+      "Snowglobe",
+      "Aurora Dragon",
+      "Lunar Fairy",
+      "legend3",
+      "The Leviathan"
+    ],
+    "luckIgnored": false,
+    "infinityEgg": "Christmas Event 2025",
+    "canSpawnAsRift": true,
+    "secretBountyRotation": true,
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
   },
   {
     "name": "Winter Egg",

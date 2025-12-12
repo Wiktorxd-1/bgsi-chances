@@ -22,7 +22,8 @@
 { name: "Gingerbread Egg", Pets: [ { name: "Gingerbread Shard (Secret)", baseOdds: 100000000 } ], world: "limited1" },
 { name: "Candycane Egg", Pets: [ { name: "Royal Candy Cane", baseOdds: 10000 }, { name: "Demonic Peppermint", baseOdds: 40000 }, { name: "Peppermint Heart (Secret)", baseOdds: 200000000 }, { name: "Velvet Wolflord (Secret)", baseOdds: 1000000000 } ], world: "limited1" },
 { name: "Yuletide Egg", Pets: [ { name: "Mistletoe Fiend", baseOdds: 10000 }, { name: "Jingle Orb", baseOdds: 100000 }, { name: "Illuminated Fawn", baseOdds: 2000000 }, { name: "Santa's Hat (Secret)", baseOdds: 400000000 }, { name: "Holy Bell (Secret)", baseOdds: 1000000000 }, { name: "Holy Candle (Secret)", baseOdds: 2000000000 }, { name: "Archangel (Secret)", baseOdds: 5000000000 }, { name: "Frosted Dogcat (Secret)", baseOdds: 10000000000 }, { name: "Morning Star (Infinity)", baseOdds: 80000000000 } ], world: "limited1" },
-{ name: "Rumblecon Egg", image: "Images/eggs/Placeholder.webp", Pets: [ { name: "MVP Rumblecon Doggy", baseOdds: 100000 }, { name: "Rumblecon Ticket Vendor", baseOdds: 1000000 }, { name: "The Golden Ticket (Secret)", baseOdds: 100000000 }, { name: "Rumblecon Trophy (Secret)", baseOdds: 500000000 }, { name: "Rumblecon Halftime Show (Secret)", baseOdds: 1000000000 }, { name: "RUMBLECON GOD (Infinity)", baseOdds: 200000000000 } ], world: "limited" }
+{ name: "Northpole Egg", Pets: [ { name: "Guardian Cookie", baseOdds: 10000}, { name: "Winter Phantom", baseOdds: 100000}, { name: "Macaron King", baseOdds: 2500000}, { name: "Big Flakey (Secret)", baseOdds: 400000000}, { name: "Joy Candle (Secret)", baseOdds: 500000000}, { name: "Peace Candle (Secret)", baseOdds: 500000000 }, { name: "Love Candle (Secret)", baseOdds: 500000000}, { name: "Hope Candle (Secret)", baseOdds: 500000000}, { name: "Iridescent Catcher (Secret)", baseOdds: 500000000}, { name: "Christmas Robot (Infinity)", baseOdds: 200000000000}], world: "limited1" },
+{ name: "Auroa Egg", Pets: [ { name: "Auroa Dragon", baseOdds: 10000}, { name: "Lunar Fairy", baseOdds: 100000}, { name: "Aurora Borealis", baseOdds: 5000000}, { name: "Borealis Elk (Secret)", baseOdds: 4000000000}, { name: "Northern Star (Secret)", baseOdds: 10000000000}, { name: "Soulflake (Secret)", baseOdds: 25000000000}, { name: "The Leviathan (Infinity)", baseOdds: 75000000000} ], world: "limited1" },
 ];
 
 const BOUNTY_OVERRIDES = {
@@ -2295,6 +2296,11 @@ function createEggSettings(egg, canSpawnAsRift) {
           <input type="number" class="christmas-mastery skinned-input" value="0" min="0" max="14" step="1" style="width:80px;" />
         </div>
         <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
+          <label style="min-width:110px;">Ultra Infinity Luck:</label>
+          <input type="text" class="ultra-infinity-input skinned-input" placeholder="1" value="1" style="width:80px;" />
+  
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
           <label style="min-width:110px;">Milestone:</label>
           <select class="christmas-milestone" style="display:none;min-width:160px;">
             <option value="none">None</option>
@@ -2347,7 +2353,8 @@ function createEggSettings(egg, canSpawnAsRift) {
         secretMult: secretEl ? (secretEl.value === '' ? 1 : Number(secretEl.value)) : 1,
         festive: {
           selected: (controls.querySelector('.festive-select') ? (controls.querySelector('.festive-select').value || 'none') : 'none'),
-          infinity: (controls.querySelector('.festive-infinity-btn') ? (controls.querySelector('.festive-infinity-btn').dataset.selected === 'true') : false)
+          infinity: (controls.querySelector('.festive-infinity-btn') ? (controls.querySelector('.festive-infinity-btn').dataset.selected === 'true') : false),
+          ultraInfinity: (controls.querySelector('.ultra-infinity-input') ? String(controls.querySelector('.ultra-infinity-input').value || '1') : '1')
         },
         mastery: {
           level: (controls.querySelector('.christmas-mastery') ? Number(controls.querySelector('.christmas-mastery').value || 0) : 0)
@@ -2404,6 +2411,7 @@ function createEggSettings(egg, canSpawnAsRift) {
         b.dataset.selected = saved.festive.infinity ? 'true' : 'false';
         if (b.dataset.selected === 'true') { b.style.background = '#2596be'; b.style.color = '#ffffff'; } else { b.style.background = 'var(--controls-bg)'; b.style.color = 'var(--main-text)'; }
       }
+      if (controls.querySelector('.ultra-infinity-input') && saved.festive && typeof saved.festive.ultraInfinity !== 'undefined') controls.querySelector('.ultra-infinity-input').value = saved.festive.ultraInfinity || '1';
         if (controls.querySelector('.christmas-mastery') && saved.mastery && typeof saved.mastery.level !== 'undefined') controls.querySelector('.christmas-mastery').value = saved.mastery.level;
       if (controls.querySelector('.christmas-milestone') && saved.mastery && typeof saved.mastery.milestone !== 'undefined') {
         const v = saved.mastery.milestone || 'none';
@@ -2613,6 +2621,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
     const mythicBtn = controls ? controls.querySelector('.mythic-btn') : null;
     const shinyInput = controls ? controls.querySelector('.shiny-input') : null;
     const mythicInput = controls ? controls.querySelector('.mythic-input') : null;
+    const ultraInput = controls ? controls.querySelector('.ultra-infinity-input') : null;
      const petList = table.querySelector(".pet-list");
 
     function parseOneInInput(str) {
@@ -2733,6 +2742,11 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       mythicInput.addEventListener('input', () => { mythicInput.dataset.userModified = 'true'; saveSettings(); });
       if (!mythicInput.value) { mythicInput.value = '1 in 100'; mythicInput.dataset.userModified = 'false'; }
     }
+    if (ultraInput) {
+      ultraInput.addEventListener('input', () => { updateChances(); saveSettings(); });
+      ultraInput.addEventListener('change', () => { updateChances(); });
+      if (!ultraInput.value) ultraInput.value = '1';
+    }
      applyVariantButtonStyles();
     if (multiplierSelect) {
       const handleMultiplierChange = () => {
@@ -2807,11 +2821,13 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       const festiveSelectEl = (controls ? controls.querySelector('.festive-select') : null) || document.querySelector('.festive-select');
       const festiveInfinityBtnEl = (controls ? controls.querySelector('.festive-infinity-btn') : null) || document.querySelector('.festive-infinity-btn');
       const masteryInputEl = (controls ? controls.querySelector('.christmas-mastery') : null) || document.querySelector('.christmas-mastery');
+      const ultraInputEl = (controls ? controls.querySelector('.ultra-infinity-input') : null) || document.querySelector('.ultra-infinity-input');
       
       const masteryModeEl = null;
       const festiveSelected = festiveSelectEl ? (festiveSelectEl.value || 'none') : 'none';
       const festiveInfinity = festiveInfinityBtnEl ? (festiveInfinityBtnEl.dataset.selected === 'true') : false;
       const festiveIsSelected = (festiveSelected && FESTIVE_POTION_MAP[festiveSelected]);
+      const ultraMultiplier = typeof parseRiftInput === 'function' ? (parseRiftInput(ultraInputEl ? ultraInputEl.value : null) || 1) : 1;
       let totalLuckPercent = luckPercent;
       
       if (festiveIsSelected) {
@@ -2886,6 +2902,10 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         if (isInfinity) {
           const masteryInfMul = 1 + (masteryInfinityPercent / 100);
           combinedMultiplier = combinedMultiplier * masteryInfMul;
+          // Ultra Infinity Luck applies only to Infinity pets (multiplier like 1.5x, x14, etc.)
+          if (typeof ultraMultiplier === 'number' && isFinite(ultraMultiplier) && ultraMultiplier !== 1) {
+            combinedMultiplier = combinedMultiplier * Math.max(0, ultraMultiplier);
+          }
         }
          let variantFactor = 1;
         let shinyOdds = parseOneInInput(shinyInput ? shinyInput.value : null) || 40;

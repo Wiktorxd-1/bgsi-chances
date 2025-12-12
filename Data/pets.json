@@ -4023,7 +4023,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/8/84/Shiny_Lenny_Box.png"
     ],
     "dateAdded": "2025-12-05",
-    "dateRemoved": "2026-01-09"
+    "dateRemoved": "2025-12-19"
   },
   {
     "name": "BGS Box",
@@ -6898,6 +6898,198 @@
     ],
     "dateAdded": "2025-04-26",
     "dateRemoved": "2025-04-30"
+  },
+  {
+    "name": "Starry Bunny",
+    "rarity": "common",
+    "chance": 65,
+    "bubbles": 8,
+    "gems": 0,
+    "currency": 5,
+    "currencyVariant": "snowflakes",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Aurora Egg",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Starry Angel",
+    "rarity": "rare",
+    "chance": 30,
+    "bubbles": 14,
+    "gems": 0,
+    "currency": 6,
+    "currencyVariant": "snowflakes",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Aurora Egg",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Snowglobe",
+    "rarity": "epic",
+    "chance": 4,
+    "bubbles": 14,
+    "gems": 0,
+    "currency": 7,
+    "currencyVariant": "snowflakes",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Aurora Egg",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Aurora Dragon",
+    "rarity": "legendary",
+    "chance": 0.01,
+    "bubbles": 2050,
+    "gems": 35,
+    "currency": 15,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Aurora Egg",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Lunar Fairy",
+    "rarity": "legendary",
+    "chance": 0.001,
+    "bubbles": 4700,
+    "gems": 95,
+    "currency": 28,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Aurora Egg",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "The Leviathan",
+    "rarity": "infinity",
+    "chance": 1.33333333333333e-10,
+    "bubbles": 17500,
+    "gems": 250,
+    "currency": 10000,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Aurora Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Aurora_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/82/The_Leviathan.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d0/Shiny_The_Leviathan.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Mythic_The_Leviathan.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/06/Shiny_Mythic_The_Leviathan.png"
+    ],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Cookie Doggy",
+    "rarity": "common",
+    "chance": 65,
+    "bubbles": 8,
+    "gems": 0,
+    "currency": 5,
+    "currencyVariant": "snowflakes",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Northpole Egg",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Milk Kitty",
+    "rarity": "rare",
+    "chance": 30,
+    "bubbles": 14,
+    "gems": 0,
+    "currency": 6,
+    "currencyVariant": "snowflakes",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Northpole Egg",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Festive Flyer",
+    "rarity": "epic",
+    "chance": 4,
+    "bubbles": 14,
+    "gems": 0,
+    "currency": 7,
+    "currencyVariant": "snowflakes",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Northpole Egg",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Guardian Cookie",
+    "rarity": "legendary",
+    "chance": 0.01,
+    "bubbles": 2050,
+    "gems": 35,
+    "currency": 15,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Northpole Egg",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Winter Phantom",
+    "rarity": "legendary",
+    "chance": 0.001,
+    "bubbles": 4700,
+    "gems": 95,
+    "currency": 28,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Northpole Egg",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [],
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
   },
   {
     "name": "Little Ornament",
@@ -14899,7 +15091,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/4/41/Shiny_Mythic_Super_Hacker_Prism.png"
     ],
     "dateAdded": "2025-10-31",
-    "dateRemoved": ""
+    "dateRemoved": "2025-12-12"
   },
   {
     "name": "Maid Nert Plushie",
@@ -14921,7 +15113,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/6/69/Shiny_Mythic_Maid_Nert_Plushie.png"
     ],
     "dateAdded": "2025-10-31",
-    "dateRemoved": ""
+    "dateRemoved": "2025-12-12"
   },
   {
     "name": "Kitty Pot",
@@ -18237,7 +18429,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/b/b5/Shiny_Rumblecon_Kitty.png"
     ],
     "dateAdded": "2025-12-05",
-    "dateRemoved": "2025-12-06"
+    "dateRemoved": "2025-12-12"
   },
   {
     "name": "Rumblecon Bunny",
@@ -18257,7 +18449,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Shiny_Rumblecon_Bunny.png"
     ],
     "dateAdded": "2025-12-05",
-    "dateRemoved": "2025-12-06"
+    "dateRemoved": "2025-12-12"
   },
   {
     "name": "Rumblecon Dragon",
@@ -18277,7 +18469,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/1/18/Shiny_Rumblecon_Dragon.png"
     ],
     "dateAdded": "2025-12-05",
-    "dateRemoved": "2025-12-06"
+    "dateRemoved": "2025-12-12"
   },
   {
     "name": "MVP Rumblecon Doggy",
@@ -18299,7 +18491,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/1/13/Shiny_Mythic_MVP_Rumblecon_Doggy.png"
     ],
     "dateAdded": "2025-12-05",
-    "dateRemoved": "2025-12-06"
+    "dateRemoved": "2025-12-12"
   },
   {
     "name": "Rumblecon Ticket Vendor",
@@ -18321,7 +18513,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/94/Shiny_Mythic_Rumblecon_Ticket_Vendor.png"
     ],
     "dateAdded": "2025-12-05",
-    "dateRemoved": "2025-12-06"
+    "dateRemoved": "2025-12-12"
   },
   {
     "name": "The Golden Ticket",
@@ -18343,7 +18535,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/Shiny_Mythic_The_Golden_Ticket.png"
     ],
     "dateAdded": "2025-12-05",
-    "dateRemoved": "2025-12-06"
+    "dateRemoved": "2025-12-12"
   },
   {
     "name": "Rumblecon Trophy",
@@ -18365,7 +18557,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Shiny_Mythic_Rumblecon_Trophy.png"
     ],
     "dateAdded": "2025-12-05",
-    "dateRemoved": "2025-12-06"
+    "dateRemoved": "2025-12-12"
   },
   {
     "name": "Rumblecon Halftime Show",
@@ -18387,7 +18579,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/1/18/Shiny_Mythic_Rumblecon_Halftime_Show.png"
     ],
     "dateAdded": "2025-12-05",
-    "dateRemoved": "2025-12-06"
+    "dateRemoved": "2025-12-12"
   },
   {
     "name": "RUMBLECON GOD",
@@ -18409,7 +18601,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Shiny_Mythic_RUMBLECON_GOD.png"
     ],
     "dateAdded": "2025-12-05",
-    "dateRemoved": "2025-12-06"
+    "dateRemoved": "2025-12-12"
   },
   {
     "name": "Man Face Bunny",

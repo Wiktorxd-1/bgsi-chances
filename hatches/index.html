@@ -62,10 +62,7 @@
       .hatch-card .pet { width: 80px; height: 80px; }
       .hatch-card { gap: 14px; padding: 12px; }
     }
-    @keyframes fadeInHatch {
-      from { opacity: 0.98; transform: none;}
-      to   { opacity: 1; transform: none;}
-    }
+    /* Use the same animation as the main index (.egg-card) for a smoother scale+fade effect */
     .hatch-card {
       background: var(--egg-card-bg);
       border-radius: 14px;
@@ -82,11 +79,13 @@
       color: var(--main-text);
       font-family: inherit;
       transition: transform 0.18s, box-shadow 0.18s;
-      animation: fadeInHatch 0.18s linear both;
+      opacity: 0;
+      transform: scale(0.95);
+      animation: eggCardFadeIn 0.25s cubic-bezier(0.4,0,0.2,1) forwards;
       will-change: transform, box-shadow;
     }
     .hatch-card:hover {
-      transform: scale(1.03);
+      transform: scale(1.05);
       z-index: 2;
     }
     .hatch-card.shiny {
@@ -409,12 +408,12 @@
     </div>
     <div class="sidebar-nav">
       <a 
-        href="https://wiktorxd-1.github.io/bgsi-chances/"
+1        href="../"
         class="sidebar-link sidebar-calc-link"
         id="sidebar-calc-link"
         >Calculator</a>
       <a 
-        href="https://wiktorxd-1.github.io/bgsi-chances/hatches"
+        href="./"
         class="sidebar-link sidebar-hatches-link"
         id="sidebar-hatches-link"
         >Hatches</a>
