@@ -1,4 +1,4 @@
-const eggs = [
+﻿const eggs = [
 { name: "Common Egg", Pets: [ { name: "King Doggy (Secret)", baseOdds: 100000000 } ], world: "1" },
 { name: "Spikey Egg", Pets: [ { name: "Emerald Golem", baseOdds: 200 } ], world: "1" },
 { name: "Magma Egg", Pets: [ { name: "Inferno Dragon", baseOdds: 400 } ], world: "1" },
@@ -105,28 +105,44 @@ function openFloatingPanel(panel, button) {
   if (panel.classList && panel.classList.contains('open')) return;
   panel._origParent = panel.parentNode;
   panel._nextSibling = panel.nextSibling;
+  panel._button = button;
   document.body.appendChild(panel);
   panel.style.position = 'absolute';
-  const rect = button.getBoundingClientRect();
-  const left = rect.left + (window.scrollX || window.pageXOffset);
-  const top = rect.bottom + (window.scrollY || window.pageYOffset) + 6;
-  panel.style.left = `${left}px`;
-  panel.style.top = `${top}px`;
   panel.style.zIndex = '30000';
   panel.classList && panel.classList.add('open');
   panel.style.display = 'block';
+  function updatePos() {
+    try {
+      const rect = button.getBoundingClientRect();
+      const left = rect.left + (window.scrollX || window.pageXOffset);
+      const top = rect.bottom + (window.scrollY || window.pageYOffset) + 6;
+      panel.style.left = `${left}px`;
+      panel.style.top = `${top}px`;
+    } catch (e) {}
+  }
+  // store handler refs so we can remove them on close
+  panel._updatePosHandler = updatePos;
+  window.addEventListener('scroll', updatePos, true);
+  window.addEventListener('resize', updatePos);
+  // initial position
+  updatePos();
 }
 
 function closeFloatingPanel(panel) {
   if (!panel) return;
   panel.classList && panel.classList.remove('open');
   try {
+    if (panel._updatePosHandler) {
+      window.removeEventListener('scroll', panel._updatePosHandler, true);
+      window.removeEventListener('resize', panel._updatePosHandler);
+      panel._updatePosHandler = null;
+    }
     if (panel._origParent) {
       if (panel._nextSibling) panel._origParent.insertBefore(panel, panel._nextSibling);
       else panel._origParent.appendChild(panel);
     }
   } catch (e) {}
-  panel._origParent = null; panel._nextSibling = null;
+  panel._origParent = null; panel._nextSibling = null; panel._button = null;
   panel.style.position = 'absolute';
   panel.style.left = '';
   panel.style.top = '';

@@ -412,6 +412,22 @@
     "dateRemoved": ""
   },
   {
+    "name": "Season XMAS Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c1/Season_XMAS_Egg.png",
+    "pets": [
+      "Choco Demon",
+      "S'more",
+      "Gold Marshmallow",
+      "Merry Marshmallow",
+      "Magic Marshmallow"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2026-01-09"
+  },
+  {
     "name": "Season OG Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/61/Season_OG_Egg.png",
     "pets": [
@@ -1618,6 +1634,30 @@
     "secretBountyRotation": false,
     "dateAdded": "2025-12-05",
     "dateRemoved": "2025-12-12"
+  },
+  {
+    "name": "Giftbox Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "pets": [
+      "Giftbox Doggy",
+      "Giftbox Kitty",
+      "Giftbox Bunny",
+      "Giftbox Unicorn",
+      "Giftbox Dark Phoenix",
+      "Giftbox King Doggy",
+      "Nert Giftbox",
+      "Quamatic Giftbox",
+      "ObscureEntity Giftbox",
+      "Sircfenner Giftbox",
+      "Sylently Giftbox",
+      "FutureWebsiteOwner Giftbox",
+      "Giant Nert's Pufferfish"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-12-12",
+    "dateRemoved": "2025-12-19"
   },
   {
     "name": "Prismatic Egg",
