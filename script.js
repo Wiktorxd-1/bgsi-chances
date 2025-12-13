@@ -27,7 +27,7 @@
 { name: "Giftbox Egg", image: "Images/eggs/Placeholder.webp",  Pets: [ { name: "Giftbox Unicorn", baseOdds: 100000 }, { name: "Giftbox Dark Phoenix", baseOdds: 1000000 }, { name: "Giftbox King Doggy (Secret)", baseOdds: 100000000 }, { name: "Nert Giftbox (Secret)", baseOdds: 1000000000 }, { name: "Quamatic Giftbox (Secret)", baseOdds: 1000000000 }, { name: "ObscureEntity Giftbox (Secret)", baseOdds: 1000000000 }, { name: "Sircfenner Giftbox (Secret)", baseOdds: 1000000000 }, { name: "Sylently Giftbox (Secret)", baseOdds: 1000000000 }, { name: "FutureWebsiteOwner Giftbox (Secret)", baseOdds: 1000000000 }, { name: "Giant Nert's Pufferfish (Infinity)", baseOdds: 400000000000 } ], world: "limited" }
 ];
 
-const BOUNTY_OVERRIDES = {
+const bounty_overrides = {
   'OG Lucky Pyramidium': 1250000000,
   'OG Hellshard': 400000000,
   'OG Overlord Plushie': 100000000
@@ -36,10 +36,10 @@ const BOUNTY_OVERRIDES = {
 function getBountyOverrideByName(petName) {
   if (!petName) return null;
   const normalized = String(petName).replace(/\(.*?\)/g, '').trim().toLowerCase();
-  for (const key of Object.keys(BOUNTY_OVERRIDES || {})) {
+  for (const key of Object.keys(bounty_overrides || {})) {
     if (!key) continue;
     const kNorm = String(key).replace(/\(.*?\)/g, '').trim().toLowerCase();
-    if (kNorm === normalized) return BOUNTY_OVERRIDES[key];
+    if (kNorm === normalized) return bounty_overrides[key];
   }
   return null;
 } 
@@ -99,8 +99,6 @@ function isChristmasEggFn(egg) {
 }
 
 
-
-// Panel helpers: append to body and place absolutely anchored to button (scrolls with page). Restore to original parent on close.
 function openFloatingPanel(panel, button) {
   if (!panel || !button) return;
   if (panel.classList && panel.classList.contains('open')) return;
@@ -121,11 +119,9 @@ function openFloatingPanel(panel, button) {
       panel.style.top = `${top}px`;
     } catch (e) {}
   }
-  // store handler refs so we can remove them on close
   panel._updatePosHandler = updatePos;
   window.addEventListener('scroll', updatePos, true);
   window.addEventListener('resize', updatePos);
-  // initial position
   updatePos();
 }
 
@@ -2979,7 +2975,6 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         if (isInfinity) {
           const masteryInfMul = 1 + (masteryInfinityPercent / 100);
           combinedMultiplier = combinedMultiplier * masteryInfMul;
-          // Ultra Infinity Luck applies only to Infinity pets (multiplier like 1.5x, x14, etc.)
           if (typeof ultraMultiplier === 'number' && isFinite(ultraMultiplier) && ultraMultiplier !== 1) {
             combinedMultiplier = combinedMultiplier * Math.max(0, ultraMultiplier);
           }
