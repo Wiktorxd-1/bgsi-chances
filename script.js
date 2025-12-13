@@ -1,4 +1,4 @@
-﻿const eggs = [
+const eggs = [
 { name: "Common Egg", Pets: [ { name: "King Doggy (Secret)", baseOdds: 100000000 } ], world: "1" },
 { name: "Spikey Egg", Pets: [ { name: "Emerald Golem", baseOdds: 200 } ], world: "1" },
 { name: "Magma Egg", Pets: [ { name: "Inferno Dragon", baseOdds: 400 } ], world: "1" },
@@ -22,7 +22,7 @@
 { name: "Gingerbread Egg", Pets: [ { name: "Gingerbread Shard (Secret)", baseOdds: 100000000 } ], world: "limited1" },
 { name: "Candycane Egg", Pets: [ { name: "Royal Candy Cane", baseOdds: 10000 }, { name: "Demonic Peppermint", baseOdds: 40000 }, { name: "Peppermint Heart (Secret)", baseOdds: 200000000 }, { name: "Velvet Wolflord (Secret)", baseOdds: 1000000000 } ], world: "limited1" },
 { name: "Yuletide Egg", Pets: [ { name: "Mistletoe Fiend", baseOdds: 10000 }, { name: "Jingle Orb", baseOdds: 100000 }, { name: "Illuminated Fawn", baseOdds: 2000000 }, { name: "Santa's Hat (Secret)", baseOdds: 400000000 }, { name: "Holy Bell (Secret)", baseOdds: 1000000000 }, { name: "Holy Candle (Secret)", baseOdds: 2000000000 }, { name: "Archangel (Secret)", baseOdds: 5000000000 }, { name: "Frosted Dogcat (Secret)", baseOdds: 10000000000 }, { name: "Morning Star (Infinity)", baseOdds: 80000000000 } ], world: "limited" },
-{ name: "Northpole Egg", Pets: [ { name: "Guardian Cookie", baseOdds: 10000}, { name: "Winter Phantom", baseOdds: 100000}, { name: "Macaron King", baseOdds: 2500000}, { name: "Big Flakey (Secret)", baseOdds: 400000000}, { name: "Joy Candle (Secret)", baseOdds: 500000000}, { name: "Peace Candle (Secret)", baseOdds: 500000000 }, { name: "Love Candle (Secret)", baseOdds: 500000000}, { name: "Hope Candle (Secret)", baseOdds: 500000000}, { name: "Iridescent Catcher (Secret)", baseOdds: 500000000}, { name: "Christmas Robot (Infinity)", baseOdds: 200000000000}], world: "limited1" },
+{ name: "Northpole Egg", Pets: [ { name: "Guardian Cookie", baseOdds: 10000}, { name: "Winter Phantom", baseOdds: 100000}, { name: "Macaron King", baseOdds: 2500000}, { name: "Big Flakey (Secret)", baseOdds: 400000000}, { name: "Joy Candle (Secret)", baseOdds: 5000000000}, { name: "Peace Candle (Secret)", baseOdds: 5000000000 }, { name: "Love Candle (Secret)", baseOdds: 5000000000}, { name: "Hope Candle (Secret)", baseOdds: 5000000000}, { name: "Iridescent Catcher (Secret)", baseOdds: 500000000}, { name: "Christmas Robot (Infinity)", baseOdds: 200000000000}], world: "limited1" },
 { name: "Aurora Egg", Pets: [ { name: "Auroa Dragon", baseOdds: 10000}, { name: "Lunar Fairy", baseOdds: 100000}, { name: "Aurora Borealis", baseOdds: 5000000}, { name: "Borealis Elk (Secret)", baseOdds: 4000000000}, { name: "Northern Star (Secret)", baseOdds: 10000000000}, { name: "Soulflake (Secret)", baseOdds: 25000000000}, { name: "The Leviathan (Infinity)", baseOdds: 750000000000} ], world: "limited1" },
 ];
 
