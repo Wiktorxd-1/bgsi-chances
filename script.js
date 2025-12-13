@@ -76,30 +76,63 @@ const MILESTONE_MAP = {
   bronze: { luck: 10, secretLuck: 0, icon: 'Images/Icons/Milestones_Bronze.webp', name: 'Bronze I' },
   silver: { luck: 25, secretLuck: 0, icon: 'Images/Icons/Milestones_Silver.webp', name: 'Silver I' },
   gold: { luck: 50, secretLuck: 0, icon: 'Images/Icons/Milestones_Gold.webp', name: 'Gold I' },
-  platinum: { luck: 75, secretLuck: 1, icon: 'Images/Icons/Milestones_Platinum.webp', name: 'Platinum I' },
-  super: { luck: 150, secretLuck: 3, icon: 'Images/Icons/Milestones_Super.webp', name: 'Super I' },
-  ultimate: { luck: 200, secretLuck: 5, icon: 'Images/Icons/Milestones_Ultimate.webp', name: 'Ultimate I' }
+  platinum: { luck: 75, secretLuck: 0, icon: 'Images/Icons/Milestones_Platinum.webp', name: 'Platinum I' },
+  super: { luck: 100, secretLuck: 1, icon: 'Images/Icons/Milestones_Super.webp', name: 'Super I' },
+  ultimate: { luck: 150, secretLuck: 3, icon: 'Images/Icons/Milestones_Ultimate.webp', name: 'Ultimate I' },
+  infinity: { luck: 300, secretLuck: 5, icon: 'Images/Icons/Milestones_Infinity.webp', name: 'Infinity I' }
 };
 
-// Helper used by multiple locations to determine if an egg should show Christmas-only settings
+
 function isChristmasEggFn(egg) {
   if (!egg) return false;
   const world = (egg.world || '').toString().toLowerCase();
   const name = (egg.name || '').toString().toLowerCase();
   const idx = (egg.index || '').toString().toLowerCase();
-  // Treat limited1 worlds as christmas events
   if (world === 'limited1') return true;
-  // Index containing 'christmas' or past event names
+
   if (idx && idx.indexOf('christmas') !== -1) return true;
-  // Any obvious Christmas-themed names
   const christmasKeywords = ['yuletide','gingerbread','candycane','northpole','christmas','festive','yule','frosted','holiday'];
   for (const k of christmasKeywords) { if (name && name.indexOf(k) !== -1) return true; }
-  // For 'limited' world, only treat as christmas if name or index references christmas
   if (world === 'limited' && (idx.indexOf('christmas') !== -1 || christmasKeywords.some(k => name.indexOf(k) !== -1))) return true;
   return false;
 }
 
 
+
+// Panel helpers: append to body and place absolutely anchored to button (scrolls with page). Restore to original parent on close.
+function openFloatingPanel(panel, button) {
+  if (!panel || !button) return;
+  if (panel.classList && panel.classList.contains('open')) return;
+  panel._origParent = panel.parentNode;
+  panel._nextSibling = panel.nextSibling;
+  document.body.appendChild(panel);
+  panel.style.position = 'absolute';
+  const rect = button.getBoundingClientRect();
+  const left = rect.left + (window.scrollX || window.pageXOffset);
+  const top = rect.bottom + (window.scrollY || window.pageYOffset) + 6;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+  panel.style.zIndex = '30000';
+  panel.classList && panel.classList.add('open');
+  panel.style.display = 'block';
+}
+
+function closeFloatingPanel(panel) {
+  if (!panel) return;
+  panel.classList && panel.classList.remove('open');
+  try {
+    if (panel._origParent) {
+      if (panel._nextSibling) panel._origParent.insertBefore(panel, panel._nextSibling);
+      else panel._origParent.appendChild(panel);
+    }
+  } catch (e) {}
+  panel._origParent = null; panel._nextSibling = null;
+  panel.style.position = 'absolute';
+  panel.style.left = '';
+  panel.style.top = '';
+  panel.style.zIndex = '40';
+  panel.style.display = 'none';
+}
 
 let selectedWorld = null;
 let selectedEgg = null;
@@ -2328,6 +2361,7 @@ function createEggSettings(egg, canSpawnAsRift) {
             <option value="platinum">Platinum I</option>
             <option value="super">Super I</option>
             <option value="ultimate">Ultimate I</option>
+            <option value="infinity">Infinity I</option>
           </select>
           <div style="position:relative;display:inline-block;">
             <button class="milestone-dropdown-btn" type="button" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;color:var(--main-text);">
@@ -2344,6 +2378,7 @@ function createEggSettings(egg, canSpawnAsRift) {
                 <button type="button" class="milestone-option" data-val="platinum" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Platinum.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Platinum I</span></button>
                 <button type="button" class="milestone-option" data-val="super" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Super.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Super I</span></button>
                 <button type="button" class="milestone-option" data-val="ultimate" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Ultimate.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Ultimate I</span></button>
+                <button type="button" class="milestone-option" data-val="infinity" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Infinity.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Infinity I</span></button>
               </div>
             </div>
           </div>
@@ -2496,15 +2531,15 @@ function createEggSettings(egg, canSpawnAsRift) {
       festiveDropdownBtn.addEventListener('click', (ev) => {
         ev.stopPropagation();
         const open = festivePanel.style.display === 'block';
-        // close others and reset z-index
-        document.querySelectorAll('.festive-panel').forEach(p => { p.style.display = 'none'; p.style.zIndex = '40'; p.classList.remove('open'); });
-        // toggle this panel and set higher z-index so it sits above pet info
-        festivePanel.style.display = open ? 'none' : 'block';
-        if (!open) { festivePanel.style.zIndex = '20010'; festivePanel.classList.add('open'); }
-        else { festivePanel.style.zIndex = '40'; festivePanel.classList.remove('open'); }
+        document.querySelectorAll('.festive-panel').forEach(p => closeFloatingPanel(p));
+        if (open) {
+          closeFloatingPanel(festivePanel);
+        } else {
+          openFloatingPanel(festivePanel, festiveDropdownBtn);
+        }
       });
-      
-      document.addEventListener('click', () => { if (festivePanel) { festivePanel.style.display = 'none'; festivePanel.style.zIndex = '40'; festivePanel.classList.remove('open'); } });
+
+      document.addEventListener('click', () => { if (festivePanel) closeFloatingPanel(festivePanel); });
     }
     if (festiveOptions && festiveOptions.forEach) {
       festiveOptions.forEach(opt => {
@@ -2515,7 +2550,7 @@ function createEggSettings(egg, canSpawnAsRift) {
             festiveSelectEl.value = v;
             festiveSelectEl.dispatchEvent(new Event('change'));
           }
-          if (festivePanel) { festivePanel.style.display = 'none'; festivePanel.style.zIndex = '40'; festivePanel.classList.remove('open'); }
+          if (festivePanel) { festivePanel.style.display = 'none'; festivePanel.style.zIndex = '40'; festivePanel.classList.remove('open'); festivePanel.style.position = 'absolute'; festivePanel.style.left = ''; festivePanel.style.top = ''; }
         });
       });
     }
@@ -2527,23 +2562,24 @@ function createEggSettings(egg, canSpawnAsRift) {
     if (milestoneDropdownBtn && milestonePanel && milestoneOptions && milestoneOptions.forEach) {
       milestoneDropdownBtn.addEventListener('click', (ev) => {
         ev.stopPropagation();
-        const open = milestonePanel.style.display === 'block';        // close any other panels and reset their z-index
-        document.querySelectorAll('.milestone-panel').forEach(p => { p.style.display = 'none'; p.style.zIndex = '40'; p.classList.remove('open'); });
-  
-        milestonePanel.style.display = open ? 'none' : 'block';
-        if (!open) { milestonePanel.style.zIndex = '20010'; milestonePanel.classList.add('open'); }
-        else { milestonePanel.style.zIndex = '40'; milestonePanel.classList.remove('open'); }
+        const open = milestonePanel.style.display === 'block';
+        document.querySelectorAll('.milestone-panel').forEach(p => closeFloatingPanel(p));
+        if (open) {
+          closeFloatingPanel(milestonePanel);
+        } else {
+          openFloatingPanel(milestonePanel, milestoneDropdownBtn);
+        }
       });
-      document.addEventListener('click', () => { if (milestonePanel) { milestonePanel.style.display = 'none'; milestonePanel.style.zIndex = '40'; milestonePanel.classList.remove('open'); } });
+      document.addEventListener('click', () => { if (milestonePanel) closeFloatingPanel(milestonePanel); });
       milestoneOptions.forEach(opt => {
         opt.addEventListener('click', (ev) => {
           ev.stopPropagation();
-          const v = opt.dataset.val || 'none';
+          const v = (opt.dataset.val || 'none').toString().toLowerCase();
           if (milestoneSelectEl) {
             milestoneSelectEl.value = v;
             milestoneSelectEl.dispatchEvent(new Event('change'));
           }
-          if (milestonePanel) { milestonePanel.style.display = 'none'; milestonePanel.style.zIndex = '40'; milestonePanel.classList.remove('open'); }
+          if (milestonePanel) closeFloatingPanel(milestonePanel);
         });
       });
     }
