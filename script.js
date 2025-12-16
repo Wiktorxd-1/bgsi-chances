@@ -2305,7 +2305,7 @@ function createEggSettings(egg, canSpawnAsRift) {
      </div>
    `;
   
-  const isChristmasEgg = isChristmasEggFn(egg);
+  const isChristmasEgg = isChristmasEggFn(egg) || (egg && egg.name === 'Infinity Egg' && typeof selectedInfinityWorld !== 'undefined' && String(selectedInfinityWorld).toLowerCase() === 'c2025');
   if (isChristmasEgg) {
     controlsHtml += `
       <details class="christmas-settings" open style="margin-top:12px;border-radius:8px;border:1px solid var(--table-border);padding:10px;background:var(--controls-bg);">
@@ -2924,7 +2924,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       const milestoneElForCalc = (controls ? controls.querySelector('.christmas-milestone') : null) || document.querySelector('.christmas-milestone');
       const milestoneSelForCalc = milestoneElForCalc ? (milestoneElForCalc.value || 'none') : 'none';
       const milestoneInfoForCalc = MILESTONE_MAP[milestoneSelForCalc] || MILESTONE_MAP['none'];
-      const isChristmasEgg = isChristmasEggFn(egg);
+      const isChristmasEgg = isChristmasEggFn(egg) || (egg && egg.name === 'Infinity Egg' && typeof selectedInfinityWorld !== 'undefined' && String(selectedInfinityWorld).toLowerCase() === 'c2025');
       
       const totalLuckBefore = totalLuckPercent;
       if (masteryAdded) {
