@@ -644,9 +644,9 @@ async function createBountyDetailsView() {
         combinedEggForTable.Pets = [];
         if (newBountyBaseOdds) combinedEggForTable.Pets.push(newBountyPetObj);
         combinedEggForTable.Pets = combinedEggForTable.Pets.concat(selectedPetsList);
-        combinedEggForTable.secretBountyRotation = true;
+        combinedEggForTable.secretBountyRotation = !!((selectedPetsList || []).some(p => /(Secret|Infinity)/i.test(p && p.name)));
 
-        const selectedJsonEgg = (window.eggsJson || []).find(e => e.name === targetEggName) || null;
+        const selectedJsonEgg = (window.eggsJson || []).find(e => e.name === targetEggName) || null; 
         const selectedCanSpawnAsRift = !!(selectedJsonEgg && selectedJsonEgg.canSpawnAsRift);
 
         if (petsCard && petsCard.parentNode) petsCard.parentNode.removeChild(petsCard);
@@ -779,9 +779,9 @@ async function createBountyDetailsView() {
             combinedEggForTable.Pets = [];
             if (newBountyBaseOdds) combinedEggForTable.Pets.push(newBountyPetObj);
             combinedEggForTable.Pets = combinedEggForTable.Pets.concat(selectedPetsList);
-            combinedEggForTable.secretBountyRotation = true;
+            combinedEggForTable.secretBountyRotation = !!((selectedPetsList || []).some(p => /(Secret|Infinity)/i.test(p && p.name)));
 
-            const selectedJsonEgg = (window.eggsJson || []).find(e => e.name === targetEggName) || null;
+            const selectedJsonEgg = (window.eggsJson || []).find(e => e.name === targetEggName) || null; 
             const selectedCanSpawnAsRift = !!(selectedJsonEgg && selectedJsonEgg.canSpawnAsRift);
 
             if (petsCard && petsCard.parentNode) petsCard.parentNode.removeChild(petsCard);
@@ -890,7 +890,7 @@ async function createBountyDetailsView() {
 
   middle.appendChild(eggIconWrap);
 
-  const fakeEggForControls = { name: 'Bounty', Pets: [], world: 'bounty', secretBountyRotation: true };
+  const fakeEggForControls = { name: 'Bounty', Pets: [], world: 'bounty', secretBountyRotation: false };
   const controlsEl = createEggSettings(fakeEggForControls, eggCanSpawnAsRift);
   controlsEl.style.marginTop = '8px';
   controlsEl.style.alignSelf = 'flex-start';
@@ -2261,9 +2261,9 @@ function createEggSettings(egg, canSpawnAsRift) {
       </div>
     `;
   }
-  const hasSecret = (egg.Pets && egg.Pets.some(pet => /(Secret|Infinity|Bounty)/i.test(pet.name))) || egg.name === "Infinity Egg";
+  const hasSecret = (egg.Pets && egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name))) || egg.name === "Infinity Egg";
 
-  const hasSecretForced = !!egg.secretBountyRotation;
+  const hasSecretForced = !!egg.secretBountyRotation && !!((egg.Pets || []).some(p => /(Secret|Infinity)/i.test(p && p.name)));
   const hasSecretFinal = hasSecret || hasSecretForced;
   if (hasSecretFinal) {
     controlsHtml += `
