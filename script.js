@@ -24,7 +24,8 @@ const eggs = [
 { name: "Yuletide Egg", Pets: [ { name: "Mistletoe Fiend", baseOdds: 10000 }, { name: "Jingle Orb", baseOdds: 100000 }, { name: "Illuminated Fawn", baseOdds: 2000000 }, { name: "Santa's Hat (Secret)", baseOdds: 400000000 }, { name: "Holy Bell (Secret)", baseOdds: 1000000000 }, { name: "Holy Candle (Secret)", baseOdds: 2000000000 }, { name: "Archangel (Secret)", baseOdds: 5000000000 }, { name: "Frosted Dogcat (Secret)", baseOdds: 10000000000 }, { name: "Morning Star (Infinity)", baseOdds: 80000000000 } ], world: "limited" },
 { name: "Northpole Egg", Pets: [ { name: "Guardian Cookie", baseOdds: 10000}, { name: "Winter Phantom", baseOdds: 100000}, { name: "Macaron King", baseOdds: 2500000}, { name: "Big Flakey (Secret)", baseOdds: 400000000}, { name: "Joy Candle (Secret)", baseOdds: 5000000000}, { name: "Peace Candle (Secret)", baseOdds: 5000000000 }, { name: "Love Candle (Secret)", baseOdds: 5000000000}, { name: "Hope Candle (Secret)", baseOdds: 5000000000}, { name: "Iridescent Catcher (Secret)", baseOdds: 5000000000}, { name: "Christmas Robot (Infinity)", baseOdds: 200000000000}], world: "limited1" },
 { name: "Aurora Egg", Pets: [ { name: "Aurora Dragon", baseOdds: 10000}, { name: "Lunar Fairy", baseOdds: 100000}, { name: "Aurora Borealis", baseOdds: 5000000}, { name: "Borealis Elk (Secret)", baseOdds: 4000000000}, { name: "Northern Star (Secret)", baseOdds: 10000000000}, { name: "Soulflake (Secret)", baseOdds: 25000000000}, { name: "The Leviathan (Infinity)", baseOdds: 750000000000} ], world: "limited1" },
-{ name: "Giftbox Egg", image: "Images/eggs/Placeholder.webp",  Pets: [ { name: "Giftbox Unicorn", baseOdds: 100000 }, { name: "Giftbox Dark Phoenix", baseOdds: 1000000 }, { name: "Giftbox King Doggy (Secret)", baseOdds: 100000000 }, { name: "Nert Giftbox (Secret)", baseOdds: 1000000000 }, { name: "Quamatic Giftbox (Secret)", baseOdds: 1000000000 }, { name: "ObscureEntity Giftbox (Secret)", baseOdds: 1000000000 }, { name: "Sircfenner Giftbox (Secret)", baseOdds: 1000000000 }, { name: "Sylently Giftbox (Secret)", baseOdds: 1000000000 }, { name: "FutureWebsiteOwner Giftbox (Secret)", baseOdds: 1000000000 }, { name: "Giant Nert's Pufferfish (Infinity)", baseOdds: 400000000000 } ], world: "limited" }
+{ name: "Giftbox Egg", image: "Images/eggs/Placeholder.webp",  Pets: [ { name: "Giftbox Unicorn", baseOdds: 100000 }, { name: "Giftbox Dark Phoenix", baseOdds: 1000000 }, { name: "Giftbox King Doggy (Secret)", baseOdds: 100000000 }, { name: "Nert Giftbox (Secret)", baseOdds: 1000000000 }, { name: "Quamatic Giftbox (Secret)", baseOdds: 1000000000 }, { name: "ObscureEntity Giftbox (Secret)", baseOdds: 1000000000 }, { name: "Sircfenner Giftbox (Secret)", baseOdds: 1000000000 }, { name: "Sylently Giftbox (Secret)", baseOdds: 1000000000 }, { name: "FutureWebsiteOwner Giftbox (Secret)", baseOdds: 1000000000 }, { name: "Giant Nert's Pufferfish (Infinity)", baseOdds: 400000000000 } ], world: "limited" },
+{ name: "Festive Egg", Pets: [ { name: "Holiday Spirit", baseOdds: 10000 }, { name: "Snowglobe Hexarium", baseOdds: 100000 }, { name: "Demonic Fireplace", baseOdds: 2500000 }, { name: "Snowverlord (Secret)", baseOdds: 500000000 }, { name: "Christmas Tree (Secret)", baseOdds: 2000000000 }, { name: "Mistletoe Fairy (Secret)", baseOdds: 4000000000 }, { name: "Festive Deity (Secret)", baseOdds: 20000000000 } ], world: "limited1" }
 ];
 
 const bounty_overrides = {
@@ -2282,7 +2283,7 @@ function createEggSettings(egg, canSpawnAsRift) {
       </button>
 
       <div class="variants-panel" style="display:none;margin-top:8px;flex-direction:column;gap:10px;font-family:inherit;color:var(--main-text);width:100%;padding:10px;border-radius:8px;border:1px solid var(--table-border);background:var(--controls-bg);box-sizing:border-box;overflow:hidden;opacity:0;transition:max-height 260ms ease, opacity 220ms ease;">
-        <div class="variant-row" style="display:flex;align-items:center;gap:10px;flex-wrap:nowrap;">
+        <div class="variant-row" style="display:flex;align-items:center;gap:10px;flex-wrap:nowrap;position:relative;">
           <button type="button" class="variant-btn shiny-btn" data-selected="false"
             style="border-radius:999px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);min-width:72px;">
             Shiny
@@ -2298,6 +2299,26 @@ function createEggSettings(egg, canSpawnAsRift) {
           </button>
           <input type="text" class="variant-input mythic-input skinned-input" placeholder="1 in 100" value="1 in 100"
             style="width:160px;font-family:inherit;color:var(--main-text);border:1px solid rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;box-sizing:border-box;" />
+        </div>
+
+        <div class="variant-row" style="display:flex;align-items:center;gap:10px;flex-wrap:nowrap;">
+          <button type="button" class="variant-btn xl-btn" data-selected="false"
+            style="border-radius:999px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);min-width:56px;">
+            XL
+          </button>
+          <button type="button" class="xl-warning-btn" title="Due to an error, you have to select shiny or mythic, i'm try to fix this, not sure what teh cause of this is, just select shiny or mythic and de-select them again"
+            style="padding:4px;border-radius:50%;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;">
+            <img src="Images/Icons/warning.ico" alt="XL warning" style="width:18px;height:18px;object-fit:contain;" />
+          </button>
+          <div class="xl-warning-popout" style="display:none;position:absolute;z-index:30000;padding:12px 14px;border-radius:10px;border:1px solid var(--table-border);background:var(--controls-bg);color:var(--main-text);width:260px;box-shadow:0 10px 30px rgba(0,0,0,0.35);">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;">
+              <strong style="font-size:0.95rem;">Info</strong>
+              <button type="button" class="xl-warning-close" style="border:none;background:transparent;color:var(--main-text);cursor:pointer;font-size:0.95rem;">✕</button>
+            </div>
+            <div style="font-size:0.85rem;line-height:1.3;">
+              Due to an error, you have to select shiny or mythic after (de-)selecting, i'm try to fix this, not sure what the cause of this is, just select shiny or mythic and de-select them again
+            </div>
+          </div>
         </div>
 
          <div style="font-size:0.82rem;color:var(--main-text);opacity:0.85;">Examples: "13" or "1 in 13"</div>
@@ -2414,6 +2435,12 @@ function createEggSettings(egg, canSpawnAsRift) {
     const mythicInput = controls.querySelector('.mythic-input');
 
     function readSettingsFromDOM() {
+      const shinyBtnLocal = controls ? controls.querySelector('.shiny-btn') : null;
+      const mythicBtnLocal = controls ? controls.querySelector('.mythic-btn') : null;
+      const xlBtnLocal = controls ? controls.querySelector('.xl-btn') : null;
+      const shinyInputLocal = controls ? controls.querySelector('.shiny-input') : null;
+      const mythicInputLocal = controls ? controls.querySelector('.mythic-input') : null;
+
       return {
         luck: luckEl ? (luckEl.value === '' ? 0 : Number(luckEl.value)) : 0,
         secretMult: secretEl ? (secretEl.value === '' ? 1 : Number(secretEl.value)) : 1,
@@ -2423,22 +2450,24 @@ function createEggSettings(egg, canSpawnAsRift) {
           ultraInfinity: (controls.querySelector('.ultra-infinity-input') ? String(controls.querySelector('.ultra-infinity-input').value || '1') : '1')
         },
         mastery: {
-          level: (controls.querySelector('.christmas-mastery') ? Number(controls.querySelector('.christmas-mastery').value || 0) : 0)
-        ,
+          level: (controls.querySelector('.christmas-mastery') ? Number(controls.querySelector('.christmas-mastery').value || 0) : 0),
           milestone: controls.querySelector('.christmas-milestone') ? (controls.querySelector('.christmas-milestone').value || 'none') : 'none'
         },
         variants: {
           shiny: {
-            selected: !!(shinyBtn && shinyBtn.dataset && shinyBtn.dataset.selected === 'true'),
-            odds: shinyInput ? String(shinyInput.value || '') : '',
-            userModified: shinyInput ? (shinyInput.dataset.userModified === 'true') : false
+            selected: !!(shinyBtnLocal && shinyBtnLocal.dataset && shinyBtnLocal.dataset.selected === 'true'),
+            odds: shinyInputLocal ? String(shinyInputLocal.value || '') : '',
+            userModified: shinyInputLocal ? (shinyInputLocal.dataset.userModified === 'true') : false
           },
           mythic: {
-            selected: !!(mythicBtn && mythicBtn.dataset && mythicBtn.dataset.selected === 'true'),
-            odds: mythicInput ? String(mythicInput.value || '') : '',
-            userModified: mythicInput ? (mythicInput.dataset.userModified === 'true') : false
-    }
-    }
+            selected: !!(mythicBtnLocal && mythicBtnLocal.dataset && mythicBtnLocal.dataset.selected === 'true'),
+            odds: mythicInputLocal ? String(mythicInputLocal.value || '') : '',
+            userModified: mythicInputLocal ? (mythicInputLocal.dataset.userModified === 'true') : false
+          },
+          xl: {
+            selected: !!(xlBtnLocal && xlBtnLocal.dataset && xlBtnLocal.dataset.selected === 'true')
+          }
+        }
       };
     }
 
@@ -2461,7 +2490,22 @@ function createEggSettings(egg, canSpawnAsRift) {
         const sel = saved.festive.selected || 'none';
         controls.querySelector('.festive-select').value = sel;
         const icon = controls.querySelector('.festive-icon');
-        if (icon) { icon.onerror = () => icon.src = 'Images/Icons/Placeholder.webp'; icon.src = `Images/Icons/${sel === 'none' ? 'Festive_Potion_NONE' : `Festive_Potion_${sel}`}.webp`; }
+        if (icon) { icon.onerror = () => icon.src = 'Images/Icons/Placeholder.webp'; icon.src = 'Images/Icons/' + (sel === 'none' ? 'Festive_Potion_NONE' : 'Festive_Potion_' + sel) + '.webp'; }
+      }
+      // restore variant buttons
+      try {
+        if (saved.variants) {
+          const variants = saved.variants;
+          const sb = controls.querySelector('.shiny-btn');
+          const mb = controls.querySelector('.mythic-btn');
+          const xb = controls.querySelector('.xl-btn');
+          if (sb && variants.shiny && typeof variants.shiny.selected !== 'undefined') { sb.dataset.selected = variants.shiny.selected ? 'true' : 'false'; if (controls) controls.dataset.shinySelected = sb.dataset.selected; }
+          if (mb && variants.mythic && typeof variants.mythic.selected !== 'undefined') { mb.dataset.selected = variants.mythic.selected ? 'true' : 'false'; if (controls) controls.dataset.mythicSelected = mb.dataset.selected; }
+          if (xb && variants.xl && typeof variants.xl.selected !== 'undefined') { xb.dataset.selected = variants.xl.selected ? 'true' : 'false'; if (controls) controls.dataset.xlSelected = xb.dataset.selected; }
+          try { applyVariantButtonStyles(); } catch (e) {}
+        }
+      } catch (e) {}
+
         const dropBtn = controls.querySelector('.festive-dropdown-btn');
         if (dropBtn) {
           const label = dropBtn.querySelector('.festive-label'); if (label) label.textContent = sel === 'none' ? 'None' : sel;
@@ -2501,7 +2545,7 @@ function createEggSettings(egg, canSpawnAsRift) {
   }
   if (shinyBtn && saved.variants && saved.variants.shiny && saved.variants.shiny.selected) shinyBtn.dataset.selected = 'true';
   if (mythicBtn && saved.variants && saved.variants.mythic && saved.variants.mythic.selected) mythicBtn.dataset.selected = 'true';
-    }
+  if (xlBtn && saved.variants && saved.variants.xl && saved.variants.xl.selected) xlBtn.dataset.selected = 'true';
 
     if (luckEl) luckEl.addEventListener('input', saveSettings);
     if (secretEl) secretEl.addEventListener('input', saveSettings);
@@ -2509,6 +2553,7 @@ function createEggSettings(egg, canSpawnAsRift) {
     if (mythicInput) mythicInput.addEventListener('input', saveSettings);
     if (shinyBtn) shinyBtn.addEventListener('click', () => { setTimeout(saveSettings, 0); });
     if (mythicBtn) mythicBtn.addEventListener('click', () => { setTimeout(saveSettings, 0); });
+    if (xlBtn) xlBtn.addEventListener('click', () => { setTimeout(saveSettings, 0); });
     const festiveSelectEl = controls.querySelector('.festive-select');
     const festiveDropdownBtn = controls.querySelector('.festive-dropdown-btn');
     const festivePanel = controls.querySelector('.festive-panel');
@@ -2519,7 +2564,7 @@ function createEggSettings(egg, canSpawnAsRift) {
       const icon = controls.querySelector('.festive-icon');
       const v = festiveSelectEl.value || 'none';
       const fileName = v === 'none' ? 'Festive_Potion_NONE' : `Festive_Potion_${v}`;
-      if (icon) { icon.onerror = () => icon.src = 'Images/Icons/Placeholder.webp'; icon.src = `Images/Icons/${fileName}.webp`; }
+      if (icon) { icon.onerror = () => icon.src = 'Images/Icons/Placeholder.webp'; icon.src = 'Images/Icons/' + fileName + '.webp'; }
       saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
       
       if (festiveDropdownBtn) {
@@ -2682,6 +2727,27 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
        layout.querySelector('.egg-details-middle .controls') ||
        layout.querySelector('.egg-details-right .controls')
      ) : null;
+
+    const resolveControls = (node = null) => {
+      if (node && node.target) {
+        if (node.currentTarget) node = node.currentTarget;
+        else node = node.target;
+      }
+      const isEl = (el) => !!(el && typeof el === 'object' && el.nodeType === 1);
+      if (isEl(node) && node.classList && node.classList.contains('controls')) return node;
+      if (isEl(node) && node.closest) {
+        const viaClosest = node.closest('.controls');
+        if (viaClosest) return viaClosest;
+      }
+      const layoutEl = card.closest('.egg-details-layout') || document.querySelector('.egg-details-layout');
+      if (!layoutEl) return null;
+      return (
+        layoutEl.querySelector('.egg-details-left .controls') ||
+        layoutEl.querySelector('.egg-details-middle .controls') ||
+        layoutEl.querySelector('.egg-details-right .controls')
+      );
+    };
+
     const multiplierSelect = controls ? controls.querySelector(".multiplier") : null;
   const ogRadianceBtn = controls ? controls.querySelector('.og-radiance-btn') : null;
     const multiplierOtherWrap = controls ? controls.querySelector(".multiplier-other-wrap") : null;
@@ -2694,6 +2760,9 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
     const mythicBtn = controls ? controls.querySelector('.mythic-btn') : null;
     const shinyInput = controls ? controls.querySelector('.shiny-input') : null;
     const mythicInput = controls ? controls.querySelector('.mythic-input') : null;
+    const xlBtn = controls ? controls.querySelector('.xl-btn') : null;
+    const xlWarningBtn = controls ? controls.querySelector('.xl-warning-btn') : null;
+    const xlWarningPanel = controls ? controls.querySelector('.xl-warning-popout') : null;
     const ultraInput = controls ? controls.querySelector('.ultra-infinity-input') : null;
      const petList = table.querySelector(".pet-list");
 
@@ -2742,46 +2811,122 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
           color: 'var(--main-text)',
           boxShadow: 'none'
         }
+      },
+      xl: {
+        selected: {
+          background: '#1aa3ff',
+          color: '#ffffff',
+          boxShadow: '0 0 12px rgba(26,163,255,0.9), 0 6px 20px rgba(0,0,0,0.12)'
+        },
+        unselected: {
+          background: 'var(--controls-bg)',
+          color: 'var(--main-text)',
+          boxShadow: 'none'
+        }
       }
     };
+    const XL_WARNING_MESSAGE = "Due to an error, you have to select shiny or mythic, i'm try to fix this, not sure what teh cause of this is, just select shiny or mythic and de-select them again";
 
-    function applyVariantButtonStyles() {
-      if (shinyBtn) {
-        const sel = shinyBtn.dataset.selected === 'true';
-        if (sel) {
-          Object.assign(shinyBtn.style, variantButtonStyles.shiny.selected);
-        } else {
-          Object.assign(shinyBtn.style, variantButtonStyles.shiny.unselected);
-        }
+    function applyVariantButtonStyles(activeControls = null) {
+      const workingControls = resolveControls(activeControls);
+      if (!workingControls) return;
+      // Query current buttons from the controls container to avoid stale references
+      const sBtn = workingControls.querySelector('.shiny-btn');
+      const mBtn = workingControls.querySelector('.mythic-btn');
+      const xBtn = workingControls.querySelector('.xl-btn');
+
+      if (sBtn) {
+        const sel = sBtn.dataset.selected === 'true';
+        if (sel) Object.assign(sBtn.style, variantButtonStyles.shiny.selected);
+        else Object.assign(sBtn.style, variantButtonStyles.shiny.unselected);
       }
-      if (mythicBtn) {
-        const sel = mythicBtn.dataset.selected === 'true';
-        if (sel) {
-          Object.assign(mythicBtn.style, variantButtonStyles.mythic.selected);
-        } else {
-          Object.assign(mythicBtn.style, variantButtonStyles.mythic.unselected);
-        }
+      if (mBtn) {
+        const sel = mBtn.dataset.selected === 'true';
+        if (sel) Object.assign(mBtn.style, variantButtonStyles.mythic.selected);
+        else Object.assign(mBtn.style, variantButtonStyles.mythic.unselected);
+      }
+      if (xBtn) {
+        const sel = xBtn.dataset.selected === 'true';
+        if (sel) Object.assign(xBtn.style, variantButtonStyles.xl.selected);
+        else Object.assign(xBtn.style, variantButtonStyles.xl.unselected);
       }
     }
 
     if (shinyBtn) {
       shinyBtn.type = 'button';
-      shinyBtn.dataset.selected = 'false';
+      if (typeof shinyBtn.dataset.selected === 'undefined') shinyBtn.dataset.selected = 'false';
       shinyBtn.style.cursor = 'pointer';
       shinyBtn.addEventListener('click', (e) => {
-        shinyBtn.dataset.selected = shinyBtn.dataset.selected === 'true' ? 'false' : 'true';
-        applyVariantButtonStyles();
-        updateChances();
+        const sourceBtn = e && e.currentTarget ? e.currentTarget : shinyBtn;
+        const workingControls = resolveControls(sourceBtn);
+        const btn = workingControls ? workingControls.querySelector('.shiny-btn') : sourceBtn;
+        if (!btn || !workingControls) return;
+        btn.dataset.selected = btn.dataset.selected === 'true' ? 'false' : 'true';
+        try { workingControls.dataset.shinySelected = btn.dataset.selected; } catch (err) {}
+        applyVariantButtonStyles(workingControls);
+        updateChances(workingControls);
       });
     }
     if (mythicBtn) {
       mythicBtn.type = 'button';
-      mythicBtn.dataset.selected = 'false';
+      if (typeof mythicBtn.dataset.selected === 'undefined') mythicBtn.dataset.selected = 'false';
       mythicBtn.style.cursor = 'pointer';
       mythicBtn.addEventListener('click', (e) => {
-        mythicBtn.dataset.selected = mythicBtn.dataset.selected === 'true' ? 'false' : 'true';
-        applyVariantButtonStyles();
-        updateChances();
+        const sourceBtn = e && e.currentTarget ? e.currentTarget : mythicBtn;
+        const workingControls = resolveControls(sourceBtn);
+        const btn = workingControls ? workingControls.querySelector('.mythic-btn') : sourceBtn;
+        if (!btn || !workingControls) return;
+        btn.dataset.selected = btn.dataset.selected === 'true' ? 'false' : 'true';
+        try { workingControls.dataset.mythicSelected = btn.dataset.selected; } catch (err) {}
+        applyVariantButtonStyles(workingControls);
+        updateChances(workingControls);
+      });
+    }
+    if (xlBtn) {
+      xlBtn.type = 'button';
+      if (typeof xlBtn.dataset.selected === 'undefined') xlBtn.dataset.selected = 'false';
+      xlBtn.style.cursor = 'pointer';
+      xlBtn.addEventListener('click', (e) => {
+        const sourceBtn = e && e.currentTarget ? e.currentTarget : xlBtn;
+        const workingControls = resolveControls(sourceBtn);
+        const btn = workingControls ? workingControls.querySelector('.xl-btn') : sourceBtn;
+        if (!btn || !workingControls) return;
+        btn.dataset.selected = btn.dataset.selected === 'true' ? 'false' : 'true';
+        try { workingControls.dataset.xlSelected = btn.dataset.selected; } catch (err) {}
+        applyVariantButtonStyles(workingControls);
+        updateChances(workingControls);
+      });
+    }
+
+    if (xlWarningBtn && xlWarningPanel) {
+      xlWarningBtn.title = XL_WARNING_MESSAGE;
+      const closePanel = () => closeFloatingPanel(xlWarningPanel);
+      const closeBtn = xlWarningPanel.querySelector('.xl-warning-close');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          ev.stopPropagation();
+          closePanel();
+        });
+      }
+      xlWarningBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const alreadyOpen = xlWarningPanel.classList && xlWarningPanel.classList.contains('open');
+        document.querySelectorAll('.xl-warning-popout').forEach(panel => closeFloatingPanel(panel));
+        if (!alreadyOpen) {
+          openFloatingPanel(xlWarningPanel, xlWarningBtn);
+          setTimeout(() => {
+            const handleOutside = (event) => {
+              if (!xlWarningPanel.contains(event.target) && event.target !== xlWarningBtn) {
+                closePanel();
+              } else {
+                document.addEventListener('click', handleOutside, { once: true });
+              }
+            };
+            document.addEventListener('click', handleOutside, { once: true });
+          }, 0);
+        }
       });
     }
 
@@ -2806,18 +2951,18 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       applyOgRadianceStyle();
     }
     if (shinyInput) {
-      shinyInput.addEventListener('input', () => { applyVariantButtonStyles(); updateChances(); });
+      shinyInput.addEventListener('input', () => { applyVariantButtonStyles(shinyInput); updateChances(shinyInput); });
       shinyInput.addEventListener('input', () => { shinyInput.dataset.userModified = 'true'; saveSettings(); });
       if (!shinyInput.value) { shinyInput.value = '1 in 40'; shinyInput.dataset.userModified = 'false'; }
     }
     if (mythicInput) {
-      mythicInput.addEventListener('input', () => { applyVariantButtonStyles(); updateChances(); });
+      mythicInput.addEventListener('input', () => { applyVariantButtonStyles(mythicInput); updateChances(mythicInput); });
       mythicInput.addEventListener('input', () => { mythicInput.dataset.userModified = 'true'; saveSettings(); });
       if (!mythicInput.value) { mythicInput.value = '1 in 100'; mythicInput.dataset.userModified = 'false'; }
     }
     if (ultraInput) {
-      ultraInput.addEventListener('input', () => { updateChances(); saveSettings(); });
-      ultraInput.addEventListener('change', () => { updateChances(); });
+      ultraInput.addEventListener('input', () => { updateChances(ultraInput); saveSettings(); });
+      ultraInput.addEventListener('change', () => { updateChances(ultraInput); });
       if (!ultraInput.value) ultraInput.value = '1';
     }
      applyVariantButtonStyles();
@@ -2828,13 +2973,13 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         } else {
           if (multiplierOtherWrap) multiplierOtherWrap.style.display = 'none';
         }
-        updateChances();
+        updateChances(multiplierSelect);
       };
       multiplierSelect.addEventListener('change', handleMultiplierChange);
       try { handleMultiplierChange(); } catch (e) {}
     }
     if (multiplierOtherInput) {
-      multiplierOtherInput.addEventListener('input', updateChances);
+      multiplierOtherInput.addEventListener('input', () => updateChances(multiplierOtherInput));
     }
 
     
@@ -2877,30 +3022,39 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
        });
      }
 
-     function updateChances() {
+     function updateChances(activeControls = null) {
+       const controlsScope = resolveControls(activeControls);
+       const multiplierSelectScoped = controlsScope ? controlsScope.querySelector('.multiplier') : multiplierSelect;
+       const multiplierOtherInputScoped = controlsScope ? controlsScope.querySelector('.multiplier-other') : multiplierOtherInput;
+       const luckInputScoped = controlsScope ? controlsScope.querySelector('.luck') : luckInput;
+       const secretInputScoped = controlsScope ? controlsScope.querySelector('.secret-mult') : secretInput;
+       const shinyInputScoped = controlsScope ? controlsScope.querySelector('.shiny-input') : shinyInput;
+       const mythicInputScoped = controlsScope ? controlsScope.querySelector('.mythic-input') : mythicInput;
+       const ultraInputScoped = controlsScope ? controlsScope.querySelector('.ultra-infinity-input') : ultraInput;
+
        let multiplierValue = 0;
-       if (multiplierSelect) {
-         if (multiplierSelect.value === 'other') {
-           const parsed = parseRiftInput(multiplierOtherInput ? multiplierOtherInput.value : '');
+       if (multiplierSelectScoped) {
+         if (multiplierSelectScoped.value === 'other') {
+           const parsed = parseRiftInput(multiplierOtherInputScoped ? multiplierOtherInputScoped.value : '');
            multiplierValue = (isFinite(parsed) && parsed !== null) ? Number(parsed) : 0;
          } else {
-           multiplierValue = parseFloat(multiplierSelect.value) || 0;
+           multiplierValue = parseFloat(multiplierSelectScoped.value) || 0;
          }
        }
        const riftBonusPercent = multiplierValue * 100;
-      const luckPercent = luckInput ? (luckInput.value === "" ? 0 : parseFloat(luckInput.value)) : 0;
+      const luckPercent = luckInputScoped ? (luckInputScoped.value === "" ? 0 : parseFloat(luckInputScoped.value)) : 0;
 
       
-      const festiveSelectEl = (controls ? controls.querySelector('.festive-select') : null) || document.querySelector('.festive-select');
-      const festiveInfinityBtnEl = (controls ? controls.querySelector('.festive-infinity-btn') : null) || document.querySelector('.festive-infinity-btn');
-      const masteryInputEl = (controls ? controls.querySelector('.christmas-mastery') : null) || document.querySelector('.christmas-mastery');
-      const ultraInputEl = (controls ? controls.querySelector('.ultra-infinity-input') : null) || document.querySelector('.ultra-infinity-input');
+      const festiveSelectEl = (controlsScope ? controlsScope.querySelector('.festive-select') : null) || document.querySelector('.festive-select');
+      const festiveInfinityBtnEl = (controlsScope ? controlsScope.querySelector('.festive-infinity-btn') : null) || document.querySelector('.festive-infinity-btn');
+      const masteryInputEl = (controlsScope ? controlsScope.querySelector('.christmas-mastery') : null) || document.querySelector('.christmas-mastery');
+      const ultraInputEl = (controlsScope ? controlsScope.querySelector('.ultra-infinity-input') : null) || document.querySelector('.ultra-infinity-input');
       
       const masteryModeEl = null;
       const festiveSelected = festiveSelectEl ? (festiveSelectEl.value || 'none') : 'none';
       const festiveInfinity = festiveInfinityBtnEl ? (festiveInfinityBtnEl.dataset.selected === 'true') : false;
       const festiveIsSelected = (festiveSelected && FESTIVE_POTION_MAP[festiveSelected]);
-      const ultraMultiplier = typeof parseRiftInput === 'function' ? (parseRiftInput(ultraInputEl ? ultraInputEl.value : null) || 1) : 1;
+      const ultraMultiplier = typeof parseRiftInput === 'function' ? (parseRiftInput(ultraInputScoped ? ultraInputScoped.value : null) || 1) : 1;
       let totalLuckPercent = luckPercent;
       
       if (festiveIsSelected) {
@@ -2921,7 +3075,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       let masteryAdded = masteryInfo && masteryInfo.luck ? masteryInfo.luck : 0;
       let masterySecretPercent = masteryInfo && masteryInfo.secretLuck ? masteryInfo.secretLuck : 0;
       let masteryInfinityPercent = masteryInfo && masteryInfo.infinityLuck ? masteryInfo.infinityLuck : 0;
-      const milestoneElForCalc = (controls ? controls.querySelector('.christmas-milestone') : null) || document.querySelector('.christmas-milestone');
+      const milestoneElForCalc = (controlsScope ? controlsScope.querySelector('.christmas-milestone') : null) || document.querySelector('.christmas-milestone');
       const milestoneSelForCalc = milestoneElForCalc ? (milestoneElForCalc.value || 'none') : 'none';
       const milestoneInfoForCalc = MILESTONE_MAP[milestoneSelForCalc] || MILESTONE_MAP['none'];
       const isChristmasEgg = isChristmasEggFn(egg) || (egg && egg.name === 'Infinity Egg' && typeof selectedInfinityWorld !== 'undefined' && String(selectedInfinityWorld).toLowerCase() === 'c2025');
@@ -2943,7 +3097,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       }
       try {
       } catch (e) {}
-      const secretTimes = secretInput ? (secretInput.value === "" ? 1 : Math.max(1, parseFloat(secretInput.value))) : 1;
+      const secretTimes = secretInputScoped ? (secretInputScoped.value === "" ? 1 : Math.max(1, parseFloat(secretInputScoped.value))) : 1;
       const extraSecretPercent = 0;
       const effectiveLuckPercent = totalLuckPercent + riftBonusPercent;
       if (window && window._BGSI_DEBUG) {
@@ -2980,8 +3134,8 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
           }
         }
          let variantFactor = 1;
-        let shinyOdds = parseOneInInput(shinyInput ? shinyInput.value : null) || 40;
-        let mythicOdds = parseOneInInput(mythicInput ? mythicInput.value : null) || 100;
+        let shinyOdds = parseOneInInput(shinyInputScoped ? shinyInputScoped.value : null) || 40;
+        let mythicOdds = parseOneInInput(mythicInputScoped ? mythicInputScoped.value : null) || 100;
         if (festiveSelected && FESTIVE_POTION_MAP[festiveSelected]) {
         
           const elixirDivisor = festiveInfinity ? 2 : 1;
@@ -2990,11 +3144,15 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
             mythicOdds = Math.max(1, Math.round(mythicOdds / elixirDivisor));
           }
           
-          if (shinyInput && shinyInput.dataset.userModified !== 'true') { shinyInput.value = `1 in ${shinyOdds}`; if (shinyInput.dataset.userModified !== 'false') { shinyInput.dataset.userModified = 'false'; saveSettings(); } }
-          if (mythicInput && mythicInput.dataset.userModified !== 'true') { mythicInput.value = `1 in ${mythicOdds}`; if (mythicInput.dataset.userModified !== 'false') { mythicInput.dataset.userModified = 'false'; saveSettings(); } }
+          if (shinyInputScoped && shinyInputScoped.dataset.userModified !== 'true') { shinyInputScoped.value = `1 in ${shinyOdds}`; if (shinyInputScoped.dataset.userModified !== 'false') { shinyInputScoped.dataset.userModified = 'false'; saveSettings(); } }
+          if (mythicInputScoped && mythicInputScoped.dataset.userModified !== 'true') { mythicInputScoped.value = `1 in ${mythicOdds}`; if (mythicInputScoped.dataset.userModified !== 'false') { mythicInputScoped.dataset.userModified = 'false'; saveSettings(); } }
         }
-         const shinySelected = shinyBtn && shinyBtn.dataset.selected === 'true';
-         const mythicSelected = mythicBtn && mythicBtn.dataset.selected === 'true';
+         const shinyBtnCur = controlsScope ? controlsScope.querySelector('.shiny-btn') : null;
+         const mythicBtnCur = controlsScope ? controlsScope.querySelector('.mythic-btn') : null;
+         const xlBtnCur = controlsScope ? controlsScope.querySelector('.xl-btn') : null;
+         const shinySelected = shinyBtnCur && shinyBtnCur.dataset.selected === 'true';
+         const mythicSelected = mythicBtnCur && mythicBtnCur.dataset.selected === 'true';
+         const xlSelected = (controlsScope && controlsScope.dataset.xlSelected === 'true') || (xlBtnCur && xlBtnCur.dataset.selected === 'true');
 
          
 
@@ -3004,6 +3162,9 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          }
          if (mythicSelected) {
            variantFactor *= (1 / mythicOdds);
+         }
+         if (xlSelected) {
+           variantFactor *= (1 / 500);
          }
 
          const adjustedChance = baseChance * combinedMultiplier * variantFactor;
@@ -3031,6 +3192,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          const prefixParts = [];
          if (shinySelected) prefixParts.push('Shiny');
          if (mythicSelected) prefixParts.push('Mythic');
+
          let iconSrc = petIconPath;
          if (prefixParts.length) {
            const m = petIconPath.match(/^(.*[\/\\])?([^\/\\]+?)(\.(webp|png|jpg|jpeg))$/i);
@@ -3039,12 +3201,62 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
              const base = m[2] || '';
              const ext = m[3] || '';
              const nameNoPrefix = base.replace(/^(Shiny_|Mythic_|Shiny_Mythic_|Mythic_Shiny_)/i, '');
-             const newName = prefixParts.join('_') + '_' + nameNoPrefix;
-             iconSrc = dir + newName + ext;
+
+             // Build candidates: try full prefix (e.g., Shiny_XL_Name), then fallbacks (e.g., Shiny_Name) so icons still show when combined XL+Shiny/Mythic image doesn't exist
+             const candidates = [];
+             candidates.push(prefixParts.join('_') + '_' + nameNoPrefix);
+             if (prefixParts.includes('XL')) {
+               const withoutXL = prefixParts.filter(p => p !== 'XL');
+               if (withoutXL.length) candidates.push(withoutXL.join('_') + '_' + nameNoPrefix);
+             }
+             // Also try single variant prefixes if present
+             if (prefixParts.includes('Shiny') && prefixParts.includes('Mythic')) {
+               candidates.push('Shiny_' + nameNoPrefix);
+               candidates.push('Mythic_' + nameNoPrefix);
+             }
+
+             const tryNextCandidate = (list) => {
+               if (!list.length) {
+                 // fallback to base
+                 if (img.src !== petIconPath) img.src = petIconPath;
+                 img.onerror = null;
+                 return;
+               }
+               const candidateName = list.shift();
+               img.src = dir + candidateName + ext;
+               img.onerror = () => { tryNextCandidate(list); };
+             };
+
+             tryNextCandidate(candidates.slice());
            }
+         } else {
+           img.src = iconSrc;
          }
-         img.src = iconSrc;
          img.onerror = () => { if (img.src !== petIconPath) img.src = petIconPath; img.onerror = null; };
+
+         // add XL badge if selected (append once)
+         if (xlSelected) {
+           if (!tdPet.querySelector('.xl-badge')) {
+             const xlBadge = document.createElement('img');
+             xlBadge.className = 'xl-badge';
+             xlBadge.src = 'Images/Icons/XL_Pet.webp';
+             xlBadge.onerror = () => { xlBadge.src = 'Images/Pets/XL_Pet.webp'; xlBadge.onerror = null; };
+             xlBadge.alt = 'XL';
+             xlBadge.style.position = 'absolute';
+             xlBadge.style.left = '6px';
+             xlBadge.style.bottom = '6px';
+             xlBadge.style.width = '18px';
+             xlBadge.style.height = '18px';
+             xlBadge.style.objectFit = 'contain';
+             xlBadge.style.borderRadius = '4px';
+             xlBadge.style.boxShadow = '0 4px 10px rgba(0,0,0,0.25)';
+             xlBadge.style.background = 'rgba(255,255,255,0.02)';
+             tdPet.appendChild(xlBadge);
+           }
+         } else {
+           const existing = tdPet.querySelector('.xl-badge');
+           if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+         }
          img.alt = pet.name;
          img.style.width = '34px';
          img.style.height = '34px';
@@ -3111,9 +3323,11 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
 
   const FIXED_SHINY_MULT = 40;
   const FIXED_MYTHIC_MULT = 100;
-  const shinySelectedForBase = shinyBtn && shinyBtn.dataset.selected === 'true';
-  const mythicSelectedForBase = mythicBtn && mythicBtn.dataset.selected === 'true';
-  const variantMultiplierForBase = (shinySelectedForBase ? FIXED_SHINY_MULT : 1) * (mythicSelectedForBase ? FIXED_MYTHIC_MULT : 1);
+  const FIXED_XL_MULT = 500;
+  const shinySelectedForBase = (controlsScope && controlsScope.dataset.shinySelected === 'true') || (shinyBtnCur && shinyBtnCur.dataset.selected === 'true');
+  const mythicSelectedForBase = (controlsScope && controlsScope.dataset.mythicSelected === 'true') || (mythicBtnCur && mythicBtnCur.dataset.selected === 'true');
+  const xlSelectedForBase = (controlsScope && controlsScope.dataset.xlSelected === 'true') || (xlBtnCur && xlBtnCur.dataset.selected === 'true');
+  const variantMultiplierForBase = (shinySelectedForBase ? FIXED_SHINY_MULT : 1) * (mythicSelectedForBase ? FIXED_MYTHIC_MULT : 1) * (xlSelectedForBase ? FIXED_XL_MULT : 1);
   const scaledBaseOneInRaw = pet.baseOdds && isFinite(Number(pet.baseOdds)) && Number(pet.baseOdds) > 0 ? Number(pet.baseOdds) * variantMultiplierForBase : NaN;
   const scaledBaseOneInDisplay = isFinite(scaledBaseOneInRaw) && scaledBaseOneInRaw > 0 ? scaledBaseOneInRaw.toLocaleString() : 'Unknown';
   const tdBaseCell = createExpandableCell(pet.baseOdds ? `1 in ${scaledBaseOneInDisplay}` : 'Unknown', 'center');
@@ -3155,20 +3369,20 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
      }
 
      updateChances();
-     if (multiplierSelect) multiplierSelect.addEventListener("change", updateChances);
+    if (multiplierSelect) multiplierSelect.addEventListener("change", (ev) => updateChances(ev.currentTarget));
      if (luckInput) {
        luckInput.addEventListener("focus", () => { if (luckInput.value === "0") luckInput.value = ""; });
        luckInput.addEventListener("blur", () => { if (luckInput.value === "") luckInput.value = "0"; });
-       luckInput.addEventListener("input", updateChances);
+        luckInput.addEventListener("input", () => updateChances(luckInput));
      }
-     if (secretInput) secretInput.addEventListener("input", updateChances);
+       if (secretInput) secretInput.addEventListener("input", () => updateChances(secretInput));
 
     
     if (controls) {
-      controls.addEventListener('luckSettingsChanged', updateChances);
+      controls.addEventListener('luckSettingsChanged', (ev) => updateChances(ev.currentTarget));
     }
     
-    document.addEventListener('luckSettingsChanged', updateChances);
+    document.addEventListener('luckSettingsChanged', () => updateChances());
     
 
      if (layout) {

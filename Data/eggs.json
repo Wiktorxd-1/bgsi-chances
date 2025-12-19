@@ -763,6 +763,42 @@
     "dateRemoved": "2026-01-09"
   },
   {
+    "name": "Festive Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "pets": [
+      "Festive Wolf",
+      "Festive Deer",
+      "Sack O' Angel",
+      "Holiday Spirit",
+      "Snowglobe Hexarium",
+      "Demonic Fireplace",
+      "Snowverlord",
+      "Christmas Tree",
+      "Mistletoe Fairy",
+      "Festive Deity"
+    ],
+    "luckIgnored": false,
+    "infinityEgg": "Christmas Event 2025",
+    "canSpawnAsRift": true,
+    "secretBountyRotation": true,
+    "dateAdded": "2025-12-19",
+    "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Christmas Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "pets": [
+      "Santa Doggy",
+      "Santa Kitty",
+      "Festive Serpent"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-12-19",
+    "dateRemoved": "2025-12-26"
+  },
+  {
     "name": "Winter Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/1e/Winter_Egg.png",
     "pets": [
