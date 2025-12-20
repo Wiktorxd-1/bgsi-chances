@@ -2274,6 +2274,15 @@ function createEggSettings(egg, canSpawnAsRift) {
       </div>
     `;
   }
+  const hasInfinityPet = !!(egg.Pets && egg.Pets.some(p => /\bInfinity\b/i.test(p && p.name)));
+  if (hasInfinityPet) {
+    controlsHtml += `
+      <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
+        <label style="min-width:110px;">Ultra Infinity Luck:</label>
+        <input type="text" class="ultra-infinity-input skinned-input" placeholder="1" value="1" style="width:80px;" />
+      </div>
+    `;
+  }
   controlsHtml += `
     <div style="margin-top:8px;position:relative;">
       <button type="button" class="variants-toggle" aria-expanded="false"
