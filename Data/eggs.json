@@ -764,7 +764,7 @@
   },
   {
     "name": "Festive Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/Festive_Egg.png",
     "pets": [
       "Festive Wolf",
       "Festive Deer",
@@ -790,7 +790,10 @@
     "pets": [
       "Santa Doggy",
       "Santa Kitty",
-      "Festive Serpent"
+      "Festive Serpent",
+      "Twin Snowballs",
+      "Mystical Hybrid",
+      "Peppermint Shard"
     ],
     "luckIgnored": true,
     "canSpawnAsRift": false,
