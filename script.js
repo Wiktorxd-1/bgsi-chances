@@ -29,9 +29,9 @@ const eggs = [
 ];
 
 const bounty_overrides = {
-  'OG Lucky Pyramidium': 1250000000,
-  'OG Hellshard': 400000000,
-  'OG Overlord Plushie': 100000000
+  'Sea Chime': 500000000,
+  'Auronium': 1000000000,
+  'Giant Snowman': 50000000
 };
 
 function getBountyOverrideByName(petName) {
