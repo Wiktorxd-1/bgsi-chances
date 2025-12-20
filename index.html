@@ -491,6 +491,10 @@
       });
     }
     document.addEventListener('click', (event) => {
+      const popup = document.getElementById('credits-popup');
+      const creditsButton = document.querySelector('.credits-button-sidebar');
+      const settingsPopup = document.getElementById('settings-popup');
+      const settingsButton = document.querySelector('.settings-button-sidebar');
       const sidebar = document.getElementById('sidebar');
       const menuIcon = document.querySelector('.menu-icon');
       const menuIconImg = document.getElementById('menu-icon-img');
@@ -506,6 +510,7 @@
       if (
         popup &&
         !popup.contains(event.target) &&
+        creditsButton &&
         !creditsButton.contains(event.target) &&
         !event.target.closest('.credits-button-sidebar')
       ) {
@@ -514,6 +519,7 @@
       if (
         settingsPopup &&
         !settingsPopup.contains(event.target) &&
+        settingsButton &&
         !settingsButton.contains(event.target) &&
         !event.target.closest('.settings-button-sidebar')
       ) {

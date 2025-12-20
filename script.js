@@ -2306,19 +2306,7 @@ function createEggSettings(egg, canSpawnAsRift) {
             style="border-radius:999px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);min-width:56px;">
             XL
           </button>
-          <button type="button" class="xl-warning-btn" title="Due to an error, you have to select shiny or mythic, i'm try to fix this, not sure what teh cause of this is, just select shiny or mythic and de-select them again"
-            style="padding:4px;border-radius:50%;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;">
-            <img src="Images/Icons/warning.ico" alt="XL warning" style="width:18px;height:18px;object-fit:contain;" />
-          </button>
-          <div class="xl-warning-popout" style="display:none;position:absolute;z-index:30000;padding:12px 14px;border-radius:10px;border:1px solid var(--table-border);background:var(--controls-bg);color:var(--main-text);width:260px;box-shadow:0 10px 30px rgba(0,0,0,0.35);">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;">
-              <strong style="font-size:0.95rem;">Info</strong>
-              <button type="button" class="xl-warning-close" style="border:none;background:transparent;color:var(--main-text);cursor:pointer;font-size:0.95rem;">✕</button>
-            </div>
-            <div style="font-size:0.85rem;line-height:1.3;">
-              Due to an error, you have to select shiny or mythic after (de-)selecting, i'm try to fix this, not sure what the cause of this is, just select shiny or mythic and de-select them again
-            </div>
-          </div>
+
         </div>
 
          <div style="font-size:0.82rem;color:var(--main-text);opacity:0.85;">Examples: "13" or "1 in 13"</div>
@@ -2431,6 +2419,7 @@ function createEggSettings(egg, canSpawnAsRift) {
     const secretEl = controls.querySelector('.secret-mult');
     const shinyBtn = controls.querySelector('.shiny-btn');
     const mythicBtn = controls.querySelector('.mythic-btn');
+    const xlBtn = controls.querySelector('.xl-btn');
     const shinyInput = controls.querySelector('.shiny-input');
     const mythicInput = controls.querySelector('.mythic-input');
 
@@ -2492,7 +2481,6 @@ function createEggSettings(egg, canSpawnAsRift) {
         const icon = controls.querySelector('.festive-icon');
         if (icon) { icon.onerror = () => icon.src = 'Images/Icons/Placeholder.webp'; icon.src = 'Images/Icons/' + (sel === 'none' ? 'Festive_Potion_NONE' : 'Festive_Potion_' + sel) + '.webp'; }
       }
-      // restore variant buttons
       try {
         if (saved.variants) {
           const variants = saved.variants;
@@ -2508,12 +2496,15 @@ function createEggSettings(egg, canSpawnAsRift) {
 
         const dropBtn = controls.querySelector('.festive-dropdown-btn');
         if (dropBtn) {
-          const label = dropBtn.querySelector('.festive-label'); if (label) label.textContent = sel === 'none' ? 'None' : sel;
+          const label = dropBtn.querySelector('.festive-label');
+          const curSel = (controls.querySelector('.festive-select') ? (controls.querySelector('.festive-select').value || 'none') : 'none');
+          if (label) label.textContent = curSel === 'none' ? 'None' : curSel;
         }
-        
+
         const panelOptions = controls.querySelectorAll('.festive-option');
         if (panelOptions && panelOptions.forEach) {
-          panelOptions.forEach(o => { if (o.dataset && o.dataset.val) { if (o.dataset.val === sel) o.style.background = 'rgba(255,255,255,0.04)'; else o.style.background = 'transparent'; } });
+          const curSel2 = (controls.querySelector('.festive-select') ? (controls.querySelector('.festive-select').value || 'none') : 'none');
+          panelOptions.forEach(o => { if (o.dataset && o.dataset.val) { if (o.dataset.val === curSel2) o.style.background = 'rgba(255,255,255,0.04)'; else o.style.background = 'transparent'; } });
         }
       }
       if (controls.querySelector('.festive-infinity-btn') && saved.festive && typeof saved.festive.infinity !== 'undefined') {
@@ -2588,16 +2579,22 @@ function createEggSettings(egg, canSpawnAsRift) {
     if (festiveDropdownBtn && festivePanel) {
       festiveDropdownBtn.addEventListener('click', (ev) => {
         ev.stopPropagation();
-        const open = festivePanel.style.display === 'block';
+        const isOpen = festivePanel.classList && festivePanel.classList.contains('open');
         document.querySelectorAll('.festive-panel').forEach(p => closeFloatingPanel(p));
-        if (open) {
+        if (isOpen) {
           closeFloatingPanel(festivePanel);
         } else {
           openFloatingPanel(festivePanel, festiveDropdownBtn);
+          setTimeout(() => {
+            const handleOutsideClick = (e) => {
+              if (!festivePanel.contains(e.target) && e.target !== festiveDropdownBtn && !festiveDropdownBtn.contains(e.target)) {
+                closeFloatingPanel(festivePanel);
+              }
+            };
+            document.addEventListener('click', handleOutsideClick, { once: true });
+          }, 0);
         }
       });
-
-      document.addEventListener('click', () => { if (festivePanel) closeFloatingPanel(festivePanel); });
     }
     if (festiveOptions && festiveOptions.forEach) {
       festiveOptions.forEach(opt => {
@@ -2608,7 +2605,7 @@ function createEggSettings(egg, canSpawnAsRift) {
             festiveSelectEl.value = v;
             festiveSelectEl.dispatchEvent(new Event('change'));
           }
-          if (festivePanel) { festivePanel.style.display = 'none'; festivePanel.style.zIndex = '40'; festivePanel.classList.remove('open'); festivePanel.style.position = 'absolute'; festivePanel.style.left = ''; festivePanel.style.top = ''; }
+          if (festivePanel) closeFloatingPanel(festivePanel);
         });
       });
     }
@@ -2620,15 +2617,22 @@ function createEggSettings(egg, canSpawnAsRift) {
     if (milestoneDropdownBtn && milestonePanel && milestoneOptions && milestoneOptions.forEach) {
       milestoneDropdownBtn.addEventListener('click', (ev) => {
         ev.stopPropagation();
-        const open = milestonePanel.style.display === 'block';
+        const isOpen = milestonePanel.classList && milestonePanel.classList.contains('open');
         document.querySelectorAll('.milestone-panel').forEach(p => closeFloatingPanel(p));
-        if (open) {
+        if (isOpen) {
           closeFloatingPanel(milestonePanel);
         } else {
           openFloatingPanel(milestonePanel, milestoneDropdownBtn);
+          setTimeout(() => {
+            const handleOutsideClick = (e) => {
+              if (!milestonePanel.contains(e.target) && e.target !== milestoneDropdownBtn && !milestoneDropdownBtn.contains(e.target)) {
+                closeFloatingPanel(milestonePanel);
+              }
+            };
+            document.addEventListener('click', handleOutsideClick, { once: true });
+          }, 0);
         }
       });
-      document.addEventListener('click', () => { if (milestonePanel) closeFloatingPanel(milestonePanel); });
       milestoneOptions.forEach(opt => {
         opt.addEventListener('click', (ev) => {
           ev.stopPropagation();
@@ -2664,7 +2668,7 @@ function createEggSettings(egg, canSpawnAsRift) {
         const info = MASTERY_MAP[v] || MASTERY_MAP[0];
         
         saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
-        if (window && window._BGSI_DEBUG) console.debug('masteryInput changed', v);
+        
       });
       masteryInputEl.addEventListener('change', () => { if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged')); });
       const vInit = Math.max(0, Math.min(14, parseInt(masteryInputEl.value || '0') || 0));
@@ -2673,6 +2677,9 @@ function createEggSettings(egg, canSpawnAsRift) {
     }
 
   } catch (e) {}
+  
+  controls._saveSettings = saveSettings;
+  
   return controls;
 }
 
@@ -2761,8 +2768,6 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
     const shinyInput = controls ? controls.querySelector('.shiny-input') : null;
     const mythicInput = controls ? controls.querySelector('.mythic-input') : null;
     const xlBtn = controls ? controls.querySelector('.xl-btn') : null;
-    const xlWarningBtn = controls ? controls.querySelector('.xl-warning-btn') : null;
-    const xlWarningPanel = controls ? controls.querySelector('.xl-warning-popout') : null;
     const ultraInput = controls ? controls.querySelector('.ultra-infinity-input') : null;
      const petList = table.querySelector(".pet-list");
 
@@ -2814,9 +2819,9 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       },
       xl: {
         selected: {
-          background: '#1aa3ff',
+          background: '#ff7a66',
           color: '#ffffff',
-          boxShadow: '0 0 12px rgba(26,163,255,0.9), 0 6px 20px rgba(0,0,0,0.12)'
+          boxShadow: '0 0 12px #ff7a66, 0 6px 20px rgba(0,0,0,0.12)'
         },
         unselected: {
           background: 'var(--controls-bg)',
@@ -2825,12 +2830,10 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         }
       }
     };
-    const XL_WARNING_MESSAGE = "Due to an error, you have to select shiny or mythic, i'm try to fix this, not sure what teh cause of this is, just select shiny or mythic and de-select them again";
 
     function applyVariantButtonStyles(activeControls = null) {
       const workingControls = resolveControls(activeControls);
       if (!workingControls) return;
-      // Query current buttons from the controls container to avoid stale references
       const sBtn = workingControls.querySelector('.shiny-btn');
       const mBtn = workingControls.querySelector('.mythic-btn');
       const xBtn = workingControls.querySelector('.xl-btn');
@@ -2865,6 +2868,11 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         try { workingControls.dataset.shinySelected = btn.dataset.selected; } catch (err) {}
         applyVariantButtonStyles(workingControls);
         updateChances(workingControls);
+        try {
+          if (workingControls && workingControls._saveSettings) {
+            workingControls._saveSettings();
+          }
+        } catch (e) {}
       });
     }
     if (mythicBtn) {
@@ -2880,6 +2888,11 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         try { workingControls.dataset.mythicSelected = btn.dataset.selected; } catch (err) {}
         applyVariantButtonStyles(workingControls);
         updateChances(workingControls);
+        try {
+          if (workingControls && workingControls._saveSettings) {
+            workingControls._saveSettings();
+          }
+        } catch (e) {}
       });
     }
     if (xlBtn) {
@@ -2895,40 +2908,14 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         try { workingControls.dataset.xlSelected = btn.dataset.selected; } catch (err) {}
         applyVariantButtonStyles(workingControls);
         updateChances(workingControls);
+        try {
+          if (workingControls && workingControls._saveSettings) {
+            workingControls._saveSettings();
+          }
+        } catch (e) {}
       });
     }
 
-    if (xlWarningBtn && xlWarningPanel) {
-      xlWarningBtn.title = XL_WARNING_MESSAGE;
-      const closePanel = () => closeFloatingPanel(xlWarningPanel);
-      const closeBtn = xlWarningPanel.querySelector('.xl-warning-close');
-      if (closeBtn) {
-        closeBtn.addEventListener('click', (ev) => {
-          ev.preventDefault();
-          ev.stopPropagation();
-          closePanel();
-        });
-      }
-      xlWarningBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const alreadyOpen = xlWarningPanel.classList && xlWarningPanel.classList.contains('open');
-        document.querySelectorAll('.xl-warning-popout').forEach(panel => closeFloatingPanel(panel));
-        if (!alreadyOpen) {
-          openFloatingPanel(xlWarningPanel, xlWarningBtn);
-          setTimeout(() => {
-            const handleOutside = (event) => {
-              if (!xlWarningPanel.contains(event.target) && event.target !== xlWarningBtn) {
-                closePanel();
-              } else {
-                document.addEventListener('click', handleOutside, { once: true });
-              }
-            };
-            document.addEventListener('click', handleOutside, { once: true });
-          }, 0);
-        }
-      });
-    }
 
     function applyOgRadianceStyle() {
       if (!ogRadianceBtn) return;
@@ -2952,19 +2939,34 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
     }
     if (shinyInput) {
       shinyInput.addEventListener('input', () => { applyVariantButtonStyles(shinyInput); updateChances(shinyInput); });
-      shinyInput.addEventListener('input', () => { shinyInput.dataset.userModified = 'true'; saveSettings(); });
+      shinyInput.addEventListener('input', () => { shinyInput.dataset.userModified = 'true'; try { if (controls && controls._saveSettings) controls._saveSettings(); } catch (e) {} });
       if (!shinyInput.value) { shinyInput.value = '1 in 40'; shinyInput.dataset.userModified = 'false'; }
     }
     if (mythicInput) {
       mythicInput.addEventListener('input', () => { applyVariantButtonStyles(mythicInput); updateChances(mythicInput); });
-      mythicInput.addEventListener('input', () => { mythicInput.dataset.userModified = 'true'; saveSettings(); });
+      mythicInput.addEventListener('input', () => { mythicInput.dataset.userModified = 'true'; try { if (controls && controls._saveSettings) controls._saveSettings(); } catch (e) {} });
       if (!mythicInput.value) { mythicInput.value = '1 in 100'; mythicInput.dataset.userModified = 'false'; }
     }
     if (ultraInput) {
-      ultraInput.addEventListener('input', () => { updateChances(ultraInput); saveSettings(); });
+      ultraInput.addEventListener('input', () => { updateChances(ultraInput); try { if (controls && controls._saveSettings) controls._saveSettings(); } catch (e) {} });
       ultraInput.addEventListener('change', () => { updateChances(ultraInput); });
       if (!ultraInput.value) ultraInput.value = '1';
     }
+    
+    const masteryInputInCard = controls ? controls.querySelector('.christmas-mastery') : null;
+    if (masteryInputInCard) {
+      masteryInputInCard.addEventListener('input', () => {
+        let v = parseInt(masteryInputInCard.value || '0') || 0;
+        if (v < 0) v = 0;
+        if (v > 14) v = 14;
+        masteryInputInCard.value = v;
+        updateChances(masteryInputInCard);
+        try {
+          if (controls && controls._saveSettings) controls._saveSettings();
+        } catch (e) {}
+      });
+    }
+    
      applyVariantButtonStyles();
     if (multiplierSelect) {
       const handleMultiplierChange = () => {
@@ -3083,12 +3085,12 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       const totalLuckBefore = totalLuckPercent;
       if (masteryAdded) {
         totalLuckPercent += masteryAdded;
-        if (window && window._BGSI_DEBUG) console.debug('mastery applied: +'+ masteryAdded, ' totalLuck:', totalLuckBefore, '->', totalLuckPercent);
+        
       }
       if (isChristmasEgg && milestoneInfoForCalc && milestoneInfoForCalc.luck) {
         const beforeM = totalLuckPercent;
         totalLuckPercent += milestoneInfoForCalc.luck;
-        if (window && window._BGSI_DEBUG) console.debug('milestone applied: +'+ milestoneInfoForCalc.luck, ' totalLuck:', beforeM, '->', totalLuckPercent);
+        
       }
       if (isChristmasEgg && milestoneInfoForCalc && milestoneInfoForCalc.secretLuck) {
         masterySecretPercent += milestoneInfoForCalc.secretLuck;
@@ -3100,12 +3102,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       const secretTimes = secretInputScoped ? (secretInputScoped.value === "" ? 1 : Math.max(1, parseFloat(secretInputScoped.value))) : 1;
       const extraSecretPercent = 0;
       const effectiveLuckPercent = totalLuckPercent + riftBonusPercent;
-      if (window && window._BGSI_DEBUG) {
-        try { console.debug('updateChances: controls element', controls); } catch (e) {}
-        try {
-          console.debug('updateChances:', { luckPercent, totalLuckPercent, riftBonusPercent, effectiveLuckPercent, masterLevel: masteryLevel, masteryAdded, masterySecretPercent, masteryInfinityPercent, festiveSelected, festiveIsSelected, festiveInfinity });
-        } catch (e) { console.debug('updateChances: debug logging failed', e); }
-      }
+      
        petList.innerHTML = "";
 
        const petsToIterate = (egg.Pets || []).slice();
@@ -3144,8 +3141,8 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
             mythicOdds = Math.max(1, Math.round(mythicOdds / elixirDivisor));
           }
           
-          if (shinyInputScoped && shinyInputScoped.dataset.userModified !== 'true') { shinyInputScoped.value = `1 in ${shinyOdds}`; if (shinyInputScoped.dataset.userModified !== 'false') { shinyInputScoped.dataset.userModified = 'false'; saveSettings(); } }
-          if (mythicInputScoped && mythicInputScoped.dataset.userModified !== 'true') { mythicInputScoped.value = `1 in ${mythicOdds}`; if (mythicInputScoped.dataset.userModified !== 'false') { mythicInputScoped.dataset.userModified = 'false'; saveSettings(); } }
+          if (shinyInputScoped && shinyInputScoped.dataset.userModified !== 'true') { shinyInputScoped.value = `1 in ${shinyOdds}`; if (shinyInputScoped.dataset.userModified !== 'false') { shinyInputScoped.dataset.userModified = 'false'; try { if (controlsScope && controlsScope._saveSettings) controlsScope._saveSettings(); } catch (e) {} } }
+          if (mythicInputScoped && mythicInputScoped.dataset.userModified !== 'true') { mythicInputScoped.value = `1 in ${mythicOdds}`; if (mythicInputScoped.dataset.userModified !== 'false') { mythicInputScoped.dataset.userModified = 'false'; try { if (controlsScope && controlsScope._saveSettings) controlsScope._saveSettings(); } catch (e) {} } }
         }
          const shinyBtnCur = controlsScope ? controlsScope.querySelector('.shiny-btn') : null;
          const mythicBtnCur = controlsScope ? controlsScope.querySelector('.mythic-btn') : null;
@@ -3202,14 +3199,10 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
              const ext = m[3] || '';
              const nameNoPrefix = base.replace(/^(Shiny_|Mythic_|Shiny_Mythic_|Mythic_Shiny_)/i, '');
 
-             // Build candidates: try full prefix (e.g., Shiny_XL_Name), then fallbacks (e.g., Shiny_Name) so icons still show when combined XL+Shiny/Mythic image doesn't exist
+          
              const candidates = [];
              candidates.push(prefixParts.join('_') + '_' + nameNoPrefix);
-             if (prefixParts.includes('XL')) {
-               const withoutXL = prefixParts.filter(p => p !== 'XL');
-               if (withoutXL.length) candidates.push(withoutXL.join('_') + '_' + nameNoPrefix);
-             }
-             // Also try single variant prefixes if present
+
              if (prefixParts.includes('Shiny') && prefixParts.includes('Mythic')) {
                candidates.push('Shiny_' + nameNoPrefix);
                candidates.push('Mythic_' + nameNoPrefix);
@@ -3217,7 +3210,6 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
 
              const tryNextCandidate = (list) => {
                if (!list.length) {
-                 // fallback to base
                  if (img.src !== petIconPath) img.src = petIconPath;
                  img.onerror = null;
                  return;
@@ -3233,8 +3225,6 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
            img.src = iconSrc;
          }
          img.onerror = () => { if (img.src !== petIconPath) img.src = petIconPath; img.onerror = null; };
-
-         // add XL badge if selected (append once)
          if (xlSelected) {
            if (!tdPet.querySelector('.xl-badge')) {
              const xlBadge = document.createElement('img');
@@ -3244,7 +3234,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
              xlBadge.alt = 'XL';
              xlBadge.style.position = 'absolute';
              xlBadge.style.left = '6px';
-             xlBadge.style.bottom = '6px';
+             xlBadge.style.top = '6px';
              xlBadge.style.width = '18px';
              xlBadge.style.height = '18px';
              xlBadge.style.objectFit = 'contain';
@@ -3271,12 +3261,12 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
          tdPet.appendChild(img);
          tdPet.appendChild(textNode);
 
-         function createExpandableCell(text, align = 'center') {
+         function createExpandableCell(text, align = 'center', forceShow = false, revealText = null) {
           const td = document.createElement('td');
           Object.assign(td.style, cellBaseStyle);
           td.style.textAlign = align;
           const s = (text === null || text === undefined) ? '' : String(text);
-          if (s.length <= 20) {
+          if (!forceShow && s.length <= 20) {
             td.textContent = s;
             td.style.textAlign = 'center';
             return td;
@@ -3307,7 +3297,8 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
 
           btn.addEventListener('click', (ev) => {
             ev.stopPropagation();
-            placeholder.textContent = s;
+            const reveal = (revealText !== null && revealText !== undefined) ? revealText : s;
+            placeholder.textContent = reveal;
             placeholder.style.whiteSpace = 'normal';
             placeholder.style.overflow = 'visible';
             placeholder.style.height = 'auto';
@@ -3334,7 +3325,14 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
 
   const oneInLabel = adjustedOneIn === '∞' ? '∞' : `1 in ${adjustedOneInDisplay}`;
   const tdOneIn = createExpandableCell(oneInLabel, 'center');
-  const tdPercent = createExpandableCell(adjustedPercentCell, 'center');
+  let tdPercent;
+  if (adjustedPercentFormatted === '0' && adjustedChance > 0) {
+    const percentVal = adjustedChance * 100;
+    const reveal = percentVal.toExponential(6) + '%';
+    tdPercent = createExpandableCell('Show', 'center', true, reveal);
+  } else {
+    tdPercent = createExpandableCell(adjustedPercentCell, 'center');
+  }
 
   row.appendChild(tdPet);
   row.appendChild(tdBaseCell);
@@ -3369,13 +3367,28 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
      }
 
      updateChances();
-    if (multiplierSelect) multiplierSelect.addEventListener("change", (ev) => updateChances(ev.currentTarget));
+    if (multiplierSelect) multiplierSelect.addEventListener("change", (ev) => { 
+      updateChances(ev.currentTarget);
+      try {
+        if (controls && controls._saveSettings) controls._saveSettings();
+      } catch (e) {}
+    });
      if (luckInput) {
        luckInput.addEventListener("focus", () => { if (luckInput.value === "0") luckInput.value = ""; });
        luckInput.addEventListener("blur", () => { if (luckInput.value === "") luckInput.value = "0"; });
-        luckInput.addEventListener("input", () => updateChances(luckInput));
+        luckInput.addEventListener("input", () => { 
+          updateChances(luckInput); 
+          try {
+            if (controls && controls._saveSettings) controls._saveSettings();
+          } catch (e) {}
+        });
      }
-       if (secretInput) secretInput.addEventListener("input", () => updateChances(secretInput));
+       if (secretInput) secretInput.addEventListener("input", () => { 
+         updateChances(secretInput);
+         try {
+           if (controls && controls._saveSettings) controls._saveSettings();
+         } catch (e) {}
+       });
 
     
     if (controls) {
@@ -4259,11 +4272,6 @@ document.addEventListener('click', function (e) {
 
   const vbtn = e.target.closest('.variant-btn');
   if (vbtn) {
-    e.preventDefault();
-    e.stopPropagation();
-    const was = vbtn.dataset.selected === 'true';
-    vbtn.dataset.selected = was ? 'false' : 'true';
-
     try {
       vbtn.animate([
         { transform: 'scale(1)' },
@@ -4271,32 +4279,6 @@ document.addEventListener('click', function (e) {
         { transform: 'scale(1)' }
       ], { duration: 200, easing: 'ease-out' });
     } catch (err) { }
-
-    if (vbtn.classList.contains('shiny-btn')) {
-      if (vbtn.dataset.selected === 'true') {
-        vbtn.style.background = '#c28e20';
-        vbtn.style.color = '#ffffff';
-        vbtn.style.boxShadow = '0 0 14px #ffe047, 0 6px 20px rgba(0,0,0,0.12)';
-      } else {
-        vbtn.style.background = 'var(--controls-bg)';
-        vbtn.style.color = 'var(--main-text)';
-        vbtn.style.boxShadow = 'none';
-      }
-      const inp = vbtn.closest('.variant-row') && vbtn.closest('.variant-row').querySelector('.variant-input');
-      if (inp) inp.style.color = 'var(--main-text)';
-    } else if (vbtn.classList.contains('mythic-btn')) {
-      if (vbtn.dataset.selected === 'true') {
-        vbtn.style.background = '#3602b0';
-        vbtn.style.color = '#ffffff';
-        vbtn.style.boxShadow = '0 0 16px rgba(123,78,255,0.95), 0 8px 24px rgba(54,2,176,0.35)';
-      } else {
-        vbtn.style.background = 'var(--controls-bg)';
-        vbtn.style.color = 'var(--main-text)';
-        vbtn.style.boxShadow = 'none';
-      }
-      const inp = vbtn.closest('.variant-row') && vbtn.closest('.variant-row').querySelector('.variant-input');
-      if (inp) inp.style.color = 'var(--main-text)';
-    }
 
     const row = vbtn.closest('.variant-row');
     if (row) {
@@ -4306,7 +4288,7 @@ document.addEventListener('click', function (e) {
           if (!str && str !== 0) return null;
           const s = String(str).trim().replace(/[,]/g, '');
           const m = s.match(/(?:1\s*\/\s*|1\s*in\s*)(\d+)/i);
-          if (m && m[1]) return `1 in ${Math.max(1, Math.round(Number(m[1])) )}`;
+          if (m && m[1]) return `1 in ${Math.max(1, Math.round(Number(m[1])))}`;
           const n = Number(s);
           if (isFinite(n) && n > 0) return `1 in ${Math.max(1, Math.round(n))}`;
           return null;
@@ -4316,12 +4298,6 @@ document.addEventListener('click', function (e) {
         } else {
           inp.value = parsed;
         }
-      }
-    }
-
-    if (row) {
-      const inp = row.querySelector('.variant-input');
-      if (inp) {
         const ev = new Event('input', { bubbles: true, cancelable: true });
         inp.dispatchEvent(ev);
       }
@@ -4329,7 +4305,7 @@ document.addEventListener('click', function (e) {
     return;
   }
 
-}, true);
+}, false);
 
 
 
