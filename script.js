@@ -2262,6 +2262,16 @@ function createEggSettings(egg, canSpawnAsRift) {
       </div>
     `;
   }
+  if (egg && egg.world === 'limited1') {
+    controlsHtml += `
+      <div style="margin-top:8px;display:flex;gap:8px;align-items:center;">
+        <button type="button" class="heavenly-poinsettia-btn" data-selected="false" style="border-radius:999px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);min-width:130px;display:flex;align-items:center;gap:8px;">
+          <img src="Images/Pets/Heavenly_Poinsettia.webp" alt="Heavenly Poinsettia" width="20" height="20" style="object-fit:contain;border-radius:6px;" />
+          <span>Heavenly Poinsettia</span>
+        </button>
+      </div>
+    `;
+  }
   const hasSecret = (egg.Pets && egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name))) || egg.name === "Infinity Egg";
 
   const hasSecretForced = !!egg.secretBountyRotation && !!((egg.Pets || []).some(p => /(Secret|Infinity)/i.test(p && p.name)));
@@ -2766,6 +2776,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
 
     const multiplierSelect = controls ? controls.querySelector(".multiplier") : null;
   const ogRadianceBtn = controls ? controls.querySelector('.og-radiance-btn') : null;
+  const heavenlyPoinsettiaBtn = controls ? controls.querySelector('.heavenly-poinsettia-btn') : null;
     const multiplierOtherWrap = controls ? controls.querySelector(".multiplier-other-wrap") : null;
     const multiplierOtherInput = controls ? controls.querySelector(".multiplier-other") : null;
     const luckInput = controls ? controls.querySelector(".luck") : null;
@@ -2946,6 +2957,26 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       });
       applyOgRadianceStyle();
     }
+    function applyHeavenlyStyle() {
+      if (!heavenlyPoinsettiaBtn) return;
+      const sel = heavenlyPoinsettiaBtn.dataset.selected === 'true';
+      if (sel) {
+        Object.assign(heavenlyPoinsettiaBtn.style, { background: '#d6090c', color: '#ffffff', boxShadow: '0 0 14px rgba(214,9,12,0.9)' });
+      } else {
+        Object.assign(heavenlyPoinsettiaBtn.style, { background: 'var(--controls-bg)', color: 'var(--main-text)', boxShadow: 'none' });
+      }
+    }
+    if (heavenlyPoinsettiaBtn) {
+      heavenlyPoinsettiaBtn.type = 'button';
+      if (typeof heavenlyPoinsettiaBtn.dataset.selected === 'undefined') heavenlyPoinsettiaBtn.dataset.selected = 'false';
+      heavenlyPoinsettiaBtn.style.cursor = 'pointer';
+      heavenlyPoinsettiaBtn.addEventListener('click', () => {
+        heavenlyPoinsettiaBtn.dataset.selected = heavenlyPoinsettiaBtn.dataset.selected === 'true' ? 'false' : 'true';
+        applyHeavenlyStyle();
+        updateChances();
+      });
+      applyHeavenlyStyle();
+    }
     if (shinyInput) {
       shinyInput.addEventListener('input', () => { applyVariantButtonStyles(shinyInput); updateChances(shinyInput); });
       shinyInput.addEventListener('input', () => { shinyInput.dataset.userModified = 'true'; try { if (controls && controls._saveSettings) controls._saveSettings(); } catch (e) {} });
@@ -3117,6 +3148,9 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
        const petsToIterate = (egg.Pets || []).slice();
        if (ogRadianceBtn && ogRadianceBtn.dataset.selected === 'true') {
          petsToIterate.push({ name: 'OG Radiance (Secret)', icon: 'Images/Pets/OG_Radiance.webp', baseOdds: 50000000000 });
+       }
+       if (heavenlyPoinsettiaBtn && heavenlyPoinsettiaBtn.dataset.selected === 'true') {
+         petsToIterate.push({ name: 'Heavenly Poinsettia (Secret)', icon: 'Images/Pets/Heavenly_Poinsettia.webp', baseOdds: 5000000000 });
        }
        petsToIterate.forEach(pet => {
          const isInfinity = /Infinity/i.test(pet.name);
