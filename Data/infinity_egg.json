@@ -149,11 +149,7 @@
     "baseOdds": 1350000000,
     "icon": "Images/Pets/Hellshard.webp"
   },
-  {
-    "name": "1x1x1x1 (Secret)",
-    "baseOdds": 677990000,
-    "icon": "Images/Pets/1x1x1x1.webp"
-  },
+
   {
     "name": "Earth Champion (Secret)",
     "baseOdds": 677990000,
@@ -194,11 +190,7 @@
     "baseOdds": 619570,
     "icon": "Images/Pets/Atlantis_Guardian.webp"
   },
-  {
-    "name": "Cosmic Herald",
-    "baseOdds": 619570,
-    "icon": "Images/Pets/Cosmic_Herald.webp"
-  },
+
   {
     "name": "Fire King",
     "baseOdds": 413050,
@@ -219,11 +211,7 @@
     "baseOdds": 61950,
     "icon": "Images/Pets/Jellyfish.webp"
   },
-  {
-    "name": "Serene Axolotl",
-    "baseOdds": 61950,
-    "icon": "Images/Pets/Serene_Axolotl.webp"
-  },
+
   {
     "name": "Night Dweller",
     "baseOdds": 30970,
@@ -239,11 +227,7 @@
     "baseOdds": 20650,
     "icon": "Images/Pets/Minty_Serpent.webp"
   },
-  {
-    "name": "Dreamscape Influence",
-    "baseOdds": 1230,
-    "icon": "Images/Pets/Dreamscape_Influence.webp"
-  },
+
   {
     "name": "Magma Cube",
     "baseOdds": 1230,
