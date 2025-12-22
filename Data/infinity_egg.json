@@ -91,6 +91,11 @@
   "2": {
     "Pets": [
       {
+        "name": "Giant Cave Mole (Secret)",
+        "baseOdds": 499999999,
+        "icon": "Images/Pets/Giant_Cave_Mole.webp"
+      },
+      {
         "name": "Hyperwave Kitty (Secret)",
         "baseOdds": 115000000,
         "icon": "Images/Pets/Hyperwave_Kitty.webp"
