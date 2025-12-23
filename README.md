@@ -1,3 +1,5 @@
 # BGSI Chance Calculator
 ---
-Displays every eggs chances for pets in Bubble Gum Simulator Infinity on Roblox
+Easy to use site to calculate chances for BGSI
+
+You can use [?{egg_name}](https://wiktorxd-1.github.io/bgsi-chances/?Common_Egg) to open a specific egg instantly
