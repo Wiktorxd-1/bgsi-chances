@@ -654,13 +654,35 @@
     "dateRemoved": "2025-11-21"
   },
   {
+    "name": "New Years Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "pets": [
+      "2026 Doggy",
+      "2026 Kitty",
+      "2026 Bunny",
+      "New Year's Serpent",
+      "New Year's Blast",
+      "Ball Drop Hexarium",
+      "New Year's Overlord",
+      "Firecracker",
+      "Prosperity",
+      "New Year's Champion"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-12-26",
+    "dateRemoved": "2026-01-02"
+  },
+  {
     "name": "Gingerbread Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/19/Gingerbread_Egg.png",
     "pets": [
       "Gingerbread Doggy",
       "Gingerbread Kitty",
       "Gingerbread Bunny",
-      "Gingerbread Shard"
+      "Gingerbread Shard",
+      "Frosty Lord Shock"
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
@@ -680,7 +702,8 @@
       "Royal Candy Cane",
       "Demonic Peppermint",
       "Peppermint Heart",
-      "Velvet Wolflord"
+      "Velvet Wolflord",
+      "Frosty Lord Shock"
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
@@ -705,7 +728,8 @@
       "Holy Candle",
       "Archangel",
       "Frosted Dogcat",
-      "Morning Star"
+      "Morning Star",
+      "Frosty Lord Shock"
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
@@ -731,14 +755,16 @@
       "Love Candle",
       "Hope Candle",
       "Iridescent Catcher",
-      "Christmas Robot"
+      "Christmas Robot",
+      "Frosty Lord Shock"
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-12-12",
-    "dateRemoved": "2026-01-09"
+    "dateRemoved": "2026-01-09",
+    "index": "Christmas Event 2025"
   },
   {
     "name": "Aurora Egg",
@@ -753,14 +779,16 @@
       "Borealis Elk",
       "Northern Star",
       "Soulflake",
-      "The Leviathan"
+      "The Leviathan",
+      "Frosty Lord Shock"
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-12-12",
-    "dateRemoved": "2026-01-09"
+    "dateRemoved": "2026-01-09",
+    "index": "Christmas Event 2025"
   },
   {
     "name": "Festive Egg",
@@ -775,18 +803,20 @@
       "Snowverlord",
       "Christmas Tree",
       "Mistletoe Fairy",
-      "Festive Deity"
+      "Festive Deity",
+      "Frosty Lord Shock"
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-12-19",
-    "dateRemoved": "2026-01-09"
+    "dateRemoved": "2026-01-09",
+    "index": "Christmas Event 2025"
   },
   {
     "name": "Christmas Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Christmas_Egg.png",
     "pets": [
       "Santa Doggy",
       "Santa Kitty",
@@ -799,6 +829,23 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-12-19",
+    "dateRemoved": "2025-12-23"
+  },
+  {
+    "name": "Frost Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c3/Frost_Egg.png",
+    "pets": [
+      "Frost Bunny",
+      "Frost Golem",
+      "Frost Cube",
+      "Frost Elemental",
+      "Doofus Dingus & Bingus",
+      "Frosty One"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-12-23",
     "dateRemoved": "2025-12-26"
   },
   {
@@ -1696,7 +1743,26 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-12-12",
-    "dateRemoved": "2025-12-19"
+    "dateRemoved": "2025-12-26"
+  },
+  {
+    "name": "Nostalgia Egg",
+    "image": "",
+    "pets": [
+      "Bubble Doggy",
+      "Frutiger User",
+      "Mine Sweeper",
+      "Purble Vision",
+      "Aero Koi",
+      "Aero Heart",
+      "Solitaire",
+      "Painted Daze"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-12-26",
+    "dateRemoved": "2026-01-09"
   },
   {
     "name": "Prismatic Egg",
