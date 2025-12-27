@@ -681,8 +681,7 @@
       "Gingerbread Doggy",
       "Gingerbread Kitty",
       "Gingerbread Bunny",
-      "Gingerbread Shard",
-      "Frosty Lord Shock"
+      "Gingerbread Shard"
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
@@ -702,8 +701,7 @@
       "Royal Candy Cane",
       "Demonic Peppermint",
       "Peppermint Heart",
-      "Velvet Wolflord",
-      "Frosty Lord Shock"
+      "Velvet Wolflord"
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
@@ -728,8 +726,7 @@
       "Holy Candle",
       "Archangel",
       "Frosted Dogcat",
-      "Morning Star",
-      "Frosty Lord Shock"
+      "Morning Star"
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
@@ -755,8 +752,7 @@
       "Love Candle",
       "Hope Candle",
       "Iridescent Catcher",
-      "Christmas Robot",
-      "Frosty Lord Shock"
+      "Christmas Robot"
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
@@ -779,8 +775,7 @@
       "Borealis Elk",
       "Northern Star",
       "Soulflake",
-      "The Leviathan",
-      "Frosty Lord Shock"
+      "The Leviathan"
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
@@ -803,8 +798,7 @@
       "Snowverlord",
       "Christmas Tree",
       "Mistletoe Fairy",
-      "Festive Deity",
-      "Frosty Lord Shock"
+      "Festive Deity"
     ],
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
@@ -1747,7 +1741,7 @@
   },
   {
     "name": "Nostalgia Egg",
-    "image": "",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "pets": [
       "Bubble Doggy",
       "Frutiger User",

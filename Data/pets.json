@@ -4127,6 +4127,26 @@
     "dateRemoved": "2025-12-19"
   },
   {
+    "name": "2026 Pyramidium",
+    "rarity": "secret",
+    "chance": 100,
+    "bubbles": 6750,
+    "gems": 115,
+    "currency": 45,
+    "currencyVariant": "snowflakes",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "New Years Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a3/2026_Pyramidium.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a3/2026_Pyramidium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
+    "dateAdded": "2025-12-26",
+    "dateRemoved": "2026-01-02"
+  },
+  {
     "name": "BGS Box",
     "rarity": "secret",
     "chance": 0.001,
@@ -7221,17 +7241,17 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "New Years Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/2026_Doggy.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e2/Shiny_2026_Doggy.png"
     ],
     "dateAdded": "2025-12-26",
     "dateRemoved": "2026-01-02"
   },
   {
-    "name": "2025 Kitty",
+    "name": "2026 Kitty",
     "rarity": "rare",
     "chance": 30,
     "bubbles": 14,
@@ -7241,9 +7261,12 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "New Years Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/5d/2026_Kitty.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e8/Shiny_2026_Kitty.png"
+    ],
     "dateAdded": "2025-12-26",
     "dateRemoved": "2026-01-02"
   },
@@ -7258,11 +7281,11 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "New Years Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/2026_Bunny.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Shiny_2026_Bunny.png"
     ],
     "dateAdded": "2025-12-26",
     "dateRemoved": "2026-01-02"
@@ -7278,12 +7301,12 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "New Years Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/15/New_Year%27s_Serpent.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Shiny_New_Year%27s_Serpent.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/23/Mythic_New_Year%27s_Serpent.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
     ],
     "dateAdded": "2025-12-26",
@@ -7300,12 +7323,12 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "New Years Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/7e/New_Year%27s_Blast.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/96/Shiny_New_Year%27s_Blast.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d4/Mythic_New_Year%27s_Blast.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
     ],
     "dateAdded": "2025-12-26",
@@ -7322,11 +7345,11 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "New Years Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/7e/Ball_Drop_Hexarium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Shiny_Ball_Drop_Hexarium.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
     ],
@@ -7336,7 +7359,7 @@
   {
     "name": "New Year's Overlord",
     "rarity": "secret",
-    "chance": 2e-7,
+    "chance": 2.5e-7,
     "bubbles": 8500,
     "gems": 150,
     "currency": 200,
@@ -7344,10 +7367,10 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "New Years Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d6/New_Year%27s_Overlord.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
@@ -7366,10 +7389,10 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "New Years Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Firecracker.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
@@ -7380,7 +7403,7 @@
   {
     "name": "Prosperity",
     "rarity": "secret",
-    "chance": 2.5e-8,
+    "chance": 2e-8,
     "bubbles": 9300,
     "gems": 180,
     "currency": 280,
@@ -7388,10 +7411,10 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "New Years Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Prosperity.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
@@ -7410,10 +7433,10 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "New Years Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
     "image": [
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/New_Year%27s_Champion.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
@@ -17573,6 +17596,25 @@
     "dateRemoved": "2025-12-26"
   },
   {
+    "name": "New Years Shard",
+    "rarity": "secret",
+    "bubbles": 5500,
+    "gems": 130,
+    "currency": 200,
+    "currencyVariant": "snowflakes",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "New Years Bundle",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8b/New_Years_Shard.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
+    "dateAdded": "2025-12-26",
+    "dateRemoved": "2026-01-02"
+  },
+  {
     "name": "Christmas Trophy",
     "rarity": "secret",
     "bubbles": 10500,
@@ -18621,6 +18663,48 @@
     ],
     "dateAdded": "2025-07-06",
     "dateRemoved": "2025-07-19"
+  },
+  {
+    "name": "2026 Spitty",
+    "rarity": "legendary",
+    "bubbles": 1500,
+    "gems": 28,
+    "currency": 45,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
+    "dateAdded": "2025-12-26",
+    "dateRemoved": "2026-01-02"
+  },
+  {
+    "name": "Dark Prophet",
+    "rarity": "secret",
+    "bubbles": 7000,
+    "gems": 115,
+    "currency": 150,
+    "currencyVariant": "snowflakes",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Dark_Prophet.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
+    "dateAdded": "2025-12-26",
+    "dateRemoved": "2026-01-02"
   },
   {
     "name": "Yeti",
@@ -20195,9 +20279,12 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Nostalgia Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/5d/Bubble_Doggy.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Shiny_Bubble_Doggy.png"
+    ],
     "dateAdded": "2025-12-26",
     "dateRemoved": "2026-01-09"
   },
@@ -20212,9 +20299,12 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Nostalgia Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/00/Frutiger_User.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8e/Shiny_Frutiger_User.png"
+    ],
     "dateAdded": "2025-12-26",
     "dateRemoved": "2026-01-09"
   },
@@ -20229,9 +20319,12 @@
     "hasMythic": false,
     "hatchable": true,
     "obtainedFrom": "Nostalgia Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Mine_Sweeper.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/6e/Shiny_Mine_Sweeper.png"
+    ],
     "dateAdded": "2025-12-26",
     "dateRemoved": "2026-01-09"
   },
@@ -20246,9 +20339,14 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Nostalgia Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/57/Purble_Vision.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/85/Shiny_Purble_Vision.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
     "dateAdded": "2025-12-26",
     "dateRemoved": "2026-01-09"
   },
@@ -20263,9 +20361,14 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Nostalgia Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1f/Aero_Koi.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
     "dateAdded": "2025-12-26",
     "dateRemoved": "2026-01-09"
   },
@@ -20280,9 +20383,14 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Nostalgia Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/99/Aero_Heart.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
     "dateAdded": "2025-12-26",
     "dateRemoved": "2026-01-09"
   },
@@ -20297,9 +20405,14 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Nostalgia Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/83/Solitaire.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
     "dateAdded": "2025-12-26",
     "dateRemoved": "2026-01-09"
   },
@@ -20314,9 +20427,14 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Nostalgia Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a5/Painted_Daze.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
     "dateAdded": "2025-12-26",
     "dateRemoved": "2026-01-09"
   },
@@ -21446,6 +21564,111 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/a/ab/Shiny_Mythic_Infinity_Wisp.png"
     ],
     "dateAdded": "2025-11-21",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Super Crimson Bloodmoon",
+    "rarity": "secret",
+    "bubbles": 10000,
+    "gems": 165,
+    "currency": 6800,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Secrets Hatched Leaderboard",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8f/Super_Crimson_Bloodmoon.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/68/Shiny_Super_Crimson_Bloodmoon.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
+    "dateAdded": "2025-12-26",
+    "dateRemoved": ""
+  },
+  {
+    "name": "The Flawless",
+    "rarity": "secret",
+    "bubbles": 10000,
+    "gems": 165,
+    "currency": 6800,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Rebirth Machine Fuses Leaderboard",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/28/The_Flawless.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f6/Mythic_The_Flawless.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
+    "dateAdded": "2025-12-26",
+    "dateRemoved": ""
+  },
+  {
+    "name": "BUBBLE",
+    "rarity": "secret",
+    "bubbles": 10000,
+    "gems": 165,
+    "currency": 6800,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Top Bubblers Leaderboard",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e2/BUBBLE.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/fe/Mythic_BUBBLE.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
+    "dateAdded": "2025-12-26",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Radiant Challenger",
+    "rarity": "secret",
+    "bubbles": 10000,
+    "gems": 165,
+    "currency": 6800,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Top Hatchers Leaderboard",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/46/Radiant_Challenger.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Mythic_Radiant_Challenger.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
+    "dateAdded": "2025-12-26",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Colossal Kraken",
+    "rarity": "secret",
+    "bubbles": 10000,
+    "gems": 165,
+    "currency": 6800,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Gem Genie Quests Leaderboard",
+    "obtainedFromImage": "",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/72/Colossal_Kraken.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/42/Mythic_Colossal_Kraken.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+    ],
+    "dateAdded": "2025-12-26",
     "dateRemoved": ""
   }
 ]
