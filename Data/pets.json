@@ -7591,9 +7591,14 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "New Years Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f4/OG_New_Year%27s_Champion.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/20/Shiny_OG_New_Year%27s_Champion.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Mythic_OG_New_Year%27s_Champion.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Shiny_Mythic_OG_New_Year%27s_Champion.png"
+    ],
     "dateAdded": "2026-01-02",
     "dateRemoved": "2026-01-09"
   },
@@ -7608,9 +7613,14 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "New Years Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/5e/OG_Infinity_Gem.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4e/Shiny_OG_Infinity_Gem.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8e/Mythic_OG_Infinity_Gem.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Shiny_Mythic_OG_Infinity_Gem.png"
+    ],
     "dateAdded": "2026-01-02",
     "dateRemoved": "2026-01-09"
   },
@@ -8335,9 +8345,14 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Aurora Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Aurora_Egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e4/Aurora_Guardian.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/7c/Shiny_Aurora_Guardian.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8d/Mythic_Aurora_Guardian.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Shiny_Mythic_Aurora_Guardian.png"
+    ],
     "dateAdded": "2026-01-02",
     "dateRemoved": "2026-01-09"
   },
@@ -8632,9 +8647,14 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Northpole Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Northpole_Egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Festive_Basket.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Shiny_Festive_Basket.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f3/Mythic_Festive_Basket.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e9/Shiny_Mythic_Festive_Basket.png"
+    ],
     "dateAdded": "2026-01-02",
     "dateRemoved": "2026-01-09"
   },
@@ -8907,9 +8927,14 @@
     "hasMythic": true,
     "hatchable": true,
     "obtainedFrom": "Yuletide Egg",
-    "obtainedFromImage": "",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0d/Yuletide_Egg.png",
     "obtainedFromInfo": "",
-    "image": [],
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Star_Glitcher.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/ef/Shiny_Star_Glitcher.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f4/Mythic_Star_Glitcher.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/6a/Shiny_Mythic_Star_Glitcher.png"
+    ],
     "dateAdded": "2026-01-02",
     "dateRemoved": "2026-01-09"
   },
