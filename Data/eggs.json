@@ -412,6 +412,36 @@
     "dateRemoved": ""
   },
   {
+    "name": "Royal Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6d/Royal_Egg.png",
+    "pets": [
+      "Royal Bunny",
+      "Royal Piggy",
+      "Royal Inferno Dragon",
+      "Prince Slime",
+      "Royalty",
+      "Royal Dogcat"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-01-02",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Season 12 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/69/Season_12_Egg.png",
+    "pets": [
+      "Fairy Doggy",
+      "Fairy Piggy"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-01-02",
+    "dateRemoved": "2026-01-22"
+  },
+  {
     "name": "Season XMAS Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c1/Season_XMAS_Egg.png",
     "pets": [
@@ -425,7 +455,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-12-12",
-    "dateRemoved": "2026-01-09"
+    "dateRemoved": "2026-01-01"
   },
   {
     "name": "Season OG Egg",
@@ -666,13 +696,15 @@
       "New Year's Overlord",
       "Firecracker",
       "Prosperity",
-      "New Year's Champion"
+      "New Year's Champion",
+      "OG New Year's Champion",
+      "OG Infinity Gem"
     ],
     "luckIgnored": false,
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-12-26",
-    "dateRemoved": "2026-01-02"
+    "dateRemoved": "2026-01-09"
   },
   {
     "name": "Gingerbread Egg",
@@ -726,6 +758,7 @@
       "Holy Candle",
       "Archangel",
       "Frosted Dogcat",
+      "Star Glitcher",
       "Morning Star"
     ],
     "luckIgnored": false,
@@ -752,6 +785,7 @@
       "Love Candle",
       "Hope Candle",
       "Iridescent Catcher",
+      "Festive Basket",
       "Christmas Robot"
     ],
     "luckIgnored": false,
@@ -775,6 +809,7 @@
       "Borealis Elk",
       "Northern Star",
       "Soulflake",
+      "Aurora Guardian",
       "The Leviathan"
     ],
     "luckIgnored": false,
@@ -1133,7 +1168,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-09-26",
-    "dateRemoved": ""
+    "dateRemoved": "2026-01-02"
   },
   {
     "name": "Brainrot Egg",
