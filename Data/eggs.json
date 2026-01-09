@@ -433,7 +433,10 @@
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/69/Season_12_Egg.png",
     "pets": [
       "Fairy Doggy",
-      "Fairy Piggy"
+      "Fairy Piggy",
+      "Lily Bud",
+      "Pixie",
+      "Forest Drifter"
     ],
     "luckIgnored": true,
     "canSpawnAsRift": false,
@@ -684,8 +687,70 @@
     "dateRemoved": "2025-11-21"
   },
   {
+    "name": "Clown Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7a/Clown_Egg.png",
+    "pets": [
+      "Clown Doggy",
+      "Clown Kitty",
+      "Clown Bunny",
+      "LOL"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-01-09",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Cannon Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0a/Cannon_Egg.png",
+    "pets": [
+      "Drum Golem",
+      "Cannon Bomb",
+      "Lion",
+      "Cotton Candy",
+      "Golden Balloon",
+      "Royal Lion"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-01-09",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Magic Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/e7/Magic_Egg.png",
+    "pets": [
+      "Magic Doggy",
+      "Magic Bunny",
+      "Dice",
+      "Golden Lion",
+      "Circus Stack",
+      "The Jester",
+      "Dark Omen",
+      "Pig Tophat",
+      "Dinosaur Tophat",
+      "Deer Tophat",
+      "Azure Fate",
+      "Seraph Tophat",
+      "Pufferfish Tophat",
+      "Bruh Tophat",
+      "Silly Doggy Tophat",
+      "Leviathan Tophat",
+      "Giant Chocolate Chicken Tophat",
+      "Avernus Tophat",
+      "Bubble Circus Show"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-01-09",
+    "dateRemoved": ""
+  },
+  {
     "name": "New Years Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/50/New_Years_Egg.png",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "pets": [
       "2026 Doggy",
       "2026 Kitty",
