@@ -20,7 +20,7 @@ const eggs = [
 { name: "Classic Egg", Pets: [ { name: "Classic Unicorn", baseOdds: 4000 }, { name: "Classic Dominus", baseOdds: 200000 }, { name: "Classic Noob", baseOdds: 2000000 }, { name: "Classic Overlord (Secret)", baseOdds: 100000000 } ], world: "3" },
 { name: "Clown Egg", Pets: [ { name: "LOL (Secret)", baseOdds: 100000000 } ], world: "limited" },
 { name: "Cannon Egg", Pets: [ { name: "Cotton Candy", baseOdds: 10000 }, { name: "Golden Balloon", baseOdds: 40000 }, { name: "Royal Lion (Secret)", baseOdds: 1000000000 } ], world: "limited" },
-{ name: "Magic Egg", Pets: [ { name: "Golden Lion", baseOdds: 10000 }, { name: "Circus Stack", baseOdds: 100000 }, { name: "The Jester", baseOdds: 5000000 }, { name: "Dark Omen (Secret)", baseOdds: 1000000000 }, { name: "Pig Tophat (Secret)", baseOdds: 5000000000 }, { name: "Dinosaur Tophat (Secret)", baseOdds: 5000000000 }, { name: "Deer Tophat (Secret)", baseOdds: 5000000000 }, { name: "Azure Fate (Secret)", baseOdds: 20000000000 }, { name: "Seraph Tophat (Secret)", baseOdds: 20000000000 }, { name: "Pufferfish Tophat (Secret)", baseOdds: 20000000000 }, { name: "Bruh Tophat (Secret)", baseOdds: 20000000000 }, { name: "Silly Doggy Tophat (Secret)", baseOdds: 50000000000 }, { name: "Leviathan Tophat (Secret)", baseOdds: 50000000000 }, { name: "Giant Chocolate Chicken Tophat (Secret)", baseOdds: 50000000000 }, { name: "Avernus Tophat (Secret)", baseOdds: 50000000000 }, { name: "Bubble Circus Show (Infinity)", baseOdds: 100000000000 } ], world: "limited" },
+{ name: "Magic Egg", Pets: [ { name: "Golden Lion", baseOdds: 10000 }, { name: "Circus Stack", baseOdds: 100000 }, { name: "The Jester", baseOdds: 5000000 }, { name: "Dark Omen (Secret)", baseOdds: 1000000000 }, { name: "Pig Tophat (Secret)", baseOdds: 5000000000 }, { name: "Dinosaur Tophat (Secret)", baseOdds: 5000000000 }, { name: "Deer Tophat (Secret)", baseOdds: 5000000000 }, { name: "Azure Fate (Secret)", baseOdds: 20000000000 }, { name: "Seraph Tophat (Secret)", baseOdds: 20000000000 }, { name: "Pufferfish Tophat (Secret)", baseOdds: 20000000000 }, { name: "Bruh Tophat (Secret)", baseOdds: 20000000000 }, { name: "Silly Doggy Tophat (Secret)", baseOdds: 50000000000 }, { name: "Leviathan Tophat (Secret)", baseOdds: 50000000000 }, { name: "Giant Chocolate Chicken Tophat (Secret)", baseOdds: 50000000000 }, { name: "Avernus Tophat (Secret)", baseOdds: 50000000000 }, { name: "Bubble Circus Show (Infinity)", baseOdds: 100000000000 } ], world: "limited1" },
 { name: "Music Egg", Pets: [ { name: "Key Performer", baseOdds: 100000 }, { name: "Music Elemental", baseOdds: 1000000 }, { name: "Giant Bongo Kitty (Secret)", baseOdds: 100000000 }, { name: "Encore (Secret)", baseOdds: 1000000000 }, { name: "Symphonic Hieromphant (Infinity)", baseOdds: 200000000000 } ], world: "limited" }
 ];
 
@@ -46,56 +46,51 @@ function getBountyOverrideByName(petName) {
 
 const FESTIVE_POTION_MAP = {
   'I': { luck: 50, shiny: 50, mythic: 25 },
-  'II': { luck: 125, shiny: 75, mythic: 50 },
-  'III': { luck: 150, shiny: 100, mythic: 75 },
-  'IV': { luck: 300, shiny: 200, mythic: 150 }
+  'II': { luck: 100, shiny: 100, mythic: 75 },
+  'III': { luck: 150, shiny: 150, mythic: 100 },
+  'IV': { luck: 250, shiny: 250, mythic: 200 }
 };
 
 
-const MASTERY_MAP = {
-  0: { luck: 0, secretLuck: 0, infinityLuck: 0 },
-  1: { luck: 5, secretLuck: 0, infinityLuck: 0 },
-  2: { luck: 10, secretLuck: 0, infinityLuck: 0 },
-  3: { luck: 15, secretLuck: 0, infinityLuck: 0 },
-  4: { luck: 20, secretLuck: 0, infinityLuck: 0 },
-  5: { luck: 25, secretLuck: 0, infinityLuck: 0 },
-  6: { luck: 30, secretLuck: 0, infinityLuck: 0 },
-  7: { luck: 30, secretLuck: 1, infinityLuck: 0 },
-  8: { luck: 30, secretLuck: 2, infinityLuck: 0 },
-  9: { luck: 30, secretLuck: 3, infinityLuck: 0 },
- 10: { luck: 30, secretLuck: 4, infinityLuck: 0 },
- 11: { luck: 30, secretLuck: 5, infinityLuck: 0 },
- 12: { luck: 30, secretLuck: 5, infinityLuck: 1 },
- 13: { luck: 30, secretLuck: 5, infinityLuck: 2 },
- 14: { luck: 30, secretLuck: 5, infinityLuck: 3 }
+// EVENT_UPGRADES in legacy map format (keyed by id, numeric levels) — Circus upgrades
+const EVENT_UPGRADES = {
+  "circus-luck": {
+    1: { luck: 0.1 },
+    2: { luck: 0.15 },
+    3: { luck: 0.2 },
+    4: { luck: 0.25 }
+  },
+  "circus-secret-luck": {
+    1: { secretLuck: 0.01 },
+    2: { secretLuck: 0.02 },
+    3: { secretLuck: 0.03 },
+    4: { secretLuck: 0.05 }
+  },
+  "circus-infinity-luck": {
+    1: { infinityLuck: 0.01 },
+    2: { infinityLuck: 0.02 },
+    3: { infinityLuck: 0.03 },
+    4: { infinityLuck: 0.05 }
+  }
 };
 
 
-const MILESTONE_MAP = {
-  none: { luck: 0, secretLuck: 0, icon: 'Images/Icons/Milestones_Unranked.webp', name: 'None' },
-  bronze: { luck: 10, secretLuck: 0, icon: 'Images/Icons/Milestones_Bronze.webp', name: 'Bronze I' },
-  silver: { luck: 25, secretLuck: 0, icon: 'Images/Icons/Milestones_Silver.webp', name: 'Silver I' },
-  gold: { luck: 50, secretLuck: 0, icon: 'Images/Icons/Milestones_Gold.webp', name: 'Gold I' },
-  platinum: { luck: 75, secretLuck: 0, icon: 'Images/Icons/Milestones_Platinum.webp', name: 'Platinum I' },
-  super: { luck: 100, secretLuck: 1, icon: 'Images/Icons/Milestones_Super.webp', name: 'Super I' },
-  ultimate: { luck: 150, secretLuck: 3, icon: 'Images/Icons/Milestones_Ultimate.webp', name: 'Ultimate I' },
-  infinity: { luck: 300, secretLuck: 5, icon: 'Images/Icons/Milestones_Infinity.webp', name: 'Infinity I' }
-};
 
 
-function isChristmasEggFn(egg) {
+
+function isCircusEggFn(egg) {
   if (!egg) return false;
   const world = (egg.world || '').toString().toLowerCase();
   const name = (egg.name || '').toString().toLowerCase();
   const idx = (egg.index || '').toString().toLowerCase();
   if (world === 'limited1') return true;
 
-  if (idx && idx.indexOf('christmas') !== -1) return true;
-  const christmasKeywords = ['yuletide','gingerbread','candycane','northpole','christmas','festive','yule','frosted','holiday','aurora'];
-  for (const k of christmasKeywords) { if (name && name.indexOf(k) !== -1) return true; }
-  if (world === 'limited' && (idx.indexOf('christmas') !== -1 || christmasKeywords.some(k => name.indexOf(k) !== -1))) return true;
+  if (idx && idx.indexOf('circus') !== -1) return true;
+  const circusKeywords = ['circus','clown','carnival','jester','cotton candy','balloon','bigtop','ringmaster'];
+  for (const k of circusKeywords) { if (name && name.indexOf(k) !== -1) return true; }
+  if (world === 'limited' && (idx.indexOf('circus') !== -1 || circusKeywords.some(k => name.indexOf(k) !== -1))) return true;
   return false;
-}
+} 
 
 
 function openFloatingPanel(panel, button) {
@@ -181,7 +176,8 @@ function renderEggs() {
       if (searchBarRow) searchBarRow.classList.add('hide-search-bar-row');
       if (worldsSidebar) worldsSidebar.style.display = 'none';
       const egg = eggs.find(e => e.name === selectedEgg);
-      const jsonEgg = eggsJson.find(e => e.name === egg.name);
+      console.debug('[DEBUG] selectedEgg:', selectedEgg, 'foundEgg:', egg);
+      const jsonEgg = eggsJson.find(e => e.name === (egg && egg.name));
       const canSpawnAsRift = jsonEgg && jsonEgg.canSpawnAsRift;
       animateEggDetails(() => createEggDetailsView(egg, canSpawnAsRift));
       return;
@@ -313,7 +309,7 @@ function createEggGridItem(egg) {
   const eggHeader = document.createElement("div");
   eggHeader.className = "egg-header";
   const eggImg = getEggImagePath(egg);
-  eggHeader.innerHTML = `<img src="${eggImg}" alt="${egg.name}" style="width: 56px; height: 56px;" />
+  eggHeader.innerHTML = `<img src="${eggImg}" alt="${egg.name}" style="width: 56px; height: 56px;" onerror="this.src='Images/eggs/Placeholder_egg.webp'" />
                          <h2>${egg.name}</h2>`;
   card.appendChild(eggHeader);
   eggList.appendChild(card);
@@ -1053,7 +1049,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
       { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
       { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
       { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" },
-      { id: "c2025", label: "Christmas 2025", icon: "Images/Icons/Christmas_Icon.webp" }
+      { id: "c2025", label: "Circus 2025", icon: "Images/Icons/Circus_Icon.webp" }
     ];
   const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
@@ -1302,7 +1298,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
       { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
       { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
       { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" },
-      { id: "c2025", label: "Christmas 2025", icon: "Images/Icons/Christmas_Icon.webp" }
+      { id: "c2025", label: "Circus 2025", icon: "Images/Icons/Circus_Icon.webp" }
     ];
     const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
@@ -1546,7 +1542,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
       { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
       { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
       { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" },
-      { id: "c2025", label: "Christmas 2025", icon: "Images/Icons/Christmas_Icon.webp" }
+      { id: "c2025", label: "Circus 2025", icon: "Images/Icons/Circus_Icon.webp" }
     ];
     const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
@@ -1789,7 +1785,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
       { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
       { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
       { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" },
-      { id: "c2025", label: "Christmas 2025", icon: "Images/Icons/Christmas_Icon.webp" }
+      { id: "c2025", label: "Circus 2025", icon: "Images/Icons/Circus_Icon.webp" }
     ];
     const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
@@ -2032,7 +2028,7 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
       { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
       { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
       { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" },
-      { id: "c2025", label: "Christmas 2025", icon: "Images/Icons/Christmas_Icon.webp" }
+      { id: "c2025", label: "Circus 2025", icon: "Images/Icons/Circus_Icon.webp" }
     ];
     const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
@@ -2260,16 +2256,7 @@ function createEggSettings(egg, canSpawnAsRift) {
       </div>
     `;
   }
-  if (egg && egg.world === 'limited1') {
-    controlsHtml += `
-      <div style="margin-top:8px;display:flex;gap:8px;align-items:center;">
-        <button type="button" class="heavenly-poinsettia-btn" data-selected="false" style="border-radius:999px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);min-width:130px;display:flex;align-items:center;gap:8px;">
-          <img src="Images/Pets/Heavenly_Poinsettia.webp" alt="Heavenly Poinsettia" width="20" height="20" style="object-fit:contain;border-radius:6px;" />
-          <span>Heavenly Poinsettia</span>
-        </button>
-      </div>
-    `;
-  }
+
   const hasSecret = (egg.Pets && egg.Pets.some(pet => /(Secret|Infinity)/i.test(pet.name))) || egg.name === "Infinity Egg";
 
   const hasSecretForced = !!egg.secretBountyRotation && !!((egg.Pets || []).some(p => /(Secret|Infinity)/i.test(p && p.name)));
@@ -2283,14 +2270,6 @@ function createEggSettings(egg, canSpawnAsRift) {
     `;
   }
   const hasInfinityPet = !!(egg.Pets && egg.Pets.some(p => /\bInfinity\b/i.test(p && p.name)));
-  if (hasInfinityPet) {
-    controlsHtml += `
-      <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
-        <label style="min-width:110px;">Ultra Infinity Luck:</label>
-        <input type="text" class="ultra-infinity-input skinned-input" placeholder="1" value="1" style="width:80px;" />
-      </div>
-    `;
-  }
   controlsHtml += `
     <div style="margin-top:8px;position:relative;">
       <button type="button" class="variants-toggle" aria-expanded="false"
@@ -2331,13 +2310,13 @@ function createEggSettings(egg, canSpawnAsRift) {
      </div>
    `;
   
-  const isChristmasEgg = isChristmasEggFn(egg) || (egg && egg.world === 'limited1') || (egg && egg.name === 'Infinity Egg' && typeof selectedInfinityWorld !== 'undefined' && String(selectedInfinityWorld).toLowerCase() === 'c2025');
-  if (isChristmasEgg) {
+  const isCircusEgg = isCircusEggFn(egg) || (egg && egg.world === 'limited1') || (egg && egg.name === 'Infinity Egg' && typeof selectedInfinityWorld !== 'undefined' && String(selectedInfinityWorld).toLowerCase() === 'c2025');
+  if (isCircusEgg) {
     controlsHtml += `
-      <details class="christmas-settings" open style="margin-top:12px;border-radius:8px;border:1px solid var(--table-border);padding:10px;background:var(--controls-bg);">
-        <summary style="font-weight:700;cursor:pointer;margin-bottom:8px;">Christmas settings</summary>
+      <details class="circus-settings" open style="margin-top:12px;border-radius:8px;border:1px solid var(--table-border);padding:10px;background:var(--controls-bg);">
+        <summary style="font-weight:700;cursor:pointer;margin-bottom:8px;">Circus settings</summary>
         <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px;">
-          <label style="min-width:110px;">Festive Potion:</label>
+          <label style="min-width:110px;">Circus Elixir:</label>
           <select class="festive-select" style="display:none;min-width:160px;">
             <option value="none">None</option>
             <option value="I">I</option>
@@ -2347,83 +2326,52 @@ function createEggSettings(egg, canSpawnAsRift) {
           </select>
           <div style="position:relative;display:inline-block;">
             <button class="festive-dropdown-btn" type="button" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;color:var(--main-text);">
-              <img class="festive-icon" src="Images/Icons/Festive_Potion_NONE.webp" alt="Festive Potion Icon" onerror="this.src='Images/Icons/Placeholder.webp'" style="width:20px;height:20px;object-fit:contain;border-radius:6px;" />
+              <img class="festive-icon" src="Images/Icons/Placeholder.webp" alt="Circus Elixir Icon" onerror="this.src='Images/Icons/Placeholder.webp'" style="width:20px;height:20px;object-fit:contain;border-radius:6px;" />
               <span class="festive-label">None</span>
               <span style="margin-left:8px;opacity:0.7;">▾</span>
             </button>
             <div class="festive-panel" style="display:none;position:absolute;left:0;top:calc(100% + 6px);z-index:40;border-radius:8px;padding:8px;min-width:180px;background:var(--controls-bg);border:1px solid var(--table-border);box-shadow:0 8px 30px rgba(0,0,0,0.12);">
               <div style="display:flex;flex-direction:column;gap:6px;">
                     <button type="button" class="festive-option" data-val="none" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;">
-                  <img src="Images/Icons/Festive_Potion_NONE.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
+                  <img src="Images/Icons/Placeholder.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
                   <span>None</span>
                 </button>
                 <button type="button" class="festive-option" data-val="I" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;">
-                  <img src="Images/Icons/Festive_Potion_I.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
+                  <img src="Images/Icons/Circus_Elixir_I.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
                   <span>I</span>
                 </button>
                 <button type="button" class="festive-option" data-val="II" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;">
-                  <img src="Images/Icons/Festive_Potion_II.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
+                  <img src="Images/Icons/Circus_Elixir_II.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
                   <span>II</span>
                 </button>
                 <button type="button" class="festive-option" data-val="III" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;">
-                  <img src="Images/Icons/Festive_Potion_III.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
+                  <img src="Images/Icons/Circus_Elixir_III.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
                   <span>III</span>
                 </button>
                 <button type="button" class="festive-option" data-val="IV" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;">
-                  <img src="Images/Icons/Festive_Potion_IV.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
+                  <img src="Images/Icons/Circus_Elixir_IV.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
                   <span>IV</span>
                 </button>
               </div>
             </div>
           </div>
-          <button type="button" class="festive-infinity-btn" data-selected="false" title="Infinity Festive Elixir" style="border-radius:999px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;font-family:inherit;color:var(--main-text);min-width:110px;display:flex;align-items:center;gap:8px;">
-            <img class="festive-inf-icon" src="Images/Icons/Festive_Infinity_Elixir.webp" width="20" height="20" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
-            <span>Infinity Festive Elixir</span>
-          </button>
+
         </div>
-        <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
-          <label style="min-width:110px;">Christmas Mastery:</label>
-          <input type="number" class="christmas-mastery skinned-input" value="0" min="0" max="14" step="1" style="width:80px;" />
-        </div>
-        <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
-          <label style="min-width:110px;">Ultra Infinity Luck:</label>
-          <input type="text" class="ultra-infinity-input skinned-input" placeholder="1" value="1" style="width:80px;" />
-  
-        </div>
-        <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
-          <label style="min-width:110px;">Milestone:</label>
-          <select class="christmas-milestone" style="display:none;min-width:160px;">
-            <option value="none">None</option>
-            <option value="bronze">Bronze I</option>
-            <option value="silver">Silver I</option>
-            <option value="gold">Gold I</option>
-            <option value="platinum">Platinum I</option>
-            <option value="super">Super I</option>
-            <option value="ultimate">Ultimate I</option>
-            <option value="infinity">Infinity I</option>
-          </select>
-          <div style="position:relative;display:inline-block;">
-            <button class="milestone-dropdown-btn" type="button" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;color:var(--main-text);">
-              <img class="christmas-milestone-icon" src="Images/Icons/Milestones_Unranked.webp" alt="Milestone Icon" style="width:20px;height:20px;object-fit:contain;border-radius:6px;" onerror="this.src='Images/Icons/Placeholder.webp'" />
-              <span class="milestone-label">None</span>
-              <span style="margin-left:8px;opacity:0.7;">▾</span>
-            </button>
-            <div class="milestone-panel" style="display:none;position:absolute;left:0;top:calc(100% + 6px);z-index:40;border-radius:8px;padding:8px;min-width:180px;background:var(--controls-bg);border:1px solid var(--table-border);box-shadow:0 8px 30px rgba(0,0,0,0.12);">
-              <div style="display:flex;flex-direction:column;gap:6px;">
-                <button type="button" class="milestone-option" data-val="none" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Unranked.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>None</span></button>
-                <button type="button" class="milestone-option" data-val="bronze" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Bronze.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Bronze I</span></button>
-                <button type="button" class="milestone-option" data-val="silver" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Silver.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Silver I</span></button>
-                <button type="button" class="milestone-option" data-val="gold" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Gold.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Gold I</span></button>
-                <button type="button" class="milestone-option" data-val="platinum" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Platinum.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Platinum I</span></button>
-                <button type="button" class="milestone-option" data-val="super" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Super.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Super I</span></button>
-                <button type="button" class="milestone-option" data-val="ultimate" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Ultimate.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Ultimate I</span></button>
-                <button type="button" class="milestone-option" data-val="infinity" style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:transparent;border:none;color:var(--main-text);cursor:pointer;"><img src="Images/Icons/Milestones_Infinity.webp" width="26" height="26" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" /><span>Infinity I</span></button>
-              </div>
+
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px;">
+              <label style="min-width:140px;">Circus Luck:</label>
+              <input type="number" class="event-upgrade-input" data-id="circus-luck" min="0" max="4" step="1" value="0" style="min-width:120px;padding:6px;border-radius:6px;border:1px solid var(--table-border);background:var(--controls-bg);color:var(--main-text);" />
             </div>
-          </div>
-        </div>
-        
-      </details>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px;">
+              <label style="min-width:140px;">Secret Luck:</label>
+              <input type="number" class="event-upgrade-input" data-id="circus-secret-luck" min="0" max="4" step="1" value="0" style="min-width:120px;padding:6px;border-radius:6px;border:1px solid var(--table-border);background:var(--controls-bg);color:var(--main-text);" />
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px;">
+              <label style="min-width:140px;">Infinity Luck:</label>
+              <input type="number" class="event-upgrade-input" data-id="circus-infinity-luck" min="0" max="4" step="1" value="0" style="min-width:120px;padding:6px;border-radius:6px;border:1px solid var(--table-border);background:var(--controls-bg);color:var(--main-text);" />
+            </div>
+
+
     `;
   }
   controls.innerHTML = controlsHtml;
@@ -2452,12 +2400,11 @@ function createEggSettings(egg, canSpawnAsRift) {
         secretMult: secretEl ? (secretEl.value === '' ? 1 : Number(secretEl.value)) : 1,
         festive: {
           selected: (controls.querySelector('.festive-select') ? (controls.querySelector('.festive-select').value || 'none') : 'none'),
-          infinity: (controls.querySelector('.festive-infinity-btn') ? (controls.querySelector('.festive-infinity-btn').dataset.selected === 'true') : false),
-          ultraInfinity: (controls.querySelector('.ultra-infinity-input') ? String(controls.querySelector('.ultra-infinity-input').value || '1') : '1')
         },
-        mastery: {
-          level: (controls.querySelector('.christmas-mastery') ? Number(controls.querySelector('.christmas-mastery').value || 0) : 0),
-          milestone: controls.querySelector('.christmas-milestone') ? (controls.querySelector('.christmas-milestone').value || 'none') : 'none'
+        eventUpgrades: {
+          'circus-luck': (controls.querySelector('.event-upgrade-input[data-id="circus-luck"]') ? Number(controls.querySelector('.event-upgrade-input[data-id="circus-luck"]').value || 0) : 0),
+          'circus-secret-luck': (controls.querySelector('.event-upgrade-input[data-id="circus-secret-luck"]') ? Number(controls.querySelector('.event-upgrade-input[data-id="circus-secret-luck"]').value || 0) : 0),
+          'circus-infinity-luck': (controls.querySelector('.event-upgrade-input[data-id="circus-infinity-luck"]') ? Number(controls.querySelector('.event-upgrade-input[data-id="circus-infinity-luck"]').value || 0) : 0)
         },
         variants: {
           shiny: {
@@ -2480,10 +2427,6 @@ function createEggSettings(egg, canSpawnAsRift) {
     function saveSettings() {
       try {
         const toSave = readSettingsFromDOM();
-        
-        if (toSave.mastery && typeof toSave.mastery.level !== 'undefined') {
-          let v = parseInt(toSave.mastery.level || 0) || 0; if (v < 0) v = 0; if (v > 14) v = 14; toSave.mastery.level = v;
-        }
         localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
       } catch (e) {}
     }
@@ -2496,7 +2439,18 @@ function createEggSettings(egg, canSpawnAsRift) {
         const sel = saved.festive.selected || 'none';
         controls.querySelector('.festive-select').value = sel;
         const icon = controls.querySelector('.festive-icon');
-        if (icon) { icon.onerror = () => icon.src = 'Images/Icons/Placeholder.webp'; icon.src = 'Images/Icons/' + (sel === 'none' ? 'Festive_Potion_NONE' : 'Festive_Potion_' + sel) + '.webp'; }
+        if (icon) { icon.onerror = () => icon.src = 'Images/Icons/Placeholder.webp'; if (sel === 'none') icon.src = 'Images/Icons/Placeholder.webp'; else icon.src = 'Images/Icons/Circus_Elixir_' + sel + '.webp'; }
+      }
+      // restore event upgrades if present
+      if (saved.eventUpgrades && typeof saved.eventUpgrades === 'object') {
+        try {
+          const u1 = controls.querySelector('.event-upgrade-input[data-id="circus-luck"]');
+          const u2 = controls.querySelector('.event-upgrade-input[data-id="circus-secret-luck"]');
+          const u3 = controls.querySelector('.event-upgrade-input[data-id="circus-infinity-luck"]');
+          if (u1 && typeof saved.eventUpgrades['circus-luck'] !== 'undefined') u1.value = String(saved.eventUpgrades['circus-luck']);
+          if (u2 && typeof saved.eventUpgrades['circus-secret-luck'] !== 'undefined') u2.value = String(saved.eventUpgrades['circus-secret-luck']);
+          if (u3 && typeof saved.eventUpgrades['circus-infinity-luck'] !== 'undefined') u3.value = String(saved.eventUpgrades['circus-infinity-luck']);
+        } catch (e) {}
       }
       try {
         if (saved.variants) {
@@ -2523,25 +2477,18 @@ function createEggSettings(egg, canSpawnAsRift) {
           const curSel2 = (controls.querySelector('.festive-select') ? (controls.querySelector('.festive-select').value || 'none') : 'none');
           panelOptions.forEach(o => { if (o.dataset && o.dataset.val) { if (o.dataset.val === curSel2) o.style.background = 'rgba(255,255,255,0.04)'; else o.style.background = 'transparent'; } });
         }
+        // debug initial state for festive controls & upgrades
+        try {
+          const dbgSel = controls.querySelector('.festive-select');
+          const dbgBtn = controls.querySelector('.festive-dropdown-btn');
+          const dbgIcon = controls.querySelector('.festive-icon');
+          const u1 = controls.querySelector('.event-upgrade-input[data-id="circus-luck"]');
+          if (dbgBtn) console.debug('[DEBUG] festive controls initialized, select=', dbgSel ? dbgSel.value : 'none', 'label=', dbgBtn.querySelector('.festive-label') ? dbgBtn.querySelector('.festive-label').textContent : 'missing', 'icon=', dbgIcon ? dbgIcon.src : 'missing', 'upgrades:', u1 ? u1.value : 'none');
+        } catch (e) {}
       }
-      if (controls.querySelector('.festive-infinity-btn') && saved.festive && typeof saved.festive.infinity !== 'undefined') {
-        const b = controls.querySelector('.festive-infinity-btn');
-        b.dataset.selected = saved.festive.infinity ? 'true' : 'false';
-        if (b.dataset.selected === 'true') { b.style.background = '#2596be'; b.style.color = '#ffffff'; } else { b.style.background = 'var(--controls-bg)'; b.style.color = 'var(--main-text)'; }
-      }
-      if (controls.querySelector('.ultra-infinity-input') && saved.festive && typeof saved.festive.ultraInfinity !== 'undefined') controls.querySelector('.ultra-infinity-input').value = saved.festive.ultraInfinity || '1';
-        if (controls.querySelector('.christmas-mastery') && saved.mastery && typeof saved.mastery.level !== 'undefined') controls.querySelector('.christmas-mastery').value = saved.mastery.level;
-      if (controls.querySelector('.christmas-milestone') && saved.mastery && typeof saved.mastery.milestone !== 'undefined') {
-        const v = saved.mastery.milestone || 'none';
-        controls.querySelector('.christmas-milestone').value = v;
-        const iconEl = controls.querySelector('.christmas-milestone-icon');
-        if (iconEl) iconEl.src = MILESTONE_MAP[v] && MILESTONE_MAP[v].icon ? MILESTONE_MAP[v].icon : 'Images/Icons/Placeholder.webp';
-        const milestoneBtn = controls.querySelector('.milestone-dropdown-btn');
-        if (milestoneBtn) {
-          const label = milestoneBtn.querySelector('.milestone-label');
-          if (label) label.textContent = (MILESTONE_MAP[v] && MILESTONE_MAP[v].name) ? MILESTONE_MAP[v].name : 'None';
-        }
-      }
+
+
+
       
   if (shinyInput && saved.variants && saved.variants.shiny && typeof saved.variants.shiny.odds !== 'undefined') {
     shinyInput.value = saved.variants.shiny.odds;
@@ -2566,12 +2513,11 @@ function createEggSettings(egg, canSpawnAsRift) {
     const festiveDropdownBtn = controls.querySelector('.festive-dropdown-btn');
     const festivePanel = controls.querySelector('.festive-panel');
     const festiveOptions = controls.querySelectorAll('.festive-option');
-    const festiveInfinityBtnEl = controls.querySelector('.festive-infinity-btn');
-    const masteryInputEl = controls.querySelector('.christmas-mastery');
+    // milestoneSelectEl declared below when milestone dropdown is initialized
     if (festiveSelectEl) festiveSelectEl.addEventListener('change', () => { 
       const icon = controls.querySelector('.festive-icon');
       const v = festiveSelectEl.value || 'none';
-      const fileName = v === 'none' ? 'Festive_Potion_NONE' : `Festive_Potion_${v}`;
+      const fileName = v === 'none' ? 'Placeholder' : `Circus_Elixir_${v}`;
       if (icon) { icon.onerror = () => icon.src = 'Images/Icons/Placeholder.webp'; icon.src = 'Images/Icons/' + fileName + '.webp'; }
       saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
       
@@ -2626,72 +2572,22 @@ function createEggSettings(egg, canSpawnAsRift) {
         });
       });
     }
-    const milestoneSelectEl = controls.querySelector('.christmas-milestone');
-    const milestoneDropdownBtn = controls.querySelector('.milestone-dropdown-btn');
-    const milestonePanel = controls.querySelector('.milestone-panel');
-    const milestoneOptions = controls.querySelectorAll('.milestone-option');
-    const milestoneIconEl = controls.querySelector('.christmas-milestone-icon');
-    if (milestoneDropdownBtn && milestonePanel && milestoneOptions && milestoneOptions.forEach) {
-      milestoneDropdownBtn.addEventListener('click', (ev) => {
-        ev.stopPropagation();
-        const isOpen = milestonePanel.classList && milestonePanel.classList.contains('open');
-        document.querySelectorAll('.milestone-panel').forEach(p => closeFloatingPanel(p));
-        if (isOpen) {
-          closeFloatingPanel(milestonePanel);
-        } else {
-          openFloatingPanel(milestonePanel, milestoneDropdownBtn);
-          setTimeout(() => {
-            const handleOutsideClick = (e) => {
-              if (!milestonePanel.contains(e.target) && e.target !== milestoneDropdownBtn && !milestoneDropdownBtn.contains(e.target)) {
-                closeFloatingPanel(milestonePanel);
-              }
-            };
-            document.addEventListener('click', handleOutsideClick, { once: true });
-          }, 0);
-        }
-      });
-      milestoneOptions.forEach(opt => {
-        opt.addEventListener('click', (ev) => {
-          ev.stopPropagation();
-          const v = (opt.dataset.val || 'none').toString().toLowerCase();
-          if (milestoneSelectEl) {
-            milestoneSelectEl.value = v;
-            milestoneSelectEl.dispatchEvent(new Event('change'));
-          }
-          if (milestonePanel) closeFloatingPanel(milestonePanel);
+
+    // wire up event upgrades change handlers and persistence
+    try {
+      const upgradeInputs = controls.querySelectorAll('.event-upgrade-input');
+      if (upgradeInputs && upgradeInputs.forEach) {
+        upgradeInputs.forEach(inp => {
+          inp.addEventListener('input', () => {
+            saveSettings();
+            if (controls) controls.dispatchEvent(new Event('luckSettingsChanged'));
+            document.dispatchEvent(new Event('luckSettingsChanged'));
+          });
         });
-      });
-    }
-    if (milestoneSelectEl) {
-      milestoneSelectEl.addEventListener('change', () => {
-        const v = milestoneSelectEl.value || 'none';
-        if (milestoneIconEl) {
-          milestoneIconEl.onerror = () => milestoneIconEl.src = 'Images/Icons/Placeholder.webp';
-          milestoneIconEl.src = (MILESTONE_MAP[v] && MILESTONE_MAP[v].icon) ? MILESTONE_MAP[v].icon : 'Images/Icons/Placeholder.webp';
-        }
-        if (milestoneDropdownBtn) {
-          const label = milestoneDropdownBtn.querySelector('.milestone-label');
-          if (label) label.textContent = (MILESTONE_MAP[v] && MILESTONE_MAP[v].name) ? MILESTONE_MAP[v].name : 'None';
-        }
-        saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
-      });
-    }
-    if (masteryInputEl) {
-      masteryInputEl.addEventListener('input', () => {
-        let v = parseInt(masteryInputEl.value || '0') || 0;
-        if (v < 0) v = 0;
-        if (v > 14) v = 14;
-        masteryInputEl.value = v;
-        const info = MASTERY_MAP[v] || MASTERY_MAP[0];
-        
-        saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
-        
-      });
-      masteryInputEl.addEventListener('change', () => { if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged')); });
-      const vInit = Math.max(0, Math.min(14, parseInt(masteryInputEl.value || '0') || 0));
-      const infoInit = MASTERY_MAP[vInit] || MASTERY_MAP[0];
-      
-    }
+      }
+    } catch (e) {}
+
+    // Mastery removed
 
   } catch (e) {}
   
@@ -2774,7 +2670,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
 
     const multiplierSelect = controls ? controls.querySelector(".multiplier") : null;
   const ogRadianceBtn = controls ? controls.querySelector('.og-radiance-btn') : null;
-  const heavenlyPoinsettiaBtn = controls ? controls.querySelector('.heavenly-poinsettia-btn') : null;
+
     const multiplierOtherWrap = controls ? controls.querySelector(".multiplier-other-wrap") : null;
     const multiplierOtherInput = controls ? controls.querySelector(".multiplier-other") : null;
     const luckInput = controls ? controls.querySelector(".luck") : null;
@@ -2786,7 +2682,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
     const shinyInput = controls ? controls.querySelector('.shiny-input') : null;
     const mythicInput = controls ? controls.querySelector('.mythic-input') : null;
     const xlBtn = controls ? controls.querySelector('.xl-btn') : null;
-    const ultraInput = controls ? controls.querySelector('.ultra-infinity-input') : null;
+
      const petList = table.querySelector(".pet-list");
 
     function parseOneInInput(str) {
@@ -2955,26 +2851,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       });
       applyOgRadianceStyle();
     }
-    function applyHeavenlyStyle() {
-      if (!heavenlyPoinsettiaBtn) return;
-      const sel = heavenlyPoinsettiaBtn.dataset.selected === 'true';
-      if (sel) {
-        Object.assign(heavenlyPoinsettiaBtn.style, { background: '#d6090c', color: '#ffffff', boxShadow: '0 0 14px rgba(214,9,12,0.9)' });
-      } else {
-        Object.assign(heavenlyPoinsettiaBtn.style, { background: 'var(--controls-bg)', color: 'var(--main-text)', boxShadow: 'none' });
-      }
-    }
-    if (heavenlyPoinsettiaBtn) {
-      heavenlyPoinsettiaBtn.type = 'button';
-      if (typeof heavenlyPoinsettiaBtn.dataset.selected === 'undefined') heavenlyPoinsettiaBtn.dataset.selected = 'false';
-      heavenlyPoinsettiaBtn.style.cursor = 'pointer';
-      heavenlyPoinsettiaBtn.addEventListener('click', () => {
-        heavenlyPoinsettiaBtn.dataset.selected = heavenlyPoinsettiaBtn.dataset.selected === 'true' ? 'false' : 'true';
-        applyHeavenlyStyle();
-        updateChances();
-      });
-      applyHeavenlyStyle();
-    }
+
     if (shinyInput) {
       shinyInput.addEventListener('input', () => { applyVariantButtonStyles(shinyInput); updateChances(shinyInput); });
       shinyInput.addEventListener('input', () => { shinyInput.dataset.userModified = 'true'; try { if (controls && controls._saveSettings) controls._saveSettings(); } catch (e) {} });
@@ -2985,25 +2862,13 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       mythicInput.addEventListener('input', () => { mythicInput.dataset.userModified = 'true'; try { if (controls && controls._saveSettings) controls._saveSettings(); } catch (e) {} });
       if (!mythicInput.value) { mythicInput.value = '1 in 100'; mythicInput.dataset.userModified = 'false'; }
     }
-    if (ultraInput) {
+    if (typeof ultraInput !== 'undefined' && ultraInput) {
       ultraInput.addEventListener('input', () => { updateChances(ultraInput); try { if (controls && controls._saveSettings) controls._saveSettings(); } catch (e) {} });
       ultraInput.addEventListener('change', () => { updateChances(ultraInput); });
       if (!ultraInput.value) ultraInput.value = '1';
     }
     
-    const masteryInputInCard = controls ? controls.querySelector('.christmas-mastery') : null;
-    if (masteryInputInCard) {
-      masteryInputInCard.addEventListener('input', () => {
-        let v = parseInt(masteryInputInCard.value || '0') || 0;
-        if (v < 0) v = 0;
-        if (v > 14) v = 14;
-        masteryInputInCard.value = v;
-        updateChances(masteryInputInCard);
-        try {
-          if (controls && controls._saveSettings) controls._saveSettings();
-        } catch (e) {}
-      });
-    }
+    // Mastery input removed
     
      applyVariantButtonStyles();
     if (multiplierSelect) {
@@ -3070,7 +2935,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
        const secretInputScoped = controlsScope ? controlsScope.querySelector('.secret-mult') : secretInput;
        const shinyInputScoped = controlsScope ? controlsScope.querySelector('.shiny-input') : shinyInput;
        const mythicInputScoped = controlsScope ? controlsScope.querySelector('.mythic-input') : mythicInput;
-       const ultraInputScoped = controlsScope ? controlsScope.querySelector('.ultra-infinity-input') : ultraInput;
+       const ultraInputScoped = null; // ultra input removed
 
        let multiplierValue = 0;
        if (multiplierSelectScoped) {
@@ -3086,55 +2951,52 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
 
       
       const festiveSelectEl = (controlsScope ? controlsScope.querySelector('.festive-select') : null) || document.querySelector('.festive-select');
-      const festiveInfinityBtnEl = (controlsScope ? controlsScope.querySelector('.festive-infinity-btn') : null) || document.querySelector('.festive-infinity-btn');
-      const masteryInputEl = (controlsScope ? controlsScope.querySelector('.christmas-mastery') : null) || document.querySelector('.christmas-mastery');
-      const ultraInputEl = (controlsScope ? controlsScope.querySelector('.ultra-infinity-input') : null) || document.querySelector('.ultra-infinity-input');
+
+
       
       const masteryModeEl = null;
       const festiveSelected = festiveSelectEl ? (festiveSelectEl.value || 'none') : 'none';
-      const festiveInfinity = festiveInfinityBtnEl ? (festiveInfinityBtnEl.dataset.selected === 'true') : false;
       const festiveIsSelected = (festiveSelected && FESTIVE_POTION_MAP[festiveSelected]);
-      const ultraMultiplier = typeof parseRiftInput === 'function' ? (parseRiftInput(ultraInputScoped ? ultraInputScoped.value : null) || 1) : 1;
+      const ultraMultiplier = 1;
       let totalLuckPercent = luckPercent;
       
       if (festiveIsSelected) {
         const fest = FESTIVE_POTION_MAP[festiveSelected];
-        const mult = festiveInfinity ? 1.5 : 1;
+        const mult = 1;
         totalLuckPercent += Math.round(fest.luck * mult);
       }
       
-      let masteryLevel = masteryInputEl ? (parseInt(masteryInputEl.value || '0') || 0) : 0;
-      if (!masteryInputEl) {
-        try {
-          const saved = JSON.parse(localStorage.getItem('luck_settings') || '{}') || {};
-          if (saved && saved.mastery && typeof saved.mastery.level !== 'undefined') masteryLevel = parseInt(saved.mastery.level || 0) || 0;
-        } catch (e) {}
-      }
-      if (masteryLevel < 0) masteryLevel = 0; if (masteryLevel > 14) masteryLevel = 14;
-      const masteryInfo = MASTERY_MAP[masteryLevel] || MASTERY_MAP[0];
-      let masteryAdded = masteryInfo && masteryInfo.luck ? masteryInfo.luck : 0;
-      let masterySecretPercent = masteryInfo && masteryInfo.secretLuck ? masteryInfo.secretLuck : 0;
-      let masteryInfinityPercent = masteryInfo && masteryInfo.infinityLuck ? masteryInfo.infinityLuck : 0;
-      const milestoneElForCalc = (controlsScope ? controlsScope.querySelector('.christmas-milestone') : null) || document.querySelector('.christmas-milestone');
-      const milestoneSelForCalc = milestoneElForCalc ? (milestoneElForCalc.value || 'none') : 'none';
-      const milestoneInfoForCalc = MILESTONE_MAP[milestoneSelForCalc] || MILESTONE_MAP['none'];
-      const isChristmasEgg = isChristmasEggFn(egg) || (egg && egg.world === 'limited1') || (egg && egg.name === 'Infinity Egg' && typeof selectedInfinityWorld !== 'undefined' && String(selectedInfinityWorld).toLowerCase() === 'c2025');
+      // Mastery removed; event upgrades apply bonuses via `EVENT_UPGRADES`
+      let masterySecretPercent = 0;
+      let masteryInfinityPercent = 0;
+      const isCircusEgg = isCircusEggFn(egg) || (egg && egg.world === 'limited1') || (egg && egg.name === 'Infinity Egg' && typeof selectedInfinityWorld !== 'undefined' && String(selectedInfinityWorld).toLowerCase() === 'c2025');
       
-      const totalLuckBefore = totalLuckPercent;
-      if (masteryAdded) {
-        totalLuckPercent += masteryAdded;
-        
-      }
-      if (isChristmasEgg && milestoneInfoForCalc && milestoneInfoForCalc.luck) {
-        const beforeM = totalLuckPercent;
-        totalLuckPercent += milestoneInfoForCalc.luck;
-        
-      }
-      if (isChristmasEgg && milestoneInfoForCalc && milestoneInfoForCalc.secretLuck) {
-        masterySecretPercent += milestoneInfoForCalc.secretLuck;
+      // apply EVENT_UPGRADES if circus and any upgrades selected
+      try {
+        if (isCircusEgg && typeof EVENT_UPGRADES === 'object') {
+          try {
+            const ids = ['circus-luck','circus-secret-luck','circus-infinity-luck'];
+            for (const id of ids) {
+              const sel = controlsScope ? controlsScope.querySelector(`.event-upgrade-input[data-id="${id}"]`) : document.querySelector(`.event-upgrade-input[data-id="${id}"]`);
+              const level = sel ? Number(sel.value || 0) : 0;
+              const entry = (EVENT_UPGRADES && EVENT_UPGRADES[id] && EVENT_UPGRADES[id][level]) ? EVENT_UPGRADES[id][level] : null;
+              if (entry) {
+                if (typeof entry.luck === 'number') {
+                  totalLuckPercent += entry.luck * 100; // convert fraction to percent points
+                }
+                if (typeof entry.secretLuck === 'number') {
+                  masterySecretPercent += entry.secretLuck * 100; // percent points for secrets
+                }
+                if (typeof entry.infinityLuck === 'number') {
+                  masteryInfinityPercent += entry.infinityLuck * 100; // percent points for infinity
+                }
+              }
+            }
+          } catch (e) {}
+        }
+      } catch (e) {}
 
-        masteryInfinityPercent += milestoneInfoForCalc.secretLuck;
-      }
+      const totalLuckBefore = totalLuckPercent;
       try {
       } catch (e) {}
       const secretTimes = secretInputScoped ? (secretInputScoped.value === "" ? 1 : Math.max(1, parseFloat(secretInputScoped.value))) : 1;
@@ -3143,13 +3005,12 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       
        petList.innerHTML = "";
 
+       console.debug('[DEBUG] preparing pets list for egg:', egg && egg.name, 'egg.Pets:', egg && egg.Pets);
        const petsToIterate = (egg.Pets || []).slice();
        if (ogRadianceBtn && ogRadianceBtn.dataset.selected === 'true') {
          petsToIterate.push({ name: 'OG Radiance (Secret)', icon: 'Images/Pets/OG_Radiance.webp', baseOdds: 50000000000 });
        }
-       if (heavenlyPoinsettiaBtn && heavenlyPoinsettiaBtn.dataset.selected === 'true') {
-         petsToIterate.push({ name: 'Heavenly Poinsettia (Secret)', icon: 'Images/Pets/Heavenly_Poinsettia.webp', baseOdds: 5000000000 });
-       }
+
        petsToIterate.forEach(pet => {
          const isInfinity = /Infinity/i.test(pet.name);
          const isSecretName = /Secret/i.test(pet.name);
@@ -3176,7 +3037,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         let mythicOdds = parseOneInInput(mythicInputScoped ? mythicInputScoped.value : null) || 100;
         if (festiveSelected && FESTIVE_POTION_MAP[festiveSelected]) {
         
-          const elixirDivisor = festiveInfinity ? 2 : 1;
+          const elixirDivisor = 1;
           if (elixirDivisor > 1) {
             shinyOdds = Math.max(1, Math.round(shinyOdds / elixirDivisor));
             mythicOdds = Math.max(1, Math.round(mythicOdds / elixirDivisor));

@@ -743,9 +743,9 @@ td.pet-name span {
   transform: translateY(0);
   pointer-events: auto;
 }
-/* Ensure milestone/festive dropdown panels are above the pet info on mobile when open */
+/* Ensure milestone/circus dropdown panels are above the pet info on mobile when open */
 .milestone-panel.open,
-.festive-panel.open {
+.circus-panel.open {
   z-index: 20010 !important;
   pointer-events: auto;
 }
