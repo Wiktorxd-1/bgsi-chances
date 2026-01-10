@@ -699,7 +699,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-09",
-    "dateRemoved": ""
+    "dateRemoved": "2026-01-16"
   },
   {
     "name": "Cannon Egg",
@@ -716,7 +716,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-09",
-    "dateRemoved": ""
+    "dateRemoved": "2026-01-16"
   },
   {
     "name": "Magic Egg",
@@ -724,7 +724,7 @@
     "pets": [
       "Magic Doggy",
       "Magic Bunny",
-      "Dice",
+      "Dice (Pet)",
       "Golden Lion",
       "Circus Stack",
       "The Jester",
@@ -746,7 +746,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-09",
-    "dateRemoved": ""
+    "dateRemoved": "2026-01-16"
   },
   {
     "name": "New Years Egg",
@@ -1857,6 +1857,24 @@
     "secretBountyRotation": false,
     "dateAdded": "2025-12-26",
     "dateRemoved": "2026-01-09"
+  },
+  {
+    "name": "Music Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "pets": [
+      "Cliffy",
+      "Boxboi",
+      "Key Performer",
+      "Music Elemental",
+      "Giant Bongo Kitty",
+      "Encore",
+      "Symphonic Hieromphant"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-01-09",
+    "dateRemoved": "2026-01-16"
   },
   {
     "name": "Prismatic Egg",
