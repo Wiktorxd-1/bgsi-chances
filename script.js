@@ -325,24 +325,44 @@ async function loadInfinityEggData() {
   return infinityEggData;
 }
 
-function parseChanceString(chanceStr) {
-  if (!chanceStr || typeof chanceStr !== 'string') return null;
-  const s = chanceStr.trim().toLowerCase();
-  const m = s.match(/1\/\s*([\d,.]+)\s*([mb]?)/i);
-  if (!m) return null;
-  let num = m[1].replace(/[,]/g, '');
-  let val = Number(num);
-  const suffix = (m[2] || '').toLowerCase();
-  if (suffix === 'm') val = val * 1_000_000;
-  if (suffix === 'b') val = val * 1_000_000_000;
-  if (!isFinite(val) || val <= 0) return null;
-  return Math.round(val);
+function parseChanceString(chance) {
+  const API_SCALE = 100;
+  if (chance === null || chance === undefined) return null;
+  if (typeof chance === 'number') {
+    if (isFinite(chance) && chance > 0 && chance < 1) return Math.max(1, Math.round((1 / chance) * API_SCALE));
+    if (isFinite(chance) && chance >= 1) return Math.round(chance);
+    return null;
+  }
+  if (typeof chance === 'string') {
+    const s = chance.trim().toLowerCase();
+    if (/^[\d.+-]*e[+-]?\d+$/i.test(s) || /^0?\.?\d+$/.test(s) || /^\d+(\.\d+)?$/.test(s)) {
+      const n = Number(s);
+      if (isFinite(n) && n > 0 && n < 1) return Math.max(1, Math.round((1 / n) * API_SCALE));
+      if (isFinite(n) && n >= 1) return Math.round(n);
+    }
+    const m = s.match(/1\/\s*([\d,.]+)\s*([mb]?)/i) || s.match(/1\s*(?:in|\/)\s*([\d,.]+)\s*([mb]?)/i);
+    if (!m) return null;
+    let num = m[1].replace(/[,]/g, '');
+    let val = Number(num);
+    const suffix = (m[2] || '').toLowerCase();
+    if (suffix === 'm') val = val * 1_000_000;
+    if (suffix === 'b') val = val * 1_000_000_000;
+    if (!isFinite(val) || val <= 0) return null;
+    return Math.round(val);
+  }
+  return null;
 }
 
 function secondsUntilNextUTCDate() {
   const now = new Date();
   const next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 0, 0, 0));
   return Math.max(0, Math.floor((next.getTime() - now.getTime()) / 1000));
+}
+
+function formatOneInShort(oneIn) {
+  if (!isFinite(oneIn) || oneIn === Infinity) return '∞';
+  const n = Math.round(oneIn);
+  return `1 in ${n.toLocaleString()}`;
 }
 
 async function createBountyDetailsView() {
@@ -434,7 +454,10 @@ async function createBountyDetailsView() {
   chanceEl.style.color = 'var(--main-text)';
   chanceEl.style.marginTop = '6px';
   chanceEl.style.fontWeight = '700';
-  chanceEl.textContent = `Chance (base): ${chanceText}`;
+  try {
+    const parsed = parseChanceString(chanceText);
+    chanceEl.textContent = parsed ? `Chance (base): ${formatOneInShort(parsed)}` : `Chance (base): ${chanceText}`; if (parsed) chanceEl.title = `Exact: 1/${parsed.toLocaleString()}`;
+  } catch (e) { chanceEl.textContent = `Chance (base): ${chanceText}`; }
   infoWrap.appendChild(chanceEl);
 
   const eggText = safeVal(currentBounty && currentBounty.Egg) || 'Unknown Egg';
@@ -477,7 +500,16 @@ async function createBountyDetailsView() {
 
   function parseApiDateToUTC(dateStr) {
     if (!dateStr) return null;
-    const parts = dateStr.trim().split(' ');
+    // Accept formats like '15 January 2026' or ISO '2026-01-15' or full ISO timestamps
+    const s = dateStr.trim();
+    const isoMatch = s.match(/^(\d{4})[-\/](\d{2})[-\/](\d{2})/);
+    if (isoMatch) {
+      const y = parseInt(isoMatch[1], 10);
+      const m = parseInt(isoMatch[2], 10) - 1;
+      const d = parseInt(isoMatch[3], 10);
+      if (!isNaN(y) && !isNaN(m) && !isNaN(d)) return new Date(Date.UTC(y, m, d, 0, 0, 0));
+    }
+    const parts = s.split(' ');
     if (parts.length < 3) return null;
     const day = parseInt(parts[0], 10);
     const monthName = parts[1];
@@ -498,10 +530,15 @@ async function createBountyDetailsView() {
   }
 
   const todayUTC = new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate(), 0,0,0));
-  const filteredBounties = (bounties || []).filter(b => {
+  const filteredBounties = (bounties || []).map(b => {
     const d = parseApiDateToUTC(b.Time);
-    return d && d.getTime() >= todayUTC.getTime();
-  });
+    return { raw: b, date: d };
+  }).sort((a, b) => {
+    if (!a.date && !b.date) return 0;
+    if (!a.date) return 1;
+    if (!b.date) return -1;
+    return a.date.getTime() - b.date.getTime();
+  }).map(x => x.raw);
 
   let timerInterval = null;
   function updateTimer() {
@@ -613,7 +650,11 @@ async function createBountyDetailsView() {
         petImg.src = getPetIconByName(petNameSafe) || 'Images/pets/Doggy.webp';
         petImg.alt = petNameSafe;
         nameEl.textContent = petNameSafe;
-        chanceEl.textContent = `Chance (base): ${safeVal(b && b.Chance) || 'Unknown'}`;
+        try {
+          const parsed = parseChanceString(b && b.Chance);
+          chanceEl.textContent = parsed ? `Chance (base): ${formatOneInShort(parsed)}` : `Chance (base): ${safeVal(b && b.Chance) || 'Unknown'}`;
+          if (parsed) chanceEl.title = `Exact: 1/${parsed.toLocaleString()}`;
+        } catch (e) { chanceEl.textContent = `Chance (base): ${safeVal(b && b.Chance) || 'Unknown'}`; }
 
         const targetEggRaw = safeVal(b && b.Egg);
         const targetEggName = targetEggRaw || 'Unknown Egg';
@@ -749,7 +790,11 @@ async function createBountyDetailsView() {
             petImg.src = getPetIconByName(petNameSafe) || 'Images/pets/Doggy.webp';
             petImg.alt = petNameSafe;
             nameEl.textContent = petNameSafe;
-            chanceEl.textContent = `Chance (base): ${safeVal(b && b.Chance) || 'Unknown'}`;
+            try {
+              const parsed = parseChanceString(b && b.Chance);
+              chanceEl.textContent = parsed ? `Chance (base): ${formatOneInShort(parsed)}` : `Chance (base): ${safeVal(b && b.Chance) || 'Unknown'}`;
+              if (parsed) chanceEl.title = `Exact: 1/${parsed.toLocaleString()}`;
+            } catch (e) { chanceEl.textContent = `Chance (base): ${safeVal(b && b.Chance) || 'Unknown'}`; }
 
             const targetEggRaw = safeVal(b && b.Egg);
             const targetEggName = targetEggRaw || eggText || 'Unknown Egg';
@@ -762,12 +807,10 @@ async function createBountyDetailsView() {
               const override = getBountyOverrideByName(b && b.Pet);
               if (override) {
                 newBountyBaseOdds = override;
-                try { chanceEl.textContent = `Chance (base): 1/${newBountyBaseOdds.toLocaleString()} (override)`; } catch (e) {}
+                try { chanceEl.textContent = `Chance (base): ${formatOneInShort(newBountyBaseOdds)} (override)`; } catch (e) {}
               }
             } catch (e) {}
             const newBountyPetObj = { name: (safeVal(b && b.Pet) || 'Unknown') + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b && b.Pet) };
-
-            const selectedEggObj = eggs.find(e => e.name === targetEggName) || (window.eggsJson || []).find(e => e.name === targetEggName) || null;
             const selectedPetsList = selectedEggObj && Array.isArray(selectedEggObj.Pets) ? selectedEggObj.Pets.slice() : [];
 
             combinedEggForTable.name = targetEggName;
@@ -901,7 +944,7 @@ async function createBountyDetailsView() {
     const override = getBountyOverrideByName(bountyNameKey);
     if (override) {
       bountyBaseOdds = override;
-      try { chanceEl.textContent = `Chance (base): 1/${bountyBaseOdds.toLocaleString()}`; } catch (e) {}
+      try { chanceEl.textContent = `Chance (base): ${formatOneInShort(bountyBaseOdds)}`; } catch (e) {}
     }
   } catch (e) {}
   const bountyPetObj = { name: (currentBounty && currentBounty.Pet ? currentBounty.Pet : petNameVal) + ' (Bounty)', baseOdds: bountyBaseOdds || 0, icon: getPetIconByName(currentBounty ? currentBounty.Pet : petNameVal) };
