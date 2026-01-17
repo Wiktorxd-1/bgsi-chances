@@ -21,7 +21,8 @@ const eggs = [
 { name: "Clown Egg", Pets: [ { name: "LOL (Secret)", baseOdds: 100000000 } ], world: "limited" },
 { name: "Cannon Egg", Pets: [ { name: "Cotton Candy", baseOdds: 10000 }, { name: "Golden Balloon", baseOdds: 40000 }, { name: "Royal Lion (Secret)", baseOdds: 1000000000 } ], world: "limited" },
 { name: "Magic Egg", Pets: [ { name: "Golden Lion", baseOdds: 10000 }, { name: "Circus Stack", baseOdds: 100000 }, { name: "The Jester", baseOdds: 5000000 }, { name: "Dark Omen (Secret)", baseOdds: 1000000000 }, { name: "Pig Tophat (Secret)", baseOdds: 5000000000 }, { name: "Dinosaur Tophat (Secret)", baseOdds: 5000000000 }, { name: "Deer Tophat (Secret)", baseOdds: 5000000000 }, { name: "Azure Fate (Secret)", baseOdds: 20000000000 }, { name: "Seraph Tophat (Secret)", baseOdds: 20000000000 }, { name: "Pufferfish Tophat (Secret)", baseOdds: 20000000000 }, { name: "Bruh Tophat (Secret)", baseOdds: 20000000000 }, { name: "Silly Doggy Tophat (Secret)", baseOdds: 50000000000 }, { name: "Leviathan Tophat (Secret)", baseOdds: 50000000000 }, { name: "Giant Chocolate Chicken Tophat (Secret)", baseOdds: 50000000000 }, { name: "Avernus Tophat (Secret)", baseOdds: 50000000000 }, { name: "Bubble Circus Show (Infinity)", baseOdds: 100000000000 } ], world: "limited1" },
-{ name: "Music Egg", Pets: [ { name: "Key Performer", baseOdds: 100000 }, { name: "Music Elemental", baseOdds: 1000000 }, { name: "Giant Bongo Kitty (Secret)", baseOdds: 100000000 }, { name: "Encore (Secret)", baseOdds: 1000000000 }, { name: "Symphonic Hieromphant (Infinity)", baseOdds: 200000000000 } ], world: "limited" }
+{ name: "Music Egg", Pets: [ { name: "Key Performer", baseOdds: 100000 }, { name: "Music Elemental", baseOdds: 1000000 }, { name: "Giant Bongo Kitty (Secret)", baseOdds: 100000000 }, { name: "Encore (Secret)", baseOdds: 1000000000 }, { name: "Symphonic Hieromphant (Infinity)", baseOdds: 200000000000 } ], world: "limited" },
+{ name: "Circus Jester Egg", Pets: [ { name: "Juggler", baseOdds: 10000 }, { name: "Dark Trickster", baseOdds: 100000 }, { name: "Dark Force", baseOdds: 10000000 }, { name: "Stellar Acheron (Secret)", baseOdds: 1000000000 }, { name: "Secret Circus Stack (Secret)", baseOdds: 5000000000 }, { name: "Circus Monster (Infinity)", baseOdds: 200000000000 } ], world: "limited1" }
 ];
 
 
@@ -2399,6 +2400,11 @@ function createEggSettings(egg, canSpawnAsRift) {
             </div>
           </div>
 
+          <button type="button" class="circus-infinity-btn" data-selected="false" style="margin-left:8px;display:inline-flex;align-items:center;gap:8px;padding:8px;border-radius:8px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;color:var(--main-text);">
+            <img src="Images/Icons/Circus_Infinity_Elixir.webp" width="20" height="20" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;" />
+            <span style="font-weight:600;">Circus Infinity Elixir</span>
+          </button>
+
         </div>
 
             <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px;">
@@ -2430,6 +2436,7 @@ function createEggSettings(egg, canSpawnAsRift) {
     const xlBtn = controls.querySelector('.xl-btn');
     const shinyInput = controls.querySelector('.shiny-input');
     const mythicInput = controls.querySelector('.mythic-input');
+    const circusInfinityBtnEl = controls.querySelector('.circus-infinity-btn');
 
     function readSettingsFromDOM() {
       const shinyBtnLocal = controls ? controls.querySelector('.shiny-btn') : null;
@@ -2443,6 +2450,7 @@ function createEggSettings(egg, canSpawnAsRift) {
         secretMult: secretEl ? (secretEl.value === '' ? 1 : Number(secretEl.value)) : 1,
         festive: {
           selected: (controls.querySelector('.festive-select') ? (controls.querySelector('.festive-select').value || 'none') : 'none'),
+          infinity: !!(controls.querySelector('.circus-infinity-btn') && controls.querySelector('.circus-infinity-btn').dataset && controls.querySelector('.circus-infinity-btn').dataset.selected === 'true')
         },
         eventUpgrades: {
           'circus-luck': (controls.querySelector('.event-upgrade-input[data-id="circus-luck"]') ? Number(controls.querySelector('.event-upgrade-input[data-id="circus-luck"]').value || 0) : 0),
@@ -2483,6 +2491,16 @@ function createEggSettings(egg, canSpawnAsRift) {
         controls.querySelector('.festive-select').value = sel;
         const icon = controls.querySelector('.festive-icon');
         if (icon) { icon.onerror = () => icon.src = 'Images/Icons/Placeholder.webp'; if (sel === 'none') icon.src = 'Images/Icons/Placeholder.webp'; else icon.src = 'Images/Icons/Circus_Elixir_' + sel + '.webp'; }
+      }
+      // restore circus infinity elixir selection if present
+      if (controls.querySelector('.circus-infinity-btn') && saved.festive && typeof saved.festive.infinity !== 'undefined') {
+        try {
+          const selInf = saved.festive.infinity ? 'true' : 'false';
+          const btn = controls.querySelector('.circus-infinity-btn');
+          btn.dataset.selected = selInf;
+          if (selInf === 'true') { btn.style.background = '#2596be'; btn.style.color = '#ffffff'; }
+          else { btn.style.background = 'var(--controls-bg)'; btn.style.color = 'var(--main-text)'; }
+        } catch (e) {}
       }
       // restore event upgrades if present
       if (saved.eventUpgrades && typeof saved.eventUpgrades === 'object') {
@@ -2571,12 +2589,12 @@ function createEggSettings(egg, canSpawnAsRift) {
       
       festiveOptions.forEach(o => { if (o.dataset && o.dataset.val) { if (o.dataset.val === v) o.style.background = 'rgba(255,255,255,0.04)'; else o.style.background = 'transparent'; } });
     });
-    if (festiveInfinityBtnEl) {
-      festiveInfinityBtnEl.addEventListener('click', () => {
-        const sel = festiveInfinityBtnEl.dataset.selected === 'true' ? 'false' : 'true';
-        festiveInfinityBtnEl.dataset.selected = sel;
-        if (sel === 'true') { festiveInfinityBtnEl.style.background = '#2596be'; festiveInfinityBtnEl.style.color = '#ffffff'; }
-        else { festiveInfinityBtnEl.style.background = 'var(--controls-bg)'; festiveInfinityBtnEl.style.color = 'var(--main-text)'; }
+    if (circusInfinityBtnEl) {
+      circusInfinityBtnEl.addEventListener('click', () => {
+        const sel = circusInfinityBtnEl.dataset.selected === 'true' ? 'false' : 'true';
+        circusInfinityBtnEl.dataset.selected = sel;
+        if (sel === 'true') { circusInfinityBtnEl.style.background = '#2596be'; circusInfinityBtnEl.style.color = '#ffffff'; }
+        else { circusInfinityBtnEl.style.background = 'var(--controls-bg)'; circusInfinityBtnEl.style.color = 'var(--main-text)'; }
           saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
       });
     }
@@ -2995,6 +3013,9 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       
       const festiveSelectEl = (controlsScope ? controlsScope.querySelector('.festive-select') : null) || document.querySelector('.festive-select');
 
+      // Circus infinity elixir multiplies the festive elixir effects (e.g., 1.5x)
+      const circusInfinitySelected = controlsScope ? !!(controlsScope.querySelector('.circus-infinity-btn') && controlsScope.querySelector('.circus-infinity-btn').dataset.selected === 'true') : !!(document.querySelector('.circus-infinity-btn') && document.querySelector('.circus-infinity-btn').dataset.selected === 'true');
+      const elixirMultiplier = circusInfinitySelected ? 1.5 : 1;
 
       
       const masteryModeEl = null;
@@ -3005,7 +3026,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       
       if (festiveIsSelected) {
         const fest = FESTIVE_POTION_MAP[festiveSelected];
-        const mult = 1;
+        const mult = elixirMultiplier;
         totalLuckPercent += Math.round(fest.luck * mult);
       }
       
@@ -3080,10 +3101,10 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         let mythicOdds = parseOneInInput(mythicInputScoped ? mythicInputScoped.value : null) || 100;
         if (festiveSelected && FESTIVE_POTION_MAP[festiveSelected]) {
         
-          const elixirDivisor = 1;
-          if (elixirDivisor > 1) {
-            shinyOdds = Math.max(1, Math.round(shinyOdds / elixirDivisor));
-            mythicOdds = Math.max(1, Math.round(mythicOdds / elixirDivisor));
+          // apply circus infinity elixir multiplier to variant odds (shiny/mythic)
+          if (elixirMultiplier > 1) {
+            shinyOdds = Math.max(1, Math.round(shinyOdds / elixirMultiplier));
+            mythicOdds = Math.max(1, Math.round(mythicOdds / elixirMultiplier));
           }
           
           if (shinyInputScoped && shinyInputScoped.dataset.userModified !== 'true') { shinyInputScoped.value = `1 in ${shinyOdds}`; if (shinyInputScoped.dataset.userModified !== 'false') { shinyInputScoped.dataset.userModified = 'false'; try { if (controlsScope && controlsScope._saveSettings) controlsScope._saveSettings(); } catch (e) {} } }

@@ -699,7 +699,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-09",
-    "dateRemoved": "2026-01-16"
+    "dateRemoved": "2026-02-13"
   },
   {
     "name": "Cannon Egg",
@@ -716,7 +716,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-09",
-    "dateRemoved": "2026-01-16"
+    "dateRemoved": "2026-02-13"
   },
   {
     "name": "Magic Egg",
@@ -746,7 +746,27 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-09",
-    "dateRemoved": "2026-01-16"
+    "dateRemoved": "2026-02-13"
+  },
+  {
+    "name": "Circus Jester Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Circus_Jester_Egg.png",
+    "pets": [
+      "Jester Doggy",
+      "Jester Kitty",
+      "Jester Bunny",
+      "Juggler",
+      "Dark Trickster",
+      "Dark Force",
+      "Stellar Acheron",
+      "Secret Circus Stack",
+      "Circus Monster"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-01-16",
+    "dateRemoved": "2026-02-13"
   },
   {
     "name": "New Years Egg",
@@ -783,7 +803,7 @@
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
     "canSpawnAsRift": true,
-    "secretBountyRotation": true,
+    "secretBountyRotation": false,
     "dateAdded": "2025-12-05",
     "dateRemoved": "2026-01-09",
     "index": "Christmas Event 2025"
@@ -803,7 +823,7 @@
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
     "canSpawnAsRift": true,
-    "secretBountyRotation": true,
+    "secretBountyRotation": false,
     "dateAdded": "2025-12-05",
     "dateRemoved": "2026-01-09",
     "index": "Christmas Event 2025"
@@ -829,7 +849,7 @@
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
     "canSpawnAsRift": true,
-    "secretBountyRotation": true,
+    "secretBountyRotation": false,
     "dateAdded": "2025-12-05",
     "dateRemoved": "2026-01-09",
     "index": "Christmas Event 2025"
@@ -856,7 +876,7 @@
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
     "canSpawnAsRift": true,
-    "secretBountyRotation": true,
+    "secretBountyRotation": false,
     "dateAdded": "2025-12-12",
     "dateRemoved": "2026-01-09",
     "index": "Christmas Event 2025"
@@ -880,7 +900,7 @@
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
     "canSpawnAsRift": true,
-    "secretBountyRotation": true,
+    "secretBountyRotation": false,
     "dateAdded": "2025-12-12",
     "dateRemoved": "2026-01-09",
     "index": "Christmas Event 2025"
@@ -903,7 +923,7 @@
     "luckIgnored": false,
     "infinityEgg": "Christmas Event 2025",
     "canSpawnAsRift": true,
-    "secretBountyRotation": true,
+    "secretBountyRotation": false,
     "dateAdded": "2025-12-19",
     "dateRemoved": "2026-01-09",
     "index": "Christmas Event 2025"
@@ -1859,7 +1879,7 @@
     "dateRemoved": "2026-01-09"
   },
   {
-    "name": "Music Egg",
+    "name": "Instrumental Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "pets": [
       "Cliffy",
@@ -1868,13 +1888,16 @@
       "Music Elemental",
       "Giant Bongo Kitty",
       "Encore",
-      "Symphonic Hieromphant"
+      "Symphonic Hieromphant",
+      "Cyber Pyramidium",
+      "Rockstar Leviathan",
+      "FutureWebsiteOwner Plushie"
     ],
     "luckIgnored": false,
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-09",
-    "dateRemoved": "2026-01-16"
+    "dateRemoved": "2026-02-13"
   },
   {
     "name": "Prismatic Egg",
