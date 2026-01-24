@@ -429,6 +429,22 @@
     "dateRemoved": ""
   },
   {
+    "name": "Season 13 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Season_13_Egg.png",
+    "pets": [
+      "Sunflower Doggy",
+      "Violet Kitty",
+      "Lily Drop",
+      "Azure Lily",
+      "Floral Dogcat"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-01-23",
+    "dateRemoved": "2026-02-13"
+  },
+  {
     "name": "Season 12 Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/69/Season_12_Egg.png",
     "pets": [
@@ -699,7 +715,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-09",
-    "dateRemoved": "2026-02-13"
+    "dateRemoved": "2026-01-30"
   },
   {
     "name": "Cannon Egg",
@@ -716,7 +732,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-09",
-    "dateRemoved": "2026-02-13"
+    "dateRemoved": "2026-01-30"
   },
   {
     "name": "Magic Egg",
@@ -746,7 +762,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-09",
-    "dateRemoved": "2026-02-13"
+    "dateRemoved": "2026-01-30"
   },
   {
     "name": "Circus Jester Egg",
@@ -766,7 +782,27 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-16",
-    "dateRemoved": "2026-02-13"
+    "dateRemoved": "2026-01-30"
+  },
+  {
+    "name": "Jamboree Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/35/Jamboree_Egg.png",
+    "pets": [
+      "Magician Bunny",
+      "que fofo",
+      "Mini-Go Round",
+      "Timid Cannon",
+      "Juggler Ditto",
+      "Flagbearer",
+      "Merry-Go Hound",
+      "Manticore",
+      "Fantasia"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-01-23",
+    "dateRemoved": "2026-01-30"
   },
   {
     "name": "New Years Egg",
@@ -1897,7 +1933,26 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-09",
-    "dateRemoved": "2026-02-13"
+    "dateRemoved": "2026-01-23"
+  },
+  {
+    "name": "Retro Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "pets": [
+      "Retro Doggy",
+      "Retro Kitty",
+      "Retro Dominus",
+      "Retro Hexarium",
+      "Retro Pyramidium",
+      "Retro Kraken",
+      "Retro Face God",
+      "PC-Bot"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-01-23",
+    "dateRemoved": ""
   },
   {
     "name": "Prismatic Egg",
