@@ -703,6 +703,44 @@
     "dateRemoved": "2025-11-21"
   },
   {
+    "name": "Azure Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0d/Azure_Egg.png",
+    "pets": [
+      "Neon Angel",
+      "Azure Judgement",
+      "Azure Angel",
+      "Azure Hexarium",
+      "Azure Gaze",
+      "Reincarnation",
+      "Supreme Seraphim",
+      "Equipoise"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-01-30",
+    "dateRemoved": "2026-02-06"
+  },
+  {
+    "name": "Hellish Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/25/Hellish_Egg.png",
+    "pets": [
+      "Hellish Demon",
+      "Fire Golem",
+      "Demon Dragon",
+      "Hellxarium",
+      "Hellish Beast",
+      "Devil's Skull",
+      "Inferno Gem",
+      "Equipoise"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-01-30",
+    "dateRemoved": "2026-02-06"
+  },
+  {
     "name": "Clown Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7a/Clown_Egg.png",
     "pets": [
@@ -1937,7 +1975,7 @@
   },
   {
     "name": "Retro Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Retro_Egg.png",
     "pets": [
       "Retro Doggy",
       "Retro Kitty",

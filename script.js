@@ -18,12 +18,9 @@ const eggs = [
 { name: "Secret Egg", Pets: [ { name: "Gigantic Spitty (Infinity)", baseOdds: 40000000000 } ], world: "1" },
 { name: "Atlantis Egg", Pets: [ { name: "Angler Fish", baseOdds: 4000 }, { name: "Jellyfish", baseOdds: 200000 }, { name: "Atlantis Guardian", baseOdds: 2000000 }, { name: "Tidal God (Secret)", baseOdds: 250000000 } ], world: "3" },
 { name: "Classic Egg", Pets: [ { name: "Classic Unicorn", baseOdds: 4000 }, { name: "Classic Dominus", baseOdds: 200000 }, { name: "Classic Noob", baseOdds: 2000000 }, { name: "Classic Overlord (Secret)", baseOdds: 100000000 } ], world: "3" },
-{ name: "Clown Egg", Pets: [ { name: "LOL (Secret)", baseOdds: 100000000 } ], world: "limited" },
-{ name: "Cannon Egg", Pets: [ { name: "Cotton Candy", baseOdds: 10000 }, { name: "Golden Balloon", baseOdds: 40000 }, { name: "Royal Lion (Secret)", baseOdds: 1000000000 } ], world: "limited1" },
-{ name: "Magic Egg", Pets: [ { name: "Golden Lion", baseOdds: 10000 }, { name: "Circus Stack", baseOdds: 100000 }, { name: "The Jester", baseOdds: 5000000 }, { name: "Dark Omen (Secret)", baseOdds: 1000000000 }, { name: "Pig Tophat (Secret)", baseOdds: 5000000000 }, { name: "Dinosaur Tophat (Secret)", baseOdds: 5000000000 }, { name: "Deer Tophat (Secret)", baseOdds: 5000000000 }, { name: "Azure Fate (Secret)", baseOdds: 20000000000 }, { name: "Seraph Tophat (Secret)", baseOdds: 20000000000 }, { name: "Pufferfish Tophat (Secret)", baseOdds: 20000000000 }, { name: "Bruh Tophat (Secret)", baseOdds: 20000000000 }, { name: "Silly Doggy Tophat (Secret)", baseOdds: 50000000000 }, { name: "Leviathan Tophat (Secret)", baseOdds: 50000000000 }, { name: "Giant Chocolate Chicken Tophat (Secret)", baseOdds: 50000000000 }, { name: "Avernus Tophat (Secret)", baseOdds: 50000000000 }, { name: "Bubble Circus Show (Infinity)", baseOdds: 100000000000 } ], world: "limited1" },
-{ name: "Circus Jester Egg", Pets: [ { name: "Juggler", baseOdds: 10000 }, { name: "Dark Trickster", baseOdds: 100000 }, { name: "Dark Force", baseOdds: 10000000 }, { name: "Stellar Acheron (Secret)", baseOdds: 1000000000 }, { name: "Secret Circus Stack (Secret)", baseOdds: 5000000000 }, { name: "Circus Monster (Infinity)", baseOdds: 200000000000 } ], world: "limited1" },
-{ name: "Jamboree Egg", Pets: [ { name: "Timid Cannon", baseOdds: 10000 }, { name: "Juggler Ditto", baseOdds: 100000 }, { name: "Flagbearer", baseOdds: 10000000 }, { name: "Merry-Go Hound (Secret)", baseOdds: 2000000000 }, { name: "Manticore (Secret)", baseOdds: 5000000000 }, { name: "Fantasia (Infinity)", baseOdds: 50000000000 } ], world: "limited1" },
-{ name: "Retro Egg", Pets: [ { name: "Retro Dominus", baseOdds: 100000 }, { name: "Retro Hexarium", baseOdds: 1000000 }, { name: "Retro Pyramidium (Secret)", baseOdds: 100000000 }, { name: "Retro Kraken (Secret)", baseOdds: 1000000000 }, { name: "Retro Face God (Secret)", baseOdds: 10000000000 }, { name: "PC-Bot (Infinity)", baseOdds: 200000000000 } ], world: "1" }
+{ name: "Retro Egg", Pets: [ { name: "Retro Dominus", baseOdds: 100000 }, { name: "Retro Hexarium", baseOdds: 1000000 }, { name: "Retro Pyramidium (Secret)", baseOdds: 100000000 }, { name: "Retro Kraken (Secret)", baseOdds: 1000000000 }, { name: "Retro Face God (Secret)", baseOdds: 10000000000 }, { name: "PC-Bot (Infinity)", baseOdds: 200000000000 } ], world: "1" },
+{ name: "Azure Egg", Pets: [ { name: "Azure Angel", baseOdds: 10000 }, { name: "Azure Hexarium", baseOdds: 100000 }, { name: "Azure Gaze", baseOdds: 10000000 }, { name: "Reincarnation (Secret)", baseOdds: 6666666667 }, { name: "Supreme Seraphim (Secret)", baseOdds: 25000000000 }, { name: "Equipoise (Infinity)", baseOdds: 100000000000 } ], world: "1" },
+{ name: "Hellish Egg", Pets: [ { name: "Demon Dragon", baseOdds: 10000 }, { name: "Hellxarium", baseOdds: 100000 }, { name: "Hellish Beast", baseOdds: 10000000 }, { name: "Devil's Skull (Secret)", baseOdds: 6666666667 }, { name: "Inferno Gem (Secret)", baseOdds: 25000000000 }, { name: "Equipoise (Infinity)", baseOdds: 100000000000 } ], world: "1" }
 ];
 
 
@@ -50,7 +47,7 @@ const FESTIVE_POTION_MAP = {
   'I': { luck: 50, shiny: 50, mythic: 25 },
   'II': { luck: 100, shiny: 100, mythic: 75 },
   'III': { luck: 150, shiny: 150, mythic: 100 },
-  'IV': { luck: 250, shiny: 250, mythic: 200 }
+  'IV': { luck: 250, shiny: 175, mythic: 125 }
 };
 
 
@@ -2356,6 +2353,11 @@ function createEggSettings(egg, canSpawnAsRift) {
    `;
   
   const isCircusEgg = isCircusEggFn(egg) || (egg && egg.world === 'limited1') || (egg && egg.name === 'Infinity Egg' && typeof selectedInfinityWorld !== 'undefined' && String(selectedInfinityWorld).toLowerCase() === 'c2025');
+
+  // event flags: Azure (has Azure Fate pet) gets Heaven IV toggle; Hell Egg gets Hell IV toggle
+  const hasAzurePet = (egg && typeof egg.name === 'string' && /azure/i.test(egg.name)) || (Array.isArray(egg && egg.Pets) && (egg.Pets || []).some(p => /azure/i.test(p && p.name)));
+  const isHellEgg = (egg && typeof egg.name === 'string' && /hell/i.test(egg.name));
+
   if (isCircusEgg) {
     controlsHtml += `
       <details class="circus-settings" open style="margin-top:12px;border-radius:8px;border:1px solid var(--table-border);padding:10px;background:var(--controls-bg);">
@@ -2414,6 +2416,23 @@ function createEggSettings(egg, canSpawnAsRift) {
             </div>
             <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px;">
               <label style="min-width:140px;">Secret Luck:</label>
+            </div>
+
+            <!-- Event-only toggles: Heaven IV (Azure) and Hell IV (Hell Egg) -->
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px;">
+              <!-- Heaven IV (Only show when egg has Azure Fate) -->
+              <button type="button" class="heaven-iv-btn" data-selected="false" style="display:none;border-radius:8px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;color:var(--main-text);">
+                <img src="Images/Icons/Heaven_Potion_IV.webp" width="20" height="20" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;margin-right:8px;" />
+                <span>Heaven IV</span>
+              </button>
+              <!-- Hell IV (Only show when egg is Hell Egg) -->
+              <button type="button" class="hell-iv-btn" data-selected="false" style="display:none;border-radius:8px;padding:8px 12px;border:1px solid var(--table-border);background:var(--controls-bg);cursor:pointer;color:var(--main-text);">
+                <img src="Images/Icons/Hell_IV.webp" width="20" height="20" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;margin-right:8px;" />
+                <span>Hell IV</span>
+              </button>
+            </div>
+
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px;">
               <input type="number" class="event-upgrade-input" data-id="circus-secret-luck" min="0" max="4" step="1" value="0" style="min-width:120px;padding:6px;border-radius:6px;border:1px solid var(--table-border);background:var(--controls-bg);color:var(--main-text);" />
             </div>
             <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px;">
@@ -2425,6 +2444,71 @@ function createEggSettings(egg, canSpawnAsRift) {
     `;
   }
   controls.innerHTML = controlsHtml;
+
+  // If this egg is an Azure or Hell event, hide the normal festive dropdown
+  // and expose the single IV toggle(s) as used in the old circus event.
+  try {
+    const festiveSelectEl = controls.querySelector('.festive-select');
+    const festiveDropdownBtn = controls.querySelector('.festive-dropdown-btn');
+    let heavenBtnLocal = controls.querySelector('.heaven-iv-btn');
+    let hellBtnLocal = controls.querySelector('.hell-iv-btn');
+
+    // Create Heaven button if needed and egg is Azure (show next to the festive dropdown)
+    if (typeof hasAzurePet !== 'undefined' && hasAzurePet && !heavenBtnLocal) {
+      try {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'heaven-iv-btn';
+        btn.dataset.selected = 'false';
+        btn.style.display = 'inline-flex';
+        btn.style.borderRadius = '8px';
+        btn.style.padding = '8px 12px';
+        btn.style.border = '1px solid var(--table-border)';
+        btn.style.background = 'var(--controls-bg)';
+        btn.style.cursor = 'pointer';
+        btn.style.color = 'var(--main-text)';
+        btn.innerHTML = `<img src="Images/Icons/Heaven_Potion_IV.webp" width="20" height="20" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;margin-right:8px;" /><span>Heaven Elixir IV</span>`;
+        const festiveContainer = controls.querySelector('.festive-dropdown-btn') ? controls.querySelector('.festive-dropdown-btn').parentNode : null;
+        if (festiveContainer && festiveContainer.parentNode) festiveContainer.parentNode.insertBefore(btn, festiveContainer.nextSibling);
+        else controls.appendChild(btn);
+      } catch (e) {}
+      heavenBtnLocal = controls.querySelector('.heaven-iv-btn');
+    }
+
+    // Create Hell button if needed and egg is Hell (place next to the festive dropdown)
+    if (typeof isHellEgg !== 'undefined' && isHellEgg && !hellBtnLocal) {
+      try {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'hell-iv-btn';
+        btn.dataset.selected = 'false';
+        btn.style.display = 'inline-flex';
+        btn.style.borderRadius = '8px';
+        btn.style.padding = '8px 12px';
+        btn.style.border = '1px solid var(--table-border)';
+        btn.style.background = 'var(--controls-bg)';
+        btn.style.cursor = 'pointer';
+        btn.style.color = 'var(--main-text)';
+        btn.innerHTML = `<img src="Images/Icons/Hell_IV.webp" width="20" height="20" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;margin-right:8px;" /><span>Hell Elixir IV</span>`;
+        const festiveContainer = controls.querySelector('.festive-dropdown-btn') ? controls.querySelector('.festive-dropdown-btn').parentNode : null;
+        if (festiveContainer && festiveContainer.parentNode) festiveContainer.parentNode.insertBefore(btn, festiveContainer.nextSibling);
+        else controls.appendChild(btn);
+      } catch (e) {}
+      hellBtnLocal = controls.querySelector('.hell-iv-btn');
+    }
+    // Hide the normal dropdown and show the toggles (if applicable)
+    if (typeof hasAzurePet !== 'undefined' && hasAzurePet && heavenBtnLocal) {
+      if (festiveSelectEl) festiveSelectEl.style.display = 'none';
+      if (festiveDropdownBtn) festiveDropdownBtn.style.display = 'none';
+      heavenBtnLocal.style.display = 'inline-flex';
+    }
+    if (typeof isHellEgg !== 'undefined' && isHellEgg && hellBtnLocal) {
+      if (festiveSelectEl) festiveSelectEl.style.display = 'none';
+      if (festiveDropdownBtn) festiveDropdownBtn.style.display = 'none';
+      hellBtnLocal.style.display = 'inline-flex';
+    }
+  } catch (e) {}
+
   try {
     const STORAGE_KEY = 'luck_settings';
     let saved = {};
@@ -2438,6 +2522,8 @@ function createEggSettings(egg, canSpawnAsRift) {
     const shinyInput = controls.querySelector('.shiny-input');
     const mythicInput = controls.querySelector('.mythic-input');
     const circusInfinityBtnEl = controls.querySelector('.circus-infinity-btn');
+    const heavenBtn = controls.querySelector('.heaven-iv-btn');
+    const hellBtn = controls.querySelector('.hell-iv-btn');
 
     function readSettingsFromDOM() {
       const shinyBtnLocal = controls ? controls.querySelector('.shiny-btn') : null;
@@ -2457,6 +2543,10 @@ function createEggSettings(egg, canSpawnAsRift) {
           'circus-luck': (controls.querySelector('.event-upgrade-input[data-id="circus-luck"]') ? Number(controls.querySelector('.event-upgrade-input[data-id="circus-luck"]').value || 0) : 0),
           'circus-secret-luck': (controls.querySelector('.event-upgrade-input[data-id="circus-secret-luck"]') ? Number(controls.querySelector('.event-upgrade-input[data-id="circus-secret-luck"]').value || 0) : 0),
           'circus-infinity-luck': (controls.querySelector('.event-upgrade-input[data-id="circus-infinity-luck"]') ? Number(controls.querySelector('.event-upgrade-input[data-id="circus-infinity-luck"]').value || 0) : 0)
+        },
+        eventSpecial: {
+          heavenIV: !!(controls.querySelector('.heaven-iv-btn') && controls.querySelector('.heaven-iv-btn').dataset && controls.querySelector('.heaven-iv-btn').dataset.selected === 'true'),
+          hellIV: !!(controls.querySelector('.hell-iv-btn') && controls.querySelector('.hell-iv-btn').dataset && controls.querySelector('.hell-iv-btn').dataset.selected === 'true')
         },
         variants: {
           shiny: {
@@ -2503,6 +2593,20 @@ function createEggSettings(egg, canSpawnAsRift) {
           else { btn.style.background = 'var(--controls-bg)'; btn.style.color = 'var(--main-text)'; }
         } catch (e) {}
       }
+
+      // restore event special toggles if present
+      try {
+        if (controls.querySelector('.heaven-iv-btn')) {
+          const hbtn = controls.querySelector('.heaven-iv-btn');
+          if (hasAzurePet) hbtn.style.display = 'inline-flex'; else hbtn.style.display = 'none';
+          if (saved.eventSpecial && typeof saved.eventSpecial.heavenIV !== 'undefined' && saved.eventSpecial.heavenIV) { hbtn.dataset.selected = 'true'; hbtn.style.background = '#2596be'; hbtn.style.color = '#ffffff'; }
+        }
+        if (controls.querySelector('.hell-iv-btn')) {
+          const hb = controls.querySelector('.hell-iv-btn');
+          if (isHellEgg) hb.style.display = 'inline-flex'; else hb.style.display = 'none';
+          if (saved.eventSpecial && typeof saved.eventSpecial.hellIV !== 'undefined' && saved.eventSpecial.hellIV) { hb.dataset.selected = 'true'; hb.style.background = '#9b1f1f'; hb.style.color = '#ffffff'; }
+        }
+      } catch (e) {}
       // restore event upgrades if present
       if (saved.eventUpgrades && typeof saved.eventUpgrades === 'object') {
         try {
@@ -2597,6 +2701,26 @@ function createEggSettings(egg, canSpawnAsRift) {
         if (sel === 'true') { circusInfinityBtnEl.style.background = '#2596be'; circusInfinityBtnEl.style.color = '#ffffff'; }
         else { circusInfinityBtnEl.style.background = 'var(--controls-bg)'; circusInfinityBtnEl.style.color = 'var(--main-text)'; }
           saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
+      });
+    }
+    if (heavenBtn) {
+      heavenBtn.type = 'button';
+      heavenBtn.addEventListener('click', () => {
+        const sel = heavenBtn.dataset.selected === 'true' ? 'false' : 'true';
+        heavenBtn.dataset.selected = sel;
+        if (sel === 'true') { heavenBtn.style.background = '#2596be'; heavenBtn.style.color = '#ffffff'; }
+        else { heavenBtn.style.background = 'var(--controls-bg)'; heavenBtn.style.color = 'var(--main-text)'; }
+        saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
+      });
+    }
+    if (hellBtn) {
+      hellBtn.type = 'button';
+      hellBtn.addEventListener('click', () => {
+        const sel = hellBtn.dataset.selected === 'true' ? 'false' : 'true';
+        hellBtn.dataset.selected = sel;
+        if (sel === 'true') { hellBtn.style.background = '#9b1f1f'; hellBtn.style.color = '#ffffff'; }
+        else { hellBtn.style.background = 'var(--controls-bg)'; hellBtn.style.color = 'var(--main-text)'; }
+        saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
       });
     }
 
@@ -3030,6 +3154,20 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         const mult = elixirMultiplier;
         totalLuckPercent += Math.round(fest.luck * mult);
       }
+
+      // apply Heaven IV / Hell IV toggles if present (they are single-toggle event options)
+      try {
+        const heavenSelectedScoped = controlsScope ? !!(controlsScope.querySelector('.heaven-iv-btn') && controlsScope.querySelector('.heaven-iv-btn').dataset.selected === 'true') : false;
+        const hellSelectedScoped = controlsScope ? !!(controlsScope.querySelector('.hell-iv-btn') && controlsScope.querySelector('.hell-iv-btn').dataset.selected === 'true') : false;
+        if (heavenSelectedScoped) {
+          const festIV = FESTIVE_POTION_MAP['IV'];
+          if (festIV && typeof festIV.luck === 'number') totalLuckPercent += Math.round(festIV.luck);
+        }
+        if (hellSelectedScoped) {
+          const festIV = FESTIVE_POTION_MAP['IV'];
+          if (festIV && typeof festIV.luck === 'number') totalLuckPercent += Math.round(festIV.luck);
+        }
+      } catch (e) {}
       
       // Mastery removed; event upgrades apply bonuses via `EVENT_UPGRADES`
       let masterySecretPercent = 0;
@@ -3102,12 +3240,26 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         let mythicOdds = parseOneInInput(mythicInputScoped ? mythicInputScoped.value : null) || 100;
         if (festiveSelected && FESTIVE_POTION_MAP[festiveSelected]) {
         
-          // apply circus infinity elixir multiplier to variant odds (shiny/mythic)
-          if (elixirMultiplier > 1) {
-            shinyOdds = Math.max(1, Math.round(shinyOdds / elixirMultiplier));
-            mythicOdds = Math.max(1, Math.round(mythicOdds / elixirMultiplier));
+          // compute combined divisors for variant odds (consider circus infinity + event IV toggles)
+          let shinyDivisor = elixirMultiplier || 1;
+          let mythicDivisor = elixirMultiplier || 1;
+          try {
+            const heavenSelectedScoped = controlsScope ? !!(controlsScope.querySelector('.heaven-iv-btn') && controlsScope.querySelector('.heaven-iv-btn').dataset.selected === 'true') : false;
+            const hellSelectedScoped = controlsScope ? !!(controlsScope.querySelector('.hell-iv-btn') && controlsScope.querySelector('.hell-iv-btn').dataset.selected === 'true') : false;
+            if (heavenSelectedScoped || hellSelectedScoped) {
+              const iv = FESTIVE_POTION_MAP['IV'];
+              if (iv && typeof iv.shiny === 'number') shinyDivisor *= (1 + iv.shiny / 100);
+              if (iv && typeof iv.mythic === 'number') mythicDivisor *= (1 + iv.mythic / 100);
+            }
+          } catch (e) {}
+
+          if (shinyDivisor > 1) {
+            shinyOdds = Math.max(1, Math.round(shinyOdds / shinyDivisor));
           }
-          
+          if (mythicDivisor > 1) {
+            mythicOdds = Math.max(1, Math.round(mythicOdds / mythicDivisor));
+          }
+
           if (shinyInputScoped && shinyInputScoped.dataset.userModified !== 'true') { shinyInputScoped.value = `1 in ${shinyOdds}`; if (shinyInputScoped.dataset.userModified !== 'false') { shinyInputScoped.dataset.userModified = 'false'; try { if (controlsScope && controlsScope._saveSettings) controlsScope._saveSettings(); } catch (e) {} } }
           if (mythicInputScoped && mythicInputScoped.dataset.userModified !== 'true') { mythicInputScoped.value = `1 in ${mythicOdds}`; if (mythicInputScoped.dataset.userModified !== 'false') { mythicInputScoped.dataset.userModified = 'false'; try { if (controlsScope && controlsScope._saveSettings) controlsScope._saveSettings(); } catch (e) {} } }
         }
