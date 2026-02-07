@@ -703,6 +703,26 @@
     "dateRemoved": "2025-11-21"
   },
   {
+    "name": "Valentine's Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/60/Valentine%27s_Egg.png",
+    "pets": [
+      "Letter Kitty",
+      "Lovely Doggy",
+      "Lovely Ribbon",
+      "Lovebirds",
+      "Chocolate Bond",
+      "Chocolate Gift",
+      "Pure of Heart",
+      "Amour Archer",
+      "Rose Koi"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-02-06",
+    "dateRemoved": "2026-02-13"
+  },
+  {
     "name": "Azure Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0d/Azure_Egg.png",
     "pets": [
@@ -719,7 +739,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-30",
-    "dateRemoved": "2026-02-06"
+    "dateRemoved": ""
   },
   {
     "name": "Hellish Egg",
@@ -738,7 +758,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-30",
-    "dateRemoved": "2026-02-06"
+    "dateRemoved": ""
   },
   {
     "name": "Clown Egg",

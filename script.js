@@ -18,9 +18,11 @@ const eggs = [
 { name: "Secret Egg", Pets: [ { name: "Gigantic Spitty (Infinity)", baseOdds: 40000000000 } ], world: "1" },
 { name: "Atlantis Egg", Pets: [ { name: "Angler Fish", baseOdds: 4000 }, { name: "Jellyfish", baseOdds: 200000 }, { name: "Atlantis Guardian", baseOdds: 2000000 }, { name: "Tidal God (Secret)", baseOdds: 250000000 } ], world: "3" },
 { name: "Classic Egg", Pets: [ { name: "Classic Unicorn", baseOdds: 4000 }, { name: "Classic Dominus", baseOdds: 200000 }, { name: "Classic Noob", baseOdds: 2000000 }, { name: "Classic Overlord (Secret)", baseOdds: 100000000 } ], world: "3" },
-{ name: "Retro Egg", Pets: [ { name: "Retro Dominus", baseOdds: 100000 }, { name: "Retro Hexarium", baseOdds: 1000000 }, { name: "Retro Pyramidium (Secret)", baseOdds: 100000000 }, { name: "Retro Kraken (Secret)", baseOdds: 1000000000 }, { name: "Retro Face God (Secret)", baseOdds: 10000000000 }, { name: "PC-Bot (Infinity)", baseOdds: 200000000000 } ], world: "1" },
-{ name: "Azure Egg", Pets: [ { name: "Azure Angel", baseOdds: 10000 }, { name: "Azure Hexarium", baseOdds: 100000 }, { name: "Azure Gaze", baseOdds: 10000000 }, { name: "Reincarnation (Secret)", baseOdds: 6666666667 }, { name: "Supreme Seraphim (Secret)", baseOdds: 25000000000 }, { name: "Equipoise (Infinity)", baseOdds: 100000000000 } ], world: "1" },
-{ name: "Hellish Egg", Pets: [ { name: "Demon Dragon", baseOdds: 10000 }, { name: "Hellxarium", baseOdds: 100000 }, { name: "Hellish Beast", baseOdds: 10000000 }, { name: "Devil's Skull (Secret)", baseOdds: 6666666667 }, { name: "Inferno Gem (Secret)", baseOdds: 25000000000 }, { name: "Equipoise (Infinity)", baseOdds: 100000000000 } ], world: "1" }
+{ name: "Royal Egg", Pets: [ { name: "Royal Inferno Dragon", baseOdds: 1000 }, { name: "Prince Slime", baseOdds: 5000 }, { name: "Royalty", baseOdds: 20000 }, { name: "Royal Dogcat (Secret)", baseOdds: 400000 } ], world: "1" },
+{ name: "Retro Egg", Pets: [ { name: "Retro Dominus", baseOdds: 100000 }, { name: "Retro Hexarium", baseOdds: 1000000 }, { name: "Retro Pyramidium (Secret)", baseOdds: 100000000 }, { name: "Retro Kraken (Secret)", baseOdds: 1000000000 }, { name: "Retro Face God (Secret)", baseOdds: 10000000000 }, { name: "PC-Bot (Infinity)", baseOdds: 200000000000 } ], world: "limited" },
+{ name: "Azure Egg", Pets: [ { name: "Azure Angel", baseOdds: 10000 }, { name: "Azure Hexarium", baseOdds: 100000 }, { name: "Azure Gaze", baseOdds: 10000000 }, { name: "Reincarnation (Secret)", baseOdds: 6666666667 }, { name: "Supreme Seraphim (Secret)", baseOdds: 25000000000 }, { name: "Equipoise (Infinity)", baseOdds: 100000000000 } ], world: "limited" },
+{ name: "Hellish Egg", Pets: [ { name: "Demon Dragon", baseOdds: 10000 }, { name: "Hellxarium", baseOdds: 100000 }, { name: "Hellish Beast", baseOdds: 10000000 }, { name: "Devil's Skull (Secret)", baseOdds: 6666666667 }, { name: "Inferno Gem (Secret)", baseOdds: 25000000000 }, { name: "Equipoise (Infinity)", baseOdds: 100000000000 } ], world: "limited" },
+{ name: "Valentine's Egg", Pets: [ { name: "Lovebirds", baseOdds: 10000 }, { name: "Chocolate Bond", baseOdds: 66667 }, { name: "Chocolate Gift", baseOdds: 4000000 }, { name: "Pure of Heart (Secret)", baseOdds: 2000000000 }, { name: "Amour Archer (Secret)", baseOdds: 10000000000 }, { name: "Rose Koi (Infinity)", baseOdds: 55555555556 } ], world: "limited" }
 ];
 
 
@@ -47,11 +49,13 @@ const FESTIVE_POTION_MAP = {
   'I': { luck: 50, shiny: 50, mythic: 25 },
   'II': { luck: 100, shiny: 100, mythic: 75 },
   'III': { luck: 150, shiny: 150, mythic: 100 },
-  'IV': { luck: 250, shiny: 175, mythic: 125 }
+  'IV': { luck: 250, shiny: 175, mythic: 125 },
+  'VALENTINE': { luck: 250, shiny: 200, mythic: 200 },
+  'DUALITY': { luck: 150, shiny: 150, mythic: 150 }
 };
 
 
-// EVENT_UPGRADES in legacy map format (keyed by id, numeric levels) — Circus upgrades
+
 const EVENT_UPGRADES = {
   "circus-luck": {
     1: { luck: 0.1 },
@@ -499,7 +503,7 @@ async function createBountyDetailsView() {
 
   function parseApiDateToUTC(dateStr) {
     if (!dateStr) return null;
-    // Accept formats like '15 January 2026' or ISO '2026-01-15' or full ISO timestamps
+    
     const s = dateStr.trim();
     const isoMatch = s.match(/^(\d{4})[-\/](\d{2})[-\/](\d{2})/);
     if (isoMatch) {
@@ -667,7 +671,7 @@ async function createBountyDetailsView() {
           const override = getBountyOverrideByName(b && b.Pet);
           if (override) {
             newBountyBaseOdds = override;
-            try { chanceEl.textContent = `Chance (base): 1/${newBountyBaseOdds.toLocaleString()}`; } catch (e) {}
+            try { chanceEl.textContent = `Chance (base): ${formatOneInShort(newBountyBaseOdds)}`; } catch (e) {}
           }
         } catch (e) {}
         const newBountyPetObj = { name: (safeVal(b && b.Pet) || 'Unknown') + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b && b.Pet) };
@@ -806,7 +810,7 @@ async function createBountyDetailsView() {
               const override = getBountyOverrideByName(b && b.Pet);
               if (override) {
                 newBountyBaseOdds = override;
-                try { chanceEl.textContent = `Chance (base): ${formatOneInShort(newBountyBaseOdds)} (override)`; } catch (e) {}
+                try { chanceEl.textContent = `Chance (base): ${formatOneInShort(newBountyBaseOdds)}`; } catch (e) {}
               }
             } catch (e) {}
             const newBountyPetObj = { name: (safeVal(b && b.Pet) || 'Unknown') + ' (Bounty)', baseOdds: newBountyBaseOdds || 0, icon: getPetIconByName(b && b.Pet) };
@@ -1093,255 +1097,6 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
       { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" },
       { id: "c2025", label: "Circus 2025", icon: "Images/Icons/Circus_Icon.webp" }
     ];
-  const btnRow = document.createElement("div");
-    btnRow.style.display = "flex";
-    btnRow.style.flexDirection = "row";
-    btnRow.style.flexWrap = "nowrap";
-    btnRow.style.alignItems = "center";
-    btnRow.style.gap = "12px";
-    btnRow.style.margin = "16px 0";
-    btnRow.style.justifyContent = "center";
-    btnRow.style.width = "100%";
-    btnRow.style.overflowX = "auto";
-    btnRow.style.padding = "6px 4px";
-
-    worlds.forEach(w => {
-      const btn = document.createElement("button");
-
-      btn.style.display = "flex";
-      btn.style.alignItems = "center";
-      btn.style.gap = "8px";
-      btn.style.padding = "7px 18px";
-      btn.style.borderRadius = "8px";
-      btn.style.border = "none";
-      btn.style.fontWeight = "bold";
-      btn.style.cursor = "pointer";
-      btn.style.fontSize = "1rem";
-
-      btn.style.color = "var(--main-text)";
-
-      const selectedBg = "rgb(66,78,166)";
-      btn.style.background = (selectedInfinityWorld === w.id) ? selectedBg : "var(--controls-bg)";
-
-      const iconImg = document.createElement("img");
-      iconImg.src = w.icon;
-      iconImg.alt = w.label + " Icon";
-      iconImg.style.width = "28px";
-      iconImg.style.height = "28px";
-      iconImg.style.objectFit = "contain";
-
-      const labelSpan = document.createElement("span");
-      labelSpan.textContent = w.label;
-
-      btn.appendChild(iconImg);
-      btn.appendChild(labelSpan);
-
-      btn.onclick = () => {
-        selectedInfinityWorld = w.id;
-        createEggDetailsView(egg, canSpawnAsRift);
-      };
-
-      btn.addEventListener('mouseenter', () => btn.style.transform = 'translateY(-1px)');
-      btn.addEventListener('mouseleave', () => btn.style.transform = 'none');
-
-      btnRow.appendChild(btn);
-    });
-    left.appendChild(btnRow);
-    left.appendChild(createEggSettings(egg, canSpawnAsRift));
-  } else if (egg.name === "Bounty") {
-    left.appendChild(createEggSettings(egg, canSpawnAsRift));
-  } else {
-    left.appendChild(createEggSettings(egg, canSpawnAsRift));
-  }
-
-  const middle = document.createElement('div');
-  middle.className = 'egg-details-middle';
-
-  let petsToShow = egg.Pets ? egg.Pets.slice() : [];
-  if (egg.name === "Infinity Egg") {
-    await loadInfinityEggData();
-    if (infinityEggData && infinityEggData[selectedInfinityWorld] && Array.isArray(infinityEggData[selectedInfinityWorld].Pets)) {
-      petsToShow = infinityEggData[selectedInfinityWorld].Pets.filter(p => p && p.name && isFinite(Number(p.baseOdds)) && Number(p.baseOdds) > 0).slice();
-    }
-  }
-
-  try {
-    const bounties = await fetchBounties();
-    const todayLabel = formatUTCDateToLabel(new Date());
-    const todays = (bounties || []).find(b => b.Time === todayLabel) || null;
-    if (todays && todays.Egg && todays.Egg === egg.name) {
-      let bountyChance = parseChanceString(todays.Chance);
-      try {
-        const override = getBountyOverrideByName(todays && todays.Pet);
-        if (override) bountyChance = override;
-      } catch (e) {}
-      const bountyPetObj = {
-        name: (todays.Pet || 'Unknown') + ' (Bounty)',
-        baseOdds: bountyChance || 0,
-        icon: getPetIconByName(todays.Pet)
-      };
-      petsToShow = [bountyPetObj].concat(petsToShow);
-      const existingControls = left.querySelector('.controls');
-      try {
-        const controlsReplacement = createEggSettings({ name: egg.name, Pets: petsToShow }, canSpawnAsRift);
-        if (existingControls && existingControls.parentNode) {
-          existingControls.parentNode.replaceChild(controlsReplacement, existingControls);
-        } else {
-          left.appendChild(controlsReplacement);
-        }
-      } catch (e) { }
-    }
-  } catch (e) { }
-
-  const eggForTable = { ...egg, Pets: petsToShow };
-  try {
-    const bounties = await fetchBounties().catch(() => null);
-    if (Array.isArray(bounties) && bounties.length) {
-      const match = bounties.find(b => (b && b.Egg || '').trim().toLowerCase() === (egg.name || '').trim().toLowerCase());
-      if (match) {
-        let bountyBaseOdds = parseChanceString(match && match.Chance);
-        try {
-          const override = getBountyOverrideByName(match && match.Pet);
-          if (override) bountyBaseOdds = override;
-        } catch (e) {}
-        const bountyPetObj = { name: (match && match.Pet ? match.Pet : 'Unknown') + ' (Bounty)', baseOdds: bountyBaseOdds || 0, icon: getPetIconByName(match ? match.Pet : '') };
-        eggForTable.Pets = [bountyPetObj].concat(eggForTable.Pets || []);
-        eggForTable.secretBountyRotation = true;
-      }
-    }
-  } catch (e) {}
-  middle.appendChild(createEggPetInfoCard(eggForTable, canSpawnAsRift));
-
-  const right = document.createElement('div');
-  right.className = 'egg-details-right';
-
-  right.style.display = 'flex';
-  right.style.flexDirection = 'column';
-  right.style.alignItems = 'flex-start';
-  right.style.flex = '1 1 0%';
-  right.style.boxSizing = 'border-box';
-
-  layout.appendChild(left);
-  layout.appendChild(middle);
-  layout.appendChild(right);
-
-  const diag = document.createElement('div');
-  diag.id = 'layout-divider';
-  Object.assign(diag.style, {
-    position: 'absolute',
-    width: '2px',
-    background: 'var(--table-border)',
-    top: '0',
-    opacity: '0.9',
-    pointerEvents: 'none',
-    zIndex: '1'
-  });
-  layout.appendChild(diag);
-
-  [left, middle, right].forEach(col => {
-    col.style.position = 'relative';
-    col.style.zIndex = '2';
-  });
-
-  function updateDivider() {
-    if (!layout.contains(diag)) return;
-    try {
-      const layoutRect = layout.getBoundingClientRect();
-      const leftRect = left.getBoundingClientRect();
-      const middleRect = middle.getBoundingClientRect();
-      let midpoint = Math.round((leftRect.right + middleRect.left) / 2);
-      if (!isFinite(midpoint) || middleRect.left <= leftRect.right) {
-        midpoint = Math.round(leftRect.right + 24);
-      }
-      const offset = Math.max(8, midpoint - layoutRect.left);
-      diag.style.left = offset + 'px';
-      diag.style.height = Math.max(32, layout.scrollHeight) + 'px';
-    } catch (e) {}
-  }
-
-  const ro = new ResizeObserver(updateDivider);
-  ro.observe(layout);
-  ro.observe(left);
-  ro.observe(middle);
-  ro.observe(right);
-  const mo = new MutationObserver(updateDivider);
-  mo.observe(layout, { childList: true, subtree: true, attributes: true });
-  window.addEventListener('resize', updateDivider);
-  requestAnimationFrame(updateDivider);
-
-  const cleanupObserver = new MutationObserver(() => {
-    if (!document.body.contains(layout)) {
-      try { ro.disconnect(); } catch (e) {}
-      try { mo.disconnect(); } catch (e) {}
-      try { cleanupObserver.disconnect(); } catch (e) {}
-      window.removeEventListener('resize', updateDivider);
-      const existing = document.getElementById('layout-divider');
-      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
-    }
-  });
-  cleanupObserver.observe(document.body, { childList: true, subtree: true });
-
-  eggList.appendChild(backBtn);
-  eggList.appendChild(layout);
-}
-
-async function createEggDetailsView(egg, canSpawnAsRift) {
-  eggList.innerHTML = '';
-  const backBtn = document.createElement("button");
-  backBtn.className = "egg-back-btn";
-  backBtn.style.position = "absolute";
-  backBtn.style.left = "20px";
-  backBtn.style.top = "140px";
-  backBtn.style.background = "none";
-  backBtn.style.border = "none";
-  backBtn.style.padding = "10px";
-  backBtn.style.zIndex = "20";
-  backBtn.style.cursor = "pointer";
-  backBtn.innerHTML = `<img src="Images/Icons/back.ico" alt="Back" style="width:32px;height:32px;vertical-align:middle;">`;
-  backBtn.onclick = () => {
-    selectedEgg = null;
-    if (selectedWorld === "infinity") {
-      selectedWorld = lastNormalWorld || null;
-    }
-    const searchInput = document.getElementById('search-bar');
-    if (searchInput) searchInput.value = lastSearchValue;
-    renderEggs();
-  };
-
-  const oldDivider = document.getElementById('bounty-divider');
-  if (oldDivider && oldDivider.parentNode) oldDivider.parentNode.removeChild(oldDivider);
-
-  if (egg.name === "Bounty") {
-    await createBountyDetailsView();
-    return;
-  }
-
-  const layout = document.createElement('div');
-  layout.className = 'egg-details-layout';
-  layout.style.position = 'relative';
-
-  const left = document.createElement('div');
-  left.className = 'egg-details-left';
-  const eggIcon = document.createElement('img');
-  eggIcon.className = 'egg-icon-big';
-  eggIcon.src = getEggImagePath(egg);
-  eggIcon.onerror = () => { eggIcon.src = 'Images/eggs/Placeholder.webp'; };
-  eggIcon.alt = egg.name;
-  left.appendChild(eggIcon);
-  const eggName = document.createElement('div');
-  eggName.className = 'egg-name';
-  eggName.textContent = egg.name;
-  left.appendChild(eggName);
-
-  if (egg.name === "Infinity Egg") {
-    await loadInfinityEggData();
-    const theme = document.body.classList.contains('theme-dark') ? 'dark' : 'purple';
-    const worlds = [
-      { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
-      { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
-      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" },
-      { id: "c2025", label: "Circus 2025", icon: "Images/Icons/Circus_Icon.webp" }
-    ];
     const btnRow = document.createElement("div");
     btnRow.style.display = "flex";
     btnRow.style.flexDirection = "row";
@@ -1570,492 +1325,6 @@ async function createEggDetailsView(egg, canSpawnAsRift) {
   eggIcon.className = 'egg-icon-big';
   eggIcon.src = getEggImagePath(egg);
   eggIcon.onerror = () => { eggIcon.src = 'Images/eggs/Placeholder.webp'; };
-  eggIcon.alt = egg.name;
-  left.appendChild(eggIcon);
-  const eggName = document.createElement('div');
-  eggName.className = 'egg-name';
-  eggName.textContent = egg.name;
-  left.appendChild(eggName);
-
-  if (egg.name === "Infinity Egg") {
-    await loadInfinityEggData();
-    const theme = document.body.classList.contains('theme-dark') ? 'dark' : 'purple';
-    const worlds = [
-      { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
-      { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
-      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" },
-      { id: "c2025", label: "Circus 2025", icon: "Images/Icons/Circus_Icon.webp" }
-    ];
-    const btnRow = document.createElement("div");
-    btnRow.style.display = "flex";
-    btnRow.style.flexDirection = "row";
-    btnRow.style.flexWrap = "nowrap";
-    btnRow.style.alignItems = "center";
-    btnRow.style.gap = "12px";
-    btnRow.style.margin = "16px 0";
-    btnRow.style.justifyContent = "center";
-    btnRow.style.width = "100%";
-    btnRow.style.overflowX = "auto";
-    btnRow.style.padding = "6px 4px";
-
-    worlds.forEach(w => {
-      const btn = document.createElement("button");
-
-      btn.style.display = "flex";
-      btn.style.alignItems = "center";
-      btn.style.gap = "8px";
-      btn.style.padding = "7px 18px";
-      btn.style.borderRadius = "8px";
-      btn.style.border = "none";
-      btn.style.fontWeight = "bold";
-      btn.style.cursor = "pointer";
-      btn.style.fontSize = "1rem";
-
-      btn.style.color = "var(--main-text)";
-
-      const selectedBg = "rgb(66,78,166)";
-      btn.style.background = (selectedInfinityWorld === w.id) ? selectedBg : "var(--controls-bg)";
-
-      const iconImg = document.createElement("img");
-      iconImg.src = w.icon;
-      iconImg.alt = w.label + " Icon";
-      iconImg.style.width = "28px";
-      iconImg.style.height = "28px";
-      iconImg.style.objectFit = "contain";
-
-      const labelSpan = document.createElement("span");
-      labelSpan.textContent = w.label;
-
-      btn.appendChild(iconImg);
-      btn.appendChild(labelSpan);
-
-      btn.onclick = () => {
-        selectedInfinityWorld = w.id;
-        createEggDetailsView(egg, canSpawnAsRift);
-      };
-
-      btn.addEventListener('mouseenter', () => btn.style.transform = 'translateY(-1px)');
-      btn.addEventListener('mouseleave', () => btn.style.transform = 'none');
-
-      btnRow.appendChild(btn);
-    });
-    left.appendChild(btnRow);
-    left.appendChild(createEggSettings(egg, canSpawnAsRift));
-  } else if (egg.name === "Bounty") {
-    left.appendChild(createEggSettings(egg, canSpawnAsRift));
-  } else {
-    left.appendChild(createEggSettings(egg, canSpawnAsRift));
-  }
-
-  const middle = document.createElement('div');
-  middle.className = 'egg-details-middle';
-
-  let petsToShow = egg.Pets ? egg.Pets.slice() : [];
-  if (egg.name === "Infinity Egg") {
-    await loadInfinityEggData();
-    if (infinityEggData && infinityEggData[selectedInfinityWorld] && Array.isArray(infinityEggData[selectedInfinityWorld].Pets)) {
-      petsToShow = infinityEggData[selectedInfinityWorld].Pets.slice();
-    }
-  }
-
-  try {
-    const bounties = await fetchBounties();
-    const todayLabel = formatUTCDateToLabel(new Date());
-    const todays = (bounties || []).find(b => b.Time === todayLabel) || null;
-    if (todays && todays.Egg && todays.Egg === egg.name) {
-      let bountyChance = parseChanceString(todays.Chance);
-      try { const override = getBountyOverrideByName(todays && todays.Pet); if (override) bountyChance = override; } catch (e) {}
-      const bountyPetObj = {
-        name: (todays.Pet || 'Unknown') + ' (Bounty)',
-        baseOdds: bountyChance || 0,
-        icon: getPetIconByName(todays.Pet)
-      };
-      petsToShow = [bountyPetObj].concat(petsToShow);
-      const existingControls = left.querySelector('.controls');
-      try {
-        const controlsReplacement = createEggSettings({ name: egg.name, Pets: petsToShow }, canSpawnAsRift);
-        if (existingControls && existingControls.parentNode) {
-          existingControls.parentNode.replaceChild(controlsReplacement, existingControls);
-        } else {
-          left.appendChild(controlsReplacement);
-        }
-      } catch (e) { }
-    }
-  } catch (e) { }
-
-  const eggForTable = { ...egg, Pets: petsToShow };
-  try {
-    const bounties = await fetchBounties().catch(() => null);
-    if (Array.isArray(bounties) && bounties.length) {
-      const match = bounties.find(b => (b && b.Egg || '').trim().toLowerCase() === (egg.name || '').trim().toLowerCase());
-      if (match) {
-        let bountyBaseOdds = parseChanceString(match && match.Chance);
-        const bountyKey = (match && match.Pet) ? match.Pet : null;
-        try { const override = getBountyOverrideByName(bountyKey); if (override) bountyBaseOdds = override; } catch (e) {}
-        const bountyPetObj = { name: (match && match.Pet ? match.Pet : 'Unknown') + ' (Bounty)', baseOdds: bountyBaseOdds || 0, icon: getPetIconByName(match ? match.Pet : '') };
-        eggForTable.Pets = [bountyPetObj].concat(eggForTable.Pets || []);
-        eggForTable.secretBountyRotation = true;
-      }
-    }
-  } catch (e) {}
-  middle.appendChild(createEggPetInfoCard(eggForTable, canSpawnAsRift));
-
-  const right = document.createElement('div');
-  right.className = 'egg-details-right';
-
-  right.style.display = 'flex';
-  right.style.flexDirection = 'column';
-  right.style.alignItems = 'flex-start';
-  right.style.flex = '1 1 0%';
-  right.style.boxSizing = 'border-box';
-
-  layout.appendChild(left);
-  layout.appendChild(middle);
-  layout.appendChild(right);
-
-  const diag = document.createElement('div');
-  diag.id = 'layout-divider';
-  Object.assign(diag.style, {
-    position: 'absolute',
-    width: '2px',
-    background: 'var(--table-border)',
-    top: '0',
-    opacity: '0.9',
-    pointerEvents: 'none',
-    zIndex: '1'
-  });
-  layout.appendChild(diag);
-
-  [left, middle, right].forEach(col => {
-    col.style.position = 'relative';
-    col.style.zIndex = '2';
-  });
-
-  function updateDivider() {
-    if (!layout.contains(diag)) return;
-    try {
-      const layoutRect = layout.getBoundingClientRect();
-      const leftRect = left.getBoundingClientRect();
-      const middleRect = middle.getBoundingClientRect();
-      let midpoint = Math.round((leftRect.right + middleRect.left) / 2);
-      if (!isFinite(midpoint) || middleRect.left <= leftRect.right) {
-        midpoint = Math.round(leftRect.right + 24);
-      }
-      const offset = Math.max(8, midpoint - layoutRect.left);
-      diag.style.left = offset + 'px';
-      diag.style.height = Math.max(32, layout.scrollHeight) + 'px';
-    } catch (e) {}
-  }
-
-  const ro = new ResizeObserver(updateDivider);
-  ro.observe(layout);
-  ro.observe(left);
-  ro.observe(middle);
-  ro.observe(right);
-  const mo = new MutationObserver(updateDivider);
-  mo.observe(layout, { childList: true, subtree: true, attributes: true });
-  window.addEventListener('resize', updateDivider);
-  requestAnimationFrame(updateDivider);
-
-  const cleanupObserver = new MutationObserver(() => {
-    if (!document.body.contains(layout)) {
-      try { ro.disconnect(); } catch (e) {}
-      try { mo.disconnect(); } catch (e) {}
-      try { cleanupObserver.disconnect(); } catch (e) {}
-      window.removeEventListener('resize', updateDivider);
-      const existing = document.getElementById('layout-divider');
-      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
-    }
-  });
-  cleanupObserver.observe(document.body, { childList: true, subtree: true });
-
-  eggList.appendChild(backBtn);
-  eggList.appendChild(layout);
-}
-
-async function createEggDetailsView(egg, canSpawnAsRift) {
-  eggList.innerHTML = '';
-  const backBtn = document.createElement("button");
-  backBtn.className = "egg-back-btn";
-  backBtn.style.position = "absolute";
-  backBtn.style.left = "20px";
-  backBtn.style.top = "140px";
-  backBtn.style.background = "none";
-  backBtn.style.border = "none";
-  backBtn.style.padding = "10px";
-  backBtn.style.zIndex = "20";
-  backBtn.style.cursor = "pointer";
-  backBtn.innerHTML = `<img src="Images/Icons/back.ico" alt="Back" style="width:32px;height:32px;vertical-align:middle;">`;
-  backBtn.onclick = () => {
-    selectedEgg = null;
-    if (selectedWorld === "infinity") {
-      selectedWorld = lastNormalWorld || null;
-    }
-    const searchInput = document.getElementById('search-bar');
-    if (searchInput) searchInput.value = lastSearchValue;
-    renderEggs();
-  };
-
-  const oldDivider = document.getElementById('bounty-divider');
-  if (oldDivider && oldDivider.parentNode) oldDivider.parentNode.removeChild(oldDivider);
-
-  if (egg.name === "Bounty") {
-    await createBountyDetailsView();
-    return;
-  }
-
-  const layout = document.createElement('div');
-  layout.className = 'egg-details-layout';
-  layout.style.position = 'relative';
-
-  const left = document.createElement('div');
-  left.className = 'egg-details-left';
-  const eggIcon = document.createElement('img');
-  eggIcon.className = 'egg-icon-big';
-  eggIcon.src = getEggImagePath(egg);
-  eggIcon.alt = egg.name;
-  left.appendChild(eggIcon);
-  const eggName = document.createElement('div');
-  eggName.className = 'egg-name';
-  eggName.textContent = egg.name;
-  left.appendChild(eggName);
-
-  if (egg.name === "Infinity Egg") {
-    await loadInfinityEggData();
-    const theme = document.body.classList.contains('theme-dark') ? 'dark' : 'purple';
-    const worlds = [
-      { id: "1", label: "Overworld", icon: "Images/Icons/The_Overworld_Icon.webp" },
-      { id: "2", label: "Minigame", icon: "Images/Icons/Minigame_Paradise_Icon.webp" },
-      { id: "3", label: "Seven Seas", icon: "Images/Icons/Seven_Seas_Icon.webp" },
-      { id: "c2025", label: "Circus 2025", icon: "Images/Icons/Circus_Icon.webp" }
-    ];
-    const btnRow = document.createElement("div");
-    btnRow.style.display = "flex";
-    btnRow.style.flexDirection = "row";
-    btnRow.style.flexWrap = "nowrap";
-    btnRow.style.alignItems = "center";
-    btnRow.style.gap = "12px";
-    btnRow.style.margin = "16px 0";
-    btnRow.style.justifyContent = "center";
-    btnRow.style.width = "100%";
-    btnRow.style.overflowX = "auto";
-    btnRow.style.padding = "6px 4px";
-
-    worlds.forEach(w => {
-      const btn = document.createElement("button");
-
-      btn.style.display = "flex";
-      btn.style.alignItems = "center";
-      btn.style.gap = "8px";
-      btn.style.padding = "7px 18px";
-      btn.style.borderRadius = "8px";
-      btn.style.border = "none";
-      btn.style.fontWeight = "bold";
-      btn.style.cursor = "pointer";
-      btn.style.fontSize = "1rem";
-
-      btn.style.color = "var(--main-text)";
-
-      const selectedBg = "rgb(66,78,166)";
-      btn.style.background = (selectedInfinityWorld === w.id) ? selectedBg : "var(--controls-bg)";
-
-      const iconImg = document.createElement("img");
-      iconImg.src = w.icon;
-      iconImg.alt = w.label + " Icon";
-      iconImg.style.width = "28px";
-      iconImg.style.height = "28px";
-      iconImg.style.objectFit = "contain";
-
-      const labelSpan = document.createElement("span");
-      labelSpan.textContent = w.label;
-
-      btn.appendChild(iconImg);
-      btn.appendChild(labelSpan);
-
-      btn.onclick = () => {
-        selectedInfinityWorld = w.id;
-        createEggDetailsView(egg, canSpawnAsRift);
-      };
-
-      btn.addEventListener('mouseenter', () => btn.style.transform = 'translateY(-1px)');
-      btn.addEventListener('mouseleave', () => btn.style.transform = 'none');
-
-      btnRow.appendChild(btn);
-    });
-    left.appendChild(btnRow);
-    left.appendChild(createEggSettings(egg, canSpawnAsRift));
-  } else if (egg.name === "Bounty") {
-    left.appendChild(createEggSettings(egg, canSpawnAsRift));
-  } else {
-    left.appendChild(createEggSettings(egg, canSpawnAsRift));
-  }
-
-  const middle = document.createElement('div');
-  middle.className = 'egg-details-middle';
-
-  let petsToShow = egg.Pets ? egg.Pets.slice() : [];
-  if (egg.name === "Infinity Egg") {
-    await loadInfinityEggData();
-    if (infinityEggData && infinityEggData[selectedInfinityWorld] && Array.isArray(infinityEggData[selectedInfinityWorld].Pets)) {
-      petsToShow = infinityEggData[selectedInfinityWorld].Pets.slice();
-    }
-  }
-
-  try {
-    const bounties = await fetchBounties();
-    const todayLabel = formatUTCDateToLabel(new Date());
-    const todays = (bounties || []).find(b => b.Time === todayLabel) || null;
-    if (todays && todays.Egg && todays.Egg === egg.name) {
-      let bountyChance = parseChanceString(todays.Chance);
-      try { const override = getBountyOverrideByName(todays && todays.Pet); if (override) bountyChance = override; } catch (e) {}
-      const bountyPetObj = {
-        name: (todays.Pet || 'Unknown') + ' (Bounty)',
-        baseOdds: bountyChance || 0,
-        icon: getPetIconByName(todays.Pet)
-      };
-      petsToShow = [bountyPetObj].concat(petsToShow);
-      const existingControls = left.querySelector('.controls');
-      try {
-        const controlsReplacement = createEggSettings({ name: egg.name, Pets: petsToShow }, canSpawnAsRift);
-        if (existingControls && existingControls.parentNode) {
-          existingControls.parentNode.replaceChild(controlsReplacement, existingControls);
-        } else {
-          left.appendChild(controlsReplacement);
-        }
-      } catch (e) { }
-    }
-  } catch (e) { }
-
-  const eggForTable = { ...egg, Pets: petsToShow };
-  try {
-    const bounties = await fetchBounties().catch(() => null);
-    if (Array.isArray(bounties) && bounties.length) {
-      const match = bounties.find(b => (b && b.Egg || '').trim().toLowerCase() === (egg.name || '').trim().toLowerCase());
-      if (match) {
-        let bountyBaseOdds = parseChanceString(match && match.Chance);
-        const bountyKey = (match && match.Pet) ? match.Pet : null;
-        try { const override = getBountyOverrideByName(bountyKey); if (override) bountyBaseOdds = override; } catch (e) {}
-        const bountyPetObj = { name: (match && match.Pet ? match.Pet : 'Unknown') + ' (Bounty)', baseOdds: bountyBaseOdds || 0, icon: getPetIconByName(match ? match.Pet : '') };
-        eggForTable.Pets = [bountyPetObj].concat(eggForTable.Pets || []);
-        eggForTable.secretBountyRotation = true;
-      }
-    }
-  } catch (e) {}
-  middle.appendChild(createEggPetInfoCard(eggForTable, canSpawnAsRift));
-
-  const right = document.createElement('div');
-  right.className = 'egg-details-right';
-
-  right.style.display = 'flex';
-  right.style.flexDirection = 'column';
-  right.style.alignItems = 'flex-start';
-  right.style.flex = '1 1 0%';
-  right.style.boxSizing = 'border-box';
-
-  layout.appendChild(left);
-  layout.appendChild(middle);
-  layout.appendChild(right);
-
-  const diag = document.createElement('div');
-  diag.id = 'layout-divider';
-  Object.assign(diag.style, {
-    position: 'absolute',
-    width: '2px',
-    background: 'var(--table-border)',
-    top: '0',
-    opacity: '0.9',
-    pointerEvents: 'none',
-    zIndex: '1'
-  });
-  layout.appendChild(diag);
-
-  [left, middle, right].forEach(col => {
-    col.style.position = 'relative';
-    col.style.zIndex = '2';
-  });
-
-  function updateDivider() {
-    if (!layout.contains(diag)) return;
-    try {
-      const layoutRect = layout.getBoundingClientRect();
-      const leftRect = left.getBoundingClientRect();
-      const middleRect = middle.getBoundingClientRect();
-      let midpoint = Math.round((leftRect.right + middleRect.left) / 2);
-      if (!isFinite(midpoint) || middleRect.left <= leftRect.right) {
-        midpoint = Math.round(leftRect.right + 24);
-      }
-      const offset = Math.max(8, midpoint - layoutRect.left);
-      diag.style.left = offset + 'px';
-      diag.style.height = Math.max(32, layout.scrollHeight) + 'px';
-    } catch (e) {}
-  }
-
-  const ro = new ResizeObserver(updateDivider);
-  ro.observe(layout);
-  ro.observe(left);
-  ro.observe(middle);
-  ro.observe(right);
-  const mo = new MutationObserver(updateDivider);
-  mo.observe(layout, { childList: true, subtree: true, attributes: true });
-  window.addEventListener('resize', updateDivider);
-  requestAnimationFrame(updateDivider);
-
-  const cleanupObserver = new MutationObserver(() => {
-    if (!document.body.contains(layout)) {
-      try { ro.disconnect(); } catch (e) {}
-      try { mo.disconnect(); } catch (e) {}
-      try { cleanupObserver.disconnect(); } catch (e) {}
-      window.removeEventListener('resize', updateDivider);
-      const existing = document.getElementById('layout-divider');
-      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
-    }
-  });
-  cleanupObserver.observe(document.body, { childList: true, subtree: true });
-
-  eggList.appendChild(backBtn);
-  eggList.appendChild(layout);
-}
-
-async function createEggDetailsView(egg, canSpawnAsRift) {
-  eggList.innerHTML = '';
-  const backBtn = document.createElement("button");
-  backBtn.className = "egg-back-btn";
-  backBtn.style.position = "absolute";
-  backBtn.style.left = "20px";
-  backBtn.style.top = "140px";
-  backBtn.style.background = "none";
-  backBtn.style.border = "none";
-  backBtn.style.padding = "10px";
-  backBtn.style.zIndex = "20";
-  backBtn.style.cursor = "pointer";
-  backBtn.innerHTML = `<img src="Images/Icons/back.ico" alt="Back" style="width:32px;height:32px;vertical-align:middle;">`;
-  backBtn.onclick = () => {
-    selectedEgg = null;
-    if (selectedWorld === "infinity") {
-      selectedWorld = lastNormalWorld || null;
-    }
-    const searchInput = document.getElementById('search-bar');
-    if (searchInput) searchInput.value = lastSearchValue;
-    renderEggs();
-  };
-
-  const oldDivider = document.getElementById('bounty-divider');
-  if (oldDivider && oldDivider.parentNode) oldDivider.parentNode.removeChild(oldDivider);
-
-  if (egg.name === "Bounty") {
-    await createBountyDetailsView();
-    return;
-  }
-
-  const layout = document.createElement('div');
-  layout.className = 'egg-details-layout';
-  layout.style.position = 'relative';
-
-  const left = document.createElement('div');
-  left.className = 'egg-details-left';
-  const eggIcon = document.createElement('img');
-  eggIcon.className = 'egg-icon-big';
-  eggIcon.src = getEggImagePath(egg);
   eggIcon.alt = egg.name;
   left.appendChild(eggIcon);
   const eggName = document.createElement('div');
@@ -2354,9 +1623,10 @@ function createEggSettings(egg, canSpawnAsRift) {
   
   const isCircusEgg = isCircusEggFn(egg) || (egg && egg.world === 'limited1') || (egg && egg.name === 'Infinity Egg' && typeof selectedInfinityWorld !== 'undefined' && String(selectedInfinityWorld).toLowerCase() === 'c2025');
 
-  // event flags: Azure (has Azure Fate pet) gets Heaven IV toggle; Hell Egg gets Hell IV toggle
+
   const hasAzurePet = (egg && typeof egg.name === 'string' && /azure/i.test(egg.name)) || (Array.isArray(egg && egg.Pets) && (egg.Pets || []).some(p => /azure/i.test(p && p.name)));
   const isHellEgg = (egg && typeof egg.name === 'string' && /hell/i.test(egg.name));
+  const isValentineEgg = (egg && typeof egg.name === 'string' && /valentine/i.test(egg.name));
 
   if (isCircusEgg) {
     controlsHtml += `
@@ -2445,15 +1715,15 @@ function createEggSettings(egg, canSpawnAsRift) {
   }
   controls.innerHTML = controlsHtml;
 
-  // If this egg is an Azure or Hell event, hide the normal festive dropdown
-  // and expose the single IV toggle(s) as used in the old circus event.
+
+
   try {
     const festiveSelectEl = controls.querySelector('.festive-select');
     const festiveDropdownBtn = controls.querySelector('.festive-dropdown-btn');
     let heavenBtnLocal = controls.querySelector('.heaven-iv-btn');
     let hellBtnLocal = controls.querySelector('.hell-iv-btn');
 
-    // Create Heaven button if needed and egg is Azure (show next to the festive dropdown)
+
     if (typeof hasAzurePet !== 'undefined' && hasAzurePet && !heavenBtnLocal) {
       try {
         const btn = document.createElement('button');
@@ -2474,8 +1744,6 @@ function createEggSettings(egg, canSpawnAsRift) {
       } catch (e) {}
       heavenBtnLocal = controls.querySelector('.heaven-iv-btn');
     }
-
-    // Create Hell button if needed and egg is Hell (place next to the festive dropdown)
     if (typeof isHellEgg !== 'undefined' && isHellEgg && !hellBtnLocal) {
       try {
         const btn = document.createElement('button');
@@ -2496,7 +1764,57 @@ function createEggSettings(egg, canSpawnAsRift) {
       } catch (e) {}
       hellBtnLocal = controls.querySelector('.hell-iv-btn');
     }
-    // Hide the normal dropdown and show the toggles (if applicable)
+
+    // Create Duality button dynamically (works on both Azure and Hell eggs)
+    if ((typeof hasAzurePet !== 'undefined' && hasAzurePet) || (typeof isHellEgg !== 'undefined' && isHellEgg)) {
+      let dualBtnLocal = controls.querySelector('.duality-elixir-btn');
+      if (!dualBtnLocal) {
+        try {
+          const dbtn = document.createElement('button');
+          dbtn.type = 'button';
+          dbtn.className = 'duality-elixir-btn';
+          dbtn.dataset.selected = 'false';
+          dbtn.style.display = 'inline-flex';
+          dbtn.style.borderRadius = '8px';
+          dbtn.style.padding = '8px 12px';
+          dbtn.style.border = '1px solid var(--table-border)';
+          dbtn.style.background = 'var(--controls-bg)';
+          dbtn.style.cursor = 'pointer';
+          dbtn.style.color = 'var(--main-text)';
+          dbtn.innerHTML = `<img src="Images/Icons/Duality_Elixir.webp" width="20" height="20" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;margin-right:8px;" /><span>Duality Elixir</span>`;
+          const festiveContainer = controls.querySelector('.festive-dropdown-btn') ? controls.querySelector('.festive-dropdown-btn').parentNode : null;
+          if (festiveContainer && festiveContainer.parentNode) festiveContainer.parentNode.insertBefore(dbtn, festiveContainer.nextSibling);
+          else controls.appendChild(dbtn);
+        } catch (e) {}
+        dualBtnLocal = controls.querySelector('.duality-elixir-btn');
+      }
+    }
+
+    // Create Valentine button for Valentine's Egg
+    if (typeof isValentineEgg !== 'undefined' && isValentineEgg) {
+      let valBtnLocal = controls.querySelector('.valentine-elixir-btn');
+      if (!valBtnLocal) {
+        try {
+          const vbtn = document.createElement('button');
+          vbtn.type = 'button';
+          vbtn.className = 'valentine-elixir-btn';
+          vbtn.dataset.selected = 'false';
+          vbtn.style.display = 'inline-flex';
+          vbtn.style.borderRadius = '8px';
+          vbtn.style.padding = '8px 12px';
+          vbtn.style.border = '1px solid var(--table-border)';
+          vbtn.style.background = 'var(--controls-bg)';
+          vbtn.style.cursor = 'pointer';
+          vbtn.style.color = 'var(--main-text)';
+          vbtn.innerHTML = `<img src="Images/Icons/Valentine_Elixir.webp" width="20" height="20" onerror="this.src='Images/Icons/Placeholder.webp'" style="object-fit:contain;border-radius:6px;margin-right:8px;" /><span>Valentine's Elixir</span>`;
+          const festiveContainer = controls.querySelector('.festive-dropdown-btn') ? controls.querySelector('.festive-dropdown-btn').parentNode : null;
+          if (festiveContainer && festiveContainer.parentNode) festiveContainer.parentNode.insertBefore(vbtn, festiveContainer.nextSibling);
+          else controls.appendChild(vbtn);
+        } catch (e) {}
+        valBtnLocal = controls.querySelector('.valentine-elixir-btn');
+      }
+    }
+
     if (typeof hasAzurePet !== 'undefined' && hasAzurePet && heavenBtnLocal) {
       if (festiveSelectEl) festiveSelectEl.style.display = 'none';
       if (festiveDropdownBtn) festiveDropdownBtn.style.display = 'none';
@@ -2524,6 +1842,8 @@ function createEggSettings(egg, canSpawnAsRift) {
     const circusInfinityBtnEl = controls.querySelector('.circus-infinity-btn');
     const heavenBtn = controls.querySelector('.heaven-iv-btn');
     const hellBtn = controls.querySelector('.hell-iv-btn');
+    const valentineBtn = controls.querySelector('.valentine-elixir-btn');
+    const dualityBtn = controls.querySelector('.duality-elixir-btn');
 
     function readSettingsFromDOM() {
       const shinyBtnLocal = controls ? controls.querySelector('.shiny-btn') : null;
@@ -2546,7 +1866,9 @@ function createEggSettings(egg, canSpawnAsRift) {
         },
         eventSpecial: {
           heavenIV: !!(controls.querySelector('.heaven-iv-btn') && controls.querySelector('.heaven-iv-btn').dataset && controls.querySelector('.heaven-iv-btn').dataset.selected === 'true'),
-          hellIV: !!(controls.querySelector('.hell-iv-btn') && controls.querySelector('.hell-iv-btn').dataset && controls.querySelector('.hell-iv-btn').dataset.selected === 'true')
+          hellIV: !!(controls.querySelector('.hell-iv-btn') && controls.querySelector('.hell-iv-btn').dataset && controls.querySelector('.hell-iv-btn').dataset.selected === 'true'),
+          valentine: !!(controls.querySelector('.valentine-elixir-btn') && controls.querySelector('.valentine-elixir-btn').dataset && controls.querySelector('.valentine-elixir-btn').dataset.selected === 'true'),
+          duality: !!(controls.querySelector('.duality-elixir-btn') && controls.querySelector('.duality-elixir-btn').dataset && controls.querySelector('.duality-elixir-btn').dataset.selected === 'true')
         },
         variants: {
           shiny: {
@@ -2583,7 +1905,7 @@ function createEggSettings(egg, canSpawnAsRift) {
         const icon = controls.querySelector('.festive-icon');
         if (icon) { icon.onerror = () => icon.src = 'Images/Icons/Placeholder.webp'; if (sel === 'none') icon.src = 'Images/Icons/Placeholder.webp'; else icon.src = 'Images/Icons/Circus_Elixir_' + sel + '.webp'; }
       }
-      // restore circus infinity elixir selection if present
+
       if (controls.querySelector('.circus-infinity-btn') && saved.festive && typeof saved.festive.infinity !== 'undefined') {
         try {
           const selInf = saved.festive.infinity ? 'true' : 'false';
@@ -2594,7 +1916,7 @@ function createEggSettings(egg, canSpawnAsRift) {
         } catch (e) {}
       }
 
-      // restore event special toggles if present
+
       try {
         if (controls.querySelector('.heaven-iv-btn')) {
           const hbtn = controls.querySelector('.heaven-iv-btn');
@@ -2606,8 +1928,28 @@ function createEggSettings(egg, canSpawnAsRift) {
           if (isHellEgg) hb.style.display = 'inline-flex'; else hb.style.display = 'none';
           if (saved.eventSpecial && typeof saved.eventSpecial.hellIV !== 'undefined' && saved.eventSpecial.hellIV) { hb.dataset.selected = 'true'; hb.style.background = '#9b1f1f'; hb.style.color = '#ffffff'; }
         }
+        if (controls.querySelector('.duality-elixir-btn')) {
+          const db = controls.querySelector('.duality-elixir-btn');
+          if ((hasAzurePet) || (isHellEgg)) db.style.display = 'inline-flex'; else db.style.display = 'none';
+          if (saved.eventSpecial && typeof saved.eventSpecial.duality !== 'undefined' && saved.eventSpecial.duality) { db.dataset.selected = 'true'; db.style.background = '#ab7b00'; db.style.color = '#ffffff'; }
+        }
+        if (controls.querySelector('.valentine-elixir-btn')) {
+          const vb = controls.querySelector('.valentine-elixir-btn');
+          if (isValentineEgg) vb.style.display = 'inline-flex'; else vb.style.display = 'none';
+          if (saved.eventSpecial && typeof saved.eventSpecial.valentine !== 'undefined' && saved.eventSpecial.valentine) { vb.dataset.selected = 'true'; vb.style.background = '#d13b6b'; vb.style.color = '#ffffff'; }
+        }
+        if (controls.querySelector('.duality-elixir-btn')) {
+          const db = controls.querySelector('.duality-elixir-btn');
+          if ((hasAzurePet) || (isHellEgg)) db.style.display = 'inline-flex'; else db.style.display = 'none';
+          if (saved.eventSpecial && typeof saved.eventSpecial.duality !== 'undefined' && saved.eventSpecial.duality) { db.dataset.selected = 'true'; db.style.background = '#ab7b00'; db.style.color = '#ffffff'; }
+        }
+        if (controls.querySelector('.valentine-elixir-btn')) {
+          const vb = controls.querySelector('.valentine-elixir-btn');
+          if (isValentineEgg) vb.style.display = 'inline-flex'; else vb.style.display = 'none';
+          if (saved.eventSpecial && typeof saved.eventSpecial.valentine !== 'undefined' && saved.eventSpecial.valentine) { vb.dataset.selected = 'true'; vb.style.background = '#d13b6b'; vb.style.color = '#ffffff'; }
+        }
       } catch (e) {}
-      // restore event upgrades if present
+
       if (saved.eventUpgrades && typeof saved.eventUpgrades === 'object') {
         try {
           const u1 = controls.querySelector('.event-upgrade-input[data-id="circus-luck"]');
@@ -2643,7 +1985,7 @@ function createEggSettings(egg, canSpawnAsRift) {
           const curSel2 = (controls.querySelector('.festive-select') ? (controls.querySelector('.festive-select').value || 'none') : 'none');
           panelOptions.forEach(o => { if (o.dataset && o.dataset.val) { if (o.dataset.val === curSel2) o.style.background = 'rgba(255,255,255,0.04)'; else o.style.background = 'transparent'; } });
         }
-        // debug initial state for festive controls & upgrades
+
         try {
           const dbgSel = controls.querySelector('.festive-select');
           const dbgBtn = controls.querySelector('.festive-dropdown-btn');
@@ -2679,7 +2021,7 @@ function createEggSettings(egg, canSpawnAsRift) {
     const festiveDropdownBtn = controls.querySelector('.festive-dropdown-btn');
     const festivePanel = controls.querySelector('.festive-panel');
     const festiveOptions = controls.querySelectorAll('.festive-option');
-    // milestoneSelectEl declared below when milestone dropdown is initialized
+
     if (festiveSelectEl) festiveSelectEl.addEventListener('change', () => { 
       const icon = controls.querySelector('.festive-icon');
       const v = festiveSelectEl.value || 'none';
@@ -2723,6 +2065,26 @@ function createEggSettings(egg, canSpawnAsRift) {
         saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
       });
     }
+    if (dualityBtn) {
+      dualityBtn.type = 'button';
+      dualityBtn.addEventListener('click', () => {
+        const sel = dualityBtn.dataset.selected === 'true' ? 'false' : 'true';
+        dualityBtn.dataset.selected = sel;
+        if (sel === 'true') { dualityBtn.style.background = '#ab7b00'; dualityBtn.style.color = '#ffffff'; }
+        else { dualityBtn.style.background = 'var(--controls-bg)'; dualityBtn.style.color = 'var(--main-text)'; }
+        saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
+      });
+    }
+    if (valentineBtn) {
+      valentineBtn.type = 'button';
+      valentineBtn.addEventListener('click', () => {
+        const sel = valentineBtn.dataset.selected === 'true' ? 'false' : 'true';
+        valentineBtn.dataset.selected = sel;
+        if (sel === 'true') { valentineBtn.style.background = '#d13b6b'; valentineBtn.style.color = '#ffffff'; }
+        else { valentineBtn.style.background = 'var(--controls-bg)'; valentineBtn.style.color = 'var(--main-text)'; }
+        saveSettings(); if (controls) controls.dispatchEvent(new Event('luckSettingsChanged')); document.dispatchEvent(new Event('luckSettingsChanged'));
+      });
+    }
 
     
     if (festiveDropdownBtn && festivePanel) {
@@ -2759,7 +2121,7 @@ function createEggSettings(egg, canSpawnAsRift) {
       });
     }
 
-    // wire up event upgrades change handlers and persistence
+
     try {
       const upgradeInputs = controls.querySelectorAll('.event-upgrade-input');
       if (upgradeInputs && upgradeInputs.forEach) {
@@ -2773,7 +2135,7 @@ function createEggSettings(egg, canSpawnAsRift) {
       }
     } catch (e) {}
 
-    // Mastery removed
+
 
   } catch (e) {}
   
@@ -3054,7 +2416,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       if (!ultraInput.value) ultraInput.value = '1';
     }
     
-    // Mastery input removed
+
     
      applyVariantButtonStyles();
     if (multiplierSelect) {
@@ -3121,7 +2483,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
        const secretInputScoped = controlsScope ? controlsScope.querySelector('.secret-mult') : secretInput;
        const shinyInputScoped = controlsScope ? controlsScope.querySelector('.shiny-input') : shinyInput;
        const mythicInputScoped = controlsScope ? controlsScope.querySelector('.mythic-input') : mythicInput;
-       const ultraInputScoped = null; // ultra input removed
+       const ultraInputScoped = null; 
 
        let multiplierValue = 0;
        if (multiplierSelectScoped) {
@@ -3138,7 +2500,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
       
       const festiveSelectEl = (controlsScope ? controlsScope.querySelector('.festive-select') : null) || document.querySelector('.festive-select');
 
-      // Circus infinity elixir multiplies the festive elixir effects (e.g., 1.5x)
+
       const circusInfinitySelected = controlsScope ? !!(controlsScope.querySelector('.circus-infinity-btn') && controlsScope.querySelector('.circus-infinity-btn').dataset.selected === 'true') : !!(document.querySelector('.circus-infinity-btn') && document.querySelector('.circus-infinity-btn').dataset.selected === 'true');
       const elixirMultiplier = circusInfinitySelected ? 1.5 : 1;
 
@@ -3155,10 +2517,12 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         totalLuckPercent += Math.round(fest.luck * mult);
       }
 
-      // apply Heaven IV / Hell IV toggles if present (they are single-toggle event options)
+
       try {
         const heavenSelectedScoped = controlsScope ? !!(controlsScope.querySelector('.heaven-iv-btn') && controlsScope.querySelector('.heaven-iv-btn').dataset.selected === 'true') : false;
         const hellSelectedScoped = controlsScope ? !!(controlsScope.querySelector('.hell-iv-btn') && controlsScope.querySelector('.hell-iv-btn').dataset.selected === 'true') : false;
+        const valentineSelectedScoped = controlsScope ? !!(controlsScope.querySelector('.valentine-elixir-btn') && controlsScope.querySelector('.valentine-elixir-btn').dataset.selected === 'true') : false;
+        const dualitySelectedScoped = controlsScope ? !!(controlsScope.querySelector('.duality-elixir-btn') && controlsScope.querySelector('.duality-elixir-btn').dataset.selected === 'true') : false;
         if (heavenSelectedScoped) {
           const festIV = FESTIVE_POTION_MAP['IV'];
           if (festIV && typeof festIV.luck === 'number') totalLuckPercent += Math.round(festIV.luck);
@@ -3167,14 +2531,22 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
           const festIV = FESTIVE_POTION_MAP['IV'];
           if (festIV && typeof festIV.luck === 'number') totalLuckPercent += Math.round(festIV.luck);
         }
+        if (valentineSelectedScoped) {
+          const val = FESTIVE_POTION_MAP['VALENTINE'];
+          if (val && typeof val.luck === 'number') totalLuckPercent += Math.round(val.luck);
+        }
+        if (dualitySelectedScoped) {
+          const d = FESTIVE_POTION_MAP['DUALITY'];
+          if (d && typeof d.luck === 'number') totalLuckPercent += Math.round(d.luck);
+        }
       } catch (e) {}
       
-      // Mastery removed; event upgrades apply bonuses via `EVENT_UPGRADES`
+
       let masterySecretPercent = 0;
       let masteryInfinityPercent = 0;
       const isCircusEgg = isCircusEggFn(egg) || (egg && egg.world === 'limited1') || (egg && egg.name === 'Infinity Egg' && typeof selectedInfinityWorld !== 'undefined' && String(selectedInfinityWorld).toLowerCase() === 'c2025');
       
-      // apply EVENT_UPGRADES if circus and any upgrades selected
+
       try {
         if (isCircusEgg && typeof EVENT_UPGRADES === 'object') {
           try {
@@ -3185,13 +2557,13 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
               const entry = (EVENT_UPGRADES && EVENT_UPGRADES[id] && EVENT_UPGRADES[id][level]) ? EVENT_UPGRADES[id][level] : null;
               if (entry) {
                 if (typeof entry.luck === 'number') {
-                  totalLuckPercent += entry.luck * 100; // convert fraction to percent points
+                  totalLuckPercent += entry.luck * 100; 
                 }
                 if (typeof entry.secretLuck === 'number') {
-                  masterySecretPercent += entry.secretLuck * 100; // percent points for secrets
+                  masterySecretPercent += entry.secretLuck * 100; 
                 }
                 if (typeof entry.infinityLuck === 'number') {
-                  masteryInfinityPercent += entry.infinityLuck * 100; // percent points for infinity
+                  masteryInfinityPercent += entry.infinityLuck * 100; 
                 }
               }
             }
@@ -3240,19 +2612,29 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
         let mythicOdds = parseOneInInput(mythicInputScoped ? mythicInputScoped.value : null) || 100;
         if (festiveSelected && FESTIVE_POTION_MAP[festiveSelected]) {
         
-          // compute combined divisors for variant odds (consider circus infinity + event IV toggles)
+
           let shinyDivisor = elixirMultiplier || 1;
           let mythicDivisor = elixirMultiplier || 1;
           try {
             const heavenSelectedScoped = controlsScope ? !!(controlsScope.querySelector('.heaven-iv-btn') && controlsScope.querySelector('.heaven-iv-btn').dataset.selected === 'true') : false;
             const hellSelectedScoped = controlsScope ? !!(controlsScope.querySelector('.hell-iv-btn') && controlsScope.querySelector('.hell-iv-btn').dataset.selected === 'true') : false;
+            const valentineSelectedScoped = controlsScope ? !!(controlsScope.querySelector('.valentine-elixir-btn') && controlsScope.querySelector('.valentine-elixir-btn').dataset.selected === 'true') : false;
+            const dualitySelectedScoped = controlsScope ? !!(controlsScope.querySelector('.duality-elixir-btn') && controlsScope.querySelector('.duality-elixir-btn').dataset.selected === 'true') : false;
             if (heavenSelectedScoped || hellSelectedScoped) {
               const iv = FESTIVE_POTION_MAP['IV'];
               if (iv && typeof iv.shiny === 'number') shinyDivisor *= (1 + iv.shiny / 100);
               if (iv && typeof iv.mythic === 'number') mythicDivisor *= (1 + iv.mythic / 100);
             }
-          } catch (e) {}
-
+            if (valentineSelectedScoped) {
+              const v = FESTIVE_POTION_MAP['VALENTINE'];
+              if (v && typeof v.shiny === 'number') shinyDivisor *= (1 + v.shiny / 100);
+              if (v && typeof v.mythic === 'number') mythicDivisor *= (1 + v.mythic / 100);
+            }
+            if (dualitySelectedScoped) {
+              const d = FESTIVE_POTION_MAP['DUALITY'];
+              if (d && typeof d.shiny === 'number') shinyDivisor *= (1 + d.shiny / 100);
+              if (d && typeof d.mythic === 'number') mythicDivisor *= (1 + d.mythic / 100);
+            }
           if (shinyDivisor > 1) {
             shinyOdds = Math.max(1, Math.round(shinyOdds / shinyDivisor));
           }
@@ -3262,6 +2644,7 @@ function createEggPetInfoCard(egg, canSpawnAsRift) {
 
           if (shinyInputScoped && shinyInputScoped.dataset.userModified !== 'true') { shinyInputScoped.value = `1 in ${shinyOdds}`; if (shinyInputScoped.dataset.userModified !== 'false') { shinyInputScoped.dataset.userModified = 'false'; try { if (controlsScope && controlsScope._saveSettings) controlsScope._saveSettings(); } catch (e) {} } }
           if (mythicInputScoped && mythicInputScoped.dataset.userModified !== 'true') { mythicInputScoped.value = `1 in ${mythicOdds}`; if (mythicInputScoped.dataset.userModified !== 'false') { mythicInputScoped.dataset.userModified = 'false'; try { if (controlsScope && controlsScope._saveSettings) controlsScope._saveSettings(); } catch (e) {} } }
+        } catch (e) {}
         }
          const shinyBtnCur = controlsScope ? controlsScope.querySelector('.shiny-btn') : null;
          const mythicBtnCur = controlsScope ? controlsScope.querySelector('.mythic-btn') : null;
@@ -3914,8 +3297,7 @@ function ensureBountyButton() {
   let existing = sidebar.querySelector('.world-icon-btn.bounty');
   if (existing) return existing;
 
-  const reference = sidebar.querySelector('.world-icon-btn:not(.bounty)');
-  let btn;
+  const reference = sidebar.querySelector('.world-icon-btn.infinity, .world-icon-btn.infinite, .world-icon-btn.limited') || null;
   if (reference) {
     btn = reference.cloneNode(true);
     btn.className = btn.className.split(' ').filter(c => !/overworld|minigame|seas|limited|infinity|infinite/.test(c)).join(' ');
