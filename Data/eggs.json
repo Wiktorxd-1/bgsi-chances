@@ -24,7 +24,8 @@
       "Wolf",
       "Fox",
       "Polar Bear",
-      "Panda"
+      "Panda",
+      "QUE FOFO FACE GOD"
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
@@ -720,7 +721,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-02-06",
-    "dateRemoved": "2026-02-13"
+    "dateRemoved": ""
   },
   {
     "name": "Azure Egg",
