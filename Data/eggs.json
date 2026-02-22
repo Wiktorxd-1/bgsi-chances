@@ -430,6 +430,22 @@
     "dateRemoved": ""
   },
   {
+    "name": "Season Sakura Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7e/Season_Sakura_Egg.png",
+    "pets": [
+      "Sakura Doggy",
+      "Sakura Deer",
+      "Blossom Protector",
+      "Elegant Sakura",
+      "Sakura Specter"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-02-13",
+    "dateRemoved": "2026-03-13"
+  },
+  {
     "name": "Season 13 Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Season_13_Egg.png",
     "pets": [
@@ -443,7 +459,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-01-23",
-    "dateRemoved": "2026-02-13"
+    "dateRemoved": "2026-02-12"
   },
   {
     "name": "Season 12 Egg",
@@ -704,6 +720,67 @@
     "dateRemoved": "2025-11-21"
   },
   {
+    "name": "OG Rift Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/af/OG_Rift_Egg.png",
+    "pets": [
+      "OG Cartoon Doggy",
+      "OG Cartoon Kitty",
+      "OG Sky Imp",
+      "OG Advocate",
+      "OG Glitch",
+      "OG Easter Spirit",
+      "OG Angelic Skull",
+      "OG Guardian Skull",
+      "OG King Skull",
+      "OG Sinister Skull",
+      "OG Wolf Skull"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": true,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-02-20",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Moon Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Moon_Egg.png",
+    "pets": [
+      "Lunar Deer",
+      "Gilded Kitty",
+      "Moonglow Serpent",
+      "Moonglow Axolotl",
+      "Moonglow Elemental",
+      "Everlasting Moonglow",
+      "Moon Goddess",
+      "Selenic Paladin"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": true,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-02-20",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Lunar New Years Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/49/Lunar_New_Years_Egg.png",
+    "pets": [
+      "Lantern Doggy",
+      "Lantern Kitty",
+      "Ardent Lantern",
+      "Silly Wushi",
+      "Crimson Blossom",
+      "Fortuitous Overlord",
+      "Golden Tokage",
+      "Fortune Star",
+      "Chinese Dragon"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-02-20",
+    "dateRemoved": ""
+  },
+  {
     "name": "Heartbreak Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Heartbreak_Egg.png",
     "pets": [
@@ -720,7 +797,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-02-13",
-    "dateRemoved": ""
+    "dateRemoved": "2026-02-20"
   },
   {
     "name": "Valentine's Egg",
@@ -740,7 +817,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-02-06",
-    "dateRemoved": ""
+    "dateRemoved": "2026-02-20"
   },
   {
     "name": "Azure Egg",
