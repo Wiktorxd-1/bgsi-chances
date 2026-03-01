@@ -733,13 +733,54 @@
       "OG Guardian Skull",
       "OG King Skull",
       "OG Sinister Skull",
-      "OG Wolf Skull"
+      "OG Wolf Skull",
+      "OG Almighty Pumpkin",
+      "OG King Doggy"
     ],
     "luckIgnored": false,
     "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-02-20",
     "dateRemoved": ""
+  },
+  {
+    "name": "Spring Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/68/Spring_Egg.png",
+    "pets": [
+      "Petal Kitty",
+      "Petal Bunny",
+      "Flower Girl",
+      "Windblume",
+      "Spring Critter",
+      "Sunshine",
+      "Sunmallow",
+      "Foliar Ascension",
+      "Queen Butterfly",
+      "Blossom Dementor"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-02-27",
+    "dateRemoved": "2026-03-13"
+  },
+  {
+    "name": "Petal Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Petal_Egg.png",
+    "pets": [
+      "Ladybug",
+      "Grasshopper",
+      "Ant",
+      "Fire Ant",
+      "Flower Queen",
+      "Spring Shard",
+      "Spring Duality"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2026-02-27",
+    "dateRemoved": "2026-03-13"
   },
   {
     "name": "Moon Egg",
@@ -2092,7 +2133,7 @@
   },
   {
     "name": "Retro Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Retro_Egg.png",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
     "pets": [
       "Retro Doggy",
       "Retro Kitty",
@@ -2126,7 +2167,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2026-02-13",
-    "dateRemoved": ""
+    "dateRemoved": "2026-03-06"
   },
   {
     "name": "Prismatic Egg",
